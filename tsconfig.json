@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "commonjs",
+        "experimentalDecorators": true,
+        "useDefineForClassFields": false,
+        "outDir": "./out-tsc"
+    },
+    "exclude": [
+        "node_modules",
+    ]
+}

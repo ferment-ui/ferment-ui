@@ -1,0 +1,16 @@
+{
+  "name": "create-declare",
+  "version": "0.0.1-alpha.24",
+  "description": "",
+  "bin": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "kleur": "^4.1.4",
+    "prompts": "^2.4.1"
+  }
+}

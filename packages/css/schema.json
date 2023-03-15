@@ -1,0 +1,271 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://monad.media/declarecss.schema.json",
+  "title": "Declare CSS",
+  "description": "Schema for the DeclareCSS theme configuration files",
+  "type": "object",
+  "properties": {
+    "spacing": {
+      "type": "object",
+      "properties": {
+        "baseline": {
+          "type": "string",
+          "default": "4px"
+        },
+        "pageWidth": {
+          "type": "string",
+          "default": "55rem"
+        },
+        "p2p": {
+          "type": "string"
+        },
+        "p2h": {
+          "type": "string"
+        },
+        "h2p": {
+          "type": "string"
+        },
+        "h2h": {
+          "type": "string"
+        },
+        "minimumMultiplier": {
+          "type": "string",
+          "default": "4"
+        },
+        "maximumMultiplier": {
+          "type": "string",
+          "default": "4"
+        }
+      }
+    },
+    "colors": {
+      "type": "object",
+      "properties": {
+        "white": {
+          "type": "string",
+          "default": "white"
+        },
+        "black": {
+          "type": "string",
+          "default": "black"
+        },
+        "lightGray": {
+          "type": "string",
+          "default": "lightgray"
+        },
+        "darkGray": {
+          "type": "string",
+          "default": "darkgray"
+        }
+      }
+    },
+    "theme": {
+      "type": "object",
+      "properties": {
+        "light": {
+          "$ref": "#/theme"
+        },
+        "dark": {
+          "$ref": "#/theme"
+        }
+      }
+    },
+    "typography": {
+      "properties": {
+        "scale": {
+          "type": "string",
+          "enum": ["1.067", "1.200", "1.250", "1.309", "1.333", "1.414", "1.500", "1.618"]
+        },
+        "body": {
+          "$ref": "#/text"
+        },
+        "heading": {
+          "$ref": "#/text"
+        },
+        "h1": {
+          "$ref": "#/text"
+        },
+        "h2": {
+          "$ref": "#/text"
+        },
+        "h3": {
+          "$ref": "#/text"
+        },
+        "h4": {
+          "$ref": "#/text"
+        },
+        "h5": {
+          "$ref": "#/text"
+        },
+        "h6": {
+          "$ref": "#/text"
+        },
+        "subheading": {
+          "$ref": "#/text"
+        },
+        "pullQuote": {
+          "$ref": "#/text"
+        }
+      }
+    },
+    "depth": {
+      "type": "object",
+      "properties": {
+        "0": {
+          "type": "string"
+        },
+        "1": {
+          "type": "string"
+        },
+        "2": {
+          "type": "string"
+        },
+        "3": {
+          "type": "string"
+        },
+        "4": {
+          "type": "string"
+        },
+        "5": {
+          "type": "string"
+        },
+        "6": {
+          "type": "string"
+        }
+      },
+      "minLength": 6,
+      "maxLength": 6
+    },
+    "border": {
+      "type": "object",
+      "properties": {
+        "radius": {
+          "type": "string"
+        },
+        "style": {
+          "type": "string"
+        }
+      }
+    },
+    "breakpoint": {
+      "type": "object",
+      "properties": {
+        "xsmall": {
+          "type": "string"
+        },
+        "small": {
+          "type": "string"
+        },
+        "medium": {
+          "type": "string"
+        },
+        "large": {
+          "type": "string"
+        },
+        "xlarge": {
+          "type": "string"
+        }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "properties": {
+        "xslow": {
+          "type": "string"
+        },
+        "slow": {
+          "type": "string"
+        },
+        "medium": {
+          "type": "string"
+        },
+        "fast": {
+          "type": "string"
+        },
+        "xfast": {
+          "type": "string"
+        },
+        "defaults": {
+          "type": "object",
+          "properties": {
+            "speed": {
+              "type": "string"
+            },
+            "in": {
+              "type": "string"
+            },
+            "out": {
+              "type": "string"
+            },
+            "inout": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "text": {
+    "type": "object",
+    "properties": {
+      "family": {
+        "type": "string"
+      },
+      "size": {
+        "type": "string"
+      },
+      "lineHeight": {
+        "type": "string"
+      },
+      "weight": {
+        "type": "string"
+      },
+      "style": {
+        "type": "string"
+      },
+      "decoration": {
+        "type": "string"
+      },
+      "transform": {
+        "type": "string"
+      },
+      "letterSpacing": {
+        "type": "string"
+      },
+      "shadow": {
+        "type": "string"
+      }
+    }
+  },
+  "theme": {
+    "type": "object",
+    "properties": {
+      "default": {
+        "$ref": "#/themeColours"
+      },
+      "primary": {
+        "$ref": "#/themeColours"
+      },
+      "accent": {
+        "$ref": "#/themeColours"
+      }
+    }
+  },
+  "themeColours": {
+    "type": "object",
+    "properties": {
+        "background": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "disabled": {
+          "type": "string"
+        },
+        "inverseDisabled": {
+          "type": "string"
+        }
+    }
+  }
+}

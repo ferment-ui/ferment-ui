@@ -1,0 +1,41 @@
+{
+  "name": "DeclareCSS",
+  "description": "__MSG_description__",
+  "manifest_version": 2,
+  "default_locale": "en",
+  "version": "1.0",
+  "author": "alexgagnon",
+  "homepage_url": "https://github.com/monadmedia/declare.css/tree/main/devtools",
+  "icons": {
+    "48": "icons/star.png"
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "content": {
+    "scripts": ["content.js"],
+    "permissions": ["<all_urls>"]
+  },
+
+  "commands": {
+    "open-declarecss-panel": {
+      "suggested_key": {
+        "default": "Alt+Shift+D"
+      },
+      "description": "Opens DeclareCSS in DevTools"
+    }
+  },
+
+  "page_action": {
+    "default_icon": "icons/star.png",
+    "default_title": "DeclareCSS"
+  },
+
+  "permissions": [
+    "<all_urls>"
+  ],
+
+  "devtools_page": "index.html"
+}
