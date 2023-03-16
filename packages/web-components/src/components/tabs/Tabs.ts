@@ -82,16 +82,6 @@ export class DCTabs extends LitElement {
     return root;
   }
 
-  override connectedCallback(): void {
-    super.connectedCallback();
-    this.addEventListener("slotchange", this._onSlotChange);
-  }
-
-  override disconnectedCallback(): void {
-    super.disconnectedCallback();
-    this.removeEventListener("slotchange", this._onSlotChange);
-  }
-
   private _upgradeElements(): void {
     console.debug("_upgradeElements");
     this._tabs?.forEach((tab) => {
@@ -143,10 +133,6 @@ export class DCTabs extends LitElement {
   private _focusSelected() {
     console.debug("_focusSelected", this.selectedIndex);
     this._tabs[this.selectedIndex].focus();
-  }
-
-  private _onSlotChange() {
-    console.debug("_onSlotChange");
   }
 
   private _onClick = (event: MouseEvent) => {
