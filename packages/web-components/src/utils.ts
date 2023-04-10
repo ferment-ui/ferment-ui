@@ -52,3 +52,7 @@ export function join(obj: Map<string, unknown> | Object, separator = " ") {
     .filter((v) => v)
     .join(separator);
 };
+
+export function reverse(str: string) {
+  return str.split("").reverse().join("");
+}

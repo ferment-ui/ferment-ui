@@ -12,5 +12,11 @@
   "dependencies": {
     "kleur": "^4.1.4",
     "prompts": "^2.4.1"
+  },
+  "devDependencies": {
+    "cssnano": "^6.0.0",
+    "postcss": "^8.4.21",
+    "postcss-preset-env": "^8.3.1",
+    "stylelint": "^15.4.0"
   }
 }

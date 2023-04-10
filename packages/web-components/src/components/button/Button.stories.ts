@@ -4,7 +4,7 @@ import { Button } from './Button';
 export default {
   title: 'Button',
   tags: ['autodocs'],
-  render: (args) => Button(args),
+  render: (args: any) => Button(args),
   argTypes: {
     backgroundColor: { control: 'color' },
     onClick: { action: 'onClick' },

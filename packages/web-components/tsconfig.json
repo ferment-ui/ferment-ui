@@ -15,8 +15,8 @@
       "isolatedModules": true,
       "allowSyntheticDefaultImports": true,
       "experimentalDecorators": true,
-      "forceConsistentCasingInFileNames": true,
       "useDefineForClassFields": false,
+      "forceConsistentCasingInFileNames": true,
       "skipLibCheck": true
     },
     "include": ["src/**/*.ts"],
