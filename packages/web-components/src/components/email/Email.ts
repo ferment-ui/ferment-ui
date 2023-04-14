@@ -43,3 +43,9 @@ export class DCEmail extends LitElement {
         return html`<a data-user=${this.user} data-domain=${this.domain}></a>`;
     }
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'dc-email': DCEmail;
+  }
+}

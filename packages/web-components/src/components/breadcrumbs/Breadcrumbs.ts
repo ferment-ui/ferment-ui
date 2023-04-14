@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
+import { map } from 'lit/directives/map.js';
 import { Link } from '../../global';
 import { reset } from '../../styles';
 
@@ -39,6 +40,15 @@ export class DCBreadcrumbs extends LitElement {
     @property({ type: Array }) links: Link[] = [];
 
     render() {
-        return html`<ul>${this.links.map(link => html`<li><a href=${link.href}>${link.text}</a></li>`)}</ul>`;
+        // this.links = [{ href: '#', text: 'Home' }, { href: '#', text: 'About'}];
+        // this.links = [];
+        return html`<ul>${map(this.links, (link: Link) => html`<li><a href=${link.href}>${link.text}</a></li>`)}</ul>`;
+        
     }
+}
+
+declare global {
+interface HTMLElementTagNameMap {
+  'dc-breadcrumbs': DCBreadcrumbs;
+}
 }

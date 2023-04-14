@@ -1,18 +1,16 @@
 {
-  "name": "web-components",
+  "name": "@declare/web-components",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tsc": "wireit",
     "build": "wireit",
     "dev": "wireit",
     "test": "wireit",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "docs": "wireit"
   },
   "wireit": {
-    "tsc": {
+    "build": {
       "command": "tsc",
       "files": [
         "src/**/*.ts"
@@ -21,23 +19,21 @@
         "out-tsc/**/*.*"
       ]
     },
-    "docs": {
-      "command": "storybook build -o docs"
-    },
-    "build": {
-      "command": "vite build",
-      "files": [
-        "src/**/*.*"
-      ],
-      "output": [
-        "dist/**/*.*"
-      ]
-    },
     "dev": {
       "command": "storybook dev -p 6006",
       "files": [
         "src/**/*.*",
         ".storybook/**/*.*"
+      ]
+    },
+    "docs": {
+      "command": "storybook build -o docs",
+      "files": [
+        "src/**/*.*",
+        ".storybook/**/*.*"
+      ],
+      "output": [
+        "docs/**/*.*"
       ]
     },
     "test": {
@@ -51,8 +47,10 @@
     "@floating-ui/dom": "^1.2.1",
     "@lit-labs/task": "^2.1.0",
     "@lit-labs/virtualizer": "^2.0.0",
-    "lit": "^2.7.2",
     "lodash": "^4.17.21"
+  },
+  "peerDependencies": {
+    "lit": "^2.6.0"
   },
   "devDependencies": {
     "@lit-labs/testing": "^0.2.1",
@@ -65,7 +63,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^7.0.2",
-    "vite": "^4.2.1",
+    "typescript": "^5.0.4",
     "wireit": "^0.9.5"
   }
 }

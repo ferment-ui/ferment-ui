@@ -18,4 +18,8 @@ export const global = css`
     table {
         border-collapse: collapse;
     }
+
+    img, embed, object, video {
+        max-width: 100%;
+    }
 `
