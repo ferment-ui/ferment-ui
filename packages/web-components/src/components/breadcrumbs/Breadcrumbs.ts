@@ -1,8 +1,8 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
 import { map } from 'lit/directives/map.js';
-import { Link } from '../../global';
-import { reset } from '../../styles';
+import { Link } from '../../global.js';
+import { reset } from '../../styles.js';
 
 /**
  * List of hierarchical links.

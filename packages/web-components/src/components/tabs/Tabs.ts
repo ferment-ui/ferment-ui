@@ -1,9 +1,8 @@
-import {html, css, LitElement, PropertyValues, unsafeCSS} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
-import {prefix} from '../../config';
-import {mod} from '../../utils';
+import { html, css, LitElement, PropertyValues } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+import { mod } from '../../utils.js';
 
-@customElement(`${prefix}-tabs`)
+@customElement(`dc-tabs`)
 export class DCTabs extends LitElement {
   static override styles = css`
     .tabs {
@@ -32,20 +31,20 @@ export class DCTabs extends LitElement {
       display: block;
     }
 
-    ${unsafeCSS(prefix)}-tabs [slot=tab] {
+    dc-tabs [slot=tab] {
       border-right: 1px solid black;
     }
     
-    ${unsafeCSS(prefix)}-tabs [slot=tab]:focus {
+    dc-tabs [slot=tab]:focus {
       outline: 5px solid blue;
     }
     
-    ${unsafeCSS(prefix)}-tabs [slot=tab]:last-of-type {
+    dc-tabs [slot=tab]:last-of-type {
       border-right: none;
     }
     
     /* this is to have it show up as header/section until the component loads */
-    ${unsafeCSS(prefix)}-tabs:not(:defined) {
+    dc-tabs:not(:defined) {
       display: block;
     }
   `;

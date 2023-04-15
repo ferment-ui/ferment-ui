@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
-import { reverse } from '../../utils';
+import { reverse } from '../../utils.js';
 
 /**
  *   Renders an email address while obfuscating it from bots
