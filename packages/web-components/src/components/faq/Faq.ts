@@ -54,7 +54,6 @@ export class DCFaq extends DCBaseElement {
 
   render() {
     if (this.faqs == null) return;
-    console.log(this.selectedTag);
     const tags = Array.from(this.faqs.reduce((acc, faq) => {faq.tags.forEach(tag => acc.add(tag)); return acc}, new Set<string>()));
     return html`
       <ul part='tags' class='tags' @click="${this._tagClick}">
@@ -62,7 +61,14 @@ export class DCFaq extends DCBaseElement {
         ${tags.map(tag => this._getTagTemplate(tag, tag === this.selectedTag))}
       </ul>
       <ul part='faqs' id='faqs-${this.id}' class='faqs'>
-        ${this.faqs.map((faq) => html`<li part='faq' ?hidden=${!(this.selectedTag == null || faq.tags.includes(this.selectedTag as string))}><details part='${join({details: true})}'><summary part='question'>${faq.title} [${faq.tags.join(', ')}]</summary><p part='answer'>${unsafeHTML(faq.content)}</p></details></li>`)}
+        ${this.faqs.map((faq) => html`
+          <li part='faq' ?hidden=${!(this.selectedTag == null || faq.tags.includes(this.selectedTag as string))}>
+            <details part='${join({details: true})}'>
+              <summary part='question'>${faq.title} [${faq.tags.join(', ')}]</summary>
+              <p part='answer'>${unsafeHTML(faq.content)}</p>
+            </details>
+          </li>`
+        )}
       </ul>
     `;
   }

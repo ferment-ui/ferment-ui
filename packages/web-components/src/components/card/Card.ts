@@ -12,10 +12,13 @@ export class DCCard extends LitElement {
   static styles = [
     css`
       :host {
-        display: block;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
       }
 
       .card {
+        flex: 1;
         display: grid;
         border: 1px solid currentColor;
         border-radius: var(--br);
