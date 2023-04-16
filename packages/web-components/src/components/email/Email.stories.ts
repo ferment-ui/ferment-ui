@@ -1,3 +1,4 @@
+import { html } from 'lit-html';
 import './Email';
 
 export default {
@@ -24,6 +25,15 @@ export default {
 };
 
 export const Default = {
+  args: {
+    user: 'test'.split("").reverse().join(""),
+    domain: 'example.com'.split("").reverse().join(""),
+    mailto: true,
+  }
+};
+
+export const Slot = {
+  render: ({user, domain, mailto}) => html`<dc-email user=${user} domain=${domain} mailto=${mailto}>Email</dc-email>`,
   args: {
     user: 'test'.split("").reverse().join(""),
     domain: 'example.com'.split("").reverse().join(""),

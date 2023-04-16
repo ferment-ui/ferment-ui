@@ -13,7 +13,7 @@ export class DCTel extends LitElement {
                 display: inline-block;
             }
 
-            a::before {
+            span::before {
                 content: attr(data-number) "-" attr(data-area);
                 unicode-bidi: bidi-override;
                 direction: rtl;
@@ -26,10 +26,9 @@ export class DCTel extends LitElement {
     @property({ type: Boolean }) tel: boolean = true;
 
     override updated() {
-        console.log('here!!!');
-        if (this.tel) {
-            this.setTel();
-        }
+      if (this.tel) {
+        this.setTel();
+      }
     }
 
     setTel() {
@@ -41,7 +40,7 @@ export class DCTel extends LitElement {
     }
 
     render() {
-        return html`<a data-area=${this.area} data-number=${this.number}></a>`;
+        return html`<a part="link"><slot><span data-area=${this.area} data-number="${this.number}"></span></slot></a>`;
     }
 }
 

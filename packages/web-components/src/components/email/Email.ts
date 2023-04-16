@@ -13,7 +13,7 @@ export class DCEmail extends LitElement {
                 display: inline-block;
             }
 
-            a::before {
+            span::before {
                 content: attr(data-domain) "\u0040" attr(data-user);
                 unicode-bidi: bidi-override;
                 direction: rtl;
@@ -40,7 +40,7 @@ export class DCEmail extends LitElement {
     }
 
     render() {
-        return html`<a data-user=${this.user} data-domain=${this.domain}></a>`;
+      return html`<a part="link"><slot><span data-user="${this.user}" data-domain="${this.domain}"></span></slot></a>`;
     }
 }
 

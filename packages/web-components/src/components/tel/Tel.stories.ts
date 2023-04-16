@@ -1,3 +1,4 @@
+import { html } from 'lit-html';
 import './Tel';
 
 export default {
@@ -30,3 +31,12 @@ export const Default = {
     tel: true,
   }
 };
+
+export const Slot = {
+  render: ({area, number, tel}) => html`<dc-tel area=${area} number=${number} tel=${tel}>Call</dc-tel>`,
+  args: {
+    area: '123'.split("").reverse().join(""),
+    number: '4567890'.split("").reverse().join(""),
+    tel: true,
+  }
+}

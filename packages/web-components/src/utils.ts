@@ -2,6 +2,14 @@ export function mod(a: number, b: number) {
   return ((a % b) + b) % b;
 }
 
+export function getId() {
+  return new Date().getTime().toString(36);;
+}
+
+export function equalsIgnoreCase(a: string | undefined, b: string | undefined) {
+  return a?.toLowerCase() === b?.toLowerCase();
+}
+
 export const focusableElements = 'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])';
 
 export function trapFocus(element: HTMLElement) {

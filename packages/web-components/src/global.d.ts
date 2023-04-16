@@ -4,6 +4,7 @@ export interface Link {
 }
 
 export interface Faq {
+  key?: string;
   title: string;
   content: string;
   tags: string[];
