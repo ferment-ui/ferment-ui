@@ -1,3 +1,4 @@
+import { html } from 'lit';
 import './Faq';
 
 export default {
@@ -5,13 +6,15 @@ export default {
   component: 'dc-faq',
   tags: ['autodocs'],
   argTypes: {
-    faqs: {
-      control: 'text',
-    },
+    faqs: {control: 'text'},
+    selectedTag: {control: 'text'},
+    selectedQuestions: {control: 'array', defaultValue: []},
+    allTagsTemplate: {control: 'text'}
   }
 };
 
 export const Default = {
+  // render: ({args}) => html`<dc-faq .faqs=${args.faqs}, .selectedQuestions=${args.selectedQuestions} .selectedTag=${args.selectedTag} .allTagsTemplate=${args.allTagsTemplate}></dc-faq>`,
   args: {
     faqs: [
       {
