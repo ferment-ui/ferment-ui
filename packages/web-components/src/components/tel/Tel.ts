@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { reverse } from '../../utils.js';
 
 /**
@@ -10,7 +11,15 @@ export class DCTel extends LitElement {
     static styles = [
         css`
             :host {
-                display: inline-block;
+                display: flex;
+                justify-content: center;
+            }
+
+            a {
+              position: relative;
+              display: flex;
+              justify-content: center;
+              align-items: center;
             }
 
             span::before {
@@ -24,6 +33,7 @@ export class DCTel extends LitElement {
     @property({ type: String }) area: string = '';
     @property({ type: String }) number: string = '';
     @property({ type: Boolean }) tel: boolean = true;
+    @property({ type: String }) label?: string;
 
     override updated() {
       if (this.tel) {
@@ -40,7 +50,7 @@ export class DCTel extends LitElement {
     }
 
     render() {
-        return html`<a part="link"><slot><span data-area=${this.area} data-number="${this.number}"></span></slot></a>`;
+        return html`<a part="link" aria-label='${ifDefined(this.label)}'><slot></slot><span part='default' data-area=${this.area} data-number="${this.number}"></span></a>`;
     }
 }
 

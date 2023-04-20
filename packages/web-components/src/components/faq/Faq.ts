@@ -85,8 +85,8 @@ export class DCFaq extends DCBaseElement {
     const selected = this._selectedQuestions.has(key);
     return html`
     <li part='faq' ?hidden=${!(this.selectedTag == null || faq.tags.includes(this.selectedTag as string))}>
-      <details part='${join({details: true, selected})}' ?open='${selected}'>
-        <summary part='question' data-key=${key}>${faq.title}</summary>
+      <details part='${join({details: true})}' ?open='${selected}'>
+        <summary part='${join({question: true, selected})}' data-key=${key}>${faq.title}</summary>
         <p part='answer'>${unsafeHTML(faq.content)}</p>
       </details>
     </li>`;

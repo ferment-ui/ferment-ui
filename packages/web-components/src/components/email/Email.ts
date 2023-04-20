@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { reverse } from '../../utils.js';
 
 /**
@@ -10,7 +11,15 @@ export class DCEmail extends LitElement {
     static styles = [
         css`
             :host {
-                display: inline-block;
+                display: flex;
+                justify-content: center;
+            }
+
+            a {
+              position: relative;
+              display: flex;
+              justify-content: center;
+              align-items: center;
             }
 
             span::before {
@@ -24,6 +33,7 @@ export class DCEmail extends LitElement {
     @property({ type: String }) user: string = '';
     @property({ type: String }) domain: string = '';
     @property({ type: Boolean }) mailto: boolean = true;
+    @property({ type: String }) label?: string;
 
     firstUpdated() {
         if (this.mailto) {
@@ -40,7 +50,7 @@ export class DCEmail extends LitElement {
     }
 
     render() {
-      return html`<a part="link"><slot><span data-user="${this.user}" data-domain="${this.domain}"></span></slot></a>`;
+      return html`<a part="link" aria-label='${ifDefined(this.label)}'><slot></slot><span part='default' data-user="${this.user}" data-domain="${this.domain}"></span></a>`;
     }
 }
 
