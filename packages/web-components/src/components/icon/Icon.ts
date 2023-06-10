@@ -19,9 +19,11 @@ export class DCIcon extends LitElement {
     `
   ];
 
-  @property({ type: String }) data: string = '';
   @property({ type: String }) label: string = '';
   @property({ type: Number }) tabIndex = -1;
+
+  // TODO: app props for icon for font based, use for svg, and src for img
+  @property({ type: String }) data: string = '';
 
   render() {
     return html`<object tabindex='${this.tabIndex}' type='image/svg+xml' data='${this.data}' aria-label='${this.label}'></object>`;

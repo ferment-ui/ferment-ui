@@ -1,0 +1,19 @@
+.p-1 {
+  padding: var(--S-1);
+}
+
+.pt-1 {
+  padding-top: var(--S-1);
+}
+
+.pe-1 {
+  padding-block-end: var(--S-1);;
+}
+
+.pb-1 {
+  padding-bottom: var(--S-1);
+}
+
+.ps-1 {
+  padding-block-start: var(--S-1);
+}

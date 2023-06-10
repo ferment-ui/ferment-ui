@@ -1,0 +1,12 @@
+:root {
+  /* baseline size */
+  --S: 4;
+
+  /* multipliers for the baseline size */
+  --S-1: 1;
+  --S-2: 2;
+  --S-3: 4;
+  --S-4: 8;
+  --S-5: 14;
+  --S-6: 22;
+}

@@ -1,0 +1,4 @@
+:root {
+  --bo: 2px solid currentColor;
+  --br: calc(var(--S) * 2px);
+}

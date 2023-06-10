@@ -1,0 +1,19 @@
+.fw-b {
+  font-weight: bold;
+}
+
+.fw-i {
+  font-style: italic;
+}
+
+.ta-s {
+  text-align: start;
+}
+
+.ta-c {
+  text-align: center;
+}
+
+.ta-e {
+  text-align: end;
+}

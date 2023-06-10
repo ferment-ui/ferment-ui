@@ -1,0 +1,59 @@
+.F, [class^="F-"], [class*=" F-"] {
+  display: flex;
+}
+
+.Fd-c {
+  flex-direction: column;
+}
+
+.Fd-r {
+  flex-direction: row;
+}
+
+/* TODO: remove if not needed */
+/* .F-s, .F-ss, .F-sc, .F-se, .F-c, .F-cs, .F-cc, .F-ce, .F-e, .F-es, .F-ec, .F-ee {} */
+
+.F-s, .F-ss {
+  justify-content: start;
+  align-items: start;
+}
+
+.F-sc {
+  justify-content: start;
+  align-items: center;
+}
+
+.F-se {
+  justify-content: start;
+  align-items: end;
+}
+
+.F-cs {
+  justify-content: center;
+  align-items: start;
+}
+
+.F-c, .F-cc {
+  justify-content: center;
+  align-items: center;
+}
+
+.F-ce {
+  justify-content: center;
+  align-items: end; 
+}
+
+.F-es {
+  justify-content: end;
+  align-items: start;
+}
+
+.F-ec {
+  justify-content: end;
+  align-items: center;
+}
+
+.F-e, .F-ee {
+  justify-content: end;
+  align-items: end;
+}

@@ -1,0 +1,11 @@
+:root {
+  --c-default: #372d2d;
+  --bc-default: #f9f9f9;
+  --c-default-disabled: grey;
+  --c-default-inverse-disabled: grey;
+
+  --c-accent: red;
+  --bc-accent: white;
+  --c-accent-disabled: grey;
+  --c-accent-inverse-disabled: grey;
+}

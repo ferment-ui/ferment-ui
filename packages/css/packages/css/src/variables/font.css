@@ -1,0 +1,127 @@
+@import './layouts.css';
+
+:root {
+  /* family */
+  --ff-b: sans-serif;
+
+  --ff-h1-override: null;
+  --ff-h2-override: null;
+  --ff-h3-override: null;
+  --ff-h4-override: null;
+  --ff-h5-override: null;
+  --ff-h6-override: null;
+
+  --ff-h: serif;
+  --ff-h1: var(var(--ff-h1-override), var(--ff-h));
+  --ff-h2: var(var(--ff-h1-override), var(--ff-h));
+  --ff-h3: var(var(--ff-h1-override), var(--ff-h));
+  --ff-h4: var(var(--ff-h1-override), var(--ff-h));
+  --ff-h5: var(var(--ff-h1-override), var(--ff-h));
+  --ff-h6: var(var(--ff-h1-override), var(--ff-h));
+  
+
+
+  /* size */
+  --T-scale: 1.13;
+
+  /* NOTE: should be between 16-20px for optimal readability */
+  --fs-b: calc(var(--S) * 5px);
+
+  --fs-h1-override: null;
+  --fs-h2-override: null;
+  --fs-h3-override: null;
+  --fs-h4-override: null;
+  --fs-h5-override: null;
+  --fs-h6-override: null;
+
+  /* unless override is set, use typographic scale */
+  --fs-h1: var(--fs-h1-override, calc(var(--T-scale) * var(--fs-b) * 1rem));
+  --fs-h1: var(--fs-h1-override, calc(var(--T-scale) * var(--fs-b) * 1rem));
+  --fs-h1: var(--fs-h1-override, calc(var(--T-scale) * var(--fs-b) * 1rem));
+  --fs-h1: var(--fs-h1-override, calc(var(--T-scale) * var(--fs-b) * 1rem));
+  --fs-h1: var(--fs-h1-override, calc(var(--T-scale) * var(--fs-b) * 1rem));
+  --fs-h1: var(--fs-h1-override, calc(var(--T-scale) * var(--fs-b) * 1rem));
+
+  /* line heights */
+  --lh-b: 1.8;
+  --lh-h: 1;
+}
+
+/* BODY */
+body {
+  font-family: var(--ff-b);
+}
+
+.ff-b {
+  font-family: var(--ff-b);
+}
+
+.fs-b {
+  font-family: var(--fs-b);
+}
+
+.lh-b {
+  font-family: var(--lh-b);
+}
+
+/* HEADINGS */
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-family: var(--ff-h);
+  line-height: var(--lh-h);
+}
+
+h1, .h1 {
+  font-size: var(--fs-h1);
+}
+
+h2, .h2 {
+  font-size: var(--fs-h2);
+}
+
+h3, .h3 {
+  font-size: var(--fs-h3);
+}
+
+h4, .h4 {
+  font-size: var(--fs-h4);
+}
+
+h5, .h5 {
+  font-size: var(--fs-h5);
+}
+
+h6, .h6 {
+  font-size: var(--fs-h6);
+}
+
+.ff-h {
+  font-family: var(--ff-h);
+}
+
+.fs-h1 {
+  font-size: var(--fs-h1);
+}
+
+.fs-h2 {
+  font-size: var(--fs-h2);
+}
+
+.fs-h3 {
+  font-size: var(--fs-h3);
+}
+
+.fs-h4 {
+  font-size: var(--fs-h4);
+}
+
+.fs-h5 {
+  font-size: var(--fs-h5);
+}
+
+.fs-h6 {
+  font-size: var(--fs-h6);
+}
+
+.lh-h {
+  line-height: var(--lh-h);
+}

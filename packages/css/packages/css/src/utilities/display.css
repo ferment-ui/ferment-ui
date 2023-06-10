@@ -1,0 +1,19 @@
+.d-s {
+  display: static;
+}
+
+.d-r {
+  display: relative;
+}
+
+.d-a {
+  display: absolute;
+}
+
+.d-f {
+  display: flex;
+}
+
+.d-g {
+  display: grid;
+}

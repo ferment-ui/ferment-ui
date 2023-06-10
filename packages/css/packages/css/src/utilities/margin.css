@@ -1,0 +1,19 @@
+.m-1 {
+  padding: var(--S-1);
+}
+
+.mt-1 {
+  margin-top: var(--S-1);
+}
+
+.me-1 {
+  margin-block-end: var(--S-1);;
+}
+
+.mb-1 {
+  margin-bottom: var(--S-1);
+}
+
+.ms-1 {
+  margin-block-start: var(--S-1);
+}
