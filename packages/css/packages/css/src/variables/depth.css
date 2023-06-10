@@ -1,9 +1,8 @@
 :root {
-  --z-0: %%DEPTH_0%%;
-  --z-1: %%DEPTH_1%%;
-  --z-2: %%DEPTH_2%%;
-  --z-3: %%DEPTH_3%%;
-  --z-4: %%DEPTH_4%%;
-  --z-5: %%DEPTH_5%%;
-  --z-6: %%DEPTH_6%%;
+  --z-1: {{ depth_1 }};
+  --z-2: {{ depth_2 }};
+  --z-3: {{ depth_3 }};
+  --z-4: {{ depth_4 }};
+  --z-5: {{ depth_5 }};
+  --z-6: {{ depth_6 }};
 }

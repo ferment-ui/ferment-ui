@@ -1,0 +1,7 @@
+.bo-0 {
+  border: none;
+}
+
+.bo {
+  border: var(--bo);
+}

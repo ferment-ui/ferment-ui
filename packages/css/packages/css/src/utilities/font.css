@@ -1,3 +1,51 @@
+
+/* BODY */
+.ff-b {
+  font-family: var(--ff-b);
+}
+
+.fs-b {
+  font-family: var(--fs-b);
+}
+
+.lh-b {
+  font-family: var(--lh-b);
+}
+
+/* HEADINGS */
+@define-mixin heading $1 {
+h$(1), .h$(1) {
+  line-height: var(--lh-h$(1));
+  font-family: var(--ff-h$(1));
+  font-size: var(--fs-h$(1));
+  font-weight: var(--fw-h$(1));
+  text-decoration: var(--td-h$(1));
+  text-transform: var(--tt-h$(1));
+}
+}
+
+@for $1 from 1 to 6 {
+@mixin heading $i;
+}
+
+.ff-h {
+  font-family: var(--ff-h);
+}
+
+@define-mixin heading-size $1 {
+.fs-h$(1) {
+  font-size: var(--fs-h$(1));
+}
+}
+
+@for $1 from 1 to 6 {
+@mixin heading-size 1;
+}
+
+.lh-h {
+  line-height: var(--lh-h);
+}
+
 .fw-b {
   font-weight: bold;
 }

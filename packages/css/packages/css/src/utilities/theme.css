@@ -1,0 +1,24 @@
+@import '../variables/index.css';
+
+@define-mixin theme $1 {
+.T-$1 {
+  color: var(--c-$1);
+  background-color: var(--bc-$1);
+}
+
+.T-$1[disabled], .T-$1 *[disabled] {
+  color: var(--c-$1-D);
+}
+
+.T-$1-I {
+  color: var(--bc-$1);
+  background-color: var(--c-$1);
+}
+
+.T-$1-I[disabled], .T-$1-I *[disabled] {
+  color: var(--c-$1-ID);
+}
+}
+
+@mixin theme P;
+@mixin theme A;

@@ -1,0 +1,11 @@
+:root {
+  /* baseline size */
+  --S: {{ baseline }};
+
+  /* multipliers for the baseline size */
+  @for $1 from 1 to 6 {
+  --S-$(1): {{ multiplier_$(1) }};
+  }
+
+  --S-P: {{ page }};
+}

@@ -1,19 +1,19 @@
-.d-s {
-  display: static;
+.block {
+  display: block;
 }
 
-.d-r {
-  display: relative;
+.inline {
+  display: inline;
 }
 
-.d-a {
-  display: absolute;
+.inline-block {
+  display: inline-block;
 }
 
-.d-f {
+.flex {
   display: flex;
 }
 
-.d-g {
+.grid {
   display: grid;
 }

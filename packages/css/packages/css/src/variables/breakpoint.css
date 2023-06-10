@@ -1,8 +1,15 @@
 :root {
-  --B-1: 400px;
-  --B-2: 600px;
-  --B-3: 800px;
-  --B-4: 1000px;
-  --B-5: 1200px;
-  --B-6: 1600px;
+  --B-1: {{ breakpoint_1 }};
+  --B-2: {{ breakpoint_2 }};
+  --B-3: {{ breakpoint_3 }};
+  --B-4: {{ breakpoint_4 }};
+  --B-5: {{ breakpoint_5 }};
+  --B-6: {{ breakpoint_6 }};
 }
+
+@custom-media --1 (min-width: {{ breakpoint_1 }});
+@custom-media --2 (min-width: {{ breakpoint_2 }});
+@custom-media --3 (min-width: {{ breakpoint_3 }});
+@custom-media --4 (min-width: {{ breakpoint_4 }});
+@custom-media --5 (min-width: {{ breakpoint_5 }});
+@custom-media --6 (min-width: {{ breakpoint_6 }});

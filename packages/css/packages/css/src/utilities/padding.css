@@ -1,19 +1,47 @@
-.p-1 {
-  padding: var(--S-1);
+@import '../variables/index.css';
+
+.p-0 {
+  padding: 0;
 }
 
-.pt-1 {
-  padding-top: var(--S-1);
+.pt-0 {
+  padding-top: 0;
 }
 
-.pe-1 {
-  padding-block-end: var(--S-1);;
+.pe-0 {
+  padding-block-end: 0;
 }
 
-.pb-1 {
-  padding-bottom: var(--S-1);
+.pb-0 {
+  padding-bottom: 0;
 }
 
-.ps-1 {
-  padding-block-start: var(--S-1);
+.ps-0 {
+  padding-block-start: 0;
+}
+
+@define-mixin padding $1 {
+.p-$(1) {
+  padding: var(--S-$1);
+}
+
+.pt-$(1) {
+  padding-top: var(--S-$1);
+}
+
+.pe-$(1) {
+  padding-block-end: var(--S-$1);;
+}
+
+.pb-$(1) {
+  padding-bottom: var(--S-$1);
+}
+
+.ps-$(1) {
+  padding-block-start: var(--S-$1);
+}
+}
+
+@for $i from 1 to 6 {
+@mixin padding $i;
 }

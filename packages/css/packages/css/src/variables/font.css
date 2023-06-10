@@ -1,127 +1,77 @@
-@import './layouts.css';
+@import './spacing.css';
 
 :root {
   /* family */
   --ff-b: sans-serif;
 
-  --ff-h1-override: null;
-  --ff-h2-override: null;
-  --ff-h3-override: null;
-  --ff-h4-override: null;
-  --ff-h5-override: null;
-  --ff-h6-override: null;
-
   --ff-h: serif;
-  --ff-h1: var(var(--ff-h1-override), var(--ff-h));
-  --ff-h2: var(var(--ff-h1-override), var(--ff-h));
-  --ff-h3: var(var(--ff-h1-override), var(--ff-h));
-  --ff-h4: var(var(--ff-h1-override), var(--ff-h));
-  --ff-h5: var(var(--ff-h1-override), var(--ff-h));
-  --ff-h6: var(var(--ff-h1-override), var(--ff-h));
+
+  @for $1 from 1 to 6 {
+  --ff-h$(1)-O: unset;
+  }
+
+  @for $1 from 1 to 6 {
+  --ff-h$(1): var(--ff-h$(1)-O, --ff-h);
+  }
   
-
-
   /* size */
-  --T-scale: 1.13;
+  --scale: 1.13;
 
   /* NOTE: should be between 16-20px for optimal readability */
   --fs-b: calc(var(--S) * 5px);
 
-  --fs-h1-override: null;
-  --fs-h2-override: null;
-  --fs-h3-override: null;
-  --fs-h4-override: null;
-  --fs-h5-override: null;
-  --fs-h6-override: null;
+  @for $1 from 1 to 6 {
+  --fs-h$(1)-O: unset;
+  }
 
   /* unless override is set, use typographic scale */
-  --fs-h1: var(--fs-h1-override, calc(var(--T-scale) * var(--fs-b) * 1rem));
-  --fs-h1: var(--fs-h1-override, calc(var(--T-scale) * var(--fs-b) * 1rem));
-  --fs-h1: var(--fs-h1-override, calc(var(--T-scale) * var(--fs-b) * 1rem));
-  --fs-h1: var(--fs-h1-override, calc(var(--T-scale) * var(--fs-b) * 1rem));
-  --fs-h1: var(--fs-h1-override, calc(var(--T-scale) * var(--fs-b) * 1rem));
-  --fs-h1: var(--fs-h1-override, calc(var(--T-scale) * var(--fs-b) * 1rem));
+  @for $1 from 1 to 6 {
+  --fs-h$(1): var(--fs-h$(1)-O, calc(var(--scale) * var(--fs-b) * (6 - $(1)rem)));
+  }
 
   /* line heights */
   --lh-b: 1.8;
   --lh-h: 1;
-}
 
-/* BODY */
-body {
-  font-family: var(--ff-b);
-}
+  @for $1 from 1 to 6 {
+  --lh-h$(1)-O: unset;
+  }
 
-.ff-b {
-  font-family: var(--ff-b);
-}
+  @for $1 from 1 to 6 {
+  --lh-h$(1): var(--lh-h$(1)-O, --lh-h);
+  }
 
-.fs-b {
-  font-family: var(--fs-b);
-}
+  /* weight */
+  --fw-h: 700;
+  --fw-b: 400;
 
-.lh-b {
-  font-family: var(--lh-b);
-}
+  @for $1 from 1 to 6 {
+  --fw-h$(1)-O: unset;
+  }
 
-/* HEADINGS */
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-  font-family: var(--ff-h);
-  line-height: var(--lh-h);
-}
+  @for $1 from 1 to 6 {
+  --fw-h$(1): var(--fw-h$(1)-O, --fw-h);
+  }
 
-h1, .h1 {
-  font-size: var(--fs-h1);
-}
+  /* text-decoration */
+  --td-h: none;
 
-h2, .h2 {
-  font-size: var(--fs-h2);
-}
+  @for $i from 1 to 6 {
+  --td-h$(i)-O: unset;
+  }
 
-h3, .h3 {
-  font-size: var(--fs-h3);
-}
+  @for $i from 1 to 6 {
+  --td-h$(i): var(--td-h$(i)-O, --td-h);
+  }
 
-h4, .h4 {
-  font-size: var(--fs-h4);
-}
+  /* text-transform */
+  --tt-h: none;
 
-h5, .h5 {
-  font-size: var(--fs-h5);
-}
+  @for $i from 1 to 6 {
+  --tt-h$(i)-O: unset;
+  }
 
-h6, .h6 {
-  font-size: var(--fs-h6);
-}
-
-.ff-h {
-  font-family: var(--ff-h);
-}
-
-.fs-h1 {
-  font-size: var(--fs-h1);
-}
-
-.fs-h2 {
-  font-size: var(--fs-h2);
-}
-
-.fs-h3 {
-  font-size: var(--fs-h3);
-}
-
-.fs-h4 {
-  font-size: var(--fs-h4);
-}
-
-.fs-h5 {
-  font-size: var(--fs-h5);
-}
-
-.fs-h6 {
-  font-size: var(--fs-h6);
-}
-
-.lh-h {
-  line-height: var(--lh-h);
+  @for $i from 1 to 6 {
+  --tt-h$(i): var(--tt-h$(i)-O, --tt-h);
+  }
 }

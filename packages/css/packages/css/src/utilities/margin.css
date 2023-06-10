@@ -1,19 +1,47 @@
-.m-1 {
-  padding: var(--S-1);
+@import '../variables/index.css';
+
+.m-0 {
+  margin: 0;
 }
 
-.mt-1 {
-  margin-top: var(--S-1);
+.mt-0 {
+  margin-top: 0;
 }
 
-.me-1 {
-  margin-block-end: var(--S-1);;
+.me-0 {
+  margin-block-end: 0;
 }
 
-.mb-1 {
-  margin-bottom: var(--S-1);
+.mb-0 {
+  margin-bottom: 0;
 }
 
-.ms-1 {
-  margin-block-start: var(--S-1);
+.ms-0 {
+  margin-block-start: 0;
+}
+
+@define-mixin margin $1 {
+.m-$(1) {
+  padding: var(--S-$1);
+}
+
+.mt-$(1) {
+  margin-top: var(--S-$1);
+}
+
+.me-$(1) {
+  margin-block-end: var(--S-$1);;
+}
+
+.mb-$(1) {
+  margin-bottom: var(--S-$1);
+}
+
+.ms-$(1) {
+  margin-block-start: var(--S-$1);
+}
+}
+
+@for $i from 1 to 6 {
+@mixin margin $i;
 }

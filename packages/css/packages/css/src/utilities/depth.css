@@ -1,0 +1,11 @@
+@import '../variables/depth.css';
+
+@define-mixin depth $1 {
+.zi-$(1) {
+  z-index: var(--z-$(1));
+}
+}
+
+@for $i from 1 to 6 {
+@mixin depth $i;
+}

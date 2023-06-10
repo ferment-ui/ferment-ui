@@ -1,0 +1,18 @@
+@import '../variables/color.css';
+
+@define-mixin color $1 {
+.c-$(1) {
+  color: var(--c-$1);
+}
+
+.bc-$(1) {
+  background-color: var(--c-$1);
+}
+}
+
+@mixin color D-P;
+@mixin color D-A;
+@mixin color L-P;
+@mixin color L-A;
+@mixin color P;
+@mixin color A;

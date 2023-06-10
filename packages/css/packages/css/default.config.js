@@ -2,14 +2,18 @@ module.exports = {
   $schema: "./schema.json",
   $version: "1.0.0",
   spacing: {
-    baseline: "",
-    pageWidth: "",
+    baseline: "4",
+    page: "65em",
+    multiplier_1: "1",
+    multiplier_2: "2",
+    multiplier_3: "4",
+    multiplier_4: "8",
+    multiplier_5: "14",
+    multiplier_6: "22",
     p2p: "",
     p2h: "",
     h2p: "",
     h2h: "",
-    minimumMultiplier: "",
-    maximumMultiplier: ""
   },
   theme: {
     light: {
@@ -55,7 +59,7 @@ module.exports = {
       letterSpacing: "",
       shadow: "",
     },
-    h1: {
+    h1_override: {
       family: "",
       size: "",
       lineHeight: "",
@@ -66,7 +70,7 @@ module.exports = {
       letterSpacing: "",
       shadow: "",
     },
-    h2: {
+    h2_override: {
       family: "",
       size: "",
       lineHeight: "",
@@ -77,7 +81,7 @@ module.exports = {
       letterSpacing: "",
       shadow: "",
     },
-    h3: {
+    h3_override: {
       family: "",
       size: "",
       lineHeight: "",
@@ -88,7 +92,7 @@ module.exports = {
       letterSpacing: "",
       shadow: "",
     },
-    h4: {
+    h4_override: {
       family: "",
       size: "",
       lineHeight: "",
@@ -99,7 +103,7 @@ module.exports = {
       letterSpacing: "",
       shadow: "",
     },
-    h5: {
+    h5_override: {
       family: "",
       size: "",
       lineHeight: "",
@@ -110,7 +114,7 @@ module.exports = {
       letterSpacing: "",
       shadow: "",
     },
-    h6: {
+    h6_override: {
       family: "",
       size: "",
       lineHeight: "",
@@ -155,11 +159,12 @@ module.exports = {
   },
   border: {radius: "", style: ""},
   breakpoint: {
-    xsmall: "",
-    small: "",
-    medium: "",
-    large: "",
-    xlarge: "",
+    1: "400px",
+    2: "600px",
+    3: "800px",
+    4: "1000px",
+    5: "1200px",
+    6: "1600px",
   },
   timing: {
     xslow: "",

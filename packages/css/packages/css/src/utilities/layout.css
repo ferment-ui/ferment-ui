@@ -1,3 +1,4 @@
+@import '../variables/index.css';
 
 .w-full {
   width: 100%;
@@ -15,26 +16,30 @@
   height: 100vh;
 }
 
-h-vp-wo-banner {
-  height: calc(100vh - var(--banner-height));
+.h-vp-wo-banner {
+  height: calc(100vh - var(--h--b));
 }
 
-.L-P, .L-page {
-  max-width: 65em;
+.page {
+  max-width: var(--S-P);
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--S-large);
-  padding-right: var(--S-large);
+
+  /* TODO: variables for these */
+  padding-left: var(--S);
+  padding-right: var(--S);
 }
 
-.L-S, .L-section {
-  max-width: 65em;
+.section {
+  max-width: var(--S-P);
   margin: auto;
+
+  /* TODO: variables for these */
   padding: var(--S-section-v) var(--S-section-h);
 }
 
-.L-F, .L-flow {
-  max-width: 65em;
+.flow {
+  max-width: var(--S-P);
   margin: auto;
   padding: var(--S-section-v) var(--S-section-h) 0 var(--S-section-h);
 }
@@ -98,7 +103,7 @@ h-vp-wo-banner {
   align-items: end;
 }
 
-/* TODO: fill in */
+/* TODO: fill in and use mixing */
 /* .LP-c {
   position: relative;
 }

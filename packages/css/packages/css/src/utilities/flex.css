@@ -2,14 +2,6 @@
   display: flex;
 }
 
-.Fd-c {
-  flex-direction: column;
-}
-
-.Fd-r {
-  flex-direction: row;
-}
-
 /* TODO: remove if not needed */
 /* .F-s, .F-ss, .F-sc, .F-se, .F-c, .F-cs, .F-cc, .F-ce, .F-e, .F-es, .F-ec, .F-ee {} */
 

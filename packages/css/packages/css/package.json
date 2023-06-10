@@ -1,0 +1,30 @@
+{
+  "name": "create-declare",
+  "version": "0.0.1-alpha.24",
+  "description": "Contains the source for the css library",
+  "bin": {
+    "create-declare": "lib/index.js"
+  },
+  "scripts": {
+    "build": "postcss src/index.css -o dist/index.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cssnano": "^6.0.1",
+    "kleur": "^4.1.4",
+    "modern-normalize": "^2.0.0",
+    "postcss": "^8.4.24",
+    "postcss-cli": "^10.1.0",
+    "postcss-for": "^2.1.1",
+    "postcss-import": "^15.1.0",
+    "postcss-mixins": "^9.0.4",
+    "postcss-preset-env": "^8.4.2",
+    "postcss-replace": "^2.0.1",
+    "prompts": "^2.4.1"
+  },
+  "devDependencies": {
+    "stylelint": "^15.4.0"
+  }
+}

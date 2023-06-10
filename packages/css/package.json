@@ -1,23 +1,16 @@
 {
-  "name": "create-declare",
-  "version": "0.0.1-alpha.24",
-  "description": "",
-  "bin": "lib/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "name": "css",
+  "version": "1.0.0",
+  "description": "Contains the packages for the css library, the configuration widget, and the browser extension",
+  "workspaces": [
+    "packages/*"
+  ],
   "keywords": [],
-  "author": "",
+  "author": "alexgagnon",
   "license": "ISC",
   "dependencies": {
-    "kleur": "^4.1.4",
-    "modern-normalize": "^2.0.0",
-    "prompts": "^2.4.1"
-  },
-  "devDependencies": {
-    "cssnano": "^6.0.0",
-    "postcss": "^8.4.21",
-    "postcss-preset-env": "^8.3.1",
-    "stylelint": "^15.4.0"
+    "cssnano": "^6.0.1",
+    "postcss": "^8.4.24",
+    "postcss-preset-env": "^8.4.2"
   }
 }
