@@ -17,16 +17,24 @@ Exceptions:
 
 - H - heading
 - B - body
-- P - page
-- T - theme
+
 - L - layout
 - F - flex
 - G - grid
 - S - spacing
 - O - override
-- D - default
+
+- T - theme
+
+- P - primary
 - A - accent
 - C - complement (not implemented)
+- I - info
+- S - success
+- W - warning
+- E - error
+
+- D - disabled
 
 ## Common confusions:
 

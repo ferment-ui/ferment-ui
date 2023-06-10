@@ -1,43 +1,31 @@
 :root {
-  --c-I: blue;
-  --c-S: green;
-  --c-W: yellow;
-  --c-E: red;
+  --c-I: {{ color_info}};
+  --c-S: {{ color_success }};
+  --c-W: {{ color_warning }};
+  --c-E: {{ color_error }};
 
   /* light theme */
   /* default theme */
-  --c-L-P: #372d2d;
-  --bc-L-P: #f9f9f9;
-  --c-L-P-D: grey;
-  --c-L-P-ID: grey;
+  @define-mixin bright-theme $b $bright $t $theme {
+  --c-$(b)-$(t): {{ color_$(bright)_$(theme) }};
+  --bc-L-P: {{ backgroundColor_$(bright)_$(theme) }};
+  --c-L-P-D: {{ color_light_$(bright)_$(theme)_disabled }};
+  --c-L-P-ID: {{ color_$(bright)_$(theme)_inverted_disabled }};
+  }
 
-  /* accent theme */
-  --c-L-A: red;
-  --bc-L-A: white;
-  --c-L-A-D: grey;
-  --c-L-A-ID: grey;
+  @mixin bright-theme L light P primary;
+  @mixin bright-theme L light A accent;
+  @mixin bright-theme D dark P primary;
+  @mixin bright-theme D dark A accent;
 
-  /* dark theme */
-  /* default theme */
-  --c-D-P: #372d2d;
-  --bc-D-P: #f9f9f9;
-  --c-D-P-D: grey;
-  --c-D-P-ID: grey;
+  /* sets the default */
+  @define-mixin theme $b $t {
+  --c-$(t): var(--c-$(b)-$(t));
+  --bc-$(t): var(--bc-$(b)-$(t));
+  --c-$(t)-D: var(--c-$(b)-$(t)-D);
+  --c-$(t)-ID: var(--c-$(b)-$(t)-ID);
+  }
 
-  /* accent theme */
-  --c-D-A: red;
-  --bc-D-A: white;
-  --c-D-A-D: grey;
-  --c-D-A-ID: grey;
-
-  /* default is light theme */
-  --c-P: var(--c-L-P);
-  --bc-P: var(--bc-L-P);
-  --c-P-D: var(--c-L-P-D);
-  --c-P-ID: var(--c-L-P-ID);
-
-  --c-A: var(--c-L-A);
-  --bc-A: var(--bc-L-A);
-  --c-A-D: var(--c-L-A-D);
-  --c-A-ID: var(--c-L-A-ID);
+  @mixin theme L P;
+  @mixin theme L A;
 }

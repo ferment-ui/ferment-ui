@@ -1,26 +1,26 @@
 
 /* BODY */
-.ff-b {
-  font-family: var(--ff-b);
+.ff-B {
+  font-family: var(--ff-B);
 }
 
-.fs-b {
-  font-family: var(--fs-b);
+.fs-B {
+  font-family: var(--fs-B);
 }
 
-.lh-b {
-  font-family: var(--lh-b);
+.lh-B {
+  font-family: var(--lh-B);
 }
 
 /* HEADINGS */
 @define-mixin heading $1 {
 h$(1), .h$(1) {
-  line-height: var(--lh-h$(1));
-  font-family: var(--ff-h$(1));
-  font-size: var(--fs-h$(1));
-  font-weight: var(--fw-h$(1));
-  text-decoration: var(--td-h$(1));
-  text-transform: var(--tt-h$(1));
+  line-height: var(--lh-H$(1));
+  font-family: var(--ff-H$(1));
+  font-size: var(--fs-H$(1));
+  font-weight: var(--fw-H$(1));
+  text-decoration: var(--td-H$(1));
+  text-transform: var(--tt-H$(1));
 }
 }
 
@@ -28,13 +28,13 @@ h$(1), .h$(1) {
 @mixin heading $i;
 }
 
-.ff-h {
-  font-family: var(--ff-h);
+.ff-H {
+  font-family: var(--ff-H);
 }
 
 @define-mixin heading-size $1 {
-.fs-h$(1) {
-  font-size: var(--fs-h$(1));
+.fs-H$(1) {
+  font-size: var(--fs-H$(1));
 }
 }
 
@@ -42,15 +42,15 @@ h$(1), .h$(1) {
 @mixin heading-size 1;
 }
 
-.lh-h {
-  line-height: var(--lh-h);
+.lh-H {
+  line-height: var(--lh-H);
 }
 
-.fw-b {
+.bold {
   font-weight: bold;
 }
 
-.fw-i {
+.italic {
   font-style: italic;
 }
 

@@ -8,4 +8,6 @@
   }
 
   --S-P: {{ page }};
+  --S-B: calc(var(--fs-b) * var(--lh-b));
+  --S-H: calc(var(--fs-h) * var(--lh-h));
 }

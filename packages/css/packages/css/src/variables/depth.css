@@ -1,8 +1,5 @@
 :root {
-  --z-1: {{ depth_1 }};
-  --z-2: {{ depth_2 }};
-  --z-3: {{ depth_3 }};
-  --z-4: {{ depth_4 }};
-  --z-5: {{ depth_5 }};
-  --z-6: {{ depth_6 }};
+  @for $i from 1 to 6 {
+  --z-$(i): {{ depth_$(i) }};
+  }
 }
