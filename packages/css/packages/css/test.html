@@ -7,9 +7,82 @@
   <title>Declare CSS test</title>
 </head>
 <body>
-  <section>
-    <h2>Spacing</h2>
-    <p>All spacing uses this default as a multiplier</p>
+    <ul>
+      Legend:
+      <li>B - body</li>
+      <li>H - heading</li>
+      <li>H(1-6) - heading 1 to 6</li>
+      <li>S - spacing</li>
+      <li>F - flex</li>
+      <li>G - grid</li>
+      
+    </ul>
+    <h2>Variables</h2>
+    <h3>Borders</h3>
+    <ul>
+      <li>--bo</li>
+      <li>--br</li>
+    </ul>
+    <h3>Breakpoints</h3>
+    <ul>
+      From 1 to 6.
+      <li>--B-$i</li>
+    </ul>
+    <h3>Colors</h3>
+    <ul>
+      <li>--c[-(L|D)]-(P|A[|C])[-D[-I]]</li>
+      <li>--bc[-(L|D)]-(P|A[|C])</li>
+    </ul>
+    <p>Legend:</p>
+    <ul>
+      <li>L = light theme</li>
+      <li>D = dark theme</li>
+      <li>I = inverted</li>
+      <li>D = disabled</li>
+      <li></li>
+      <li>P = primary color swatch</li>
+      <li>A = accent color swatch</li>
+      <li>C = complement color swatch (optionally included)</li>
+      <li></li>
+    </ul>
+    <p>Examples</p>
+    <ul>
+      <li><code>--c-P</code> - the primary color (whether it's the value from light or dark depends on the <code>prefers-color-scheme</code> value</li>
+      <li><code>--c-L-P-D-I</code> - the disabled text color when using the inverted light primary theme</li>
+      <li><code>--bc-D-A</code> - the background-color of the dark accent theme</li>
+    </ul>
+    <h3>Fonts</h3>
+    <ul>
+      For 1 to 6.
+      <li>--fs-S</li>
+      <li>--fs-(B|H|H$i)</li>
+      <li>--ff-(B|H|H$i)</li>
+      <li>--fw-(B|H|H$i)</li>
+      <li>--lh-(B|H|H$i)</li>
+      <li>--td-(B|H|H$i)</li>
+      <li>--tt-(B|H|H$i)</li>
+    </ul>
+    <p>Legend:</p>
+    <h3>Shadows</h3>
+    <ul>
+      From 0 to 6.
+      <li>--bs-$i</li>
+    </ul>
+    <h3>Spacing</h3>
+    <ul>
+      From 0 to 6.
+      <li>--S-(B|P|S|F|$i)</li>
+    </ul>
+    <h3>Timings</h3>
+    <ul>
+      From 0 to 6.
+      <li>--A-(in|out|in-out|$i)</li>
+    </ul>
+    <h3>Z-indexes</h3>
+    <ul>
+      From 0 to 6.
+      <li>--z-$i</li>
+    </ul>
   </section>
   <section>
     <h2>Colors</h2>

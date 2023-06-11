@@ -65,30 +65,15 @@
   --S-5: {{ multiplier_5 }};
   --S-6: {{ multiplier_6 }};
 
-  --S-P: {{ page }};
   --S-B: calc(var(--fs-b) * var(--lh-b));
-  --S-H: calc(var(--fs-h) * var(--lh-h));
+  /* --S-H: calc(var(--fs-h) * var(--lh-h)); */
+  --S-P: {{ page }};
+  --S-S: {{ section }};
+  --S-F: {{ flow }};
 }
 :root {
-  /* family */
-  --ff-B: {{ body_fontFamily }};
-
-  --ff-H: {{ heading_fontFamily }};
-  --ff-H1-O: {{ heading_fontFamily_1 }};
-  --ff-H2-O: {{ heading_fontFamily_2 }};
-  --ff-H3-O: {{ heading_fontFamily_3 }};
-  --ff-H4-O: {{ heading_fontFamily_4 }};
-  --ff-H5-O: {{ heading_fontFamily_5 }};
-  --ff-H6-O: {{ heading_fontFamily_6 }};
-  --ff-H1: var(--ff-H1-O, --ff-H);
-  --ff-H2: var(--ff-H2-O, --ff-H);
-  --ff-H3: var(--ff-H3-O, --ff-H);
-  --ff-H4: var(--ff-H4-O, --ff-H);
-  --ff-H5: var(--ff-H5-O, --ff-H);
-  --ff-H6: var(--ff-H6-O, --ff-H);
-  
   /* size */
-  --scale: {{ scale }};
+  --fs-S: {{ scale }};
 
   /* NOTE: should be between 16-20px for optimal readability */
   --fs-B: calc(var(--S) * 5px);
@@ -107,21 +92,22 @@
   --fs-H5: var(--fs-H5-O, calc(var(--scale) * var(--fs-B) * (6 - 5rem)));
   --fs-H6: var(--fs-H6-O, calc(var(--scale) * var(--fs-B) * (6 - 6rem)));
 
-  /* line heights */
-  --lh-B: {{ body_lineHeight }};
-  --lh-H: {{ heading_lineHeight }};
-  --lh-H1-O: {{ heading_lineHeight_1 }};
-  --lh-H2-O: {{ heading_lineHeight_2 }};
-  --lh-H3-O: {{ heading_lineHeight_3 }};
-  --lh-H4-O: {{ heading_lineHeight_4 }};
-  --lh-H5-O: {{ heading_lineHeight_5 }};
-  --lh-H6-O: {{ heading_lineHeight_6 }};
-  --lh-H1: var(--lh-H1-O, --lh-H);
-  --lh-H2: var(--lh-H2-O, --lh-H);
-  --lh-H3: var(--lh-H3-O, --lh-H);
-  --lh-H4: var(--lh-H4-O, --lh-H);
-  --lh-H5: var(--lh-H5-O, --lh-H);
-  --lh-H6: var(--lh-H6-O, --lh-H);
+  /* family */
+  --ff-B: {{ body_fontFamily }};
+
+  --ff-H: {{ heading_fontFamily }};
+  --ff-H1-O: {{ heading_fontFamily_1 }};
+  --ff-H2-O: {{ heading_fontFamily_2 }};
+  --ff-H3-O: {{ heading_fontFamily_3 }};
+  --ff-H4-O: {{ heading_fontFamily_4 }};
+  --ff-H5-O: {{ heading_fontFamily_5 }};
+  --ff-H6-O: {{ heading_fontFamily_6 }};
+  --ff-H1: var(--ff-H1-O, --ff-H);
+  --ff-H2: var(--ff-H2-O, --ff-H);
+  --ff-H3: var(--ff-H3-O, --ff-H);
+  --ff-H4: var(--ff-H4-O, --ff-H);
+  --ff-H5: var(--ff-H5-O, --ff-H);
+  --ff-H6: var(--ff-H6-O, --ff-H);  
 
   /* weight */
   --fw-H: {{ heading_weight }};
@@ -139,6 +125,22 @@
   --fw-H5: var(--fw-H5-O, --fw-H);
   --fw-H6: var(--fw-H6-O, --fw-H);
 
+  /* line heights */
+  --lh-B: {{ body_lineHeight }};
+  --lh-H: {{ heading_lineHeight }};
+  --lh-H1-O: {{ heading_lineHeight_1 }};
+  --lh-H2-O: {{ heading_lineHeight_2 }};
+  --lh-H3-O: {{ heading_lineHeight_3 }};
+  --lh-H4-O: {{ heading_lineHeight_4 }};
+  --lh-H5-O: {{ heading_lineHeight_5 }};
+  --lh-H6-O: {{ heading_lineHeight_6 }};
+  --lh-H1: var(--lh-H1-O, --lh-H);
+  --lh-H2: var(--lh-H2-O, --lh-H);
+  --lh-H3: var(--lh-H3-O, --lh-H);
+  --lh-H4: var(--lh-H4-O, --lh-H);
+  --lh-H5: var(--lh-H5-O, --lh-H);
+  --lh-H6: var(--lh-H6-O, --lh-H);
+  
   /* text-decoration */
   --td-H: {{ heading_decoration }};
   --td-H1-O: {{ heading_decoration_1 }};
@@ -186,11 +188,21 @@
   --bs-6: {{ shadow_6 }}
 }
 :root {
-  /* --T-xf: %%TIMING_XF%%;
-  --T-f: %%TIMING_F%%;
-  --T-m: %%TIMING_M%%;
-  --T-s: %%TIMING_S%%;
-  --T-xs: %%TIMING_XS%%; */
+  --A-0: 0;
+  --A-1: {{ timing_1 }};
+  --A-2: {{ timing_2 }};
+  --A-3: {{ timing_3 }};
+  --A-4: {{ timing_4 }};
+  --A-5: {{ timing_5 }};
+  --A-6: {{ timing_6 }};
+
+  /* @for $i in "in", "out", "in-out" {
+  --A-$(i): {{ timing_$(i) }};
+  } */
+
+  --A-in: var(--A-in);
+  --A-out: var(--A-out);
+  --A-in-out: var(--A-in-out);
 }
 .bo-0 {
   border: none;

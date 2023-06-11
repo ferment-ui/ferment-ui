@@ -1,7 +1,15 @@
 :root {
-  /* --T-xf: %%TIMING_XF%%;
-  --T-f: %%TIMING_F%%;
-  --T-m: %%TIMING_M%%;
-  --T-s: %%TIMING_S%%;
-  --T-xs: %%TIMING_XS%%; */
+  --A-0: 0;
+
+  @for $i from 1 to 6 {
+  --A-$(i): {{ timing_$(i) }};
+  }
+
+  /* @for $i in "in", "out", "in-out" {
+  --A-$(i): {{ timing_$(i) }};
+  } */
+
+  --A-in: var(--A-in);
+  --A-out: var(--A-out);
+  --A-in-out: var(--A-in-out);
 }

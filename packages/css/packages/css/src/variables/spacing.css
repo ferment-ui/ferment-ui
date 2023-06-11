@@ -7,7 +7,9 @@
   --S-$(1): {{ multiplier_$(1) }};
   }
 
-  --S-P: {{ page }};
   --S-B: calc(var(--fs-b) * var(--lh-b));
-  --S-H: calc(var(--fs-h) * var(--lh-h));
+  /* --S-H: calc(var(--fs-h) * var(--lh-h)); */
+  --S-P: {{ page }};
+  --S-S: {{ section }};
+  --S-F: {{ flow }};
 }

@@ -2,7 +2,7 @@
 @import './breakpoint.css';
 @import './color.css';
 @import './font.css';
-@import './depth.css';
 @import './shadow.css';
 @import './spacing.css';
 @import './timing.css';
+@import './z-index.css';

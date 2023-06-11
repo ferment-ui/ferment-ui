@@ -1,21 +1,8 @@
 @import './spacing.css';
 
 :root {
-  /* family */
-  --ff-B: {{ body_fontFamily }};
-
-  --ff-H: {{ heading_fontFamily }};
-
-  @for $1 from 1 to 6 {
-  --ff-H$(1)-O: {{ heading_fontFamily_$(1) }};
-  }
-
-  @for $1 from 1 to 6 {
-  --ff-H$(1): var(--ff-H$(1)-O, --ff-H);
-  }
-  
   /* size */
-  --scale: {{ scale }};
+  --fs-S: {{ scale }};
 
   /* NOTE: should be between 16-20px for optimal readability */
   --fs-B: calc(var(--S) * 5px);
@@ -29,17 +16,18 @@
   --fs-H$(1): var(--fs-H$(1)-O, calc(var(--scale) * var(--fs-B) * (6 - $(1)rem)));
   }
 
-  /* line heights */
-  --lh-B: {{ body_lineHeight }};
-  --lh-H: {{ heading_lineHeight }};
+  /* family */
+  --ff-B: {{ body_fontFamily }};
+
+  --ff-H: {{ heading_fontFamily }};
 
   @for $1 from 1 to 6 {
-  --lh-H$(1)-O: {{ heading_lineHeight_$(1) }};
+  --ff-H$(1)-O: {{ heading_fontFamily_$(1) }};
   }
 
   @for $1 from 1 to 6 {
-  --lh-H$(1): var(--lh-H$(1)-O, --lh-H);
-  }
+  --ff-H$(1): var(--ff-H$(1)-O, --ff-H);
+  }  
 
   /* weight */
   --fw-H: {{ heading_weight }};
@@ -53,6 +41,18 @@
   --fw-H$(1): var(--fw-H$(1)-O, --fw-H);
   }
 
+  /* line heights */
+  --lh-B: {{ body_lineHeight }};
+  --lh-H: {{ heading_lineHeight }};
+
+  @for $1 from 1 to 6 {
+  --lh-H$(1)-O: {{ heading_lineHeight_$(1) }};
+  }
+
+  @for $1 from 1 to 6 {
+  --lh-H$(1): var(--lh-H$(1)-O, --lh-H);
+  }
+  
   /* text-decoration */
   --td-H: {{ heading_decoration }};
 
