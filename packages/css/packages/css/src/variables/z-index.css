@@ -1,4 +1,6 @@
 :root {
+  --z-0: 0;
+  
   @for $i from 1 to 6 {
   --z-$(i): {{ depth_$(i) }};
   }

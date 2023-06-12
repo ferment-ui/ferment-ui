@@ -1,4 +1,4 @@
-@import '../variables/depth.css';
+@import '../variables/z-index.css';
 
 @define-mixin depth $1 {
 .zi-$(1) {

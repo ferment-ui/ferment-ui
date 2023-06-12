@@ -21,7 +21,7 @@
 }
 
 .page {
-  max-width: var(--S-P);
+  max-width: var(--w-P);
   margin-left: auto;
   margin-right: auto;
 
@@ -31,7 +31,7 @@
 }
 
 .section {
-  max-width: var(--S-P);
+  max-width: var(--w-P);
   margin: auto;
 
   /* TODO: variables for these */
@@ -39,7 +39,7 @@
 }
 
 .flow {
-  max-width: var(--S-P);
+  max-width: var(--w-P);
   margin: auto;
   padding: var(--S-section-v) var(--S-section-h) 0 var(--S-section-h);
 }

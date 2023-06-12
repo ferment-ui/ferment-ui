@@ -1,15 +1,15 @@
 :root {
   /* baseline size */
-  --S: {{ baseline }};
+  --S: {{ spacing_baseline }};
 
   /* multipliers for the baseline size */
-  @for $1 from 1 to 6 {
-  --S-$(1): {{ multiplier_$(1) }};
+  @for $i from 1 to 6 {
+  --S-$(i): {{ spacing_multiplier_$(i) }};
   }
 
   --S-B: calc(var(--fs-b) * var(--lh-b));
-  /* --S-H: calc(var(--fs-h) * var(--lh-h)); */
-  --S-P: {{ page }};
-  --S-S: {{ section }};
-  --S-F: {{ flow }};
+  
+  --w-P: {{ spacing_page }};
+  /* --S-S: {{ spacing_section }}; */
+  /* --S-F: {{ flow }}; */
 }

@@ -2,14 +2,14 @@ module.exports = {
   $schema: "./schema.json",
   $version: "1.0.0",
   spacing: {
-    baseline: "4",
-    page: "65em",
-    multiplier_1: "1",
-    multiplier_2: "2",
-    multiplier_3: "4",
-    multiplier_4: "8",
-    multiplier_5: "14",
-    multiplier_6: "22",
+    baseline: 4,
+    multiplier_1: 1,
+    multiplier_2: 2,
+    multiplier_3: 4,
+    multiplier_4: 8,
+    multiplier_5: 14,
+    multiplier_6: 22,
+    pageWidth: "65em",
     p2p: "",
     p2h: "",
     h2p: "",
@@ -17,7 +17,6 @@ module.exports = {
   },
   theme: {
     light: {
-      default: {background: "", text: "", disabled: "", inverseDisabled: ""},
       primary: {background: "", text: "", disabled: "", inverseDisabled: ""},
       accent: {background: "", text: "", disabled: "", inverseDisabled: ""},
       error: {background: "", text: "", disabled: "", inverseDisabled: ""},
@@ -26,7 +25,6 @@ module.exports = {
       success: {background: "", text: "", disabled: "", inverseDisabled: ""},
     },
     dark: {
-      default: {background: "", text: "", disabled: "", inverseDisabled: ""},
       primary: {background: "", text: "", disabled: "", inverseDisabled: ""},
       accent: {background: "", text: "", disabled: "", inverseDisabled: ""},
       error: {background: "", text: "", disabled: "", inverseDisabled: ""},
@@ -35,7 +33,7 @@ module.exports = {
       success: {background: "", text: "", disabled: "", inverseDisabled: ""},
     },
   },
-  typography: {
+  font: {
     scale: "",
     body: {
       family: "",

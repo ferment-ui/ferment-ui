@@ -1,5 +1,25 @@
 @import '../variables/index.css';
 
+.p {
+  padding: var(--S-Y) var(--S-X);
+}
+
+.pt {
+  padding-top: var(--S-Y);
+}
+
+.pe {
+  padding-block-end: var(--S-X);
+}
+
+.pb {
+  padding-bottom: var(--S-Y);
+}
+
+.ps {
+  padding-block-start: var(--S-X);
+}
+
 .p-0 {
   padding: 0;
 }
@@ -69,5 +89,5 @@
   }
   } 
   
-  @mixins padding-fonts B;
-  @mixins padding-fonts H;
+  @mixin padding-fonts B;
+  @mixin padding-fonts H;

@@ -1,37 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./src/index.css" rel="stylesheet" media="all"/>
+  <link href="./src/index.css" rel="stylesheet" media="all" />
   <title>Declare CSS test</title>
 </head>
+
 <body>
-    <ul>
-      Legend:
-      <li>B - body</li>
-      <li>H - heading</li>
-      <li>H(1-6) - heading 1 to 6</li>
-      <li>S - spacing</li>
-      <li>F - flex</li>
-      <li>G - grid</li>
-      
-    </ul>
-    <h2>Variables</h2>
+  <h2>Variables</h2>
+  <h3>Legend</h3>
+  <ul>
+    <li>B - body</li>
+    <li>H - heading</li>
+    <li>H(1-6) - heading 1 to 6</li>
+    <li>S - spacing</li>
+
+  </ul>
+  <h3>Borders</h3>
+  <ul>
+    <li><code>--b</code> - border</li>
+    <li><code>--br</code> - border-radius</li>
+  </ul>
+  <h3>Media breakpoints</h3>
+  <ul>
+    From 1 to 6.
+    <li><code>--M-$i</code></li>
+  </ul>
+  <h3>Colors</h3>
+  <ul>
+    <li><code>--c[-(L|D)]-(P|A[|C])[-D[-I]]</code> - color</li>
+    <li><code>--bc[-(L|D)]-(P|A[|C])</code> - background-color</li>
+  </ul>
+  <p>Legend:</p>
+  <ul>
+    <li>L = light theme</li>
+    <li>D = dark theme</li>
+    <li>I = inverted</li>
+    <li>D = disabled</li>
+    <br />
+    <li>P = primary color swatch</li>
+    <li>A = accent color swatch</li>
+    <li>C = complement color swatch (optionally included)</li>
+  </ul>
+  <p>Examples</p>
+  <ul>
+    <li><code>--c-P</code> - the primary color (whether it's the value from light or dark depends on the
+      <code>prefers-color-scheme</code> value</li>
+    <li><code>--c-L-P-D-I</code> - the disabled text color when using the inverted light primary theme</li>
+    <li><code>--bc-D-A</code> - the background-color of the dark accent theme</li>
+  </ul>
+  <h3>Fonts</h3>
+  <ul>
+    For 1 to 6.
+    <li><code>--fs-S</code> - typographic scale</li>
+    <li><code>--fs-(B|H|H$i)</code> - font-size</li>
+    <li><code>--ff-(B|H|H$i)</code> - font-family</li>
+    <li><code>--fw-(B|H|H$i)</code> - font-weight</li>
+    <li><code>--lh-(B|H|H$i)</code> - line-height</li>
+    <li><code>--td-(B|H|H$i)</code> - text-decoration</li>
+    <li><code>--tt-(B|H|H$i)</code> - text-transform</li>
+  </ul>
+  <h3>Shadows</h3>
+  <ul>
+    From 0 to 6.
+    <li><code>--bs-$i</code></li>
+  </ul>
+  <h3>Spacing</h3>
+  <ul>
+    From 0 to 6.
+    <li><code>--S-(B|P|S|F|$i)</code></li>
+  </ul>
+  <h3>Animations</h3>
+  <ul>
+    From 0 to 6.
+    <li><code>--A</code> - default animation and timing</li>
+    <li><code>--A-(in|out|in-out)</code> - animations</li>
+    <li><code>--A-$i</code> - timings</li>
+  </ul>
+  <h3>Z-indexes</h3>
+  <ul>
+    From 0 to 6.
+    <li><code>--z-$i</code></li>
+  </ul>
+  </section>
+  <section>
+    <h2>Utility Classes</h2>
     <h3>Borders</h3>
     <ul>
-      <li>--bo</li>
-      <li>--br</li>
-    </ul>
-    <h3>Breakpoints</h3>
-    <ul>
-      From 1 to 6.
-      <li>--B-$i</li>
+      <li><code>.b</code> - border</li>
+      <li><code>.br</code> - border-radius</li>
     </ul>
     <h3>Colors</h3>
     <ul>
-      <li>--c[-(L|D)]-(P|A[|C])[-D[-I]]</li>
-      <li>--bc[-(L|D)]-(P|A[|C])</li>
+      <li><code>.c[-(L|D)]-(P|A[|C])[-D[-I]]</code> - color</li>
+      <li><code>.bc[-(L|D)]-(P|A[|C])</code> - background-color</li>
     </ul>
     <p>Legend:</p>
     <ul>
@@ -39,49 +103,71 @@
       <li>D = dark theme</li>
       <li>I = inverted</li>
       <li>D = disabled</li>
-      <li></li>
+      <br />
       <li>P = primary color swatch</li>
       <li>A = accent color swatch</li>
       <li>C = complement color swatch (optionally included)</li>
-      <li></li>
     </ul>
     <p>Examples</p>
     <ul>
-      <li><code>--c-P</code> - the primary color (whether it's the value from light or dark depends on the <code>prefers-color-scheme</code> value</li>
-      <li><code>--c-L-P-D-I</code> - the disabled text color when using the inverted light primary theme</li>
-      <li><code>--bc-D-A</code> - the background-color of the dark accent theme</li>
+      <li><code>.c-P</code> - the primary color (whether it's the value from light or dark depends on the
+        <code>prefers-color-scheme</code> value</li>
+      <li><code>.c-L-P-D-I</code> - the disabled text color when using the inverted light primary theme</li>
+      <li><code>.bc-D-A</code> - the background-color of the dark accent theme</li>
     </ul>
     <h3>Fonts</h3>
     <ul>
       For 1 to 6.
-      <li>--fs-S</li>
-      <li>--fs-(B|H|H$i)</li>
-      <li>--ff-(B|H|H$i)</li>
-      <li>--fw-(B|H|H$i)</li>
-      <li>--lh-(B|H|H$i)</li>
-      <li>--td-(B|H|H$i)</li>
-      <li>--tt-(B|H|H$i)</li>
+      <li><code>.fs-(B|H|H$i)</code> - font-size</li>
+      <li><code>.ff-(B|H|H$i)</code> - font-family</li>
+      <li><code>.fw-(B|H|H$i)</code> - font-weight</li>
+      <li><code>.fi-(B|H|H$i)</code> - font-style</li>
+      <li><code>.lh-(B|H|H$i)</code> - line-height</li>
+      <li><code>.td-(B|H|H$i)</code> - text-decoration</li>
+      <li><code>.tt-(B|H|H$i)</code> - text-transform</li>
+      <br />
+      <li><code>.ta-s</code> - text-align: start</li>
+      <li><code>.ta-c</code> - text-align: center</li>
+      <li><code>.ta-e</code> - text-align: end</li>
+      <br />
+      <li><code>.bold</code> - font-weight: bold</li>
+      <li><code>.italic</code> - font-style: italic</li>
+      <li><code>.underline</code> - custom...</li>
     </ul>
-    <p>Legend:</p>
     <h3>Shadows</h3>
     <ul>
       From 0 to 6.
-      <li>--bs-$i</li>
+      <li><code>.bs-$i</code></li>
     </ul>
     <h3>Spacing</h3>
     <ul>
       From 0 to 6.
-      <li>--S-(B|P|S|F|$i)</li>
+      <li>
+        <h4>Margin</h4>
+        <p>Used for laying out elements</p>
+        <ul>
+          <li><code>.m[-(t|e|b|s)</code></li>
+        </ul>
+      </li>
+      <li>
+        <h4>Padding</h4>
+        <p>Used for changing look and feel of an element</p>
+        <ul>
+          <li><code>.p[-(t|e|b|s)</code></li>
+        </ul>
+      </li>
     </ul>
-    <h3>Timings</h3>
+    <h3>Animations</h3>
     <ul>
       From 0 to 6.
-      <li>--A-(in|out|in-out|$i)</li>
+      <li><code>--A</code> - default animation and timing</li>
+      <li><code>--A-(in|out|in-out)</code> - animations</li>
+      <li><code>--A-$i</code> - timings</li>
     </ul>
     <h3>Z-indexes</h3>
     <ul>
       From 0 to 6.
-      <li>--z-$i</li>
+      <li><code>z-$i</code></li>
     </ul>
   </section>
   <section>
@@ -92,11 +178,11 @@
     <div class="L-c" style="height: 200px; background: blue;">
       <p style="width: 50%">L-c</p>
     </div>
-    
+
     <div class="L-s" style="height: 200px; background: red;">
       <p style="width: 50%">L-s</p>
     </div>
-    
+
     <div class="L-e" style="height: 200px; background: green;">
       <p style="width: 50%">L-e</p>
     </div>
@@ -106,17 +192,15 @@
       <div class="L-c" style="height: 200px; background: blue;">
         <p style="width: 50%">L-c</p>
       </div>
-      
+
       <div class="L-s" style="height: 200px; background: red;">
         <p style="width: 50%">L-s</p>
       </div>
-      
+
       <div class="L-e" style="height: 200px; background: green;">
         <p style="width: 50%">L-e</p>
       </div>
     </section>
   </section>
-
-
 </body>
 </html>

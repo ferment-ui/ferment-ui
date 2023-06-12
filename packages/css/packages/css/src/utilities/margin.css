@@ -68,5 +68,5 @@
 }
 } 
 
-@mixins margin-fonts B;
-@mixins margin-fonts H;
+@mixin margin-fonts B;
+@mixin margin-fonts H;

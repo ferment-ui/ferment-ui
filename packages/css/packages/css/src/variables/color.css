@@ -1,31 +1,46 @@
+@define-mixin default-color $b, $t {
 :root {
-  --c-I: {{ color_info}};
-  --c-S: {{ color_success }};
-  --c-W: {{ color_warning }};
-  --c-E: {{ color_error }};
+  --c-I: var(--c-$(b)-I);
+  --c-S: var(--c-$(b)-S);
+  --c-W: var(--c-$(b)-W);
+  --c-E: var(--c-$(b)-E);
+}
+}
 
-  /* light theme */
-  /* default theme */
-  @define-mixin bright-theme $b $bright $t $theme {
-  --c-$(b)-$(t): {{ color_$(bright)_$(theme) }};
-  --bc-L-P: {{ backgroundColor_$(bright)_$(theme) }};
-  --c-L-P-D: {{ color_light_$(bright)_$(theme)_disabled }};
-  --c-L-P-ID: {{ color_$(bright)_$(theme)_inverted_disabled }};
-  }
-
-  @mixin bright-theme L light P primary;
-  @mixin bright-theme L light A accent;
-  @mixin bright-theme D dark P primary;
-  @mixin bright-theme D dark A accent;
-
-  /* sets the default */
-  @define-mixin theme $b $t {
+@define-mixin default-theme $b, $t {
+:root {
   --c-$(t): var(--c-$(b)-$(t));
   --bc-$(t): var(--bc-$(b)-$(t));
   --c-$(t)-D: var(--c-$(b)-$(t)-D);
   --c-$(t)-ID: var(--c-$(b)-$(t)-ID);
-  }
+}
+}
 
-  @mixin theme L P;
-  @mixin theme L A;
+@define-mixin theme $b, $brightness, $s, $swatch {
+:root {
+--c-$(b)-I: {{ theme_color_$(brightness)_info }};
+--c-$(b)-S: {{ theme_color_$(brightness)_success }};
+--c-$(b)-W: {{ theme_color_$(brightness)_warning }};
+--c-$(b)-E: {{ theme_color_$(brightness)_error }};
+--c-$(b)-$(s): {{ theme_color_$(brightness)_$(swatch) }};
+--bc-$(b)-$(s): {{ theme_backgroundColor_$(brightness)_$(swatch) }};
+--c-$(b)-$(s)-D: {{ theme_color_light_$(brightness)_$(swatch)_disabled }};
+--c-$(b)-$(s)-ID: {{ theme_color_$(brightness)_$(swatch)_invertedDisabled }};
+} 
+}
+
+@mixin theme L, light, P, primary;
+@mixin theme L, light, A, accent;
+@mixin theme D, dark, P, primary;
+@mixin theme D, dark, A, accent;
+@mixin default-color L;
+@mixin default-theme L, P;
+@mixin default-theme L, A;
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @mixin default-color D;
+    @mixin theme D, P;
+    @mixin theme D, A;
+  }
 }

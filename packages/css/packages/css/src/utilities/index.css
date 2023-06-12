@@ -1,6 +1,5 @@
 @import './border.css';
 @import './color.css';
-@import './depth.css';
 @import './display.css';
 @import './flex.css';
 @import './font.css';
@@ -12,3 +11,4 @@
 @import './shadow.css';
 @import './theme.css';
 @import './visibility.css';
+@import './z-index.css';
