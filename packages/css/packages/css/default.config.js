@@ -2,6 +2,7 @@ module.exports = {
   $schema: "./schema.json",
   $version: "1.0.0",
   bundle: ['variables', 'utilities', 'components/**/*'],
+  base: null,
   spacing: {
     baseline: "4",
     multiplier: {
@@ -20,7 +21,7 @@ module.exports = {
   },
   theme: {
     light: {
-      primary: {backgroundColor: "", color: "", disabled: "", invertedDisabled: ""},
+      primary: {backgroundColor: "#e5e5e5", color: "black", disabled: "", invertedDisabled: ""},
       accent: {backgroundColor: "", color: "", disabled: "", invertedDisabled: ""},
       error: {backgroundColor: "", color: "", disabled: "", invertedDisabled: ""},
       warning: {backgroundColor: "", color: "", disabled: "", invertedDisabled: ""},
@@ -28,7 +29,7 @@ module.exports = {
       success: {backgroundColor: "", color: "", disabled: "", invertedDisabled: ""},
     },
     dark: {
-      primary: {backgroundColor: "", color: "", disabled: "", invertedDisabled: ""},
+      primary: {backgroundColor: "black", color: "white", disabled: "", invertedDisabled: ""},
       accent: {backgroundColor: "", color: "", disabled: "", invertedDisabled: ""},
       error: {backgroundColor: "", color: "", disabled: "", invertedDisabled: ""},
       warning: {backgroundColor: "", color: "", disabled: "", invertedDisabled: ""},

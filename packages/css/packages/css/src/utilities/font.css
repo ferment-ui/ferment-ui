@@ -122,12 +122,20 @@ h$(1), .h$(1) {
 @mixin heading-transform $i;
 }
 
-.b {
+.b, .fw-b {
   font-weight: bold;
 }
 
-.i {
+.fw-n {
+  font-weight: normal;
+}
+
+.i, .fi-i {
   font-style: italic;
+}
+
+.fi-n {
+  font-style: normal;
 }
 
 .ta-s {

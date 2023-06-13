@@ -1,0 +1,15 @@
+:root {
+  --M-1: {{ breakpoint.1 }};
+  --M-2: {{ breakpoint.2 }};
+  --M-3: {{ breakpoint.3 }};
+  --M-4: {{ breakpoint.4 }};
+  --M-5: {{ breakpoint.5 }};
+  --M-6: {{ breakpoint.6 }};
+}
+
+@custom-media --1 (min-width: {{ breakpoint.1 }});
+@custom-media --2 (min-width: {{ breakpoint.2 }});
+@custom-media --3 (min-width: {{ breakpoint.3 }});
+@custom-media --4 (min-width: {{ breakpoint.4 }});
+@custom-media --5 (min-width: {{ breakpoint.5 }});
+@custom-media --6 (min-width: {{ breakpoint.6 }});

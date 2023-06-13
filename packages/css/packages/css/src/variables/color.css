@@ -1,3 +1,7 @@
+:root {
+  color-scheme: light dark;
+}
+
 @define-mixin default-color $b, $t {
 :root {
   --c-I: var(--c-$(b)-I);
@@ -43,6 +47,6 @@
 
 @media (prefers-color-scheme: dark) {
 @mixin default-color D;
-@mixin theme D, dark, P, primary;
-@mixin theme D, dark, A, accent;
+@mixin default-theme D, P;
+@mixin default-theme D, A;
 }
