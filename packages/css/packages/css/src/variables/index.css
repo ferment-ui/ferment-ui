@@ -1,8 +1,8 @@
+@import './animation.css';
 @import './border.css';
-@import './media.css';
+@import './breakpoint.css';
 @import './color.css';
 @import './font.css';
 @import './shadow.css';
 @import './spacing.css';
-@import './timing.css';
 @import './z-index.css';

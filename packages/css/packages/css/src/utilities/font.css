@@ -1,3 +1,12 @@
+body, .f-B {
+  line-height: var(--lh-B);
+  font-family: var(--ff-B);
+  font-size: 1rem;
+  font-weight: var(--fw-B);
+  font-style: var(--fi-B);
+  text-decoration: var(--td-B);
+  text-transform: var(--tt-B);
+}
 
 /* BODY */
 .ff-B {

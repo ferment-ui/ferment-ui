@@ -1,6 +1,7 @@
 module.exports = {
   $schema: "./schema.json",
   $version: "1.0.0",
+  bundle: ['variables', 'utilities', 'components/**/*'],
   spacing: {
     baseline: "4",
     multiplier: {
@@ -37,12 +38,13 @@ module.exports = {
   },
   font: {
     scale: "1.13",
+    scaleStart: "",
     body: {
       family: "sans-serif",
       size: "20px",
       lineHeight: "",
-      weight: "bold",
-      style: "italic",
+      weight: "normal",
+      style: "normal",
       decoration: "",
       transform: "",
       letterSpacing: "",
@@ -174,17 +176,16 @@ module.exports = {
     5: "1200px",
     6: "1600px",
   },
-  timing: {
-    xslow: "",
-    slow: "",
-    medium: "",
-    fast: "",
-    xfast: "",
-    defaults: {
-      speed: "",
-      in: "",
-      out: "",
-      inout: "",
+  animation: {
+    timing: {
+      1: "",
+      2: "",
+      3: "",
+      4: "",
+      5: "",
+      6: "",
     },
+    easings: {},
+    defaults: {}
   },
 };

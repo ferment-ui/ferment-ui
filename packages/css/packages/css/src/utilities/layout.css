@@ -50,71 +50,54 @@
 }
 
 .L-s, .L-ss {
-  text-align: start;
   justify-content: start;
   align-items: start;
 }
 
 .L-sc {
-  text-align: start;
   justify-content: start;
   align-items: center;
 }
 
 .L-se {
-  text-align: start;
   justify-content: start;
   align-items: end;
 }
 
 .L-cs {
-  text-align: center;
   justify-content: center;
   align-items: start;
 }
 
 .L-c, .L-cc {
-  text-align: center;
   justify-content: center;
   align-items: center;
 }
 
 .L-ce {
-  text-align: center;
   justify-content: center;
   align-items: end; 
 }
 
 .L-es {
-  text-align: end;
   justify-content: end;
   align-items: start;
 }
 
 .L-ec {
-  text-align: end;
   justify-content: end;
   align-items: center;
 }
 
 .L-e, .L-ee {
-  text-align: end;
   justify-content: end;
   align-items: end;
 }
 
-/* TODO: fill in and use mixing */
-/* .LP-c {
-  position: relative;
-}
-
-.LP-c > * {
+/* TODO: finish layouts for translate and table */
+.LT-c > * {
   position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-LT-c {}
-
-LT-c {} */

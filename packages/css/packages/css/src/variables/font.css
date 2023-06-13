@@ -2,19 +2,24 @@
 
 :root {
   /* size */
-  --fs-S: {{ font.scale }};
-
   /* NOTE: should be between 16-20px for optimal readability */
-  --fs-B: calc(var(--S) * 5px);
+  --fs-B: 1rem;
 
   @for $i from 1 to 6 {
-  --fs-H$(i)-O: {{ font.H$(i).override.size }};
+  --fs-H$(i)-O: {{ font.h$(i)_override.size }};
   }
 
   /* unless override is set, use typographic scale */
-  @for $i from 1 to 6 {
-  --fs-H$(i): var(--fs-H$(i)-O, calc(var(--fs-S) * var(--fs-B) * (6 - $(i)rem)));
-  }
+  /* until css pow() function gets more adoption, hack it */
+  --fs-S: {{ font.scale }};
+  --fs-S-start: {{ font.scaleStart }};
+  --fs-S-S: var(--fs-S-start, 1rem);
+  --fs-H6: var(--fs-H6-O, --fs-S-S);
+  --fs-H5: var(--fs-H5-O, calc(var(--fs-S) * var(--fs-S-S)));
+  --fs-H4: var(--fs-H4-O, calc(var(--fs-S) * var(--fs-S) * var(--fs-S-S)));
+  --fs-H3: var(--fs-H3-O, calc(var(--fs-S) * var(--fs-S) * var(--fs-S) * var(--fs-S-S)));
+  --fs-H2: var(--fs-H2-O, calc(var(--fs-S) * var(--fs-S) * var(--fs-S) * var(--fs-S) * var(--fs-S-S)));
+  --fs-H1: var(--fs-H1-O, calc(var(--fs-S) * var(--fs-S) * var(--fs-S) * var(--fs-S) * var(--fs-S) * var(--fs-S-S)));
 
   /* family */
   --ff-B: {{ font.body.family }};
@@ -22,11 +27,11 @@
   --ff-H: {{ font.heading.family }};
 
   @for $i from 1 to 6 {
-  --ff-H$(1)-O: {{ font.h$(i).override.family }};
+  --ff-H$(i)-O: {{ font.h$(i)_override.family }};
   }
 
   @for $i from 1 to 6 {
-  --ff-H$(1): var(--ff-H$(i)-O, --ff-H);
+  --ff-H$(i): var(--ff-H$(i)-O, --ff-H);
   }  
 
   /* weight */
@@ -34,7 +39,7 @@
 
   --fw-H: {{ font.heading.weight }};
   @for $i from 1 to 6 {
-  --fw-H$(i)-O: {{ font.h$(i).override.weight }};
+  --fw-H$(i)-O: {{ font.h$(i)_override.weight }};
   }
 
   @for $i from 1 to 6 {
@@ -46,7 +51,7 @@
 
   --lh-H: {{ font.heading.lineHeight }};
   @for $i from 1 to 6 {
-  --lh-H$(i)-O: {{ font.h$(i).override.lineHeight }};
+  --lh-H$(i)-O: {{ font.h$(i)_override.lineHeight }};
   }
 
   @for $i from 1 to 6 {
@@ -58,7 +63,7 @@
 
   --td-H: {{ font.heading.decoration }};
   @for $i from 1 to 6 {
-  --td-H$(i)-O: {{ font.h$(i).override.decoration }};
+  --td-H$(i)-O: {{ font.h$(i)_override.decoration }};
   }
 
   @for $i from 1 to 6 {
@@ -70,7 +75,7 @@
 
   --tt-H: {{ font.heading.transform }};
   @for $i from 1 to 6 {
-  --tt-H$(i)-O: {{ font.h$(i).override.transform }};
+  --tt-H$(i)-O: {{ font.h$(i)_override.transform }};
   }
 
   @for $i from 1 to 6 {

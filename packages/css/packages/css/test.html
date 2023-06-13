@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./src/index.css" rel="stylesheet" media="all" />
+  <link href="./dist/index.css" rel="stylesheet" media="all" />
   <title>Declare CSS test</title>
 </head>
 
@@ -30,7 +30,7 @@
   </ul>
   <h3>Colors</h3>
   <ul>
-    <li><code>--c[-(L|D)]-(P|A[|C])[-D[-I]]</code> - color</li>
+    <li><code>--c[-(L|D)]-(P|A[|C])[-[I]D]</code> - color</li>
     <li><code>--bc[-(L|D)]-(P|A[|C])</code> - background-color</li>
   </ul>
   <p>Legend:</p>
@@ -42,19 +42,20 @@
     <br />
     <li>P = primary color swatch</li>
     <li>A = accent color swatch</li>
-    <li>C = complement color swatch (optionally included)</li>
+    <li>C = complement color swatch (optional)</li>
   </ul>
   <p>Examples</p>
   <ul>
     <li><code>--c-P</code> - the primary color (whether it's the value from light or dark depends on the
       <code>prefers-color-scheme</code> value</li>
-    <li><code>--c-L-P-D-I</code> - the disabled text color when using the inverted light primary theme</li>
+    <li><code>--c-L-P-ID</code> - the disabled text color when using the inverted light primary theme</li>
     <li><code>--bc-D-A</code> - the background-color of the dark accent theme</li>
   </ul>
   <h3>Fonts</h3>
   <ul>
     For 1 to 6.
     <li><code>--fs-S</code> - typographic scale</li>
+    <li><code>--fs-S-start</code> - the starting size for H6 (default is 1rem, same as the body)</li>
     <li><code>--fs-(B|H|H$i)</code> - font-size</li>
     <li><code>--ff-(B|H|H$i)</code> - font-family</li>
     <li><code>--fw-(B|H|H$i)</code> - font-weight</li>
@@ -117,6 +118,7 @@
     </ul>
     <h3>Fonts</h3>
     <ul>
+      <li><code>.f-B</code> - body font</li>
       For 1 to 6.
       <li><code>.fs-(B|H|H$i)</code> - font-size</li>
       <li><code>.ff-(B|H|H$i)</code> - font-family</li>
