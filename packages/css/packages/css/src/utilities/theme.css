@@ -6,7 +6,7 @@
   background-color: var(--bc-$(1));
 }
 
-.T-$(1)[disabled], .T-$(1) *[disabled] {
+.T-$(1)[disabled], .T-$(1) [disabled] {
   color: var(--c-$(1)-D);
 }
 
@@ -15,7 +15,7 @@
   background-color: var(--c-$(1));
 }
 
-.T-$(1)-I[disabled], .T-$(1)-I *[disabled] {
+.T-$(1)-I[disabled], .T-$(1)-I [disabled] {
   color: var(--c-$(1)-ID);
 }
 }

@@ -1,19 +1,23 @@
-.block {
+.d-b {
   display: block;
 }
 
-.inline {
+.d-i {
   display: inline;
 }
 
-.inline-block {
+.d-ib {
   display: inline-block;
 }
 
-.flex {
+.d-f {
   display: flex;
 }
 
-.grid {
+.d-f {
   display: grid;
+}
+
+.d-t {
+  display: table;
 }

@@ -1,4 +1,4 @@
 :root {
   --b: {{ border }};
-  --br: {{ border_radius }};
+  --br: {{ borderRadius }};
 }

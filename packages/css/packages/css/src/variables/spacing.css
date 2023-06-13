@@ -1,15 +1,14 @@
 :root {
-  /* baseline size */
-  --S: {{ spacing_baseline }};
+  --S: {{ spacing.baseline }};
 
   /* multipliers for the baseline size */
   @for $i from 1 to 6 {
-  --S-$(i): {{ spacing_multiplier_$(i) }};
+  --S-$(i): {{ spacing.multiplier.$(i) }};
   }
 
   --S-B: calc(var(--fs-b) * var(--lh-b));
   
-  --w-P: {{ spacing_page }};
-  /* --S-S: {{ spacing_section }}; */
+  --w-P: {{ spacing.pageWidth }};
+  /* --S-S: {{ spacing.section }}; */
   /* --S-F: {{ flow }}; */
 }

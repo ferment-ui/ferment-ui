@@ -18,14 +18,18 @@
 
 @define-mixin theme $b, $brightness, $s, $swatch {
 :root {
---c-$(b)-I: {{ theme_color_$(brightness)_info }};
---c-$(b)-S: {{ theme_color_$(brightness)_success }};
---c-$(b)-W: {{ theme_color_$(brightness)_warning }};
---c-$(b)-E: {{ theme_color_$(brightness)_error }};
---c-$(b)-$(s): {{ theme_color_$(brightness)_$(swatch) }};
---bc-$(b)-$(s): {{ theme_backgroundColor_$(brightness)_$(swatch) }};
---c-$(b)-$(s)-D: {{ theme_color_light_$(brightness)_$(swatch)_disabled }};
---c-$(b)-$(s)-ID: {{ theme_color_$(brightness)_$(swatch)_invertedDisabled }};
+--c-$(b)-I: {{ theme.$(brightness).info.color }};
+--bc-$(b)-I: {{ theme.$(brightness).info.backgroundColor }};
+--c-$(b)-S: {{ theme.$(brightness).success.color }};
+--bc-$(b)-S: {{ theme.$(brightness).success.backgroundColor }};
+--c-$(b)-W: {{ theme.$(brightness).warning.color }};
+--bc-$(b)-W: {{ theme.$(brightness).warning.backgroundColor }};
+--c-$(b)-E: {{ theme.$(brightness).error.color }};
+--bc-$(b)-E: {{ theme.$(brightness).error.backgroundColor }};
+--c-$(b)-$(s): {{ theme.$(brightness).$(swatch).color }};
+--bc-$(b)-$(s): {{ theme.$(brightness).$(swatch).backgroundColor }};
+--c-$(b)-$(s)-D: {{ theme.$(brightness).$(swatch).disabled }};
+--c-$(b)-$(s)-ID: {{ theme.$(brightness).$(swatch).invertedDisabled }};
 } 
 }
 
@@ -38,9 +42,7 @@
 @mixin default-theme L, A;
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    @mixin default-color D;
-    @mixin theme D, P;
-    @mixin theme D, A;
-  }
+@mixin default-color D;
+@mixin theme D, dark, P, primary;
+@mixin theme D, dark, A, accent;
 }

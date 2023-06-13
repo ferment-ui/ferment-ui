@@ -1,5 +1,5 @@
 :root {
   @for $i from 1 to 6 {
-  --bs-$(i): {{ shadow_$(i) }};
+  --bs-$(i): {{ shadow.$(i) }};
   }
 }

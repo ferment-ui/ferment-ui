@@ -113,11 +113,11 @@ h$(1), .h$(1) {
 @mixin heading-transform $i;
 }
 
-.bold {
+.b {
   font-weight: bold;
 }
 
-.italic {
+.i {
   font-style: italic;
 }
 
@@ -131,4 +131,36 @@ h$(1), .h$(1) {
 
 .ta-e {
   text-align: end;
+}
+
+.tt-u {
+  text-transform: uppercase;
+}
+
+.tt-c {
+  text-transform: capitalize;
+}
+
+.tt-l {
+  text-transform: lowercase;
+}
+
+.tt-0 {
+  text-transform: none;
+}
+
+.td-u {
+  text-decoration: underline;
+}
+
+.td-o {
+  text-decoration: overline;
+}
+
+.td-s {
+  text-decoration-line: line-through;
+}
+
+.td-0 {
+  text-decoration: none;
 }

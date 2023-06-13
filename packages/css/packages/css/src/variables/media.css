@@ -1,15 +1,15 @@
 :root {
-  --M-1: {{ media_1 }};
-  --M-2: {{ media_2 }};
-  --M-3: {{ media_3 }};
-  --M-4: {{ media_4 }};
-  --M-5: {{ media_5 }};
-  --M-6: {{ media_6 }};
+  --M-1: {{ media.1 }};
+  --M-2: {{ media.2 }};
+  --M-3: {{ media.3 }};
+  --M-4: {{ media.4 }};
+  --M-5: {{ media.5 }};
+  --M-6: {{ media.6 }};
 }
 
-@custom-media --1 (min-width: {{ media_1 }});
-@custom-media --2 (min-width: {{ media_2 }});
-@custom-media --3 (min-width: {{ media_3 }});
-@custom-media --4 (min-width: {{ media_4 }});
-@custom-media --5 (min-width: {{ media_5 }});
-@custom-media --6 (min-width: {{ media_6 }});
+@custom-media --1 (min-width: {{ media.1 }});
+@custom-media --2 (min-width: {{ media.2 }});
+@custom-media --3 (min-width: {{ media.3 }});
+@custom-media --4 (min-width: {{ media.4 }});
+@custom-media --5 (min-width: {{ media.5 }});
+@custom-media --6 (min-width: {{ media.6 }});

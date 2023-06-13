@@ -2,11 +2,11 @@
   --A-0: 0;
 
   @for $i from 1 to 6 {
-  --A-$(i): {{ timing_$(i) }};
+  --A-$(i): {{ timing.$(i) }};
   }
 
   /* @for $i in "in", "out", "in-out" {
-  --A-$(i): {{ timing_$(i) }};
+  --A-$(i): {{ timing.$(i) }};
   } */
 
   --A-in: var(--A-in);

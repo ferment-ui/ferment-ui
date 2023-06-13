@@ -2,27 +2,27 @@
 
 :root {
   /* size */
-  --fs-S: {{ font_scale }};
+  --fs-S: {{ font.scale }};
 
   /* NOTE: should be between 16-20px for optimal readability */
   --fs-B: calc(var(--S) * 5px);
 
   @for $i from 1 to 6 {
-  --fs-H$(i)-O: {{ font_H$(i)_override_size }};
+  --fs-H$(i)-O: {{ font.H$(i).override.size }};
   }
 
   /* unless override is set, use typographic scale */
-  @for $1 from 1 to 6 {
-  --fs-H$(1): var(--fs-H$(1)-O, calc(var(--scale) * var(--fs-B) * (6 - $(1)rem)));
+  @for $i from 1 to 6 {
+  --fs-H$(i): var(--fs-H$(i)-O, calc(var(--fs-S) * var(--fs-B) * (6 - $(i)rem)));
   }
 
   /* family */
-  --ff-B: {{ font_body_fontFamily }};
+  --ff-B: {{ font.body.family }};
 
-  --ff-H: {{ font_heading_fontFamily }};
+  --ff-H: {{ font.heading.family }};
 
   @for $i from 1 to 6 {
-  --ff-H$(1)-O: {{ font_h$(i)_override_family }};
+  --ff-H$(1)-O: {{ font.h$(i).override.family }};
   }
 
   @for $i from 1 to 6 {
@@ -30,11 +30,11 @@
   }  
 
   /* weight */
-  --fw-B: {{ font_body_weight }};
+  --fw-B: {{ font.body.weight }};
 
-  --fw-H: {{ font_heading_weight }};
+  --fw-H: {{ font.heading.weight }};
   @for $i from 1 to 6 {
-  --fw-H$(i)-O: {{ font_h$(i)_override_weight }};
+  --fw-H$(i)-O: {{ font.h$(i).override.weight }};
   }
 
   @for $i from 1 to 6 {
@@ -42,11 +42,11 @@
   }
 
   /* line heights */
-  --lh-B: {{ font_body_lineHeight }};
+  --lh-B: {{ font.body.lineHeight }};
 
-  --lh-H: {{ font_heading_lineHeight }};
+  --lh-H: {{ font.heading.lineHeight }};
   @for $i from 1 to 6 {
-  --lh-H$(i)-O: {{ font_h$(i)_override_lineHeight }};
+  --lh-H$(i)-O: {{ font.h$(i).override.lineHeight }};
   }
 
   @for $i from 1 to 6 {
@@ -54,11 +54,11 @@
   }
   
   /* text-decoration */
-  --td-B: {{ font_body_decoration }};
+  --td-B: {{ font.body.decoration }};
 
-  --td-H: {{ font_heading_decoration }};
+  --td-H: {{ font.heading.decoration }};
   @for $i from 1 to 6 {
-  --td-H$(i)-O: {{ font_h$(i)_override_decoration }};
+  --td-H$(i)-O: {{ font.h$(i).override.decoration }};
   }
 
   @for $i from 1 to 6 {
@@ -66,11 +66,11 @@
   }
 
   /* text-transform */
-  --tt-B: {{ font_body_transform }};
+  --tt-B: {{ font.body.transform }};
 
-  --tt-H: {{ font_heading_transform }};
+  --tt-H: {{ font.heading.transform }};
   @for $i from 1 to 6 {
-  --tt-H$(i)-O: {{ font_h$(i)_override_transform }};
+  --tt-H$(i)-O: {{ font.h$(i).override.transform }};
   }
 
   @for $i from 1 to 6 {
