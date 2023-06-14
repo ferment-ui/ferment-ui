@@ -1,3 +1,4 @@
 @import 'modern-normalize/modern-normalize.css';
 @import './variables/index.css';
 @import './utilities/index.css';
+@import './animations/index.css';

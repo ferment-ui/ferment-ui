@@ -1,0 +1,10 @@
+@define-mixin timing $i {
+.A-$(i) {
+  transition-duration: var(--A-$(i));
+  animation-duration: var(--A-$(i));
+}
+}
+
+@for $i from 0 to 6 {
+@mixin timing $i;
+}

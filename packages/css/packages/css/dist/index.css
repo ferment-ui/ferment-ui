@@ -278,12 +278,12 @@ summary {
 
 :root {
   --A-0: 0;
-  --A-1: unset;
-  --A-2: unset;
-  --A-3: unset;
-  --A-4: unset;
-  --A-5: unset;
-  --A-6: unset;
+  --A-1: .2s;
+  --A-2: .25s;
+  --A-3: .3s;
+  --A-4: .35s;
+  --A-5: .4s;
+  --A-6: .45s;
 
   /* @for $i in "in", "out", "in-out" {
   --A-$(i): {{ timing.$(i) }};
@@ -1004,7 +1004,7 @@ h6, .h6 {
   text-transform: var(--tt-H6);
 }
 
-.b, .fw-b {
+.fw-b {
   font-weight: bold;
 }
 
@@ -1012,7 +1012,7 @@ h6, .h6 {
   font-weight: normal;
 }
 
-.i, .fi-i {
+.fi-i {
   font-style: italic;
 }
 
@@ -1790,4 +1790,104 @@ body {
 .zi-6 {
   z-index: 6000;
   z-index: var(--z-6);
+}
+
+.A-FI {
+  opacity: 100;
+}
+
+.A-FO {
+  opacity: 0;
+}
+
+.A-FS--P:not(:hover) > *,
+.A-FS--P:not(:focus) > *,
+.A-FS--H:not(:hover) > *,
+.A-FS--F:not(:focus) {
+  transition-property: opacity;
+  opacity: 1;
+}
+
+.A-FS--P:hover > :not(:hover),
+.A-FS--P:focus > :not(:focus),
+.A-FS--H:hover > :not(:hover),
+.A-FS--F:focus > :not(:focus) {
+  opacity: 0.5;
+}
+
+.A-flip {
+  perspective: 1000;
+}
+
+.A-flip > * {
+  position: relative;
+  transition-property: transform;
+  transform-style: preserve-3d;
+}
+
+.A-flip:hover > *,
+.A-flip:focus > *,
+.A-flip--hover:hover > *,
+.A-flip--focus:focus > * {
+  transform: rotateY(180deg);
+}
+
+.A-flip > * > * {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.A-flip > * > :nth-child(2) {
+  transform: rotateY(180deg);
+}
+
+.A-0 {
+  transition-duration: 0;
+  transition-duration: var(--A-0);
+  animation-duration: 0;
+  animation-duration: var(--A-0);
+}
+
+.A-1 {
+  transition-duration: .2s;
+  transition-duration: var(--A-1);
+  animation-duration: .2s;
+  animation-duration: var(--A-1);
+}
+
+.A-2 {
+  transition-duration: .25s;
+  transition-duration: var(--A-2);
+  animation-duration: .25s;
+  animation-duration: var(--A-2);
+}
+
+.A-3 {
+  transition-duration: .3s;
+  transition-duration: var(--A-3);
+  animation-duration: .3s;
+  animation-duration: var(--A-3);
+}
+
+.A-4 {
+  transition-duration: .35s;
+  transition-duration: var(--A-4);
+  animation-duration: .35s;
+  animation-duration: var(--A-4);
+}
+
+.A-5 {
+  transition-duration: .4s;
+  transition-duration: var(--A-5);
+  animation-duration: .4s;
+  animation-duration: var(--A-5);
+}
+
+.A-6 {
+  transition-duration: .45s;
+  transition-duration: var(--A-6);
+  animation-duration: .45s;
+  animation-duration: var(--A-6);
 }

@@ -1,7 +1,7 @@
 module.exports = {
   $schema: "./schema.json",
   $version: "1.0.0",
-  bundle: ['variables', 'utilities', 'components/**/*'],
+  bundle: ['normalize', 'utilities', 'components/**/*'],
   base: null,
   spacing: {
     baseline: "4",
@@ -179,12 +179,12 @@ module.exports = {
   },
   animation: {
     timing: {
-      1: "",
-      2: "",
-      3: "",
-      4: "",
-      5: "",
-      6: "",
+      1: ".2s",
+      2: ".25s",
+      3: ".3s",
+      4: ".35s",
+      5: ".4s",
+      6: ".45s",
     },
     easings: {},
     defaults: {}

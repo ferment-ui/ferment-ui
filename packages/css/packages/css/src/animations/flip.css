@@ -1,0 +1,27 @@
+.A-flip {
+  perspective: 1000;
+}
+
+.A-flip > * {
+  position: relative;
+  transition-property: transform;
+  transform-style: preserve-3d;
+}
+
+.A-flip:hover > *,
+.A-flip:focus > *,
+.A-flip--hover:hover > *,
+.A-flip--focus:focus > * {
+  transform: rotateY(180deg);
+}
+
+.A-flip > * > * {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.A-flip > * > :nth-child(2) {
+  transform: rotateY(180deg);
+}
