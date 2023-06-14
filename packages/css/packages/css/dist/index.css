@@ -649,6 +649,10 @@ summary {
   display: flex;
 }
 
+.fl-auto > * {
+  flex: 1;
+}
+
 .fld-c {
   flex-direction: column;
 }
@@ -1800,16 +1804,16 @@ body {
   opacity: 0;
 }
 
-.A-FS--P:not(:hover) > *,
-.A-FS--P:not(:focus) > *,
+.A-FS:not(:hover) > *,
+.A-FS:not(:focus) > *,
 .A-FS--H:not(:hover) > *,
 .A-FS--F:not(:focus) {
   transition-property: opacity;
   opacity: 1;
 }
 
-.A-FS--P:hover > :not(:hover),
-.A-FS--P:focus > :not(:focus),
+.A-FS:hover > :not(:hover),
+.A-FS:focus > :not(:focus),
 .A-FS--H:hover > :not(:hover),
 .A-FS--F:focus > :not(:focus) {
   opacity: 0.5;
