@@ -16,10 +16,6 @@
   height: 100vh;
 }
 
-.h-vp-wo-banner {
-  height: calc(100vh - var(--h--b));
-}
-
 .L-P {
   max-width: var(--w-P);
   margin-left: auto;

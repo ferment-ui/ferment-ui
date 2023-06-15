@@ -20,20 +20,30 @@
   /* family */
   --ff-B: {{ font.body.family }};
   --ff-H: {{ font.heading.family }}; 
+  --ff-S: {{ font.subheading.family }};
+  --ff-P: {{ font.pullQuote.family }};
 
   /* weight */
   --fw-B: {{ font.body.weight }};
   --fw-H: {{ font.heading.weight }};
+  --fw-S: {{ font.subheading.weight }};
+  --fw-P: {{ font.pullQuote.weight }};
 
   /* line heights */
   --lh-B: {{ font.body.lineHeight }};
   --lh-H: {{ font.heading.lineHeight }};
+  --lh-S: {{ font.subheading.lineHeight }};
+  --lh-P: {{ font.pullQuote.lineHeight }};
   
   /* text-decoration */
   --td-B: {{ font.body.decoration }};
   --td-H: {{ font.heading.decoration }};
+  --td-S: {{ font.subheading.decoration }};
+  --td-P: {{ font.pullQuote.decoration }};
 
   /* text-transform */
   --tt-B: {{ font.body.transform }};
   --tt-H: {{ font.heading.transform }};
+  --tt-S: {{ font.subheading.transform }};
+  --tt-P: {{ font.pullQuote.transform }};
 }

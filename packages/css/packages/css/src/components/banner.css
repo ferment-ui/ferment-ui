@@ -1,1 +1,47 @@
-@import '../variables/'
+:root {
+  --h-banner: {{ components.banner.height }};
+}
+
+html {
+  scroll-padding-top: calc(var(--h-banner));
+}
+
+.h-vp-wo-banner {
+  height: calc(100vh - var(--h-banner));
+}
+
+.z-banner {
+  z-index: var(--z-banner);
+}
+
+[role=banner] {
+  z-index: var(--z-banner);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background: var(--b-default);
+  padding: calc(var(--S) * 5px);
+  height: var(--h-banner);
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-bottom: 1px solid currentColor;
+  transition: all .5s ease-in-out;
+}
+
+[role=banner] > ul {
+  width: 100%;
+  display: grid;
+  grid-template-areas: 
+    'logo contact links';
+}
+
+[role=banner] li {
+  display: flex;
+  align-items: center;
+}
+
+[role=banner] li.active {
+  border-bottom: 1px solid black;
+}
