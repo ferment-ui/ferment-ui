@@ -14,25 +14,20 @@ Exceptions:
 - use semantic HTML tags or apply aria attributes
 - ideally only use .class, [attribute], and :pseudo selectors to keep specificity low
 - don't set a font size on the body (allows the user to set one they like), and all other text should use `rem` units
-- flex should be your default positioning system, and grid should be used for layouts (prefer adhoc rather than a framework)
+- flex should be your default positioning system, and grid should be used for layouts (adhoc rather than a framework)
 - use margins for fine-tuning layout between elements, and padding for within an element
-- prefer a block or inline-block with flex's justify-content rather than text-align... it works better with different browsers/language directions
+- prefer an inline-block with flex's justify-content rather than text-align... it works better with different browsers/language directions
 - if you don't like the default outline, replace it, never just remove it
-- :hover and :focus should nearly always do the same thing (hence the `--P` in declare.css), but remember to use :active for things like a button press
-- only use opacity for a fade in effect
+- :hover and :focus should nearly always do the same thing (hence the `--P` for `pin`), but remember to use :active for things like a button press
+- only use opacity for a fade effect
 - transition/animations should really only use opacity and transform for speed and to not cause re-layouts
-
-
-## Common confusions:
-
-- .f is for flex, and .fd is for flex-direction, all other properties that start with f are for fonts, i.e. .ff, .fs
 
 ## TODO
 
 - [ ] generate index.css files depending on inclusions and bundling
 - [x] postcss-replace from a config file
-- [ ] replace increments with more descriptive titles (i.e. timing-1 with timing-xs, media-6 with media-xxl, etc.)
-- [ ] replace zeros with actual property value (i.e. visibility-0 with visibility-none, etc)
+- [ ] replace increments with more descriptive titles (i.e. timing-1 with timing-xs, media-6 with media-xxl, etc.)?
+- [ ] replace zeros with actual property value (i.e. visibility-0 with visibility-none, etc)?
 - [ ] optional typography override?
 - [ ] optional complement theme?
 - [ ] optional components?
