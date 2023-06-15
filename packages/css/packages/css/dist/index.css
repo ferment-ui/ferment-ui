@@ -1,3 +1,7 @@
+.red {
+  color: red;
+}
+
 /*! modern-normalize v2.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 
 /*
@@ -276,6 +280,10 @@ summary {
 	display: list-item;
 }
 
+h1, h2, h3, h4, h5, h6, ul, p {
+  margin: 0;
+}
+
 :root {
   --A-0: 0;
   --A-1: .2s;
@@ -418,34 +426,27 @@ summary {
   --S: 4;
 
   /* multipliers for the baseline size */
-  --S-1: 1;
-  --S-2: 2;
-  --S-3: 4;
-  --S-4: 8;
-  --S-5: 14;
-  --S-6: 22;
+  --S-1: calc(1 * 1px);
+  --S-2: calc(2 * 1px);
+  --S-3: calc(4 * 1px);
+  --S-4: calc(8 * 1px);
+  --S-5: calc(14 * 1px);
+  --S-6: calc(22 * 1px);
 
   --S-B: calc(var(--fs-b) * var(--lh-b));
   
-  --w-P: 65em;
-  /* --S-S: {{ spacing.section }}; */
-  /* --S-F: {{ flow }}; */
+  --w-P: 65rem;
+  --S-P: 3rem;
 }
 
 :root {
   /* size */
   /* NOTE: should be between 16-20px for optimal readability */
   --fs-B: 1rem;
-  --fs-H1-O: unset;
-  --fs-H2-O: unset;
-  --fs-H3-O: unset;
-  --fs-H4-O: unset;
-  --fs-H5-O: unset;
-  --fs-H6-O: unset;
 
   /* unless override is set, use typographic scale */
   /* until css pow() function gets more adoption, hack it */
-  --fs-S: 1.13;
+  --fs-S: 1.333;
   --fs-S-start: unset;
   --fs-S-S: var(--fs-S-start, 1rem);
   --fs-H6: var(--fs-H6-O, --fs-S-S);
@@ -457,97 +458,32 @@ summary {
 
   /* family */
   --ff-B: sans-serif;
-
-  --ff-H: unset;
-  --ff-H1-O: unset;
-  --ff-H2-O: unset;
-  --ff-H3-O: unset;
-  --ff-H4-O: unset;
-  --ff-H5-O: unset;
-  --ff-H6-O: unset;
-  --ff-H1: var(--ff-H1-O, --ff-H);
-  --ff-H2: var(--ff-H2-O, --ff-H);
-  --ff-H3: var(--ff-H3-O, --ff-H);
-  --ff-H4: var(--ff-H4-O, --ff-H);
-  --ff-H5: var(--ff-H5-O, --ff-H);
-  --ff-H6: var(--ff-H6-O, --ff-H);  
+  --ff-H: unset; 
 
   /* weight */
   --fw-B: normal;
-
   --fw-H: unset;
-  --fw-H1-O: unset;
-  --fw-H2-O: unset;
-  --fw-H3-O: unset;
-  --fw-H4-O: unset;
-  --fw-H5-O: unset;
-  --fw-H6-O: unset;
-  --fw-H1: var(--fw-H1-O, --fw-H);
-  --fw-H2: var(--fw-H2-O, --fw-H);
-  --fw-H3: var(--fw-H3-O, --fw-H);
-  --fw-H4: var(--fw-H4-O, --fw-H);
-  --fw-H5: var(--fw-H5-O, --fw-H);
-  --fw-H6: var(--fw-H6-O, --fw-H);
 
   /* line heights */
-  --lh-B: unset;
-
-  --lh-H: unset;
-  --lh-H1-O: unset;
-  --lh-H2-O: unset;
-  --lh-H3-O: unset;
-  --lh-H4-O: unset;
-  --lh-H5-O: unset;
-  --lh-H6-O: unset;
-  --lh-H1: var(--lh-H1-O, --lh-H);
-  --lh-H2: var(--lh-H2-O, --lh-H);
-  --lh-H3: var(--lh-H3-O, --lh-H);
-  --lh-H4: var(--lh-H4-O, --lh-H);
-  --lh-H5: var(--lh-H5-O, --lh-H);
-  --lh-H6: var(--lh-H6-O, --lh-H);
+  --lh-B: 1;
+  --lh-H: 1.8;
   
   /* text-decoration */
   --td-B: unset;
-
   --td-H: unset;
-  --td-H1-O: unset;
-  --td-H2-O: unset;
-  --td-H3-O: unset;
-  --td-H4-O: unset;
-  --td-H5-O: unset;
-  --td-H6-O: unset;
-  --td-H1: var(--td-H1-O, --td-H);
-  --td-H2: var(--td-H2-O, --td-H);
-  --td-H3: var(--td-H3-O, --td-H);
-  --td-H4: var(--td-H4-O, --td-H);
-  --td-H5: var(--td-H5-O, --td-H);
-  --td-H6: var(--td-H6-O, --td-H);
 
   /* text-transform */
   --tt-B: unset;
-
   --tt-H: unset;
-  --tt-H1-O: unset;
-  --tt-H2-O: unset;
-  --tt-H3-O: unset;
-  --tt-H4-O: unset;
-  --tt-H5-O: unset;
-  --tt-H6-O: unset;
-  --tt-H1: var(--tt-H1-O, --tt-H);
-  --tt-H2: var(--tt-H2-O, --tt-H);
-  --tt-H3: var(--tt-H3-O, --tt-H);
-  --tt-H4: var(--tt-H4-O, --tt-H);
-  --tt-H5: var(--tt-H5-O, --tt-H);
-  --tt-H6: var(--tt-H6-O, --tt-H)
 }
 
 :root {
-  --bs-1: 1px 1px;
+  --bs-1: 0px var(--S-1) var(--S-2) 2px;
   --bs-2: 1px 1px;
   --bs-3: 1px 1px;
   --bs-4: 1px 1px;
   --bs-5: 1px 1px;
-  --bs-6: 1px 1px
+  --bs-6: 0 var(--S-6) calc(var(--S-6) * 2) 2px
 }
 
 :root {
@@ -564,13 +500,17 @@ summary {
   border: none;
 }
 
-.b, .b--pin:hover, .b--pin:focus, .b--hover:hover, .b--focus:focus, .b--active:active {
+.b {
   border: 1px solid currentColor;
   border: var(--b);
 }
 
-.b-P, .b-P--pin:hover, .b-P--pin:focus, .b-P--hover:hover, .b-P--focus:focus, .b-P--active:active {
-  border-color: var(--c-P);
+/* use the default border but override color with transparent */
+
+.b-t {
+  border: 1px solid currentColor;
+  border: var(--b);
+  border-color: transparent; 
 }
 
 .c-D-P {
@@ -649,7 +589,7 @@ summary {
   display: flex;
 }
 
-.fl-auto > * {
+.fl-a > * {
   flex: 1;
 }
 
@@ -662,11 +602,10 @@ summary {
 }
 
 body, .f-B {
-  line-height: unset;
+  line-height: 1;
   line-height: var(--lh-B);
   font-family: sans-serif;
   font-family: var(--ff-B);
-  font-size: 1rem;
   font-weight: normal;
   font-weight: var(--fw-B);
   font-style: var(--fi-B);
@@ -690,112 +629,112 @@ body, .f-B {
 }
 
 .lh-B {
-  line-height: unset;
+  line-height: 1;
   line-height: var(--lh-B);
 }
 
 /* HEADINGS */
 
 h1, .h1 {
-  line-height: unset;
-  line-height: var(--lh-H1);
-  font-family: unset;
-  font-family: var(--ff-H1);
-  font-size: unset;
+  font-size: calc(1.333 * 1.333 * 1.333 * 1.333 * 1.333 * unset);
   font-size: var(--fs-H1);
+  font-family: unset;
+  font-family: var(--ff-H1, var(--ff-H));
   font-weight: unset;
-  font-weight: var(--fw-H1);
-  font-style: var(--fi-H1);
+  font-weight: var(--fw-H1, var(--fw-H));
+  font-style: var(--fi-H1, var(--fi-H));
+  line-height: 1.8;
+  line-height: var(--lh-H1, var(--lh-H));
   text-decoration: unset;
-  -webkit-text-decoration: var(--td-H1);
-          text-decoration: var(--td-H1);
+  -webkit-text-decoration: var(--td-H1, var(--td-H));
+          text-decoration: var(--td-H1, var(--td-H));
   text-transform: unset;
-  text-transform: var(--tt-H1);
+  text-transform: var(--tt-H1, var(--tt-H));
 }
 
 h2, .h2 {
-  line-height: unset;
-  line-height: var(--lh-H2);
-  font-family: unset;
-  font-family: var(--ff-H2);
-  font-size: unset;
+  font-size: calc(1.333 * 1.333 * 1.333 * 1.333 * unset);
   font-size: var(--fs-H2);
+  font-family: unset;
+  font-family: var(--ff-H2, var(--ff-H));
   font-weight: unset;
-  font-weight: var(--fw-H2);
-  font-style: var(--fi-H2);
+  font-weight: var(--fw-H2, var(--fw-H));
+  font-style: var(--fi-H2, var(--fi-H));
+  line-height: 1.8;
+  line-height: var(--lh-H2, var(--lh-H));
   text-decoration: unset;
-  -webkit-text-decoration: var(--td-H2);
-          text-decoration: var(--td-H2);
+  -webkit-text-decoration: var(--td-H2, var(--td-H));
+          text-decoration: var(--td-H2, var(--td-H));
   text-transform: unset;
-  text-transform: var(--tt-H2);
+  text-transform: var(--tt-H2, var(--tt-H));
 }
 
 h3, .h3 {
-  line-height: unset;
-  line-height: var(--lh-H3);
-  font-family: unset;
-  font-family: var(--ff-H3);
-  font-size: unset;
+  font-size: calc(1.333 * 1.333 * 1.333 * unset);
   font-size: var(--fs-H3);
+  font-family: unset;
+  font-family: var(--ff-H3, var(--ff-H));
   font-weight: unset;
-  font-weight: var(--fw-H3);
-  font-style: var(--fi-H3);
+  font-weight: var(--fw-H3, var(--fw-H));
+  font-style: var(--fi-H3, var(--fi-H));
+  line-height: 1.8;
+  line-height: var(--lh-H3, var(--lh-H));
   text-decoration: unset;
-  -webkit-text-decoration: var(--td-H3);
-          text-decoration: var(--td-H3);
+  -webkit-text-decoration: var(--td-H3, var(--td-H));
+          text-decoration: var(--td-H3, var(--td-H));
   text-transform: unset;
-  text-transform: var(--tt-H3);
+  text-transform: var(--tt-H3, var(--tt-H));
 }
 
 h4, .h4 {
-  line-height: unset;
-  line-height: var(--lh-H4);
-  font-family: unset;
-  font-family: var(--ff-H4);
-  font-size: unset;
+  font-size: calc(1.333 * 1.333 * unset);
   font-size: var(--fs-H4);
+  font-family: unset;
+  font-family: var(--ff-H4, var(--ff-H));
   font-weight: unset;
-  font-weight: var(--fw-H4);
-  font-style: var(--fi-H4);
+  font-weight: var(--fw-H4, var(--fw-H));
+  font-style: var(--fi-H4, var(--fi-H));
+  line-height: 1.8;
+  line-height: var(--lh-H4, var(--lh-H));
   text-decoration: unset;
-  -webkit-text-decoration: var(--td-H4);
-          text-decoration: var(--td-H4);
+  -webkit-text-decoration: var(--td-H4, var(--td-H));
+          text-decoration: var(--td-H4, var(--td-H));
   text-transform: unset;
-  text-transform: var(--tt-H4);
+  text-transform: var(--tt-H4, var(--tt-H));
 }
 
 h5, .h5 {
-  line-height: unset;
-  line-height: var(--lh-H5);
-  font-family: unset;
-  font-family: var(--ff-H5);
-  font-size: unset;
+  font-size: calc(1.333 * unset);
   font-size: var(--fs-H5);
+  font-family: unset;
+  font-family: var(--ff-H5, var(--ff-H));
   font-weight: unset;
-  font-weight: var(--fw-H5);
-  font-style: var(--fi-H5);
+  font-weight: var(--fw-H5, var(--fw-H));
+  font-style: var(--fi-H5, var(--fi-H));
+  line-height: 1.8;
+  line-height: var(--lh-H5, var(--lh-H));
   text-decoration: unset;
-  -webkit-text-decoration: var(--td-H5);
-          text-decoration: var(--td-H5);
+  -webkit-text-decoration: var(--td-H5, var(--td-H));
+          text-decoration: var(--td-H5, var(--td-H));
   text-transform: unset;
-  text-transform: var(--tt-H5);
+  text-transform: var(--tt-H5, var(--tt-H));
 }
 
 h6, .h6 {
-  line-height: unset;
-  line-height: var(--lh-H6);
-  font-family: unset;
-  font-family: var(--ff-H6);
-  font-size: unset;
+  font-size: --fs-S-S;
   font-size: var(--fs-H6);
+  font-family: unset;
+  font-family: var(--ff-H6, var(--ff-H));
   font-weight: unset;
-  font-weight: var(--fw-H6);
-  font-style: var(--fi-H6);
+  font-weight: var(--fw-H6, var(--fw-H));
+  font-style: var(--fi-H6, var(--fi-H));
+  line-height: 1.8;
+  line-height: var(--lh-H6, var(--lh-H));
   text-decoration: unset;
-  -webkit-text-decoration: var(--td-H6);
-          text-decoration: var(--td-H6);
+  -webkit-text-decoration: var(--td-H6, var(--td-H));
+          text-decoration: var(--td-H6, var(--td-H));
   text-transform: unset;
-  text-transform: var(--tt-H6);
+  text-transform: var(--tt-H6, var(--tt-H));
 }
 
 .ff-H {
@@ -803,69 +742,9 @@ h6, .h6 {
   font-family: var(--ff-H);
 }
 
-.fs-H1 {
-  font-size: unset;
-  font-size: var(--fs-H1);
-}
-
-.fs-H2 {
-  font-size: unset;
-  font-size: var(--fs-H2);
-}
-
-.fs-H3 {
-  font-size: unset;
-  font-size: var(--fs-H3);
-}
-
-.fs-H4 {
-  font-size: unset;
-  font-size: var(--fs-H4);
-}
-
-.fs-H5 {
-  font-size: unset;
-  font-size: var(--fs-H5);
-}
-
-.fs-H6 {
-  font-size: unset;
-  font-size: var(--fs-H6);
-}
-
 .lh-H {
-  line-height: unset;
+  line-height: 1.8;
   line-height: var(--lh-H);
-}
-
-.lh-H1 {
-  line-height: unset;
-  line-height: var(--lh-H1);
-}
-
-.lh-H2 {
-  line-height: unset;
-  line-height: var(--lh-H2);
-}
-
-.lh-H3 {
-  line-height: unset;
-  line-height: var(--lh-H3);
-}
-
-.lh-H4 {
-  line-height: unset;
-  line-height: var(--lh-H4);
-}
-
-.lh-H5 {
-  line-height: unset;
-  line-height: var(--lh-H5);
-}
-
-.lh-H6 {
-  line-height: unset;
-  line-height: var(--lh-H6);
 }
 
 .fw-H {
@@ -873,62 +752,8 @@ h6, .h6 {
   font-weight: var(--fw-H);
 }
 
-.fw-H1 {
-  font-weight: unset;
-  font-weight: var(--fw-H1);
-}
-
-.fw-H2 {
-  font-weight: unset;
-  font-weight: var(--fw-H2);
-}
-
-.fw-H3 {
-  font-weight: unset;
-  font-weight: var(--fw-H3);
-}
-
-.fw-H4 {
-  font-weight: unset;
-  font-weight: var(--fw-H4);
-}
-
-.fw-H5 {
-  font-weight: unset;
-  font-weight: var(--fw-H5);
-}
-
-.fw-H6 {
-  font-weight: unset;
-  font-weight: var(--fw-H6);
-}
-
 .fi-H {
   font-style: var(--fi-H);
-}
-
-.fi-H1 {
-  font-style: var(--fi-H1);
-}
-
-.fi-H2 {
-  font-style: var(--fi-H2);
-}
-
-.fi-H3 {
-  font-style: var(--fi-H3);
-}
-
-.fi-H4 {
-  font-style: var(--fi-H4);
-}
-
-.fi-H5 {
-  font-style: var(--fi-H5);
-}
-
-.fi-H6 {
-  font-style: var(--fi-H6);
 }
 
 .td-H {
@@ -937,75 +762,9 @@ h6, .h6 {
           text-decoration: var(--td-H);
 }
 
-.td-H1 {
-  text-decoration: unset;
-  -webkit-text-decoration: var(--td-H1);
-          text-decoration: var(--td-H1);
-}
-
-.td-H2 {
-  text-decoration: unset;
-  -webkit-text-decoration: var(--td-H2);
-          text-decoration: var(--td-H2);
-}
-
-.td-H3 {
-  text-decoration: unset;
-  -webkit-text-decoration: var(--td-H3);
-          text-decoration: var(--td-H3);
-}
-
-.td-H4 {
-  text-decoration: unset;
-  -webkit-text-decoration: var(--td-H4);
-          text-decoration: var(--td-H4);
-}
-
-.td-H5 {
-  text-decoration: unset;
-  -webkit-text-decoration: var(--td-H5);
-          text-decoration: var(--td-H5);
-}
-
-.td-H6 {
-  text-decoration: unset;
-  -webkit-text-decoration: var(--td-H6);
-          text-decoration: var(--td-H6);
-}
-
 .tt-H {
   text-transform: unset;
   text-transform: var(--tt-H);
-}
-
-.tt-H1 {
-  text-transform: unset;
-  text-transform: var(--tt-H1);
-}
-
-.tt-H2 {
-  text-transform: unset;
-  text-transform: var(--tt-H2);
-}
-
-.tt-H3 {
-  text-transform: unset;
-  text-transform: var(--tt-H3);
-}
-
-.tt-H4 {
-  text-transform: unset;
-  text-transform: var(--tt-H4);
-}
-
-.tt-H5 {
-  text-transform: unset;
-  text-transform: var(--tt-H5);
-}
-
-.tt-H6 {
-  text-transform: unset;
-  text-transform: var(--tt-H6);
 }
 
 .fw-b {
@@ -1091,36 +850,61 @@ h6, .h6 {
   height: calc(100vh - var(--h--b));
 }
 
-.page {
-  max-width: 65em;
+.L-P {
+  max-width: 65rem;
   max-width: var(--w-P);
   margin-left: auto;
   margin-right: auto;
 
   /* TODO: variables for these */
-  padding-left: 4;
-  padding-left: var(--S);
-  padding-right: 4;
-  padding-right: var(--S);
+  padding-left: 3rem;
+  padding-left: var(--S-P);
+  padding-right: 3rem;
+  padding-right: var(--S-P);
 }
 
-.section {
-  max-width: 65em;
-  max-width: var(--w-P);
-  margin: auto;
-
-  /* TODO: variables for these */
-  padding: var(--S-section-v) var(--S-section-h);
+.L-G {
+  gap: calc(1 * 1px);
+  gap: var(--S-1);
+  display: flex;
+  flex-direction: column;
 }
 
-.flow {
-  max-width: 65em;
-  max-width: var(--w-P);
-  margin: auto;
-  padding: var(--S-section-v) var(--S-section-h) 0 var(--S-section-h);
+.L-G-1 {
+  gap: calc((1 * 1px));
+  gap: calc(calc(1 * 1px));
+  gap: calc(var(--S-1));
 }
 
-/* Layouts are a combination of positioning plus text align */
+.L-G-2 {
+  gap: calc((2 * 1px));
+  gap: calc(calc(2 * 1px));
+  gap: calc(var(--S-2));
+}
+
+.L-G-3 {
+  gap: calc((4 * 1px));
+  gap: calc(calc(4 * 1px));
+  gap: calc(var(--S-3));
+}
+
+.L-G-4 {
+  gap: calc((8 * 1px));
+  gap: calc(calc(8 * 1px));
+  gap: calc(var(--S-4));
+}
+
+.L-G-5 {
+  gap: calc((14 * 1px));
+  gap: calc(calc(14 * 1px));
+  gap: calc(var(--S-5));
+}
+
+.L-G-6 {
+  gap: calc((22 * 1px));
+  gap: calc(calc(22 * 1px));
+  gap: calc(var(--S-6));
+}
 
 .L-s, .L-ss, .L-sc, .L-se, .L-c, .L-cs, .L-cc, .L-ce, .L-e, .L-es, .L-ec, .L-ee {
   display: flex;
@@ -1201,152 +985,152 @@ h6, .h6 {
 }
 
 .m-1 {
-  padding: 1;
+  padding: calc(1 * 1px);
   padding: var(--S-1);
 }
 
 .mt-1 {
-  margin-top: 1;
+  margin-top: calc(1 * 1px);
   margin-top: var(--S-1);
 }
 
 .me-1 {
-  margin-bottom: 1;
+  margin-bottom: calc(1 * 1px);
   margin-bottom: var(--S-1);;
 }
 
 .mb-1 {
-  margin-bottom: 1;
+  margin-bottom: calc(1 * 1px);
   margin-bottom: var(--S-1);
 }
 
 .ms-1 {
-  margin-top: 1;
+  margin-top: calc(1 * 1px);
   margin-top: var(--S-1);
 }
 
 .m-2 {
-  padding: 2;
+  padding: calc(2 * 1px);
   padding: var(--S-2);
 }
 
 .mt-2 {
-  margin-top: 2;
+  margin-top: calc(2 * 1px);
   margin-top: var(--S-2);
 }
 
 .me-2 {
-  margin-bottom: 2;
+  margin-bottom: calc(2 * 1px);
   margin-bottom: var(--S-2);;
 }
 
 .mb-2 {
-  margin-bottom: 2;
+  margin-bottom: calc(2 * 1px);
   margin-bottom: var(--S-2);
 }
 
 .ms-2 {
-  margin-top: 2;
+  margin-top: calc(2 * 1px);
   margin-top: var(--S-2);
 }
 
 .m-3 {
-  padding: 4;
+  padding: calc(4 * 1px);
   padding: var(--S-3);
 }
 
 .mt-3 {
-  margin-top: 4;
+  margin-top: calc(4 * 1px);
   margin-top: var(--S-3);
 }
 
 .me-3 {
-  margin-bottom: 4;
+  margin-bottom: calc(4 * 1px);
   margin-bottom: var(--S-3);;
 }
 
 .mb-3 {
-  margin-bottom: 4;
+  margin-bottom: calc(4 * 1px);
   margin-bottom: var(--S-3);
 }
 
 .ms-3 {
-  margin-top: 4;
+  margin-top: calc(4 * 1px);
   margin-top: var(--S-3);
 }
 
 .m-4 {
-  padding: 8;
+  padding: calc(8 * 1px);
   padding: var(--S-4);
 }
 
 .mt-4 {
-  margin-top: 8;
+  margin-top: calc(8 * 1px);
   margin-top: var(--S-4);
 }
 
 .me-4 {
-  margin-bottom: 8;
+  margin-bottom: calc(8 * 1px);
   margin-bottom: var(--S-4);;
 }
 
 .mb-4 {
-  margin-bottom: 8;
+  margin-bottom: calc(8 * 1px);
   margin-bottom: var(--S-4);
 }
 
 .ms-4 {
-  margin-top: 8;
+  margin-top: calc(8 * 1px);
   margin-top: var(--S-4);
 }
 
 .m-5 {
-  padding: 14;
+  padding: calc(14 * 1px);
   padding: var(--S-5);
 }
 
 .mt-5 {
-  margin-top: 14;
+  margin-top: calc(14 * 1px);
   margin-top: var(--S-5);
 }
 
 .me-5 {
-  margin-bottom: 14;
+  margin-bottom: calc(14 * 1px);
   margin-bottom: var(--S-5);;
 }
 
 .mb-5 {
-  margin-bottom: 14;
+  margin-bottom: calc(14 * 1px);
   margin-bottom: var(--S-5);
 }
 
 .ms-5 {
-  margin-top: 14;
+  margin-top: calc(14 * 1px);
   margin-top: var(--S-5);
 }
 
 .m-6 {
-  padding: 22;
+  padding: calc(22 * 1px);
   padding: var(--S-6);
 }
 
 .mt-6 {
-  margin-top: 22;
+  margin-top: calc(22 * 1px);
   margin-top: var(--S-6);
 }
 
 .me-6 {
-  margin-bottom: 22;
+  margin-bottom: calc(22 * 1px);
   margin-bottom: var(--S-6);;
 }
 
 .mb-6 {
-  margin-bottom: 22;
+  margin-bottom: calc(22 * 1px);
   margin-bottom: var(--S-6);
 }
 
 .ms-6 {
-  margin-top: 22;
+  margin-top: calc(22 * 1px);
   margin-top: var(--S-6);
 }
 
@@ -1395,14 +1179,6 @@ h6, .h6 {
   margin-top: var(--S-H);
 }
 
-.o-0 {
-  opacity: 0;
-}
-
-.o-100 {
-  opacity: 1;
-}
-
 .p {
   padding: var(--S-Y) var(--S-X);
 }
@@ -1444,152 +1220,152 @@ h6, .h6 {
 }
 
 .p-1 {
-  padding: 1;
+  padding: calc(1 * 1px);
   padding: var(--S-1);
 }
 
 .pt-1 {
-  padding-top: 1;
+  padding-top: calc(1 * 1px);
   padding-top: var(--S-1);
 }
 
 .pe-1 {
-  padding-bottom: 1;
+  padding-bottom: calc(1 * 1px);
   padding-bottom: var(--S-1);;
 }
 
 .pb-1 {
-  padding-bottom: 1;
+  padding-bottom: calc(1 * 1px);
   padding-bottom: var(--S-1);
 }
 
 .ps-1 {
-  padding-top: 1;
+  padding-top: calc(1 * 1px);
   padding-top: var(--S-1);
 }
 
 .p-2 {
-  padding: 2;
+  padding: calc(2 * 1px);
   padding: var(--S-2);
 }
 
 .pt-2 {
-  padding-top: 2;
+  padding-top: calc(2 * 1px);
   padding-top: var(--S-2);
 }
 
 .pe-2 {
-  padding-bottom: 2;
+  padding-bottom: calc(2 * 1px);
   padding-bottom: var(--S-2);;
 }
 
 .pb-2 {
-  padding-bottom: 2;
+  padding-bottom: calc(2 * 1px);
   padding-bottom: var(--S-2);
 }
 
 .ps-2 {
-  padding-top: 2;
+  padding-top: calc(2 * 1px);
   padding-top: var(--S-2);
 }
 
 .p-3 {
-  padding: 4;
+  padding: calc(4 * 1px);
   padding: var(--S-3);
 }
 
 .pt-3 {
-  padding-top: 4;
+  padding-top: calc(4 * 1px);
   padding-top: var(--S-3);
 }
 
 .pe-3 {
-  padding-bottom: 4;
+  padding-bottom: calc(4 * 1px);
   padding-bottom: var(--S-3);;
 }
 
 .pb-3 {
-  padding-bottom: 4;
+  padding-bottom: calc(4 * 1px);
   padding-bottom: var(--S-3);
 }
 
 .ps-3 {
-  padding-top: 4;
+  padding-top: calc(4 * 1px);
   padding-top: var(--S-3);
 }
 
 .p-4 {
-  padding: 8;
+  padding: calc(8 * 1px);
   padding: var(--S-4);
 }
 
 .pt-4 {
-  padding-top: 8;
+  padding-top: calc(8 * 1px);
   padding-top: var(--S-4);
 }
 
 .pe-4 {
-  padding-bottom: 8;
+  padding-bottom: calc(8 * 1px);
   padding-bottom: var(--S-4);;
 }
 
 .pb-4 {
-  padding-bottom: 8;
+  padding-bottom: calc(8 * 1px);
   padding-bottom: var(--S-4);
 }
 
 .ps-4 {
-  padding-top: 8;
+  padding-top: calc(8 * 1px);
   padding-top: var(--S-4);
 }
 
 .p-5 {
-  padding: 14;
+  padding: calc(14 * 1px);
   padding: var(--S-5);
 }
 
 .pt-5 {
-  padding-top: 14;
+  padding-top: calc(14 * 1px);
   padding-top: var(--S-5);
 }
 
 .pe-5 {
-  padding-bottom: 14;
+  padding-bottom: calc(14 * 1px);
   padding-bottom: var(--S-5);;
 }
 
 .pb-5 {
-  padding-bottom: 14;
+  padding-bottom: calc(14 * 1px);
   padding-bottom: var(--S-5);
 }
 
 .ps-5 {
-  padding-top: 14;
+  padding-top: calc(14 * 1px);
   padding-top: var(--S-5);
 }
 
 .p-6 {
-  padding: 22;
+  padding: calc(22 * 1px);
   padding: var(--S-6);
 }
 
 .pt-6 {
-  padding-top: 22;
+  padding-top: calc(22 * 1px);
   padding-top: var(--S-6);
 }
 
 .pe-6 {
-  padding-bottom: 22;
+  padding-bottom: calc(22 * 1px);
   padding-bottom: var(--S-6);;
 }
 
 .pb-6 {
-  padding-bottom: 22;
+  padding-bottom: calc(22 * 1px);
   padding-bottom: var(--S-6);
 }
 
 .ps-6 {
-  padding-top: 22;
+  padding-top: calc(22 * 1px);
   padding-top: var(--S-6);
 }
 
@@ -1663,7 +1439,7 @@ h6, .h6 {
 }
 
 .bs-1 {
-  box-shadow: 1px 1px;
+  box-shadow: 0px var(--S-1) var(--S-2) 2px;
   box-shadow: var(--bs-1);
 }
 
@@ -1688,7 +1464,7 @@ h6, .h6 {
 }
 
 .bs-6 {
-  box-shadow: 1px 1px;
+  box-shadow: 0 var(--S-6) calc(var(--S-6) * 2) 2px;
   box-shadow: var(--bs-6);
 }
 
@@ -1796,26 +1572,155 @@ body {
   z-index: var(--z-6);
 }
 
-.A-FI {
+.b--P:hover,
+.b--P:focus,
+.b--P:focus-within,
+.b--H:hover,
+.b--F:focus,
+.b--FW:focus-within,
+.b--A:active {
+  border: 1px solid currentColor;
+  border: var(--b)}
+
+.b-P--P:hover,
+.b-P--P:focus,
+.b-P--P:focus-within,
+.b-P--H:hover,
+.b-P--F:focus,
+.b-P--FW:focus-within,
+.b-P--A:active {
+  border-color: var(--c-P)}
+
+.c-D-P--P:hover,
+.c-D-P--P:focus,
+.c-D-P--P:focus-within,
+.c-D-P--H:hover,
+.c-D-P--F:focus,
+.c-D-P--FW:focus-within,
+.c-D-P--A:active {
+  color: var(--D-P)}
+
+.bc-D-P--P:hover,
+.bc-D-P--P:focus,
+.bc-D-P--P:focus-within,
+.bc-D-P--H:hover,
+.bc-D-P--F:focus,
+.bc-D-P--FW:focus-within,
+.bc-D-P--A:active {
+  background-color: var(--bc-D-P)}
+
+.c-D-A--P:hover,
+.c-D-A--P:focus,
+.c-D-A--P:focus-within,
+.c-D-A--H:hover,
+.c-D-A--F:focus,
+.c-D-A--FW:focus-within,
+.c-D-A--A:active {
+  color: var(--D-A)}
+
+.bc-D-A--P:hover,
+.bc-D-A--P:focus,
+.bc-D-A--P:focus-within,
+.bc-D-A--H:hover,
+.bc-D-A--F:focus,
+.bc-D-A--FW:focus-within,
+.bc-D-A--A:active {
+  background-color: var(--bc-D-A)}
+
+.c-L-P--P:hover,
+.c-L-P--P:focus,
+.c-L-P--P:focus-within,
+.c-L-P--H:hover,
+.c-L-P--F:focus,
+.c-L-P--FW:focus-within,
+.c-L-P--A:active {
+  color: var(--L-P)}
+
+.bc-L-P--P:hover,
+.bc-L-P--P:focus,
+.bc-L-P--P:focus-within,
+.bc-L-P--H:hover,
+.bc-L-P--F:focus,
+.bc-L-P--FW:focus-within,
+.bc-L-P--A:active {
+  background-color: var(--bc-L-P)}
+
+.c-L-A--P:hover,
+.c-L-A--P:focus,
+.c-L-A--P:focus-within,
+.c-L-A--H:hover,
+.c-L-A--F:focus,
+.c-L-A--FW:focus-within,
+.c-L-A--A:active {
+  color: var(--L-A)}
+
+.bc-L-A--P:hover,
+.bc-L-A--P:focus,
+.bc-L-A--P:focus-within,
+.bc-L-A--H:hover,
+.bc-L-A--F:focus,
+.bc-L-A--FW:focus-within,
+.bc-L-A--A:active {
+  background-color: var(--bc-L-A)}
+
+.c-P--P:hover,
+.c-P--P:focus,
+.c-P--P:focus-within,
+.c-P--H:hover,
+.c-P--F:focus,
+.c-P--FW:focus-within,
+.c-P--A:active {
+  color: var(--P)}
+
+.bc-P--P:hover,
+.bc-P--P:focus,
+.bc-P--P:focus-within,
+.bc-P--H:hover,
+.bc-P--F:focus,
+.bc-P--FW:focus-within,
+.bc-P--A:active {
+  background-color: var(--bc-P)}
+
+.c-A--P:hover,
+.c-A--P:focus,
+.c-A--P:focus-within,
+.c-A--H:hover,
+.c-A--F:focus,
+.c-A--FW:focus-within,
+.c-A--A:active {
+  color: var(--A)}
+
+.bc-A--P:hover,
+.bc-A--P:focus,
+.bc-A--P:focus-within,
+.bc-A--H:hover,
+.bc-A--F:focus,
+.bc-A--FW:focus-within,
+.bc-A--A:active {
+  background-color: var(--bc-A)}
+
+.A-fade-in {
   opacity: 100;
 }
 
-.A-FO {
+.A-fade-out {
   opacity: 0;
 }
 
-.A-FS:not(:hover) > *,
-.A-FS:not(:focus) > *,
-.A-FS--H:not(:hover) > *,
-.A-FS--F:not(:focus) {
+.A-fade-siblings--P:not(:hover) > *,
+.A-fade-siblings--P:not(:focus) > *,
+.A-fade-siblings--H:not(:hover) > *,
+.A-fade-siblings--F:not(:focus) > *,
+.A-fade-siblings--A:not(:active) > * {
   transition-property: opacity;
   opacity: 1;
 }
 
-.A-FS:hover > :not(:hover),
-.A-FS:focus > :not(:focus),
-.A-FS--H:hover > :not(:hover),
-.A-FS--F:focus > :not(:focus) {
+.A-fade-siblings--P:hover > :not(:hover),
+.A-fade-siblings--P:focus > :not(:focus),
+.A-fade-siblings--H:hover > :not(:hover),
+.A-fade-siblings--F:focus > :not(:focus),
+.A-fade-siblings--A:active > :not(:active) {
   opacity: 0.5;
 }
 
@@ -1824,6 +1729,8 @@ body {
 }
 
 .A-flip > * {
+  width: 100%;
+  height: 100%;
   position: relative;
   transition-property: transform;
   transform-style: preserve-3d;
@@ -1831,8 +1738,8 @@ body {
 
 .A-flip:hover > *,
 .A-flip:focus > *,
-.A-flip--hover:hover > *,
-.A-flip--focus:focus > * {
+.A-flip--H:hover > *,
+.A-flip--F:focus > * {
   transform: rotateY(180deg);
 }
 
@@ -1846,6 +1753,195 @@ body {
 .A-flip > * > :nth-child(2) {
   transform: rotateY(180deg);
 }
+
+.bs-0--P:hover,
+.bs-0--P:focus,
+.bs-0--P:focus-within,
+.bs-0--H:hover,
+.bs-0--F:focus,
+.bs-0--FW:focus-within,
+.bs-0--A:active {
+  box-shadow: var(--bs-0)}
+
+.bs-1--P:hover,
+.bs-1--P:focus,
+.bs-1--P:focus-within,
+.bs-1--H:hover,
+.bs-1--F:focus,
+.bs-1--FW:focus-within,
+.bs-1--A:active {
+  box-shadow: 0px var(--S-1) var(--S-2) 2px;
+  box-shadow: var(--bs-1)}
+
+.bs-2--P:hover,
+.bs-2--P:focus,
+.bs-2--P:focus-within,
+.bs-2--H:hover,
+.bs-2--F:focus,
+.bs-2--FW:focus-within,
+.bs-2--A:active {
+  box-shadow: 1px 1px;
+  box-shadow: var(--bs-2)}
+
+.bs-3--P:hover,
+.bs-3--P:focus,
+.bs-3--P:focus-within,
+.bs-3--H:hover,
+.bs-3--F:focus,
+.bs-3--FW:focus-within,
+.bs-3--A:active {
+  box-shadow: 1px 1px;
+  box-shadow: var(--bs-3)}
+
+.bs-4--P:hover,
+.bs-4--P:focus,
+.bs-4--P:focus-within,
+.bs-4--H:hover,
+.bs-4--F:focus,
+.bs-4--FW:focus-within,
+.bs-4--A:active {
+  box-shadow: 1px 1px;
+  box-shadow: var(--bs-4)}
+
+.bs-5--P:hover,
+.bs-5--P:focus,
+.bs-5--P:focus-within,
+.bs-5--H:hover,
+.bs-5--F:focus,
+.bs-5--FW:focus-within,
+.bs-5--A:active {
+  box-shadow: 1px 1px;
+  box-shadow: var(--bs-5)}
+
+.bs-6--P:hover,
+.bs-6--P:focus,
+.bs-6--P:focus-within,
+.bs-6--H:hover,
+.bs-6--F:focus,
+.bs-6--FW:focus-within,
+.bs-6--A:active {
+  box-shadow: 0 var(--S-6) calc(var(--S-6) * 2) 2px;
+  box-shadow: var(--bs-6)}
+
+.T-L-P--P:hover,
+.T-L-P--P:focus,
+.T-L-P--P:focus-within,
+.T-L-P--H:hover,
+.T-L-P--F:focus,
+.T-L-P--FW:focus-within,
+.T-L-P--A:active {
+  color: var(--c-L-P);
+  background-color: var(--bc-L-P)}
+
+.T-L-P-I--P:hover,
+.T-L-P-I--P:focus,
+.T-L-P-I--P:focus-within,
+.T-L-P-I--H:hover,
+.T-L-P-I--F:focus,
+.T-L-P-I--FW:focus-within,
+.T-L-P-I--A:active {
+  color: var(--bc-L-P);
+  background-color: var(--c-L-P)}
+
+.T-L-A--P:hover,
+.T-L-A--P:focus,
+.T-L-A--P:focus-within,
+.T-L-A--H:hover,
+.T-L-A--F:focus,
+.T-L-A--FW:focus-within,
+.T-L-A--A:active {
+  color: var(--c-L-A);
+  background-color: var(--bc-L-A)}
+
+.T-L-A-I--P:hover,
+.T-L-A-I--P:focus,
+.T-L-A-I--P:focus-within,
+.T-L-A-I--H:hover,
+.T-L-A-I--F:focus,
+.T-L-A-I--FW:focus-within,
+.T-L-A-I--A:active {
+  color: var(--bc-L-A);
+  background-color: var(--c-L-A)}
+
+.T-D-P--P:hover,
+.T-D-P--P:focus,
+.T-D-P--P:focus-within,
+.T-D-P--H:hover,
+.T-D-P--F:focus,
+.T-D-P--FW:focus-within,
+.T-D-P--A:active {
+  color: var(--c-D-P);
+  background-color: var(--bc-D-P)}
+
+.T-D-P-I--P:hover,
+.T-D-P-I--P:focus,
+.T-D-P-I--P:focus-within,
+.T-D-P-I--H:hover,
+.T-D-P-I--F:focus,
+.T-D-P-I--FW:focus-within,
+.T-D-P-I--A:active {
+  color: var(--bc-D-P);
+  background-color: var(--c-D-P)}
+
+.T-D-A--P:hover,
+.T-D-A--P:focus,
+.T-D-A--P:focus-within,
+.T-D-A--H:hover,
+.T-D-A--F:focus,
+.T-D-A--FW:focus-within,
+.T-D-A--A:active {
+  color: var(--c-D-A);
+  background-color: var(--bc-D-A)}
+
+.T-D-A-I--P:hover,
+.T-D-A-I--P:focus,
+.T-D-A-I--P:focus-within,
+.T-D-A-I--H:hover,
+.T-D-A-I--F:focus,
+.T-D-A-I--FW:focus-within,
+.T-D-A-I--A:active {
+  color: var(--bc-D-A);
+  background-color: var(--c-D-A)}
+
+.T-P--P:hover,
+.T-P--P:focus,
+.T-P--P:focus-within,
+.T-P--H:hover,
+.T-P--F:focus,
+.T-P--FW:focus-within,
+.T-P--A:active {
+  color: var(--c-P);
+  background-color: var(--bc-P)}
+
+.T-P-I--P:hover,
+.T-P-I--P:focus,
+.T-P-I--P:focus-within,
+.T-P-I--H:hover,
+.T-P-I--F:focus,
+.T-P-I--FW:focus-within,
+.T-P-I--A:active {
+  color: var(--bc-P);
+  background-color: var(--c-P)}
+
+.T-A--P:hover,
+.T-A--P:focus,
+.T-A--P:focus-within,
+.T-A--H:hover,
+.T-A--F:focus,
+.T-A--FW:focus-within,
+.T-A--A:active {
+  color: var(--c-A);
+  background-color: var(--bc-A)}
+
+.T-A-I--P:hover,
+.T-A-I--P:focus,
+.T-A-I--P:focus-within,
+.T-A-I--H:hover,
+.T-A-I--F:focus,
+.T-A-I--FW:focus-within,
+.T-A-I--A:active {
+  color: var(--bc-A);
+  background-color: var(--c-A)}
 
 .A-0 {
   transition-duration: 0;

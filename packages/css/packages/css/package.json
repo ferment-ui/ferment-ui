@@ -6,8 +6,8 @@
     "create-declare": "lib/index.js"
   },
   "scripts": {
-    "build": "postcss src/index.css -o dist/index.css",
-    "dev": "nodemon index.js --watch src/"
+    "build": "NODE_ENV=production node index.js",
+    "dev": "nodemon index.js --watch src/ --watch default.config.js --ext css,js"
   },
   "keywords": [],
   "author": "",

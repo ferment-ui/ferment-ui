@@ -1,7 +1,6 @@
 body, .f-B {
   line-height: var(--lh-B);
   font-family: var(--ff-B);
-  font-size: 1rem;
   font-weight: var(--fw-B);
   font-style: var(--fi-B);
   text-decoration: var(--td-B);
@@ -24,13 +23,13 @@ body, .f-B {
 /* HEADINGS */
 @define-mixin heading $1 {
 h$(1), .h$(1) {
-  line-height: var(--lh-H$(1));
-  font-family: var(--ff-H$(1));
   font-size: var(--fs-H$(1));
-  font-weight: var(--fw-H$(1));
-  font-style: var(--fi-H$(1));
-  text-decoration: var(--td-H$(1));
-  text-transform: var(--tt-H$(1));
+  font-family: var(--ff-H$(1), var(--ff-H));
+  font-weight: var(--fw-H$(1), var(--fw-H));
+  font-style: var(--fi-H$(1), var(--fi-H));
+  line-height: var(--lh-H$(1), var(--lh-H));
+  text-decoration: var(--td-H$(1), var(--td-H));
+  text-transform: var(--tt-H$(1), var(--tt-H));
 }
 }
 
@@ -42,84 +41,24 @@ h$(1), .h$(1) {
   font-family: var(--ff-H);
 }
 
-@define-mixin heading-size $1 {
-.fs-H$(1) {
-  font-size: var(--fs-H$(1));
-}
-}
-
-@for $i from 1 to 6 {
-@mixin heading-size $i;
-}
-
 .lh-H {
   line-height: var(--lh-H);
-}
-
-@define-mixin heading-line-height $1 {
-.lh-H$(1) {
-  line-height: var(--lh-H$(1));
-}
-}
-
-@for $i from 1 to 6 {
-@mixin heading-line-height $i;
 }
 
 .fw-H {
   font-weight: var(--fw-H);
 }
 
-@define-mixin heading-weight $1 {
-.fw-H$(1) {
-  font-weight: var(--fw-H$(1));
-}
-}
-
-@for $i from 1 to 6 {
-@mixin heading-weight $i;
-}
-
 .fi-H {
   font-style: var(--fi-H);
-}
-
-@define-mixin heading-style $1 {
-.fi-H$(1) {
-  font-style: var(--fi-H$(1));
-}
-}
-
-@for $i from 1 to 6 {
-@mixin heading-style $i;
 }
 
 .td-H {
   text-decoration: var(--td-H);
 }
 
-@define-mixin heading-decoration $1 {
-.td-H$(1) {
-  text-decoration: var(--td-H$(1));
-}
-}
-
-@for $i from 1 to 6 {
-@mixin heading-decoration $i;
-}
-
 .tt-H {
   text-transform: var(--tt-H);
-}
-
-@define-mixin heading-transform $1 {
-.tt-H$(1) {
-  text-transform: var(--tt-H$(1));
-}
-}
-
-@for $i from 1 to 6 {
-@mixin heading-transform $i;
 }
 
 .fw-b {

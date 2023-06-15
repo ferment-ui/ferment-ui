@@ -1,31 +1,35 @@
-.of-0 {
+.o-0 {
   overflow: hidden;
 }
 
-.of-a {
+.o-a {
   overflow: auto;
 }
 
-.ofx-0 {
+.o-s {
+  overflow: scroll;
+}
+
+.ox-0 {
   overflow-x: hidden;
 }
 
-.ofx-a {
+.ox-a {
   overflow-x: auto;
 }
 
-.ofx-s {
+.ox-s {
   overflow-x: scroll;
 }
 
-.ofy-0 {
+.oy-0 {
   overflow-y: hidden;
 }
 
-.ofy-a {
+.oy-a {
   overflow-y: auto;
 }
 
-.ofy-s {
+.oy-s {
   overflow-y: scroll;
 }

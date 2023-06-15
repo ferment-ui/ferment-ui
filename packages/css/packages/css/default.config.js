@@ -13,11 +13,8 @@ module.exports = {
       5: "14",
       6: "22",
     },
-    pageWidth: "65em",
-    p2p: "",
-    p2h: "",
-    h2p: "",
-    h2h: "",
+    pageWidth: "65rem",
+    pagePadding: "3rem",
   },
   theme: {
     light: {
@@ -38,12 +35,12 @@ module.exports = {
     },
   },
   font: {
-    scale: "1.13",
+    scale: "1.333",
     scaleStart: "",
     body: {
       family: "sans-serif",
       size: "20px",
-      lineHeight: "",
+      lineHeight: "1",
       weight: "normal",
       style: "normal",
       decoration: "",
@@ -54,7 +51,7 @@ module.exports = {
     heading: {
       family: "",
       size: "",
-      lineHeight: "",
+      lineHeight: "1.8",
       weight: "",
       style: "",
       decoration: "",
@@ -160,12 +157,12 @@ module.exports = {
     6: "6000",
   },
   shadow: {
-    1: "1px 1px",
+    1: "0px var(--S-1) var(--S-2) 2px",
     2: "1px 1px",
     3: "1px 1px",
     4: "1px 1px",
     5: "1px 1px",
-    6: "1px 1px",
+    6: "0 var(--S-6) calc(var(--S-6) * 2) 2px",
   },
   border: "1px solid currentColor",
   borderRadius: "1",

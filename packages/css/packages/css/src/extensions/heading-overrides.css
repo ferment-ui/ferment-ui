@@ -1,0 +1,105 @@
+:root {
+  @for $i from 1 to 6 {
+  --fs-H$(i)-O: {{ font.h$(i)_override.size }};
+  }
+
+  @for $i from 1 to 6 {
+  --ff-H$(i)-O: {{ font.h$(i)_override.family }};
+  }
+
+  @for $i from 1 to 6 {
+  --ff-H$(i): var(--ff-H$(i)-O, --ff-H);
+  }
+
+  @for $i from 1 to 6 {
+  --fw-H$(i)-O: {{ font.h$(i)_override.weight }};
+  }
+
+  @for $i from 1 to 6 {
+  --fw-H$(i): var(--fw-H$(i)-O, --fw-H);
+  }
+
+  @for $i from 1 to 6 {
+  --lh-H$(i)-O: {{ font.h$(i)_override.lineHeight }};
+  }
+
+  @for $i from 1 to 6 {
+  --lh-H$(i): var(--lh-H$(i)-O, --lh-H);
+  }
+
+  @for $i from 1 to 6 {
+  --td-H$(i)-O: {{ font.h$(i)_override.decoration }};
+  }
+
+  @for $i from 1 to 6 {
+  --td-H$(i): var(--td-H$(i)-O, --td-H);
+  }
+
+  @for $i from 1 to 6 {
+  --tt-H$(i)-O: {{ font.h$(i)_override.transform }};
+  }
+
+  @for $i from 1 to 6 {
+  --tt-H$(i): var(--tt-H$(i)-O, --tt-H);
+  }
+}
+
+@define-mixin heading-size $1 {
+.fs-H$(1) {
+  font-size: var(--fs-H$(1));
+}
+}
+
+@for $i from 1 to 6 {
+@mixin heading-size $i;
+}
+
+@define-mixin heading-line-height $1 {
+.lh-H$(1) {
+  line-height: var(--lh-H$(1));
+}
+}
+
+@for $i from 1 to 6 {
+@mixin heading-line-height $i;
+}
+
+@define-mixin heading-weight $1 {
+.fw-H$(1) {
+  font-weight: var(--fw-H$(1));
+}
+}
+
+@for $i from 1 to 6 {
+@mixin heading-weight $i;
+}
+
+@define-mixin heading-style $1 {
+.fi-H$(1) {
+  font-style: var(--fi-H$(1));
+}
+}
+
+@for $i from 1 to 6 {
+@mixin heading-style $i;
+}
+
+@define-mixin heading-decoration $1 {
+.td-H$(1) {
+  text-decoration: var(--td-H$(1));
+}
+}
+
+@for $i from 1 to 6 {
+@mixin heading-decoration $i;
+}
+
+@define-mixin heading-transform $1 {
+.tt-H$(1) {
+  text-transform: var(--tt-H$(1));
+}
+}
+
+@for $i from 1 to 6 {
+@mixin heading-transform $i;
+}

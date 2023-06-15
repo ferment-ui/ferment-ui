@@ -3,12 +3,11 @@
 
   /* multipliers for the baseline size */
   @for $i from 1 to 6 {
-  --S-$(i): {{ spacing.multiplier.$(i) }};
+  --S-$(i): calc({{ spacing.multiplier.$(i) }} * 1px);
   }
 
   --S-B: calc(var(--fs-b) * var(--lh-b));
   
   --w-P: {{ spacing.pageWidth }};
-  /* --S-S: {{ spacing.section }}; */
-  /* --S-F: {{ flow }}; */
+  --S-P: {{ spacing.pagePadding }};
 }

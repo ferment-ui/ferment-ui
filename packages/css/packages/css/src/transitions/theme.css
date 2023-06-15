@@ -1,0 +1,18 @@
+@define-mixin theme_pseudos $class {
+@mixin state_pseudos T-$(class) {
+  color: var(--c-$(class));
+  background-color: var(--bc-$(class));
+}
+ 
+@mixin state_pseudos T-$(class)-I {
+  color: var(--bc-$(class));
+  background-color: var(--c-$(class));
+}
+}
+
+@mixin theme_pseudos L-P;
+@mixin theme_pseudos L-A;
+@mixin theme_pseudos D-P;
+@mixin theme_pseudos D-A;
+@mixin theme_pseudos P;
+@mixin theme_pseudos A;

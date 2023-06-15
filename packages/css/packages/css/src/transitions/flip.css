@@ -3,6 +3,8 @@
 }
 
 .A-flip > * {
+  width: 100%;
+  height: 100%;
   position: relative;
   transition-property: transform;
   transform-style: preserve-3d;
@@ -10,8 +12,8 @@
 
 .A-flip:hover > *,
 .A-flip:focus > *,
-.A-flip--hover:hover > *,
-.A-flip--focus:focus > * {
+.A-flip--H:hover > *,
+.A-flip--F:focus > * {
   transform: rotateY(180deg);
 }
 

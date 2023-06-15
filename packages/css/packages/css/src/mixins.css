@@ -1,0 +1,25 @@
+@define-mixin state_pseudos $class {
+.$(class)--P:hover,
+.$(class)--P:focus,
+.$(class)--P:focus-within,
+.$(class)--H:hover,
+.$(class)--F:focus,
+.$(class)--FW:focus-within,
+.$(class)--A:active {
+  @mixin-content
+}
+}
+
+@define-mixin test $class {
+.$(class) {
+  @mixin-content;
+}
+}
+
+@define-mixin test-wrapper $class {
+@mixin test $(class) {
+  color: red;
+}
+}
+
+@mixin test-wrapper red

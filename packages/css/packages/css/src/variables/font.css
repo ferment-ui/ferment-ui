@@ -5,10 +5,6 @@
   /* NOTE: should be between 16-20px for optimal readability */
   --fs-B: 1rem;
 
-  @for $i from 1 to 6 {
-  --fs-H$(i)-O: {{ font.h$(i)_override.size }};
-  }
-
   /* unless override is set, use typographic scale */
   /* until css pow() function gets more adoption, hack it */
   --fs-S: {{ font.scale }};
@@ -23,62 +19,21 @@
 
   /* family */
   --ff-B: {{ font.body.family }};
-
-  --ff-H: {{ font.heading.family }};
-
-  @for $i from 1 to 6 {
-  --ff-H$(i)-O: {{ font.h$(i)_override.family }};
-  }
-
-  @for $i from 1 to 6 {
-  --ff-H$(i): var(--ff-H$(i)-O, --ff-H);
-  }  
+  --ff-H: {{ font.heading.family }}; 
 
   /* weight */
   --fw-B: {{ font.body.weight }};
-
   --fw-H: {{ font.heading.weight }};
-  @for $i from 1 to 6 {
-  --fw-H$(i)-O: {{ font.h$(i)_override.weight }};
-  }
-
-  @for $i from 1 to 6 {
-  --fw-H$(i): var(--fw-H$(i)-O, --fw-H);
-  }
 
   /* line heights */
   --lh-B: {{ font.body.lineHeight }};
-
   --lh-H: {{ font.heading.lineHeight }};
-  @for $i from 1 to 6 {
-  --lh-H$(i)-O: {{ font.h$(i)_override.lineHeight }};
-  }
-
-  @for $i from 1 to 6 {
-  --lh-H$(i): var(--lh-H$(i)-O, --lh-H);
-  }
   
   /* text-decoration */
   --td-B: {{ font.body.decoration }};
-
   --td-H: {{ font.heading.decoration }};
-  @for $i from 1 to 6 {
-  --td-H$(i)-O: {{ font.h$(i)_override.decoration }};
-  }
-
-  @for $i from 1 to 6 {
-  --td-H$(i): var(--td-H$(i)-O, --td-H);
-  }
 
   /* text-transform */
   --tt-B: {{ font.body.transform }};
-
   --tt-H: {{ font.heading.transform }};
-  @for $i from 1 to 6 {
-  --tt-H$(i)-O: {{ font.h$(i)_override.transform }};
-  }
-
-  @for $i from 1 to 6 {
-  --tt-H$(i): var(--tt-H$(i)-O, --tt-H);
-  }
 }

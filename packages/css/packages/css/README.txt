@@ -18,7 +18,7 @@ Exceptions:
 - use margins for fine-tuning layout between elements, and padding for within an element
 - prefer a block or inline-block with flex's justify-content rather than text-align... it works better with different browsers/language directions
 - if you don't like the default outline, replace it, never just remove it
-- :hover and :focus should nearly always do the same thing (hence the `--pin` in declare.css), but remember to use :active for things like a button press
+- :hover and :focus should nearly always do the same thing (hence the `--P` in declare.css), but remember to use :active for things like a button press
 - only use opacity for a fade in effect
 - transition/animations should really only use opacity and transform for speed and to not cause re-layouts
 
@@ -31,6 +31,8 @@ Exceptions:
 
 - [ ] generate index.css files depending on inclusions and bundling
 - [x] postcss-replace from a config file
+- [ ] replace increments with more descriptive titles (i.e. timing-1 with timing-xs, media-6 with media-xxl, etc.)
+- [ ] replace zeros with actual property value (i.e. visibility-0 with visibility-none, etc)
 - [ ] optional typography override?
 - [ ] optional complement theme?
 - [ ] optional components?

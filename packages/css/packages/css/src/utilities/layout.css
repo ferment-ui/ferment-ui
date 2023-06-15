@@ -20,31 +20,28 @@
   height: calc(100vh - var(--h--b));
 }
 
-.page {
+.L-P {
   max-width: var(--w-P);
   margin-left: auto;
   margin-right: auto;
 
   /* TODO: variables for these */
-  padding-left: var(--S);
-  padding-right: var(--S);
+  padding-left: var(--S-P);
+  padding-right: var(--S-P);
 }
 
-.section {
-  max-width: var(--w-P);
-  margin: auto;
-
-  /* TODO: variables for these */
-  padding: var(--S-section-v) var(--S-section-h);
+.L-G {
+  gap: var(--S-1);
+  display: flex;
+  flex-direction: column;
 }
 
-.flow {
-  max-width: var(--w-P);
-  margin: auto;
-  padding: var(--S-section-v) var(--S-section-h) 0 var(--S-section-h);
+@for $i from 1 to 6 {
+.L-G-$(i) {
+  gap: calc(var(--S-$(i)));
+}
 }
 
-/* Layouts are a combination of positioning plus text align */
 .L-s, .L-ss, .L-sc, .L-se, .L-c, .L-cs, .L-cc, .L-ce, .L-e, .L-es, .L-ec, .L-ee {
   display: flex;
 }

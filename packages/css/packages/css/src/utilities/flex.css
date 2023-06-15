@@ -2,7 +2,7 @@
   display: flex;
 }
 
-.fl-auto > * {
+.fl-a > * {
   flex: 1;
 }
 

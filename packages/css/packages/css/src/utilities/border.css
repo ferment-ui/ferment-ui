@@ -5,10 +5,12 @@
   border: none;
 }
 
-.b, .b--pin:hover, .b--pin:focus, .b--hover:hover, .b--focus:focus, .b--active:active {
+.b {
   border: var(--b);
 }
 
-.b-P, .b-P--pin:hover, .b-P--pin:focus, .b-P--hover:hover, .b-P--focus:focus, .b-P--active:active {
-  border-color: var(--c-P);
+/* use the default border but override color with transparent */
+.b-t {
+  border: var(--b);
+  border-color: transparent; 
 }

@@ -1,0 +1,7 @@
+@mixin state_pseudos b {
+  border: var(--b);
+}
+
+@mixin state_pseudos b-P {
+  border-color: var(--c-P);
+}
