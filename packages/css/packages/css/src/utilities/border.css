@@ -1,16 +1,16 @@
 @import '../variables/border.css';
 @import '../variables/color.css';
 
-.b-0 {
-  border: none;
-}
-
 .b {
   border: var(--b);
 }
 
+.b-0 {
+  border: none;
+}
+
 /* use the default border but override color with transparent */
-.b-t {
+.b-T {
   border: var(--b);
-  border-color: transparent; 
+  border-color: transparent;
 }

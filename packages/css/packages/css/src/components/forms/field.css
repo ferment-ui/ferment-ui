@@ -3,5 +3,9 @@
 }
 
 .field > label {
-  
+  position: relative;
+}
+
+.field + input {
+  position: relative;
 }

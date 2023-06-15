@@ -6,11 +6,12 @@ const { normalizeConfig } = require('./lib/normalize-config.js');
 const config = module.require('./default.config.js');
 const normalizedConfig = normalizeConfig(config);
 
+const production = process.env.NODE_ENV === 'production';
+
 const theme = './default.config.js';
 const from = './src/index.css';
-const to = './dist/index.css';
+const to = `./dist/index.${production ? 'min.' : ''}css`;
 
-const production = process.env.NODE_ENV === 'production';
 
 (async () => {
   const entryFile = await readFile(from, {encoding: 'utf-8'});

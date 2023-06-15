@@ -9,17 +9,3 @@
   @mixin-content
 }
 }
-
-@define-mixin test $class {
-.$(class) {
-  @mixin-content;
-}
-}
-
-@define-mixin test-wrapper $class {
-@mixin test $(class) {
-  color: red;
-}
-}
-
-@mixin test-wrapper red

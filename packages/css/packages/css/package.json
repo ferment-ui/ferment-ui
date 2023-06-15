@@ -1,6 +1,6 @@
 {
-  "name": "create-declare",
-  "version": "0.0.1-alpha.24",
+  "name": "@ferments/css",
+  "version": "0.0.1-alpha.1",
   "description": "Contains the source for the css library",
   "bin": {
     "create-declare": "lib/index.js"

@@ -5,3 +5,7 @@
 @mixin state_pseudos b-P {
   border-color: var(--c-P);
 }
+
+@mixin state_pseudos b-T {
+  border-color: transparent;
+}

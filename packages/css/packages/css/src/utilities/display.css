@@ -21,3 +21,7 @@
 .d-t {
   display: table;
 }
+
+.d-c {
+  display: contents;
+}

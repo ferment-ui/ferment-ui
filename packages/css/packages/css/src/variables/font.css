@@ -2,8 +2,9 @@
 
 :root {
   /* size */
-  /* NOTE: should be between 16-20px for optimal readability */
   --fs-B: 1rem;
+  --fs-S: {{ font.subheading.size }};
+  --fs-P: {{ font.pullQuote.size }};
 
   /* unless override is set, use typographic scale */
   /* until css pow() function gets more adoption, hack it */
@@ -46,4 +47,16 @@
   --tt-H: {{ font.heading.transform }};
   --tt-S: {{ font.subheading.transform }};
   --tt-P: {{ font.pullQuote.transform }};
+
+  /* letter-spacing */
+  --ls-B: {{ font.body.letterSpacing }};
+  --ls-H: {{ font.heading.letterSpacing }};
+  --ls-S: {{ font.subheading.letterSpacing }};
+  --ls-P: {{ font.pullQuote.letterSpacing }};
+
+  /* shadow */
+  --ts-B: {{ font.body.shadow }};
+  --ts-H: {{ font.heading.shadow }};
+  --ts-S: {{ font.subheading.shadow }};
+  --ts-P: {{ font.pullQuote.shadow }};
 }

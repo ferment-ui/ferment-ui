@@ -1,9 +1,14 @@
 {
-  "name": "css",
+  "name": "@ferments/css",
+  "private": true,
   "version": "1.0.0",
   "description": "Contains the packages for the css library, the configuration widget, and the browser extension",
   "workspaces": [
     "packages/*"
+  ],
+  "main": "packages/css/dist/index.min.css",
+  "files": [
+    "packages/css/src/"
   ],
   "keywords": [],
   "author": "alexgagnon",

@@ -5,6 +5,8 @@ body, .f-B {
   font-style: var(--fi-B);
   text-decoration: var(--td-B);
   text-transform: var(--tt-B);
+  letter-spacing: var(--ls-B);
+  text-shadow: var(--ts-B);
 }
 
 /* BODY */
@@ -18,6 +20,14 @@ body, .f-B {
 
 .lh-B {
   line-height: var(--lh-B);
+}
+
+.ls-B {
+  letter-spacing: var(--ls-B);
+}
+
+.ts-B {
+  text-shadow: var(--ts-B);
 }
 
 /* HEADINGS */
@@ -59,6 +69,14 @@ h$(1), .h$(1) {
 
 .tt-H {
   text-transform: var(--tt-H);
+}
+
+.ls-H {
+  letter-spacing: var(--ls-H);
+}
+
+.ts-H {
+  text-shadow: var(--ts-H);
 }
 
 .fw-b {

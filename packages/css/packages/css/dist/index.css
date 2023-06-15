@@ -284,22 +284,8 @@ h1, h2, h3, h4, h5, h6, ul, p {
   margin: 0;
 }
 
-:root {
-  --A-0: 0;
-  --A-1: .2s;
-  --A-2: .25s;
-  --A-3: .3s;
-  --A-4: .35s;
-  --A-5: .4s;
-  --A-6: .45s;
-
-  /* @for $i in "in", "out", "in-out" {
-  --A-$(i): {{ timing.$(i) }};
-  } */
-
-  --A-in: var(--A-in);
-  --A-out: var(--A-out);
-  --A-in-out: var(--A-in-out);
+ul {
+  list-style: none inside;
 }
 
 :root {
@@ -441,8 +427,9 @@ h1, h2, h3, h4, h5, h6, ul, p {
 
 :root {
   /* size */
-  /* NOTE: should be between 16-20px for optimal readability */
   --fs-B: 1rem;
+  --fs-S: unset;
+  --fs-P: unset;
 
   /* unless override is set, use typographic scale */
   /* until css pow() function gets more adoption, hack it */
@@ -459,22 +446,44 @@ h1, h2, h3, h4, h5, h6, ul, p {
   /* family */
   --ff-B: sans-serif;
   --ff-H: unset; 
+  --ff-S: unset;
+  --ff-P: unset;
 
   /* weight */
   --fw-B: normal;
   --fw-H: unset;
+  --fw-S: unset;
+  --fw-P: unset;
 
   /* line heights */
   --lh-B: 1;
   --lh-H: 1.8;
+  --lh-S: unset;
+  --lh-P: unset;
   
   /* text-decoration */
   --td-B: unset;
   --td-H: unset;
+  --td-S: unset;
+  --td-P: unset;
 
   /* text-transform */
   --tt-B: unset;
   --tt-H: unset;
+  --tt-S: unset;
+  --tt-P: unset;
+
+  /* letter-spacing */
+  --ls-B: unset;
+  --ls-H: unset;
+  --ls-S: unset;
+  --ls-P: unset;
+
+  /* shadow */
+  --ts-B: unset;
+  --ts-H: unset;
+  --ts-S: unset;
+  --ts-P: unset;
 }
 
 :root {
@@ -496,21 +505,21 @@ h1, h2, h3, h4, h5, h6, ul, p {
   --z-6: 6000
 }
 
-.b-0 {
-  border: none;
-}
-
 .b {
   border: 1px solid currentColor;
   border: var(--b);
 }
 
+.b-0 {
+  border: none;
+}
+
 /* use the default border but override color with transparent */
 
-.b-t {
+.b-T {
   border: 1px solid currentColor;
   border: var(--b);
-  border-color: transparent; 
+  border-color: transparent;
 }
 
 .c-D-P {
@@ -585,6 +594,10 @@ h1, h2, h3, h4, h5, h6, ul, p {
   display: table;
 }
 
+.d-c {
+  display: contents;
+}
+
 .fl, [class^="fl-"], [class*=" fl-"] {
   display: flex;
 }
@@ -614,6 +627,10 @@ body, .f-B {
           text-decoration: var(--td-B);
   text-transform: unset;
   text-transform: var(--tt-B);
+  letter-spacing: unset;
+  letter-spacing: var(--ls-B);
+  text-shadow: unset;
+  text-shadow: var(--ts-B);
 }
 
 /* BODY */
@@ -631,6 +648,16 @@ body, .f-B {
 .lh-B {
   line-height: 1;
   line-height: var(--lh-B);
+}
+
+.ls-B {
+  letter-spacing: unset;
+  letter-spacing: var(--ls-B);
+}
+
+.ts-B {
+  text-shadow: unset;
+  text-shadow: var(--ts-B);
 }
 
 /* HEADINGS */
@@ -767,6 +794,16 @@ h6, .h6 {
   text-transform: var(--tt-H);
 }
 
+.ls-H {
+  letter-spacing: unset;
+  letter-spacing: var(--ls-H);
+}
+
+.ts-H {
+  text-shadow: unset;
+  text-shadow: var(--ts-H);
+}
+
 .fw-b {
   font-weight: bold;
 }
@@ -844,10 +881,6 @@ h6, .h6 {
 
 .h-vp {
   height: 100vh;
-}
-
-.h-vp-wo-banner {
-  height: calc(100vh - var(--h--b));
 }
 
 .L-P {
@@ -1591,6 +1624,15 @@ body {
 .b-P--A:active {
   border-color: var(--c-P)}
 
+.b-T--P:hover,
+.b-T--P:focus,
+.b-T--P:focus-within,
+.b-T--H:hover,
+.b-T--F:focus,
+.b-T--FW:focus-within,
+.b-T--A:active {
+  border-color: transparent}
+
 .c-D-P--P:hover,
 .c-D-P--P:focus,
 .c-D-P--P:focus-within,
@@ -1752,6 +1794,16 @@ body {
 
 .A-flip > * > :nth-child(2) {
   transform: rotateY(180deg);
+}
+
+:root {
+  --A-0: 0;
+  --A-1: .2s;
+  --A-2: .25s;
+  --A-3: .3s;
+  --A-4: .35s;
+  --A-5: .4s;
+  --A-6: .45s
 }
 
 .bs-0--P:hover,

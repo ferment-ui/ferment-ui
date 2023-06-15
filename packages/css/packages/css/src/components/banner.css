@@ -32,9 +32,7 @@ html {
 
 [role=banner] > ul {
   width: 100%;
-  display: grid;
-  grid-template-areas: 
-    'logo contact links';
+  display: flex;
 }
 
 [role=banner] li {

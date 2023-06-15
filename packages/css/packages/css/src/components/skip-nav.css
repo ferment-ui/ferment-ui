@@ -1,16 +1,16 @@
-#skip-nav {
+.skip-nav {
   position: absolute;
   text-align: center;
   width: 100%;
 }
 
-#skip-nav > a {
+.skip-nav > a {
   margin: auto;
   z-index: var(--z-6);
   text-align: center;
 }
 
-#skip-nav > a:focus {
+.skip-nav > a:focus {
   position: static;
   width: auto;
   height: auto;
