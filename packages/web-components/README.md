@@ -27,6 +27,7 @@ A collection of bare-bones, accessibility-focused web components. They are highl
 - [ ] Icon Button
 - [ ] Listbox
 - [ ] Menu
+- [ ] Notification
 - [ ] Popup
 - [ ] Progress
 - [ ] QR Code
