@@ -9,6 +9,7 @@ A collection of bare-bones, accessibility-focused web components. They are highl
 - [ ] Alert
 - [ ] Avatar
 - [ ] Badge
+- [ ] Banner
 - [ ] Breadcrumb
 - [ ] Button
 - [ ] Card
