@@ -1,6 +1,6 @@
-# Declare.css
+# Ferments.css
 
-The css files that make up Declare.css.
+A low-level CSS framework for building websites. Used in the accompanying web components framework, Ferments.wc
 
 Exceptions:
 - font-style has acronym `fi`, since `fs` is for the more common font-size
