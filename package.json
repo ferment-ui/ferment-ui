@@ -7,12 +7,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["CSS Framework", "Web Components", "Design System", "Component Library"],
+  "keywords": ["CSS Framework", "Web Components", "Design System", "Component Library", "Accessible", "Customizable"],
   "author": "",
   "license": "ISC",
   "workspaces": [
     "packages/css",
-    "packages/web-components",
-    "packages/site"
+    "packages/dev-tools",
+    "packages/site",
+    "packages/web-components"
   ]
 }

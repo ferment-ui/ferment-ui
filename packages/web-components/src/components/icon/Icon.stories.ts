@@ -1,5 +1,3 @@
-import './Icon.stories.scss';
-
 export default {
   title: 'Icon',
   component: 'dc-icon',

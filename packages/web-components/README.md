@@ -22,23 +22,29 @@ A collection of bare-bones, accessibility-focused web components. They are highl
 - [ ] Divider
 - [ ] Drawer
 - [ ] Dropdown
+- [ ] FAQ
 - [ ] Grid
 - [ ] Icon
 - [ ] Icon Button
 - [ ] Listbox
 - [ ] Menu
 - [ ] Notification
+- [ ] Pagination
 - [ ] Popup
 - [ ] Progress
 - [ ] QR Code
+- [ ] Quote
 - [ ] Split Panes
 - [ ] Tabs
+- [ ] Table
+- [ ] Toolbar
 - [ ] Tooltip
 - [ ] Tree
 - [ ] Forms
 	- [ ] Checkbox
 	- [ ] Color
 	- [ ] Date
+  - [ ] Email
 	- [ ] File
 	- [ ] Input
 	- [ ] Password
@@ -47,4 +53,5 @@ A collection of bare-bones, accessibility-focused web components. They are highl
 	- [ ] Rating
 	- [ ] Select
 	- [ ] Switch
+  - [ ] Tel
 	- [ ] Textarea
