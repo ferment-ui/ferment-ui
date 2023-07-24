@@ -3,8 +3,8 @@
   "name": "Ferment UI",
   "description": "Ferment UI CSS Framework customizer",
   "version": "1.0",
-  "action": {
-    "default_popup": "index.html",
-    "default_icon": "icon.png"
-  }
+  "devtools_page": "index.html",
+  "permissions": [
+    "tabs"
+  ]
 }
