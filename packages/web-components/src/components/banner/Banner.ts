@@ -1,8 +1,8 @@
 import { LitElement, html, css } from 'lit';
 import { customElement } from 'lit/decorators.js'
 
-@customElement('dc-banner')
-export class DCBanner extends LitElement {
+@customElement('fui-banner')
+export class FUIBanner extends LitElement {
     static styles = [
         css`
             :host {
@@ -22,6 +22,6 @@ export class DCBanner extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'dc-banner': DCBanner;
+    'fui-banner': FUIBanner;
   }
 }

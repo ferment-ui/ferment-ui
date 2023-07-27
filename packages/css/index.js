@@ -7,12 +7,14 @@ const { normalizeConfig } = require('./lib/normalize-config.js');
 const config = module.require(join(__dirname, 'src', 'default.config.js'));
 const normalizedConfig = normalizeConfig(config);
 
+const filename = "ferment-ui";
+const base = "default";
+
 const production = process.env.NODE_ENV === 'production';
 
 const theme = join(__dirname, 'src', 'default.config.js');
 const from = './src/index.css';
-const to = `./dist/index.${production ? 'min.' : ''}css`;
-
+const to = `./dist/${filename}-${base}.${production ? 'min.' : ''}css`;
 
 (async () => {
   const entryFile = await readFile(from, {encoding: 'utf-8'});

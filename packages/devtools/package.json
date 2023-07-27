@@ -1,0 +1,25 @@
+{
+  "name": "@ferment-ui/devtools",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "wireit"
+  },
+  "wireit": {
+    "dev": {
+      "dependencies": [
+        "../web-components:build:prod",
+        "../css:build"
+      ],
+      "command": "cp ../web-components/dist/ferment-ui.js ../css/dist/ferment-ui-default.min.css ."
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "wireit": "^0.10.0"
+  }
+}

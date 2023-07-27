@@ -1,13 +1,13 @@
 import { html, css, TemplateResult, PropertyValueMap } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js'
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { DCBaseElement } from '../../BaseElement.js';
+import { FUIBaseElement } from '../../BaseElement.js';
 import { button } from '../../styles.js';
 import { join } from '../../utils.js';
 import { Faq } from '../../global';
 
-@customElement('dc-faq')
-export class DCFaq extends DCBaseElement {
+@customElement('fui-faq')
+export class FUIFaq extends FUIBaseElement {
   static styles = [
     button,
     css`
@@ -109,6 +109,6 @@ export class DCFaq extends DCBaseElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'dc-faq': DCFaq;
+    'fui-faq': FUIFaq;
   }
 }

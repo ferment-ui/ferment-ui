@@ -9,3 +9,11 @@ export interface Faq {
   content: string;
   tags: string[];
 }
+
+export enum Variant {
+  SUCCESS = "success",
+  WARNING = "warning",
+  ERROR = "error",
+  INFO = "info",
+  DEFAULT = "default"
+}

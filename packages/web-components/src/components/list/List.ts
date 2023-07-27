@@ -1,8 +1,8 @@
 import { LitElement, html, css, TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
 
-@customElement('dc-list')
-export class DCList extends LitElement {
+@customElement('fui-list')
+export class FUIList extends LitElement {
   static styles = [
     css`
       :host {
@@ -28,6 +28,6 @@ export class DCList extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'dc-list': DCList;
+    'fui-list': FUIList;
   }
 }

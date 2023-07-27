@@ -1,8 +1,8 @@
 import { LitElement, html, css } from 'lit';
 import { customElement } from 'lit/decorators.js'
 
-@customElement('dc-loading')
-export class DCLoading extends LitElement {
+@customElement('fui-loading')
+export class FUILoading extends LitElement {
     static styles = [
         css`
             :host {
@@ -14,4 +14,10 @@ export class DCLoading extends LitElement {
     render() {
         return html`<div>Loading...</div>`;
     }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'fui-loading': FUILoading;
+  }
 }

@@ -9,3 +9,11 @@ browser.devtools.panels.create(
     newPanel.onHidden.addListener(unInitialisePanel);
   }
 );
+
+function initialisePanel(panelWindow) {
+  // code invoked on panel creation
+}
+
+function unInitialisePanel(panelWindow) {
+  // code invoked on panel destruction
+}

@@ -1,5 +1,5 @@
 {
-  "name": "@ferments/web-components",
+  "name": "@ferment-ui/web-components",
   "version": "0.0.1-alpha.1",
   "description": "",
   "main": "dist/index.js",
@@ -10,6 +10,8 @@
   ],
   "scripts": {
     "build": "wireit",
+    "build:watch": "wireit",
+    "build:prod": "wireit",
     "storybook": "wireit",
     "dev": "wireit",
     "test": "wireit",
@@ -22,11 +24,20 @@
         "src/**/*.ts"
       ],
       "output": [
-        "out-tsc/**/*.*"
+        "dist/**/*.*"
       ]
     },
     "build:watch": {
       "command": "npm run build --watch"
+    },
+    "build:prod": {
+      "dependencies": [
+        "build"
+      ],
+      "command": "rollup -c",
+      "output": [
+        "dist/ferment-ui.js"
+      ]
     },
     "storybook": {
       "command": "storybook dev -p 6006",
@@ -69,6 +80,8 @@
   },
   "devDependencies": {
     "@lit-labs/testing": "^0.2.1",
+    "@rollup/plugin-commonjs": "^25.0.3",
+    "@rollup/plugin-node-resolve": "^15.1.0",
     "@storybook/addon-essentials": "^7.0.2",
     "@storybook/addon-links": "^7.0.2",
     "@storybook/blocks": "^7.0.2",
@@ -77,6 +90,7 @@
     "jest": "^29.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rollup": "^3.26.3",
     "storybook": "^7.0.2",
     "typescript": "^5.0.4",
     "wireit": "^0.9.5"

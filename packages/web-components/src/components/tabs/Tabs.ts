@@ -2,8 +2,8 @@ import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { mod } from '../../utils.js';
 
-@customElement(`dc-tabs`)
-export class DCTabs extends LitElement {
+@customElement(`fui-tabs`)
+export class FUITabs extends LitElement {
   static override styles = css`
     .tabs {
       display: flex;
@@ -218,6 +218,6 @@ export class DCTabs extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'dc-tabs': DCTabs;
+    'fui-tabs': FUITabs;
   }
 }

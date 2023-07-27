@@ -7,8 +7,8 @@ import { styleMap } from 'lit/directives/style-map.js';
  * @element dc-card
  * @prop {String} layout - Position of the layout element. Can be 'left', 'right', 'top', or 'bottom'. Defaults to 'left'.
  */
-@customElement('dc-card')
-export class DCCard extends LitElement {
+@customElement('fui-card')
+export class FUICard extends LitElement {
   static styles = [
     css`
       :host {
@@ -100,6 +100,6 @@ export class DCCard extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'dc-card': DCCard;
+    'fui-card': FUICard;
   }
 }

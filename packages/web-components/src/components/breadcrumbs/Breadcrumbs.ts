@@ -10,8 +10,8 @@ import { reset } from '../../styles.js';
  * The default separator is '/'. To change it, set the `--breadcrumb-separator` CSS variable on an ancestor element (i.e. on the :root element for all breadcrumb
  * instances, and on the host element for a specific instance).
  */
-@customElement('dc-breadcrumbs')
-export class DCBreadcrumbs extends LitElement {
+@customElement('fui-breadcrumbs')
+export class FUIBreadcrumbs extends LitElement {
     static styles = [
         reset,
         css`
@@ -49,6 +49,6 @@ export class DCBreadcrumbs extends LitElement {
 
 declare global {
 interface HTMLElementTagNameMap {
-  'dc-breadcrumbs': DCBreadcrumbs;
+  'fui-breadcrumbs': FUIBreadcrumbs;
 }
 }

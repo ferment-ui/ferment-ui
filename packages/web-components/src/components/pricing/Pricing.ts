@@ -2,8 +2,8 @@ import { LitElement, html, css, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
-@customElement('dc-pricing')
-export class DCPricing extends LitElement {
+@customElement('fui-pricing')
+export class FUIPricing extends LitElement {
   static styles = [
     css`
       :host {
@@ -46,6 +46,6 @@ export class DCPricing extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'dc-pricing': DCPricing;
+    'fui-pricing': FUIPricing;
   }
 }
