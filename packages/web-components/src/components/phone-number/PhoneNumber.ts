@@ -6,8 +6,8 @@ import { reverse } from '../../utils.js';
 /**
  *   Renders an telephone number while obfuscating it from bots
  */
-@customElement('fui-tel')
-export class FUITel extends LitElement {
+@customElement('fui-phone-number')
+export class FUIPhoneNumber extends LitElement {
     static styles = [
         css`
             :host {
@@ -56,6 +56,6 @@ export class FUITel extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'fui-tel': FUITel;
+    'fui-phone-number': FUIPhoneNumber;
   }
 }

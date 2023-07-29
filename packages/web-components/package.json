@@ -73,6 +73,7 @@
     "@floating-ui/dom": "^1.2.1",
     "@lit-labs/task": "^2.1.0",
     "@lit-labs/virtualizer": "^2.0.0",
+    "@open-wc/lit-helpers": "^0.5.1",
     "lodash": "^4.17.21"
   },
   "peerDependencies": {

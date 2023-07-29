@@ -1,5 +1,5 @@
 import { html } from 'lit-html';
-import './Email';
+import './EmailAddress';
 
 export default {
   title: 'Email',

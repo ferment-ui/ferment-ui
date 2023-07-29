@@ -6,8 +6,8 @@ import { reverse } from '../../utils.js';
 /**
  *   Renders an email address while obfuscating it from bots
  */
-@customElement('fui-email')
-export class FUIEmail extends LitElement {
+@customElement('fui-email-address')
+export class FUIEmailAddress extends LitElement {
     static styles = [
         css`
             :host {
@@ -56,6 +56,6 @@ export class FUIEmail extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'fui-email': FUIEmail;
+    'fui-email-address': FUIEmailAddress;
   }
 }

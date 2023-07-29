@@ -1,9 +1,9 @@
 import { html } from 'lit-html';
-import './Tel';
+import './PhoneNumber';
 
 export default {
-  title: 'Tel',
-  component: 'dc-tel',
+  title: 'Phone Number',
+  component: 'fui-phone-number',
   tags: ['autodocs'],
   argTypes: {
     area: {
@@ -33,7 +33,7 @@ export const Default = {
 };
 
 export const Slot = {
-  render: ({area, number, tel}) => html`<dc-tel area=${area} number=${number} tel=${tel}>Call</dc-tel>`,
+  render: ({area, number, tel}) => html`<fui-phone-number area=${area} number=${number} tel=${tel}>Call</fui-phone-number>`,
   args: {
     area: '123'.split("").reverse().join(""),
     number: '4567890'.split("").reverse().join(""),

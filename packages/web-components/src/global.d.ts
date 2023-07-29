@@ -3,6 +3,11 @@ export interface Link {
   href: string;
 }
 
+export interface Option {
+  text: string;
+  value?: string;
+}
+
 export interface Faq {
   key?: string;
   title: string;

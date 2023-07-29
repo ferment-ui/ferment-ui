@@ -8,9 +8,19 @@
   <script type='module' src="ferment-ui.js"></script>
 </head>
 <body>
-  <fui-card>
-    <h2 slot="header">Colors</h2>
-    <p>This is a card element</p>
-  </fui-card>
+  <fui-select>
+    <option value="1">Option 1</option>
+  </fui-select>
+  <fui-tabs>
+    <header slot="tab">Color</header>
+    <div slot="panel">
+      <p>This is a thing</p>
+    </div>
+
+    <header slot="tab">Typography</header>
+    <div slot="panel">
+      <p>Other thing</p>
+    </div>
+  </fui-tabs>
 </body>
 </html>
