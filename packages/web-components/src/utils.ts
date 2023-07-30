@@ -3,7 +3,7 @@ export function mod(a: number, b: number) {
 }
 
 export function getId() {
-  return new Date().getTime().toString(36);;
+  return `${Math.floor(Math.random() * 100)}${new Date().getTime().toString(36)}`;
 }
 
 export function equalsIgnoreCase(a: string | undefined, b: string | undefined) {

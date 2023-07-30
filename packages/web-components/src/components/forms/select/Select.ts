@@ -25,12 +25,11 @@ export class FUISelect extends FUIField {
   unselectedOptionRef: Ref<HTMLOptionElement> = createRef();
 
   // Form controls usually expose a "value" property
-  get value() { const value = this.native
+  get value() { return this.native
     ? this.multiple
       ? this.selectRef.value?.selectedOptions
       : this.selectRef.value?.value
-    : this._value; 
-    return value;
+    : null; 
   }
   set value(v) { 
     if (!this.multiple && this.selectRef.value != null) {
@@ -45,17 +44,13 @@ export class FUISelect extends FUIField {
     this._internals.setFormValue(null);
   }
 
-  onChange() {
-    this._internals.setFormValue(this.value);
-  }
-
   render() {
     const options: Option[] = this.options.map((option) => typeof option === 'string' ? { text: option } : option);
 
     return html`
       <div class='field'>
         ${this.native
-          ? html`<select ${ref(this.selectRef)} id=${this.id} name=${this.name} ${ifDefined(this.multiple)} @change=${this.onChange}>
+          ? html`<select ${ref(this.selectRef)} id=${this.id} name=${this.name} ${ifDefined(this.multiple)} @change=${this.setValue}>
             <option ${ref(this.unselectedOptionRef)} disabled selected>${this.unselectedText}</option>
             ${map(options, (option) => html`<option value=${ifDefined(option.value)}>${option.text}</option>`)}
           </select>`

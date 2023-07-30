@@ -1,30 +1,32 @@
-export interface Link {
-  text: string;
-  href: string;
+import { html, css } from 'lit';
+import { customElement } from 'lit/decorators.js'
+import { FUIField } from '../field/Field';
+import '../select/Select';
+
+@customElement('fui-country')
+export class FUICountry extends FUIField {
+  static styles = [
+    css`
+      :host {
+        display: block;
+      }
+    `
+  ];
+
+  render() {
+    return html`
+      <fui-select label=${this.label ?? "Country"} name=${this.name} .options=${Object.entries(Country).map(([code, country]) => ({ text: country, value: code, id: code }))}></fui-select>
+    `;
+  }
 }
 
-export interface Option {
-  text: string;
-  value?: string;
-  id?: string;
+declare global {
+  interface HTMLElementTagNameMap {
+    'fui-country': FUICountry;
+  }
 }
 
-export interface Faq {
-  key?: string;
-  title: string;
-  content: string;
-  tags: string[];
-}
-
-export enum Variant {
-  SUCCESS = "success",
-  WARNING = "warning",
-  ERROR = "error",
-  INFO = "info",
-  DEFAULT = "default"
-}
-
-export enum C {
+export enum Country {
   AF = 'Afghanistan',
   AX = 'AlandIslands',
   AL = 'Albania',

@@ -35,17 +35,17 @@ export class FUIInput extends FUIInputField {
     this._internals.setFormValue(this._initialValue);
   }
   
-  onInput(event: InputEvent) {
-    this._value = (event.target as HTMLInputElement)?.value;
-    if (this._value == null) return;
-    if (!this.matches(':disabled') && this.hasAttribute('required') &&
-        this._value.length < 5)
-      this._internals.setValidity({customError: true}, 'Use at least 5 characters.',);
-    else
-      this._internals.setValidity({});
+  // onInput(event: InputEvent) {
+  //   this._value = (event.target as HTMLInputElement)?.value;
+  //   if (this._value == null) return;
+  //   if (!this.matches(':disabled') && this.hasAttribute('required') &&
+  //       this._value.length < 5)
+  //     this._internals.setValidity({customError: true}, 'Use at least 5 characters.',);
+  //   else
+  //     this._internals.setValidity({});
     
-    this._internals.setFormValue(this._value);
-  }
+  //   this._internals.setFormValue(this._value);
+  // }
 
   formResetCallback() {
     if (this.inputRef.value != null) {
@@ -55,9 +55,9 @@ export class FUIInput extends FUIInputField {
   }
 
   render() {
-    return html`<div class="field" ${spread(this.fieldAttrs)}>
-      <input ${ref(this.inputRef)} id=${this.id} name=${this.name} value=${ifDefined(this._initialValue)} @input=${this.onInput} ${spread(this.inputAttrs)} />
-      <slot name="label"><label part="label" for="name">${this.label}</label></slot>
+    return html`<div part="field" ${spread(this.fieldAttrs)}>
+      <input ${ref(this.inputRef)} part="input" id=${this.id} name=${this.name} value=${ifDefined(this._initialValue)} @input=${this.setValue} ${spread(this.inputAttrs)} />
+      <slot name="label"><label part="label" for=${this.name}>${this.label}</label></slot>
     </div>`;
   }
 }

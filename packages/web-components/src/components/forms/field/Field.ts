@@ -1,5 +1,5 @@
 import { LitElement, css, html } from 'lit';
-import { customElement, state, property } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 
 @customElement('fui-field')
 export class FUIField extends LitElement {
@@ -16,12 +16,17 @@ export class FUIField extends LitElement {
   @property({ type: Object }) fieldAttrs: { [key: string]: unknown } = {};
   @property({ type: String }) name: string | undefined;
   @property({ type: String}) label: string | undefined;
-  @state() _value: any;
+  get value() { throw new Error('Not implemented');}
+  set value(_value: any) { throw new Error('Not implemented')};
   _internals: ElementInternals;
 
   constructor() {
     super();
     this._internals = this.attachInternals();
+  }
+
+  setValue() {
+    this._internals.setFormValue(this.value);
   }
 
   // The following properties and methods aren't strictly required,

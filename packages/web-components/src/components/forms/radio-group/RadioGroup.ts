@@ -1,9 +1,9 @@
 import { css, html } from 'lit';
 import { customElement, property, queryAll } from 'lit/decorators.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { map } from 'lit/directives/map.js';
 import { Option } from '../../../global.js';
 import { FUIInputField } from '../field/InputField';
+import { getId } from '../../../utils.js';
 
 @customElement('fui-radio-group')
 export class FUIRadioGroup extends FUIInputField {
@@ -20,7 +20,7 @@ export class FUIRadioGroup extends FUIInputField {
 
   // Form controls usually expose a "value"  property
   get value(): string { return (this.shadowRoot?.querySelector('input:checked') as HTMLInputElement)?.value }
-  set value(v) { this._value = v as string; }
+  // set value(v) { this._value = v as string; }
 
   formResetCallback() {
     if (this.inputs != null) {
@@ -31,9 +31,12 @@ export class FUIRadioGroup extends FUIInputField {
   render() {
     const options: Option[] = this.options.map((option) => typeof option === 'string' ? { text: option } : option);
 
-    return html`<fieldset>
+    return html`<fieldset @change=${this.setValue}>
       <slot name="legend"><legend part="legend">${this.label}</legend></slot>
-      ${map(options, (option) => html`<div class='field'><input type="radio" value=${ifDefined(option.value)} id=${this.id} name=${this.name} /><label for=${this.id}>${option.text}</label></div>`)}
+      ${map(options, (option) => {
+        const id = option.id ?? getId();
+        return html`<div class='field'><input type="radio" value=${option.value ?? option.text} id=${id} name=${this.name} /><label for=${id}>${option.text}</label></div>`;
+      })}
     </fieldset>`;
   }
 }
