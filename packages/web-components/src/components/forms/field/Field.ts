@@ -2,7 +2,7 @@ import { LitElement, css, html } from 'lit';
 import { customElement, state, property } from 'lit/decorators.js';
 
 @customElement('fui-field')
-export class Field extends LitElement {
+export class FUIField extends LitElement {
   static styles = [
     css`
       :host {
@@ -13,7 +13,9 @@ export class Field extends LitElement {
 
   static formAssociated = true;
 
+  @property({ type: Object }) fieldAttrs: { [key: string]: unknown } = {};
   @property({ type: String }) name: string | undefined;
+  @property({ type: String}) label: string | undefined;
   @state() _value: any;
   _internals: ElementInternals;
 
@@ -33,19 +35,6 @@ export class Field extends LitElement {
 
   checkValidity() { return this._internals.checkValidity(); }
   reportValidity() {return this._internals.reportValidity(); }
-
-  formAssociatedCallback(/*nullableForm*/) {
-    console.log('Form associated.');
-  }
-
-  formDisabledCallback(/*disabled*/) {
-    console.log('Form disabled');
-  }
-
-  formResetCallback() {
-    console.log('reset');
-    this._value = '';
-  }
 
   render() {
     return html`<div class="field"><slot></slot></div>`

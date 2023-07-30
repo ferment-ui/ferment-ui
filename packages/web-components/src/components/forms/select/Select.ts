@@ -1,12 +1,13 @@
 import { html, css } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js'
+import { customElement, property } from 'lit/decorators.js'
+import { FUIField } from '../field/Field.js';
+import { Ref, createRef, ref } from 'lit/directives/ref.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { map } from 'lodash';
+import { map } from 'lit/directives/map.js';
 import { Option } from '../../../global.js';
-import { Field } from '../field/Field.js';
 
 @customElement('fui-select')
-export class FUISelect extends Field {
+export class FUISelect extends FUIField {
   static styles = [
     css`
       :host {
@@ -15,19 +16,37 @@ export class FUISelect extends Field {
     `
   ];
 
-  @property({ type: String }) name: string | undefined;
   @property({ type: String }) label: string = '';
   @property({ type: Array }) options: string[] | Option[] = [];
   @property({ type: Boolean }) native: boolean = true;
   @property({ type: Boolean }) multiple: boolean = false;
   @property({ type: String }) unselectedText: string = "---";
+  selectRef: Ref<HTMLSelectElement> = createRef();
+  unselectedOptionRef: Ref<HTMLOptionElement> = createRef();
 
-  @query('option:first-child') firstOption?: HTMLOptionElement;
+  // Form controls usually expose a "value" property
+  get value() { const value = this.native
+    ? this.multiple
+      ? this.selectRef.value?.selectedOptions
+      : this.selectRef.value?.value
+    : this._value; 
+    return value;
+  }
+  set value(v) { 
+    if (!this.multiple && this.selectRef.value != null) {
+      this.selectRef.value.value = v as string;
+    }
+  }
 
   formResetCallback(): void {
-    if (this.firstOption != null) {
-      this.firstOption.selected = true;
+    if (this.unselectedOptionRef.value != null) {
+      this.unselectedOptionRef.value.selected = true;
     }
+    this._internals.setFormValue(null);
+  }
+
+  onChange() {
+    this._internals.setFormValue(this.value);
   }
 
   render() {
@@ -36,13 +55,13 @@ export class FUISelect extends Field {
     return html`
       <div class='field'>
         ${this.native
-          ? html`<select id=${this.id} name=${this.name} ${ifDefined(this.multiple)}>
-            <option disabled selected>${this.unselectedText}</option>
+          ? html`<select ${ref(this.selectRef)} id=${this.id} name=${this.name} ${ifDefined(this.multiple)} @change=${this.onChange}>
+            <option ${ref(this.unselectedOptionRef)} disabled selected>${this.unselectedText}</option>
             ${map(options, (option) => html`<option value=${ifDefined(option.value)}>${option.text}</option>`)}
           </select>`
           : ''
         }
-        <label for=${this.id}><slot name="label">${this.label}</slot></label>
+        <slot name="label"><label part="label" for=${this.id}>${this.label}</label></slot>
       </div>
     `;
   }
