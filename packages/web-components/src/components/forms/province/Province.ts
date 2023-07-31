@@ -19,7 +19,7 @@ export class FUIProvince extends FUIField {
   @property({ converter: (value) => {
     const country = Country[value as keyof typeof Country];
     return country;
-  }}) country?: string;
+  }}) country?: Country;
 
   get options(): Option[] {
     if (this.country == null) return [];
