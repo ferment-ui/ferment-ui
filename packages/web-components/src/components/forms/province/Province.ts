@@ -17,18 +17,19 @@ export class FUIProvince extends FUIField {
 
   // enforce a valid country code when converting from attribute to property
   @property({ converter: (value) => {
-    const country = value as unknown as Country;
+    const country = Country[value as keyof typeof Country];
     return country;
   }}) country?: string;
 
   get options(): Option[] {
     if (this.country == null) return [];
     switch(this.country) {
-      case 'CA':
+      case Country.CA:
         return Object.entries(Provinces).map(([code, province]) => ({ text: province, value: code, id: code }));
-      case 'US':
+      case Country.US:
         return Object.entries(States).map(([code, state]) => ({ text: state, value: code, id: code }));
       default:
+        console.log("No matching country code for", this.country);
         return [];
     }
   }
