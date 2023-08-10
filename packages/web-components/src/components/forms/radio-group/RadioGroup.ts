@@ -2,11 +2,11 @@ import { css, html } from 'lit';
 import { customElement, property, queryAll } from 'lit/decorators.js';
 import { map } from 'lit/directives/map.js';
 import { Option } from '../../../global.js';
-import { FUIInputField } from '../field/InputField';
+import { FUIFormCheckField } from '../FormCheckField.js';
 import { getId } from '../../../utils.js';
 
 @customElement('fui-radio-group')
-export class FUIRadioGroup extends FUIInputField {
+export class FUIRadioGroup extends FUIFormCheckField {
   static styles = [
     css`
       :host {

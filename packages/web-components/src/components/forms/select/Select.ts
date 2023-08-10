@@ -1,13 +1,13 @@
 import { html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
-import { FUIField } from '../field/Field.js';
+import { FUIFormField } from '../FormField';
 import { Ref, createRef, ref } from 'lit/directives/ref.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { map } from 'lit/directives/map.js';
 import { Option } from '../../../global.js';
 
 @customElement('fui-select')
-export class FUISelect extends FUIField {
+export class FUISelect extends FUIFormField {
   static styles = [
     css`
       :host {

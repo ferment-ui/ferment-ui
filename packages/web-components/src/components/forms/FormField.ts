@@ -1,8 +1,7 @@
-import { LitElement, css, html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { LitElement, css } from 'lit';
+import { property } from 'lit/decorators.js';
 
-@customElement('fui-field')
-export class FUIField extends LitElement {
+export class FUIFormField extends LitElement {
   static styles = [
     css`
       :host {
@@ -16,6 +15,10 @@ export class FUIField extends LitElement {
   @property({ type: Object }) fieldAttrs: { [key: string]: unknown } = {};
   @property({ type: String }) name: string | undefined;
   @property({ type: String}) label: string | undefined;
+  @property({ type: Boolean }) required = false;
+  @property({ type: Boolean }) disabled = false;
+  @property({ type: String }) hint: string | undefined;
+
   get value() { throw new Error('Not implemented');}
   set value(_value: any) { throw new Error('Not implemented')};
   _internals: ElementInternals;
@@ -25,7 +28,7 @@ export class FUIField extends LitElement {
     this._internals = this.attachInternals();
   }
 
-  setValue() {
+  updateFormValue() {
     this._internals.setFormValue(this.value);
   }
 
@@ -40,8 +43,4 @@ export class FUIField extends LitElement {
 
   checkValidity() { return this._internals.checkValidity(); }
   reportValidity() {return this._internals.reportValidity(); }
-
-  render() {
-    return html`<div class="field"><slot></slot></div>`
-  }
 }

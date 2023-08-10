@@ -35,18 +35,6 @@ export const Default = {
       minlength: 1,
       maxlength: 10,
       pattern: '[a-z]*',
-      placeholder: 'Placeholder',
     }
   }
 };
-
-// NOTE: slots don't work because option tags must have a select tag as a direct parent
-
-// export const Slot = {
-//   render: ({id, name, label}) => html`<fui-select .id=${id} .name=${name} .label=${label}><option>Hello</option></fui-select>`,
-//   args: {
-//     name: 'select',
-//     label: 'Select',
-//     id: 'select'
-//   }
-// };

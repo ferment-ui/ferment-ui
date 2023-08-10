@@ -1,12 +1,12 @@
 import { html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
-import { FUIField } from '../field/Field';
-import '../country/Country.js';
-// import '../province/Province.js';
+import { FUIFormField } from '../FormField';
+import '../input/Input';
+import '../country/Country';
 import { Country, CountrySubdivisions } from '../../../global.d';
 
 @customElement('fui-address')
-export class FUIAddress extends FUIField {
+export class FUIAddress extends FUIFormField {
   static styles = [
     css`
       :host {
@@ -17,29 +17,29 @@ export class FUIAddress extends FUIField {
 
   @property({ converter: (value) => {
     return Country[value as keyof typeof Country];
-  }}) country?: Country = Country.US;
+  }}) countryCode?: Country;
+  @property({ type: String }) label: any;
 
   get subdivisions() {
-    if (this.country == null) return null;
-    console.log(this.country in CountrySubdivisions.keys())
-    return CountrySubdivisions.get(this.country);
+    if (this.countryCode == null) return null;
+    console.log(this.countryCode in CountrySubdivisions.keys())
+    return CountrySubdivisions.get(this.countryCode);
   }
 
   render() {
-    console.log(this.subdivisions);
     return html`
       <fieldset>
         <slot name="label"><legend>${this.label}</legend></slot>
-        <fui-input label="Street Number"></fui-input>
-        <fui-input label="Street Name"></fui-input>
-        <fui-input label="Unit/Apt"></fui-input>
-        <fui-input label="City"></fui-input>
-        <fui-country label="Country" value=${this.country}></fui-country>
-        ${this.country && this.subdivisions != null
-          ? html`<fui-select id='province' .options=${Object.entries(this.subdivisions).map(([code, country]) => ({ text: country, value: code, id: code }))}></fui-select>`
-          : html`<fui-input id='province'></fui-input>`
+        <fui-input id=${`${this.id}-street-number`} name=${`${this.id}-street-number`} label="Street Number"></fui-input>
+        <fui-input id=${`${this.id}-street-name`} name=${`${this.id}-street-name`} label="Street Name"></fui-input>
+        <fui-input id=${`${this.id}-street-unit`} name=${`${this.id}-unit`} label="Unit/Apt"></fui-input>
+        <fui-input id=${`${this.id}-city`} name=${`${this.id}-city`} label="City"></fui-input>
+        <fui-country id=${`${this.id}-country`} name=${`${this.id}-country`} label="Country" value=${this.countryCode}></fui-country>
+        ${this.countryCode && this.subdivisions != null
+          ? html`<fui-select name=${`${this.id}-country-subdivison`} id=${`${this.id}-country-subdivison`} value=${this.countryCode} .options=${Object.entries(this.subdivisions).map(([code, country]) => ({ text: country, value: code, id: code }))}></fui-select>`
+          : html`<fui-input name=${`${this.id}-country-subdivision`} id=${`${this.id}-country-subdivison`}></fui-input>`
         }
-        <fui-postal-code label="Postal Code" country=${this.country}></fui-postal-code>
+        <fui-input id=${`${this.id}-postal-code`} name=${`${this.id}-postal-code`} label="Postal Code" country=${this.countryCode}></fui-input>
       </fieldset>
     `;
   }

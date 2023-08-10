@@ -7,7 +7,7 @@ const {green} = require('kleur/colors');
 const currentPackage = require('../package.json');
 
 let DEFAULT_FILE = join(process.cwd(), "declare.config.js");
-let DEFAULT_SCRIPTNAME = "declare";
+let DEFAULT_SCRIPTNAME = "css";
 let DEFAULT_FORCE = false;
 
 async function init(
@@ -50,7 +50,7 @@ async function init(
     packageFile.scripts[scriptname] = `npm run ${scriptname}:build -- --watch`;
     packageFile.scripts[`${scriptname}:build`] = `declare build ${to}`;
 
-    packageFile.devDependencies["declare"] = currentPackage.version;
+    packageFile.devDependencies[currentPackage.name] = currentPackage.version;
     await writeFile(packagePath, JSON.stringify(packageFile, null, 2), {
       encoding: "utf8",
     });

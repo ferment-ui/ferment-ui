@@ -1,8 +1,8 @@
-import './Banner';
+import './Banner.js';
 
 export default {
   title: 'Banner',
-  component: 'dc-banner',
+  component: 'fui-banner',
   tags: ['autodocs'],
   argTypes: {
     

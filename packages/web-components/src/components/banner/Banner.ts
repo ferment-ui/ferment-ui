@@ -8,6 +8,20 @@ export class FUIBanner extends LitElement {
             :host {
                 display: block;
             }
+
+            slot {
+              flex-grow: 1;  
+            }
+
+            slot[name=left] {
+              display: flex;
+              justify-content: left;
+            }
+
+            slot[name=right] {
+              display: flex;
+              justify-content: right;
+            }
         `
     ];
 

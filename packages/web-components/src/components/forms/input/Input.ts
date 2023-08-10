@@ -1,26 +1,47 @@
 import { html, css, PropertyValueMap } from 'lit';
-import { customElement, property } from 'lit/decorators.js'
+import { customElement } from 'lit/decorators.js'
 import { ref } from 'lit/directives/ref.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { spread } from '@open-wc/lit-helpers';
-import { FUIInputField } from '../field/InputField';
+import { FUIFormTextField } from '../FormTextField';
 
 @customElement('fui-input')
-export class FUIInput extends FUIInputField {
+export class FUIInput extends FUIFormTextField {
   static styles = [
     css`
       :host {
-        display: block;
+        display: grid;
+      }
+
+      .field {
+        display: grid;
+        grid-template-areas: 
+          "label"
+          "control";
+      }
+
+      input {
+        grid-area: control;
+      }
+
+      slot[name=label] {
+        display: inline-block;
+        padding-left: 2px;
+        grid-area: label;
+        position: relative;
+        top: 1.2rem;
+        pointer-events: none;
+        transition: .3s;
+        transform-origin: left;
+      }
+
+      input:focus + slot[name=label] {
+        top: 0;
+        transform: scale(.6, .6);
       }
     `
   ];
   
-  // Form controls usually expose a "value"  property
-  // NOTE: Input forms use the "value" attribute in HTML to set a default
-  // value, and then the "value" property in it's DOM node is updated
-  // after that, so we want to mimic that behavior here.
-  @property({ type: String, attribute: 'value', reflect: false }) _initialValue: string = '';
-  @property({ type: String, attribute: false, reflect: false }) 
   get value() { return this.inputRef.value?.value; }
   set value(value) {
     const v = value as string; 
@@ -32,20 +53,8 @@ export class FUIInput extends FUIInputField {
 
   protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
     super.firstUpdated(_changedProperties);
-    this._internals.setFormValue(this._initialValue);
+    this._internals.setFormValue(this.defaultValue ?? null);
   }
-  
-  // onInput(event: InputEvent) {
-  //   this._value = (event.target as HTMLInputElement)?.value;
-  //   if (this._value == null) return;
-  //   if (!this.matches(':disabled') && this.hasAttribute('required') &&
-  //       this._value.length < 5)
-  //     this._internals.setValidity({customError: true}, 'Use at least 5 characters.',);
-  //   else
-  //     this._internals.setValidity({});
-    
-  //   this._internals.setFormValue(this._value);
-  // }
 
   formResetCallback() {
     if (this.inputRef.value != null) {
@@ -55,9 +64,9 @@ export class FUIInput extends FUIInputField {
   }
 
   render() {
-    return html`<div part="field" ${spread(this.fieldAttrs)}>
-      <input ${ref(this.inputRef)} part="input" id=${this.id} name=${this.name} value=${ifDefined(this._initialValue)} @input=${this.setValue} ${spread(this.inputAttrs)} />
-      <slot name="label"><label part="label" for=${this.name}>${this.label}</label></slot>
+    return html`<div part="field" ${spread(this.fieldAttrs)} class="field">
+      <input ${ref(this.inputRef)} part="control" type=${this._type} id=${this.id} name=${this.name} value=${ifDefined(this.defaultValue)} @input=${this.updateFormValue} ?required=${this.required} ?disabled=${this.disabled} ${spread(this.inputAttrs)} />
+      <slot name="label"><label part="label" for=${this.id}>${this.label}</label></slot>
     </div>`;
   }
 }

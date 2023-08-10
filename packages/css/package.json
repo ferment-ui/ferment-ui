@@ -1,9 +1,9 @@
 {
-  "name": "@ferments/css",
+  "name": "@ferment-ui/css",
   "version": "0.0.1-alpha.3",
   "description": "Contains the source for the css library",
   "bin": {
-    "create-declare": "lib/index.js"
+    "create-ferment-css": "lib/index.js"
   },
   "scripts": {
     "build": "wireit",
@@ -11,7 +11,7 @@
   },
   "wireit": {
     "dev": {
-      "command": "nodemon index.js --watch src/ --watch default.config.js --ext css,js"
+      "command": "nodemon index.js --watch src/ --watch default.config.js --watch index.js --ext css,js"
     },
     "build": {
       "command": "NODE_ENV=production node index.js"

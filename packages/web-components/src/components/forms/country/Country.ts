@@ -1,10 +1,10 @@
 import { html, css } from 'lit';
 import { customElement } from 'lit/decorators.js'
-import { FUIField } from '../field/Field';
+import { FUIFormField } from '../FormField';
 import '../select/Select';
 
 @customElement('fui-country')
-export class FUICountry extends FUIField {
+export class FUICountry extends FUIFormField {
   static styles = [
     css`
       :host {

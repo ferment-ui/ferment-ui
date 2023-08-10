@@ -6,6 +6,12 @@
   position: relative;
 }
 
-.field + input {
+.field > input {
   position: relative;
 }
+
+[required] + label::after {
+  content: var(--required-field-text);
+  color: var(--required-field-color);
+}
+
