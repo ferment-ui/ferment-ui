@@ -3,7 +3,8 @@ import { customElement, property } from 'lit/decorators.js'
 import { FUIFormField } from '../FormField';
 import '../input/Input';
 import '../country/Country';
-import { Country, CountrySubdivisions } from '../../../global.d';
+import { Country } from '../country/countries';
+import { CountrySubdivisions } from '../country/subdivisions';
 
 @customElement('fui-address')
 export class FUIAddress extends FUIFormField {

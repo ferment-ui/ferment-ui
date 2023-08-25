@@ -50,7 +50,7 @@ export class FUISelect extends FUIFormField {
     return html`
       <div class='field'>
         ${this.native
-          ? html`<select ${ref(this.selectRef)} id=${this.id} name=${this.name} ${ifDefined(this.multiple)} @change=${this.setValue}>
+          ? html`<select ${ref(this.selectRef)} id=${this.id} name=${this.name} ${ifDefined(this.multiple)} @change=${this.updateFormValue}>
             <option ${ref(this.unselectedOptionRef)} disabled selected>${this.unselectedText}</option>
             ${map(options, (option) => html`<option value=${ifDefined(option.value)}>${option.text}</option>`)}
           </select>`

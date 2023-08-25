@@ -6,4 +6,10 @@ export class FUIBaseElement extends LitElement {
     super.connectedCallback();
     this.id = this.id || getId();
   }
+
+  render() {
+    if (process.env.NODE_ENV !== 'production') {
+      console.debug(this);
+    }
+  }
 }

@@ -5,7 +5,7 @@ import { Option } from '../../../global.js';
 import { FUIFormCheckField } from '../FormCheckField.js';
 import { getId } from '../../../utils.js';
 
-@customElement('fui-radio-group')
+@customElement('fui-radio-group') 
 export class FUIRadioGroup extends FUIFormCheckField {
   static styles = [
     css`
@@ -31,7 +31,7 @@ export class FUIRadioGroup extends FUIFormCheckField {
   render() {
     const options: Option[] = this.options.map((option) => typeof option === 'string' ? { text: option } : option);
 
-    return html`<fieldset @change=${this.setValue}>
+    return html`<fieldset @change=${this.updateFormValue}>
       <slot name="legend"><legend part="legend">${this.label}</legend></slot>
       ${map(options, (option) => {
         const id = option.id ?? getId();
