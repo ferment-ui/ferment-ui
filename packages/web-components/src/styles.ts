@@ -10,8 +10,10 @@ export const reset = css`
 `;
 
 export const button = css`
-  button {
+  button, .btn {
     display: inline-block;
+    min-height: var(--space-min-tappable, 44px);
+    min-width: var(--space-min-tappable, 44px);
     border: none;
     padding: 0;
     margin: 0;
@@ -24,6 +26,11 @@ export const button = css`
     text-align: center;
     -webkit-appearance: none;
     -moz-appearance: none;
+  }
+
+  a, a. {
+    text-decoration: underline;
+    color: inherit;
   }
 `;
 

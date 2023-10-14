@@ -1,28 +1,31 @@
-import { LitElement, html, css } from 'lit';
+import { html, css } from 'lit';
 import { customElement } from 'lit/decorators.js'
+import { FUIBaseElement } from '../BaseElement.js';
 
 @customElement('fui-banner')
-export class FUIBanner extends LitElement {
+export class FUIBanner extends FUIBaseElement {
     static styles = [
-        css`
-            :host {
-                display: block;
-            }
+      FUIBaseElement.styles,
+      css`
+        header {
+          display: flex;
+          align-items: center;
+        }
 
-            slot {
-              flex-grow: 1;  
-            }
+        slot {
+          flex-grow: 1;  
+        }
 
-            slot[name=left] {
-              display: flex;
-              justify-content: left;
-            }
+        slot[name=left] {
+          display: flex;
+          justify-content: left;
+        }
 
-            slot[name=right] {
-              display: flex;
-              justify-content: right;
-            }
-        `
+        slot[name=right] {
+          display: flex;
+          justify-content: right;
+        }
+      `
     ];
 
     render() {

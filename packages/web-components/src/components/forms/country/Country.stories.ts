@@ -2,7 +2,7 @@ import './Country';
 
 export default {
   title: 'Forms/Country',
-  component: 'dc-country',
+  component: 'fui-country',
   tags: ['autodocs'],
   argTypes: {
     

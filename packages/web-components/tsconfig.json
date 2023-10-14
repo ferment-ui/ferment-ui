@@ -5,22 +5,26 @@
       "target": "ES2019",
       "declaration": true,
       "emitDeclarationOnly": false,
+      
       "outDir": "./dist",
       "rootDir": "./src",
-      "strict": true,
-      "noUnusedLocals": true,
-      "noUnusedParameters": true,
-      "noImplicitReturns": true,
-      "noFallthroughCasesInSwitch": true,
+      "skipLibCheck": true,
+      "incremental": true,
+      
       "moduleResolution": "Node",
       "isolatedModules": true,
       "allowSyntheticDefaultImports": true,
       "experimentalDecorators": true,
       "useDefineForClassFields": false,
+      
+      "strict": true,
       "forceConsistentCasingInFileNames": true,
-      "skipLibCheck": true
+      "noFallthroughCasesInSwitch": true,
+      "noUnusedParameters": true,
+      "noImplicitReturns": true,
+      "noUnusedLocals": true
     },
-    "include": ["src/**/*.ts"],
-    "exclude": ["src/**/*.stories.ts", "src/**/*.test.ts"]
+    "include": ["src/**/*.ts", "../lib/**/*.ts"],
+    "exclude": ["src/**/*.stories.ts"]
   }
   

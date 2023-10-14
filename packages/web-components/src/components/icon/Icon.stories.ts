@@ -1,6 +1,6 @@
 export default {
   title: 'Icon',
-  component: 'dc-icon',
+  component: 'fui-icon',
   tags: ['autodocs'],
   argTypes: {
     data: {control: 'text'}

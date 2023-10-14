@@ -1,3 +1,4 @@
+import { html } from 'lit';
 import './Banner.js';
 
 export default {
@@ -10,7 +11,10 @@ export default {
 };
 
 export const Default = {
-  args: {
-    
-  },
+  render: () => html`<fui-banner>
+    <a href='#' slot='left'><h1>Logo</h1></a>
+    <nav slot='right'>
+      <a href='#'>About</a>
+    </nav>
+  </fui-banner>`
 };

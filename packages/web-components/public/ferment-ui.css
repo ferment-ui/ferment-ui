@@ -1,0 +1,11 @@
+
+:root {
+  --button-background-color: #fff;
+}
+
+
+button {
+  background-color: var(--button-background-color);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

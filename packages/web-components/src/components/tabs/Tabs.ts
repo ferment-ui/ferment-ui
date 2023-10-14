@@ -31,20 +31,20 @@ export class FUITabs extends LitElement {
       display: block;
     }
 
-    dc-tabs [slot=tab] {
+    fui-tabs [slot=tab] {
       border-right: 1px solid black;
     }
     
-    dc-tabs [slot=tab]:focus {
+    fui-tabs [slot=tab]:focus {
       outline: 5px solid blue;
     }
     
-    dc-tabs [slot=tab]:last-of-type {
+    fui-tabs [slot=tab]:last-of-type {
       border-right: none;
     }
     
     /* this is to have it show up as header/section until the component loads */
-    dc-tabs:not(:defined) {
+    fui-tabs:not(:defined) {
       display: block;
     }
   `;

@@ -2,7 +2,7 @@ import './Pricing';
 
 export default {
   title: 'Pricing',
-  component: 'dc-pricing',
+  component: 'fui-pricing',
   tags: ['autodocs'],
   argTypes: {
     prices: {

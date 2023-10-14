@@ -1,19 +1,14 @@
-import { LitElement, html, css } from 'lit';
+import { CSSResultGroup, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
 import { Variant } from '../../global.js';
+import { buttonStyles } from './button.css.js';
+import { FUIBaseElement } from '../BaseElement.js';
 
 @customElement('fui-button')
-export class FUIButton extends LitElement {
-  static styles = [
-    css`
-      :host {
-        display: block;
-      }
-
-      button {
-        background-color: var(--fui-button-background-color, #fff);
-      }
-    `
+export class FUIButton extends FUIBaseElement {
+  static styles: CSSResultGroup = [
+    FUIBaseElement.styles,
+    buttonStyles
   ];
 
   @property({ type: String }) variant: Variant = Variant.DEFAULT;

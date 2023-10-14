@@ -3,7 +3,7 @@ import './Faq';
 
 export default {
   title: 'Faq',
-  component: 'dc-faq',
+  component: 'fui-faq',
   tags: ['autodocs'],
   argTypes: {
     faqs: {control: 'text'},
@@ -14,7 +14,7 @@ export default {
 };
 
 export const Default = {
-  // render: ({args}) => html`<dc-faq .faqs=${args.faqs}, .selectedQuestions=${args.selectedQuestions} .selectedTag=${args.selectedTag} .allTagsTemplate=${args.allTagsTemplate}></dc-faq>`,
+  // render: ({args}) => html`<fui-faq .faqs=${args.faqs}, .selectedQuestions=${args.selectedQuestions} .selectedTag=${args.selectedTag} .allTagsTemplate=${args.allTagsTemplate}></fui-faq>`,
   args: {
     faqs: [
       {

@@ -1,3 +1,6 @@
+import { ClassInfo } from "lit/directives/class-map.js";
+import { StyleInfo } from "lit/directives/style-map.js";
+
 export function mod(a: number, b: number) {
   return ((a % b) + b) % b;
 }
@@ -63,4 +66,27 @@ export function join(obj: Map<string, unknown> | Object, separator = " ") {
 
 export function reverse(str: string) {
   return str.split("").reverse().join("");
+}
+
+export function convertClassStringToObject(classString: string) {
+  return classString.split(" ").reduce((acc, cur) => {
+    acc[cur] = true;
+    return acc;
+  }, {} as Record<string, boolean>);
+}
+
+export function convertObjectToClassString(obj: ClassInfo) {
+  return Object.entries(obj).filter(([_, value]) => !!value).map(([key, _]) => key).join(" ");
+}
+
+export function convertStyleStringToObject(styleString: string) {
+  return styleString.split(";").reduce((acc, cur) => {
+    const [key, value] = cur.split(":");
+    acc[key.trim()] = value.trim();
+    return acc;
+  }, {} as Record<string, any>);
+}
+
+export function convertObjectToStyleString(obj: StyleInfo) {
+  return Object.entries(obj).map(([key, value]) => `${key}: ${value}`).join("; ");
 }

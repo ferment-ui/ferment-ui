@@ -1,8 +1,8 @@
-import { LitElement, html, css } from 'lit';
+import { html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
 import { map } from 'lit/directives/map.js';
 import { Link } from '../../global.js';
-import { reset } from '../../styles.js';
+import { FUIBaseElement } from '../BaseElement.js';
 
 /**
  * List of hierarchical links.
@@ -11,44 +11,38 @@ import { reset } from '../../styles.js';
  * instances, and on the host element for a specific instance).
  */
 @customElement('fui-breadcrumbs')
-export class FUIBreadcrumbs extends LitElement {
-    static styles = [
-        reset,
-        css`
-            :host {
-                display: block;
-            }
+export class FUIBreadcrumbs extends FUIBaseElement {
+  static styles = [
+    FUIBaseElement.styles,
+    css`
+      ul {
+        list-style: none;
+      }
 
-            ul {
-                list-style: none;
-            }
+      li {
+        display: inline-block;
+      }
 
-            li {
-                display: inline-block;
-            }
+      li:not(:last-child)::after {
+        content: var(--breadcrumb-separator, '/');
+      }
 
-            li:not(:last-child)::after {
-                content: var(--breadcrumb-separator, '/');
-            }
+      a {
+        padding: 5px 10px;
+      }
+    `
+  ];
 
-            a {
-                padding: 5px 10px;
-            }
-        `
-    ];
+  @property({ type: Array }) links: Link[] = [];
 
-    @property({ type: Array }) links: Link[] = [];
+  render() {
+    return html`<ul>${map(this.links, (link: Link) => html`<li><a href=${link.href}>${link.text}</a></li>`)}</ul>`;
 
-    render() {
-        // this.links = [{ href: '#', text: 'Home' }, { href: '#', text: 'About'}];
-        // this.links = [];
-        return html`<ul>${map(this.links, (link: Link) => html`<li><a href=${link.href}>${link.text}</a></li>`)}</ul>`;
-        
-    }
+  }
 }
 
 declare global {
-interface HTMLElementTagNameMap {
-  'fui-breadcrumbs': FUIBreadcrumbs;
-}
+  interface HTMLElementTagNameMap {
+    'fui-breadcrumbs': FUIBreadcrumbs;
+  }
 }

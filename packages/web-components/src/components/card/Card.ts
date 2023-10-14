@@ -4,7 +4,7 @@ import { styleMap } from 'lit/directives/style-map.js';
 
 /**
  * Card component for displaying isolated content. 
- * @element dc-card
+ * @element fui-card
  * @prop {String} layout - Position of the layout element. Can be 'left', 'right', 'top', or 'bottom'. Defaults to 'left'.
  */
 @customElement('fui-card')

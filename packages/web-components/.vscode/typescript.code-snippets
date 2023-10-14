@@ -1,0 +1,48 @@
+{
+  "fui-component": {
+    "prefix": "fui-component",
+    "body": [
+      "import { html, CSSResultGroup } from 'lit';",
+      "import { customElement } from 'lit/decorators.js';",
+      "import { classMap } from 'lit/directives/class-map.js';",
+      "import { FUIBaseElement } from '../BaseElement.js';",
+      "",
+      "@customElement('fui-$1')",
+      "export class FUI${1/(.*)/${1:/pascalcase}/} extends FUIBaseElement {",
+      "  static styles: CSSResultGroup = [",
+      "    FUIBaseElement.styles",
+      "  ];",
+      "",
+      "  render() {",
+      "    return html`<$2 class=${classMap(this.classes)}>$0</$2>`;",
+      "  }",
+      "}",
+      "",
+      "declare global {",
+      "  interface HTMLElementTagNameMap {",
+      "    'fui-$1': FUI${1/(.*)/${1:/pascalcase}/};",
+      "  }",
+      "}"
+    ]
+  },
+  "fui-story": {
+    "prefix": "fui-story",
+    "body": [
+      "import { html } from 'lit';",
+      "import { Meta } from '@storybook/web-components';",
+      "import { spread } from '@open-wc/lit-helpers';",
+      "import './${1/(.*)/${1:/pascalcase}/}.js';",
+      "",
+      "export default {",
+      "  title: '${1/(.*)/${1:/pascalcase}/}',",
+      "  component: 'fui-$1',",
+      "  tags: ['autodocs']",
+      "} as Meta;",
+      "",
+      "const Template = (props) => html`<fui-$1 ${spread(props)}></fui-$1>`;",
+      "",
+      "export const Default = Template.bind({});",
+
+    ]
+  }
+}

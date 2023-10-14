@@ -2,7 +2,7 @@ import './Breadcrumbs';
 
 export default {
   title: 'Breadcrumbs',
-  component: 'dc-breadcrumbs',
+  component: 'fui-breadcrumbs',
   tags: ['autodocs'],
   argTypes: {
     links: {

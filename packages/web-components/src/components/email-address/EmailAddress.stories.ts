@@ -3,7 +3,7 @@ import './EmailAddress';
 
 export default {
   title: 'Email',
-  component: 'dc-email',
+  component: 'fui-email-address',
   tags: ['autodocs'],
   argTypes: {
     user: {
@@ -33,7 +33,7 @@ export const Default = {
 };
 
 export const Slot = {
-  render: ({user, domain, mailto}) => html`<dc-email user=${user} domain=${domain} mailto=${mailto}>Email</dc-email>`,
+  render: ({user, domain, mailto}) => html`<fui-email user=${user} domain=${domain} mailto=${mailto}>Email</fui-email>`,
   args: {
     user: 'test'.split("").reverse().join(""),
     domain: 'example.com'.split("").reverse().join(""),

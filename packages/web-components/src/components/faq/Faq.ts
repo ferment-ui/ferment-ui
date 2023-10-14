@@ -1,10 +1,10 @@
 import { html, css, TemplateResult, PropertyValueMap } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js'
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { FUIBaseElement } from '../../BaseElement.js';
+import { FUIBaseElement } from '../BaseElement.js';
 import { button } from '../../styles.js';
 import { join } from '../../utils.js';
-import { Faq } from '../../global';
+import { Faq } from '../../global.d.js';
 
 @customElement('fui-faq')
 export class FUIFaq extends FUIBaseElement {
