@@ -1,41 +1,40 @@
-import { LitElement, html, css, TemplateResult, PropertyValueMap } from 'lit';
-import { customElement, queryAssignedNodes, state } from 'lit/decorators.js'
+import { LitElement, html, css } from 'lit';
+import { customElement, property } from 'lit/decorators.js'
+import { FUIBaseElement } from '../BaseElement.js';
+import { InterleaveController } from '../../controllers/InterleaveController.js';
+import { styleMap } from 'lit/directives/style-map.js';
 
 @customElement('fui-splitter')
-export class FUISplitter extends LitElement {
-  static shadowRootOptions: ShadowRootInit = {...super.shadowRootOptions, slotAssignment: 'manual'}
-
+export class FUISplitter extends FUIBaseElement {
   static styles = [
     css`
-      :host {
-        display: block;
+      [role=separator] {
+        background-color: gray;
+      }
+
+      [part=container] {
+        display: flex;
+        align-items: stretch;
+        flex: 1;
       }
     `
   ];
+  
+  static shadowRootOptions: ShadowRootInit = {...super.shadowRootOptions, slotAssignment: 'manual'}
 
-  @state()
-  panes: TemplateResult[] = [];
+  @property({ type: String }) direction: 'row' | 'column' = 'row';
 
-  protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
-    console.error('firstUpdated', this.shadowRoot?.querySelector('slot')?.assignedNodes());
-    console.error(this.shadowRoot?.children);
+  get isHorizontal() {
+    return this.direction === 'row';
   }
-
-  protected willUpdate(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
-      console.error('willUpdate', this.shadowRoot?.querySelector('slot')?.assignedNodes());
-  }
-
-  @queryAssignedNodes()
-  _slottedChildren!: HTMLElement[];
-
-  _slotChange(_event: any) {
-    // this.panes = this._slottedChildren.map(child => {
-    //   return html`${child.cloneNode(true)}<div class='divider'></div>`
-    // })
-  }
+  
+  #interleave = new InterleaveController(this, html`<div role="separator" part="separator" style=${styleMap({cursor: this.direction === 'row' ? 'ew-resize' : 'ns-resize'})}>/</div>`);
 
   render() {
-    console.error('render', this.panes);
-    return html`<slot @slotchange=${this._slotChange}></slot>${this.panes}`;
+    return html`
+      <div part="container" style=${styleMap({flexDirection: this.direction})}>
+        ${this.#interleave.renderables()}
+      </div>
+    `;
   }
 }

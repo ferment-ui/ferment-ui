@@ -11,9 +11,10 @@ export class FUIButton extends FUIBaseElement {
     buttonStyles
   ];
 
+  @property({ type: String }) type: string = 'button';
   @property({ type: String }) variant: Variant = Variant.DEFAULT;
 
   render() {
-    return html`<button>Click me</button>`;
+    return html`<button type=${this.type} part="button"><slot></slot></button>`;
   }
 }

@@ -13,6 +13,7 @@
       
       "moduleResolution": "Node",
       "isolatedModules": true,
+      "allowJs": true,
       "allowSyntheticDefaultImports": true,
       "experimentalDecorators": true,
       "useDefineForClassFields": false,

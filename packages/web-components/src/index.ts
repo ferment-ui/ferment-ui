@@ -6,6 +6,7 @@ export { FUIFaq } from './components/faq/Faq.js';
 export { FUIIcon } from './components/icon/Icon.js';
 export { FUIPhoneNumber } from './components/phone-number/PhoneNumber.js';
 export { FUIPricing } from './components/pricing/Pricing.js';
+export { FUISplitter } from './components/splitter/Splitter.js';
 export { FUITabs } from './components/tabs/Tabs.js';
 export { FUITable } from './components/table/Table.js';
 export { FUIWysiwyg } from './components/wysiwyg/Wysiwyg.js';
