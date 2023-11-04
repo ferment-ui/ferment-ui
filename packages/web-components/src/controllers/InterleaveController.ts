@@ -9,6 +9,7 @@ export class InterleaveController implements ReactiveController {
 
   constructor(public host: ReactiveElement, node: Node | TemplateResult) {
     this.#logger = new Logger(host);
+    Logger.debugLog();
     this.#node = node;
     host.addController(this);
   }
@@ -20,6 +21,7 @@ export class InterleaveController implements ReactiveController {
   }
 
   hostUpdated() {
+    this.#logger.log(this.host.children, this.#slotRefs);
     Array.from(this.host.children).forEach((child, index) => this.#slotRefs[index]?.value?.append(child));
   }
 }

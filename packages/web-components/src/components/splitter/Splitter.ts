@@ -22,13 +22,13 @@ export class FUISplitter extends FUIBaseElement {
   
   static shadowRootOptions: ShadowRootInit = {...super.shadowRootOptions, slotAssignment: 'manual'}
 
-  @property({ type: String }) direction: 'row' | 'column' = 'row';
+  @property({ type: String }) direction: 'row' | 'column' = 'column';
 
-  get isHorizontal() {
-    return this.direction === 'row';
+  get separator() {
+    return html`<div role="separator" part="separator" style=${styleMap({cursor: this.direction === 'row' ? 'ew-resize' : 'ns-resize'})}>/</div>`
   }
-  
-  #interleave = new InterleaveController(this, html`<div role="separator" part="separator" style=${styleMap({cursor: this.direction === 'row' ? 'ew-resize' : 'ns-resize'})}>/</div>`);
+
+  #interleave = new InterleaveController(this, this.separator);
 
   render() {
     return html`
