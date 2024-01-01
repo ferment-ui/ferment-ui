@@ -1,27 +1,23 @@
-.d-b {
+.block {
   display: block;
 }
 
-.d-i {
+.inline {
   display: inline;
 }
 
-.d-ib {
+.inline-block {
   display: inline-block;
 }
 
-.d-f {
+.flex, [class^="fd-"], [class*=" fd-"] {
   display: flex;
 }
 
-.d-f {
+.grid {
   display: grid;
 }
 
-.d-t {
-  display: table;
-}
-
-.d-c {
+.contents {
   display: contents;
 }

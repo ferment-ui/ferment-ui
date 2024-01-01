@@ -1,15 +1,7 @@
-.fl, [class^="fl-"], [class*=" fl-"] {
-  display: flex;
-}
-
-.fl-a > * {
-  flex: 1;
-}
-
-.fld-c {
+.fd-column {
   flex-direction: column;
 }
 
-.fld-r {
+.fd-row {
   flex-direction: row;
 }
