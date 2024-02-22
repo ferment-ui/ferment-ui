@@ -1,0 +1,70 @@
+@define-mixin theme $t {
+.$(t) {
+  color: var(--fui-theme-$(t)-color);
+  background-color: var(--fui-theme-$(t)-background-color);
+}
+
+.$(t) :visited {
+  color: var(--fui-theme-$(t)-color-visited);
+}
+
+@mixin states $(t) {
+  color: var(--fui-theme-$(t)-color);
+  background-color: var(--fui-theme-$(t)-background-color);
+}
+
+.$(t)-inverse {
+  color: var(--fui-theme-$(t)-background-color);
+  background-color: var(--fui-theme-$(t)-color);
+}
+
+.$(t)-inverse :visited {
+  color: var(--fui-theme-$(t)-color-visited);
+}
+
+@mixin states $(t)-inverse {
+  color: var(--fui-theme-$(t)-background-color);
+  background-color: var(--fui-theme-$(t)-color);
+}
+
+.c-$(t)-color {
+  color: var(--fui-theme-$(t)-color);
+}
+
+@mixin states c-$(t)-color {
+  color: var(--fui-theme-$(t)-color);
+}
+
+.c-$(t)-background-color {
+  color: var(--fui-theme-$(t)-background-color);
+}
+
+@mixin states c-$(t)-background-color {
+  color: var(--fui-theme-$(t)-background-color);
+}
+
+.bg-$(t)-color {
+  background-color: var(--fui-theme-$(t)-color);
+}
+
+@mixin states bg-$(t)-color {
+  background-color: var(--fui-theme-$(t)-color);
+}
+
+.bg-$(t)-background-color {
+  background-color: var(--fui-theme-$(t)-background-color);
+}
+
+@mixin states bg-$(t)-background-color {
+  background-color: var(--fui-theme-$(t)-background-color);
+}
+}
+
+@mixin theme primary;
+@mixin theme accent;
+@mixin theme complement;
+@mixin theme neutral;
+@mixin theme success;
+@mixin theme info;
+@mixin theme warn;
+@mixin theme danger;

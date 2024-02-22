@@ -1,0 +1,106 @@
+:root {
+  --fui-animation-speed-slow: 0.5s;
+  --fui-animation-speed-medium: 0.3s;
+  --fui-animation-speed-fast: 0.1s;
+
+  --fui-animation-default-speed: var(--fui-animation-speed-medium);
+  --fui-animation-default-timing-function: ease-in-out;
+
+
+
+  --fui-border-width: 1px;
+  --fui-border-radius: 0.25rem;
+  --fui-border-radius-pill: 9999px;
+
+
+  /* These do not change between light/dark */
+  --fui-color-primary: #697164;
+  --fui-color-accent: #c3B799;
+  --fui-color-complement: #6D6F7F;
+
+  --fui-color-grey-0: #ffffff;
+  --fui-color-grey-50: #fafafa;
+  --fui-color-grey-100: #f5f5f5;
+  --fui-color-grey-400: #bdbdbd;
+  --fui-color-grey-500: #9e9e9e;
+  --fui-color-grey-900: #212121;
+  --fui-color-grey-950: #121212;
+  --fui-color-grey-1000: #1e1c1c;
+
+  --fui-color-success-100: #c8e6c9;
+  --fui-color-success-400: #66bb6a;
+  --fui-color-success-500: #4caf50;
+  --fui-color-success-900: #1b5e20;
+
+  --fui-color-info-100: #bbdefb;
+  --fui-color-info-400: #42a5f5;
+  --fui-color-info-500: #2196f3;
+  --fui-color-info-900: #0d47a1;
+
+  --fui-color-warn-100: #ffe0b2;
+  --fui-color-warn-400: #ffb74d;
+  --fui-color-warn-500: #ff9800;
+  --fui-color-warn-900: #e65100;
+
+  --fui-color-danger-100: #ffcdd2;
+  --fui-color-danger-400: #ef5350;
+  --fui-color-danger-500: #f44336;
+  --fui-color-danger-900: #b71c1c;
+
+  --fui-color-dark-text: var(--fui-color-grey-950);
+  --fui-color-dark-text-disabled: var(--fui-color-grey-500);
+  --fui-color-dark-text-visited: var(--fui-color-grey-900);
+
+  --fui-color-light-text: var(--fui-color-grey-50);
+  --fui-color-light-text-disabled: var(--fui-color-grey-400);
+  --fui-color-light-text-visited: var(--fui-color-grey-100);
+
+
+
+  --fui-page-width: 65rem;
+
+  --fui-spacing-base: 4px;
+  --fui-spacing-y-min: calc(var(--fui-spacing-base) * 10);
+  --fui-spacing-x-min: calc(var(--fui-spacing-base) * 10);
+  --fui-spacing-y-max: calc(var(--fui-spacing-base) * 20);
+  --fui-spacing-x-max: calc(var(--fui-spacing-base) * 24);
+  --fui-spacing-static: var(--fui-spacing-y-min) var(--fui-spacing-x-min);
+  --fui-spacing-responsive-y: clamp(var(--fui-spacing-y-min), calc(100vw * 0.08), var(--fui-spacing-y-max));
+  --fui-spacing-responsive-x: clamp(var(--fui-spacing-x-min), 5%, var(--fui-spacing-x-max));
+  --fui-spacing-responsive: var(--fui-spacing-responsive-y) var(--fui-spacing-responsive-x);
+  --fui-spacing-page-y: var(--fui-spacing-responsive-y);
+  --fui-spacing-page-x: max(var(--fui-spacing-x-min), calc((100vw - var(--fui-page-width)) / 2));
+  --fui-spacing-page: var(--fui-spacing-page-y) var(--fui-spacing-page-x);
+  --fui-spacing-text: clamp(var(--fui-spacing-y-min), calc(100vw * 0.04), 2rem);
+
+
+
+  
+  --fui-body-font-family: 'Open Sans', sans-serif;
+  --fui-body-font-size: max(1rem, 18px);
+  --fui-body-line-height: 1.8;
+  --fui-body-font-weight: 400;
+  --fui-body-font-style: normal;
+  --fui-body-font-variant: normal;
+  --fui-body-font-kerning: normal;
+
+  --fui-heading-line-height: 1.5;
+  --fui-heading-font-family: 'Josefin Sans', sans-serif;
+  --fui-font-size-scale-min: 1.1;
+  --fui-font-size-scale-max: 1.33;
+  --fui-font-size-scale: 1.1;
+  --fui-h6-font-size: var(--fui-body-font-size);
+  --fui-h5-font-size: calc(var(--fui-h6-font-size) * var(--fui-font-size-scale));
+  --fui-h4-font-size: calc(var(--fui-h5-font-size) * var(--fui-font-size-scale));
+  --fui-h3-font-size: calc(var(--fui-h4-font-size) * var(--fui-font-size-scale));
+  --fui-h2-font-size: calc(var(--fui-h3-font-size) * var(--fui-font-size-scale));
+  --fui-h1-font-size: calc(var(--fui-h2-font-size) * var(--fui-font-size-scale));
+
+
+
+  --fui-z-index-drawer: 1000;
+  --fui-z-index-dialog: 2000;
+  --fui-z-index-dropdown: 3000;
+  --fui-z-index-alert-group: 4000;
+  --fui-z-index-tooltip: 5000;
+}

@@ -25,7 +25,7 @@
       "noImplicitReturns": true,
       "noUnusedLocals": true
     },
-    "include": ["src/**/*.ts", "../lib/**/*.ts", "src/components/button/button.css.js", "src/css/variables.css.js"],
+    "include": ["src/**/*.ts", "../lib/**/*.ts"],
     "exclude": ["src/**/*.stories.ts"]
   }
   

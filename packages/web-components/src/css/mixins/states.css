@@ -1,0 +1,10 @@
+@define-mixin states $class {
+.$(class)--hover:hover,
+.$(class)--focus:focus,
+.$(class)--focus:hover,
+.$(class)--focus-within:focus-within,
+.$(class)--active:active,
+.$(class)--disabled:disabled {
+  @mixin-content
+}
+}

@@ -1,0 +1,3 @@
+.t-default {
+  transition: var(--fui-animation-default-speed) var(--fui-animation-default-timing-function);
+}

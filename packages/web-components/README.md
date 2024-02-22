@@ -1,7 +1,6 @@
 # Ferment UI Web Components
 
-A collection of bare-bones, accessibility-focused web components. They are highly customizable either through using the Ferment UI CSS Framework, and/or through composition and CSS `::parts` and custom variables.
-
+A collection of bare-bones, accessibility-focused web components. They are highly customizable either through using the Ferment UI CSS Framework, and/or through composition and CSS `::part`, `::slotted`, and custom variables.
 
 ## Components
 
@@ -12,34 +11,20 @@ A collection of bare-bones, accessibility-focused web components. They are highl
 - [ ] Banner
 - [ ] Breadcrumb
 - [ ] Button
+- [ ] Button Group
 - [ ] Card
 - [ ] Carousel
 - [ ] Chat
 - [ ] Combobox
+- [ ] Combobox Item
 - [ ] Comment
+- [ ] Copy
 - [ ] Dialog
 - [ ] Disclosure
 - [ ] Divider
 - [ ] Drawer
 - [ ] Dropdown
-- [ ] FAQ
-- [ ] Grid
-- [ ] Icon
-- [ ] Icon Button
-- [ ] Listbox
-- [ ] Menu
-- [ ] Notification
-- [ ] Pagination
-- [ ] Popup
-- [ ] Progress
-- [ ] QR Code
-- [ ] Quote
-- [ ] Split Panes
-- [ ] Tabs
-- [ ] Table
-- [ ] Toolbar
-- [ ] Tooltip
-- [ ] Tree
+- [ ] Email Address
 - [ ] Forms
 	- [ ] Checkbox
 	- [ ] Color
@@ -55,3 +40,24 @@ A collection of bare-bones, accessibility-focused web components. They are highl
 	- [ ] Switch
   - [ ] Tel
 	- [ ] Textarea
+- [ ] Icon
+- [ ] Icon Button
+- [ ] Listbox
+- [ ] Listbox Item
+- [ ] Menu
+- [ ] Menu Item
+- [ ] Notification
+- [ ] Pagination
+- [ ] Phone Number
+- [ ] Popup
+- [ ] Progress
+- [ ] QR Code
+- [ ] Rating
+- [ ] Skeleton
+- [ ] Split Panes
+- [ ] Tabs
+- [ ] Table
+- [ ] Toolbar
+- [ ] Tooltip
+- [ ] Tree
+- [ ] Tree Item
