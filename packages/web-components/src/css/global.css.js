@@ -1,3 +1,6 @@
+import { css } from 'lit';
+
+export const globalStyles = css`
 *, :host {
   padding: 0;
   margin: 0;
@@ -12,3 +15,4 @@ iframe {
   max-block-size: 100%; /* logical property for "height" */;
   object-fit: contain;
 }
+`;
