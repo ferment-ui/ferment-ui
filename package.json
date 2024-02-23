@@ -1,19 +1,12 @@
 {
   "name": "@ferment-ui/ferment-ui",
   "private": true,
-  "version": "0.0.1-alpha.1",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["CSS Framework", "Web Components", "Design System", "Component Library", "Accessible", "Customizable"],
-  "author": "",
-  "license": "ISC",
   "workspaces": [
-    "packages/css",
     "packages/devtools",
-    "packages/site",
-    "packages/web-components"
+    "packages/docs",
+    "packages/core"
   ]
 }

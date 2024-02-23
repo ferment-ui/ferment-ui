@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+      "module": "ESNext",
+      "lib": ["ES2020", "DOM", "DOM.Iterable"],
+      "target": "ES2019",
+      "declaration": true,
+      "emitDeclarationOnly": false,
+      
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "skipLibCheck": true,
+      // "incremental": true,
+      
+      "moduleResolution": "Node",
+      "isolatedModules": true,
+      "allowJs": true,
+      "allowSyntheticDefaultImports": true,
+      "experimentalDecorators": true,
+      "useDefineForClassFields": false,
+      
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "noFallthroughCasesInSwitch": true,
+      "noUnusedParameters": true,
+      "noImplicitReturns": true,
+      "noUnusedLocals": true
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["src/**/*.stories.ts"]
+  }
+  
