@@ -16,7 +16,7 @@ module.exports = {
     pageWidth: "65rem",
     pagePadding: "3rem",
   },
-  theme: {
+  colors: {
     light: {
       primary: {backgroundColor: "#e5e5e5", color: "black", disabled: "", invertedDisabled: ""},
       accent: {backgroundColor: "", color: "", disabled: "", invertedDisabled: ""},
@@ -34,6 +34,7 @@ module.exports = {
       success: {backgroundColor: "", color: "", disabled: "", invertedDisabled: ""},
     },
   },
+  themes: {},
   font: {
     scale: "1.333",
     scaleStart: "",

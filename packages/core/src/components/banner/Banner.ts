@@ -1,5 +1,5 @@
 import { html, css } from 'lit';
-import { customElement } from 'lit/decorators.js'
+import { customElement, property } from 'lit/decorators.js'
 import { FUIBaseElement } from '../BaseElement.js';
 
 @customElement('fui-banner')
@@ -28,6 +28,7 @@ export class FUIBanner extends FUIBaseElement {
       `
     ];
 
+    @property({ type: String, reflect: true }) label = 'your label';
     render() {
         return html`<header role="banner">
             <slot name='left'></slot>

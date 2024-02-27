@@ -1,5 +1,5 @@
 export default {
-  globs: ['src/components/**/*.*'],
+  globs: ['src/components/**/*.ts'],
   exclude: ['src/components/**/*.{stories,test}.ts'],
   outdir: 'dist',
   dev: false,

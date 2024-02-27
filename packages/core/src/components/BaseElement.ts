@@ -21,4 +21,9 @@ export class FUIBaseElement extends LitElement {
     fromAttribute: (value: string) => convertStyleStringToObject(value),
     toAttribute: (value: StyleInfo) => convertObjectToStyleString(value)
   }}) styles: StyleInfo = {};
+
+  emit(name: string, detail: any) {
+    console.log('emitting', name, detail);
+    this.dispatchEvent(new CustomEvent(name, { detail, bubbles: true, composed: true }));
+  }
 }

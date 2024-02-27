@@ -6,7 +6,7 @@ const {mkdirp, sort_keys} = require('./utils');
 const {green} = require('kleur/colors');
 const currentPackage = require('../package.json');
 
-let DEFAULT_FILE = join(process.cwd(), "declare.config.js");
+let DEFAULT_FILE = join(process.cwd(), "fui.config.js");
 let DEFAULT_SCRIPTNAME = "css";
 let DEFAULT_FORCE = false;
 

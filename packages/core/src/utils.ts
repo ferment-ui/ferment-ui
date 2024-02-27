@@ -13,7 +13,29 @@ export function equalsIgnoreCase(a: string | undefined, b: string | undefined) {
   return a?.toLowerCase() === b?.toLowerCase();
 }
 
-export const focusableElements = 'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])';
+const baseTabbableElements = 'a[href], area[href], input:not([disabled]):not([type=hidden]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [contenteditable]:not([disabled])';
+export const tabbableElements = `${baseTabbableElements}, [tabindex]:not([tabindex="-1"]):not([disabled])`;
+export const focusableElements = `${baseTabbableElements}, [tabindex]:not([disabled])`;
+
+
+export const NavigationKeys = {
+  ArrowDown: "ArrowDown",
+  ArrowUp: "ArrowUp",
+  ArrowLeft: "ArrowLeft",
+  ArrowRight: "ArrowRight",
+  Home: "Home",
+  End: "End"
+} as const;
+
+type NavigationKey = typeof NavigationKeys[keyof typeof NavigationKeys];
+
+export function isNavigationKey(key: string) {
+    return Object.values(NavigationKeys).includes(key as NavigationKey);
+}
+
+export function isSelectKey(event: KeyboardEvent) {
+  return ["Enter", " "].includes(event.key);
+}
 
 export function trapFocus(element: HTMLElement) {
   // TODO: implement

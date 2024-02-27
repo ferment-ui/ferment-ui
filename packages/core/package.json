@@ -3,7 +3,8 @@
   "private": false,
   "version": "0.0.1-alpha.5",
   "description": "Ferment UI Design System",
-  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "customElements": "dist/custom-elements.json",
   "type": "module",
   "files": [
     "dist"
@@ -26,10 +27,9 @@
     "manifest": "wireit",
     "test": "wireit",
     "test:unit": "wireit",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "wireit",
     "storybook:build": "wireit",
-    "preview": "wireit",
-    "build-storybook": "storybook build"
+    "preview": "wireit"
   },
   "wireit": {
     "tsc": {
@@ -47,10 +47,12 @@
     "css": {
       "command": "node ./lib/generate-css.js",
       "files": [
-        "src/**/*.{css,css.js}"
+        "src/**/*.{css,css.js}",
+        "lib/generated-css.js"
       ],
       "output": [
-        "dist/*.{css,css.map}"
+        "dist/*.{css,css.map}",
+        "fui.css"
       ]
     },
     "manifest": {
@@ -61,12 +63,18 @@
         "!src/components/**/*.stories.ts"
       ],
       "output": [
-        "dist/manifest.json"
+        "dist/custom-elements.json"
       ]
     },
     "dev": {
       "command": "vite",
-      "service": true
+      "service": true,
+      "dependencies": [
+        {
+          "script": "css",
+          "cascade": false
+        }
+      ]
     },
     "build": {
       "dependencies": [
@@ -99,7 +107,7 @@
     },
     "preview": {
       "dependencies": [
-        "css"
+        "build"
       ],
       "command": "vite preview"
     },

@@ -1,0 +1,1 @@
+export const paginationEvent = 'pagination-update';

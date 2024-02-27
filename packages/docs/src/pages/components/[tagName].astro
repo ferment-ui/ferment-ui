@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import customElementsManifest from '@ferment-ui/core/dist/custom-elements.json';
+
+export async function getStaticPaths() {
+  return customElementsManifest.modules.filter(module => module.declarations.length && (module.declarations[0] as any).tagName != undefined)
+  .map((tag) => {
+    const { tagName, members } = tag.declarations[0] as unknown as { tagName: string, members: any };
+    console.log(tagName);
+    return {
+      params: {
+        tagName: tagName.replace('fui-', ''),
+      },
+      props: {
+        members
+      },
+    };
+  });
+}
+
+const { tagName } = Astro.params;
+const { members } = Astro.props;
+---
+
+<Layout title={tagName}>
+  <h1>{tagName}</h1>
+  <pre>{JSON.stringify(members, null, 2)}</pre>
+</Layout>

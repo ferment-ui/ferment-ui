@@ -4,11 +4,27 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "wireit",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
+  },
+  "wireit": {
+    "dev": {
+      "command": "astro dev",
+      "dependencies": [
+        {
+          "script": "../core:css",
+          "cascade": false
+        },
+        {
+          "script": "../core:manifest",
+          "cascade": false
+        }
+      ],
+      "service": true
+    }
   },
   "dependencies": {
     "@astrojs/check": "^0.5.5",
