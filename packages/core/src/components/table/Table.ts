@@ -1,73 +1,193 @@
-import { html, css, TemplateResult, nothing } from 'lit';
-import { customElement, property } from 'lit/decorators.js'
+import { html, nothing } from 'lit';
+import type { CSSResultGroup, TemplateResult } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { FUIBaseElement } from '../BaseElement.js';
+import { tableStyles } from './table.css.js';
+import '../icon/Icon.js';
+import '../button/Button.js';
+import { maxDepth, maxWidth } from '../../utilities.js';
 
-export type Sorted = 'asc' | 'des';
+const sortOptions = ['ascending', 'descending'] as const;
+export type SortOrder = typeof sortOptions[number];
+export type MultiSortOrder = Array<[number, SortOrder]>;
 
-export type TableHeading = TableHeadingDefaults & {
-  label: string | TemplateResult;
-  hidden?: boolean;
-  sorted?: Sorted;
-};
+export type CellContent = string | number | boolean | Date | Node | TemplateResult;
 
-export type TableHeadingDefaults = {
-  span?: number,
-  hideable: boolean,
-  sortable: boolean,
-  filterable: boolean,
+export interface TableCell {
+  content: CellContent
+  colspan?: number
+  rowspan?: number
 }
 
-export type TableCell = string | number | boolean | Date | TemplateResult;
+export interface TableHeadingDefaults {
+  filterable: boolean
+  hideable: boolean
+  sortable: boolean
+}
 
-function sortToggle(_value?: Sorted) {return  html`<span>up</span><span>down</span>`};
-const hideToggle = html`<span>x</span>`;
+export type TableHeading = TableHeadingDefaults & {
+  key: string
+  content: string
+  sort?: SortOrder
+  subheadings?: TableHeading[]
+};
+
+type TableHeadingData = TableHeading & {
+  colspan: number
+  rowspan: number
+  hidden?: boolean
+  subheadings: number
+};
 
 @customElement('fui-table')
 export class FUITable extends FUIBaseElement {
-  static styles = [
+  static styles: CSSResultGroup = [
     FUIBaseElement.styles,
-    css`
-      table {
-        border-collapse: collapse;
-        border: 1px solid black;
-      }
-    `
+    tableStyles
   ];
 
-  @property({ type: Array }) headings: Array<string | TableHeading[]> = [];
-  @property({ type: Array }) entries: TableCell[][] = [];
-  @property({ type: Boolean }) sortable = false;
-  @property({ type: Boolean }) hideable = false;
+  @property({ type: Array }) headings: Array<string | TableHeading> = [];
+  @property({ type: Array }) rowHeadings: TableHeading[] = [];
+  @property({ type: Array }) entries: Array<Array<CellContent | TableCell>> = [];
+  @property({ type: String }) caption!: string | Node | TemplateResult;
   @property({ type: Boolean }) filterable = false;
-  @property({ type: Array }) filterList?: string[] | undefined;
+  @property({ type: Boolean }) hideable = false;
+  @property({ type: Boolean }) sortable = false;
+  @property({ type: Boolean }) multiSort = false;
+  @property({ type: Array }) filterList?: string[];
+  @property({ type: Boolean }) showHeadingsInFooter = true;
+  @property({ type: Array }) hiddenColumnHeadings: string[] = [];
   @property({ type: Object }) headingDefaults: TableHeadingDefaults = {
-    span: 1,
-    hideable: false,
-    sortable: false,
-    filterable: false,
+    hideable: true,
+    sortable: true,
+    filterable: false
+  };
+
+  // turn a possibly nested set of headings into arrays of normalized headings with correct colspan, rowspan, and scope values
+  // i.e. headings: {key: 'a', subheadings: [{key: 'b'}, {key: 'c'}]}
+  // becomes: [[{key: 'a', colspan: 2, rowspan: 1}], [{key: 'b', colspan: 1, rowspan: 1}, {key: 'c', colspan: 1, rowspan: 1}]
+  // uses DFS to add all "leaf" headings to the last row, then works it's way back up
+  get _normalizedColumnHeadings(): TableHeadingData[][] {
+    const rows: TableHeadingData[][] = [];
+    const depth = maxDepth(this.headings, 'subheadings');
+    console.log(depth);
+    this._normalizedColumnHeadingsRecursive(this.headings, depth, 0, rows);
+    return rows;
   }
 
-  get _normalizedHeadings(): TableHeading[] {
-    return this.headings.map(heading => Object.assign(
-        this.headingDefaults,
-        typeof heading === 'object' ? heading : {label: heading}
-      ) as TableHeading
-    );
+  _normalizedColumnHeadingsRecursive(headings: Array<string | TableHeading>, maxDepth: number, depth: number, rows: TableHeadingData[][]) {
+    headings.forEach(heading => {
+      if (!((maxDepth - depth) in rows)) {
+        rows[maxDepth - depth] = [];
+      }
+      if (typeof heading !== 'string') {
+        // inner node
+        if (Array.isArray(heading.subheadings)) {
+          console.log('only once', maxDepth);
+          this._normalizedColumnHeadingsRecursive(heading.subheadings, maxDepth, depth + 1, rows);
+          rows[maxDepth - depth].push({
+            ...this.headingDefaults,
+            ...heading,
+            ...{
+              colspan: maxWidth(heading.subheadings, 'subheadings'), // TODO: memoize this so we don't recompute
+              rowspan: maxDepth - depth,
+              hidden: false // inner nodes can never be hidden
+            }
+          } as TableHeadingData);
+        }
+
+        // leaf node
+        else {
+          rows[maxDepth].push({
+            ...this.headingDefaults,
+            ...heading,
+            ...{
+              colspan: 1,
+              rowspan: maxDepth - depth,
+              hidden: this.hiddenColumnHeadings.includes(heading.key)
+            }
+          } as TableHeadingData);
+        }
+      }
+
+      // strings are specialized leaf nodes
+      else {
+        rows[maxDepth].push({
+          key: heading,
+          content: heading,
+          colspan: 1,
+          rowspan: maxDepth - depth,
+          hidden: this.hiddenColumnHeadings.includes(heading)
+        } as TableHeadingData);
+      }
+    });
   }
 
-  get _hiddenHeadings(): Array<string | TemplateResult> {
-    return this._normalizedHeadings.filter(heading => heading.hidden).map(heading => heading.label);
+  getHeadingTemplate(headingRows: TableHeadingData[][], showIcons: boolean) {
+    return headingRows.map(
+      headingRow => html`<tr>${headingRow.map(
+        ({ content, colspan, rowspan, hideable, hidden, sortable, sort, subheadings }) => hidden === true
+          ? nothing
+          : html`
+              <th colspan=${colspan ?? 1} rowspan=${rowspan ?? 1} scope=${subheadings > 0 ? 'colgroup' : 'col'} aria-sort=${ifDefined(sort)}>
+                <button
+                  aria-pressed=${ifDefined(sort == null ? undefined : sortOptions.includes(sort))}
+                  aria-label=${`${content}: activate to sort column ${sort === 'ascending' ? 'descending' : 'ascending'}`}
+                >
+                    ${content}${showIcons && sortable ? this.sortToggle() : nothing}${hideable ? this.hideToggle : nothing}
+                </button>
+              </th>
+            `
+      )}
+    </tr>`);
+  }
+
+  hideToggle = html`<gc-button aria-label="hide heading"><gc-icon name='remove'></gc-icon></gc-button>`;
+
+  sortToggle() {
+    return html`<span class='sort-icons'></span>`;
+  }
+
+  handleHeading(event: Event) {
+    console.log(event);
   }
 
   render() {
-    return html`
-      ${this.filterable ? html`<fui-input label='Filter' id=${`${this.id}-filter`}></fui-input>` : nothing}
-      <table>
-        <slot name='headings'><thead>${this._normalizedHeadings.map(({label, span, hideable, hidden, sortable, sorted}) => !hidden ?? html`<th colspan=${span}>${label}${sortable ? sortToggle(sorted) : nothing}${hideable ? hideToggle : nothing}</th>`)}</thead></slot>
-        <slot name='body'><tbody>${this.entries.map(entry => html`<tr>${entry.map(cell => html`<td>${cell}</td>`)}`)}</tbody></slot>
+    const headings = this._normalizedColumnHeadings;
+    const lastHeadingRow = headings[headings.length - 1];
+
+    console.log(headings);
+    return html`<div class=${classMap(this.classes)}>
+      ${this.filterable ? html`<gc-input label="Filter" id=${`${this.id}-filter`}></gc-input>` : nothing}
+      <table part="table">
+        <slot name="caption"><caption part="caption">${this.caption}</caption></slot>
+        <thead @click=${this.handleHeading}>
+          ${this.getHeadingTemplate(headings, true)}
+        </thead>
+        <tbody>
+          ${this.entries.map(entry => html`<tr>${
+            Array.isArray(entry)
+              ? entry.map(cell => html`<td>${cell}</td>`)
+              : lastHeadingRow.map(({ key }) => html`<td>${entry[key]}</td>`)
+            }
+          </tr>`)}
+        </tbody>
+        ${this.showHeadingsInFooter
+          ? html`
+            <tfoot>
+              ${headings.reverse().map(row => html`<tr>${row.map(({ content }) => html`<th>${content}</th>`)}</tr>`)}
+            </tfoot>`
+          : nothing
+        }
       </table>
-      ${this._hiddenHeadings}
-      <fui-pagination count=${data}></fui-pagination>
-    `;
+    </div>`;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'fui-table': FUITable
   }
 }
