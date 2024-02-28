@@ -16,6 +16,13 @@
       console.log(e.detail.page)
       pagination.currentPage = e.detail.page;
     });
+
+    const table = document.querySelector('fui-table');
+    table.headings = [{ content: 'Hello', subheadings: [{ content: 'Status' }, { content: 'Type' }] }, 'File Name', 'More', 'Date Modified', 'Info'];
+    table.entries = [
+      ['Romario', 30, '5678 Amazing', 'More', '2021-01-01', 'Info'],
+      { Status: 'Alex', Type: 30, 'File Name': '1234 Amazing', More: 'More', 'Date Modified': '2021-01-01', Info: 'Info' }
+    ];
   </script>
 </body>
 </html>
