@@ -9,10 +9,10 @@
 </head>
 <body>
   <h1>Ferment UI</h1>
-  <fui-pagination count="500"></fui-pagination>
+  <fui-table></fui-table>
   <script>
     const pagination = document.querySelector('fui-pagination');
-    pagination.addEventListener('pagination-update', (e) => {
+    pagination.addEventListener('pagination-select', (e) => {
       console.log(e.detail.page)
       pagination.currentPage = e.detail.page;
     });

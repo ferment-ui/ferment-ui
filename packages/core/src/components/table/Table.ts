@@ -60,7 +60,6 @@ export class FUITable extends FUIBaseElement {
   }
 
   render() {
-    super.render();
     return html`
       ${this.filterable ? html`<fui-input label='Filter' id=${`${this.id}-filter`}></fui-input>` : nothing}
       <table>
@@ -68,6 +67,7 @@ export class FUITable extends FUIBaseElement {
         <slot name='body'><tbody>${this.entries.map(entry => html`<tr>${entry.map(cell => html`<td>${cell}</td>`)}`)}</tbody></slot>
       </table>
       ${this._hiddenHeadings}
+      <fui-pagination count=${data}></fui-pagination>
     `;
   }
 }

@@ -4,9 +4,11 @@ import colorStyles from './color.css.js';
 import displayStyles from './display.css.js';
 import focusStyles from './focus.css.js';
 import layoutStyles from './layout.css.js';
+import opacityStyles from './opacity.css.js';
 import positionStyles from './position.css.js';
 import shadowStyles from './shadow.css.js';
 import typographyStyles from './typography.css.js';
+import visibilityStyles from './visibility.css.js';
 import zIndexStyles from './z-index.css.js';
 
 export {
@@ -16,9 +18,11 @@ export {
   displayStyles,
   focusStyles,
   layoutStyles,
+  opacityStyles,
   positionStyles,
   shadowStyles,
   typographyStyles,
+  visibilityStyles,
   zIndexStyles,
 };
 
@@ -28,6 +32,8 @@ export {
 export const utilityStyles = [
   displayStyles,
   positionStyles,
+  visibilityStyles,
+  opacityStyles,
   layoutStyles,
   typographyStyles,
   colorStyles,

@@ -7,8 +7,11 @@ export const globalStyles = css`
 }
 
 ul {
-  list-style: none;
-  list-position: inside;
+  list-style: none inside;
+}
+
+a[disabled] {
+  pointer-events: none;
 }
 
 img,

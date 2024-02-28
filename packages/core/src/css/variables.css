@@ -9,6 +9,7 @@
   --fui-border-width: 1px;
   --fui-border-radius: 0.25rem;
   --fui-border-radius-pill: 9999px;
+  --fui-border: var(--fui-border-width) solid var(--fui-color-grey-500);
 
 
   /* These do not change between light/dark */

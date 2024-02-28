@@ -1,0 +1,1 @@
+export const paginationSelectEvent = 'pagination-select';
