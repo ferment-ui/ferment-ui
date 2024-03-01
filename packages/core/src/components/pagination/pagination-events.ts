@@ -1,1 +1,1 @@
-export const paginationSelectEvent = 'pagination-select';
+export const PAGINATION_SELECT_EVENT = 'pagination-select';

@@ -1,13 +1,9 @@
 import { PropertyValueMap, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
-import { map } from 'lit/directives/map.js';
-import { range } from 'lit/directives/range.js';
 import { FUIBaseElement } from '../BaseElement.js';
 import componentStyles from './pagination.css.js';
-import { paginationSelectEvent } from './pagination-events.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
+import { PAGINATION_SELECT_EVENT } from './pagination-events.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { mod } from '../../utils.js';
 
 /**
  * 
@@ -60,7 +56,7 @@ export class FUIPagination extends FUIBaseElement {
     } else {
       page = parseInt(target.textContent ?? '1', 10);
     }
-    this.emit(paginationSelectEvent, { page });
+    this.emit(PAGINATION_SELECT_EVENT, { page });
   }
 
   isCurrentPage(page: number) {
