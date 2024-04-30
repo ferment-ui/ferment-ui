@@ -50,7 +50,11 @@ ${states(`bg-${t}-color`, `  background-color: var(--fui-theme-${t}-color);`)}
 ${states(`bg-${t}-background-color`, `  background-color: var(--fui-theme-${t}-background-color);`)}`);
 }
 
-export default unsafeCSS(`${theme('primary')}
+export default unsafeCSS(`
+/**
+ * @section Color
+ */
+${theme('primary')}
 ${theme('accent')}
 ${theme('complement')}
 ${theme('neutral')}

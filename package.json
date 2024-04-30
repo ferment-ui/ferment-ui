@@ -1,8 +1,13 @@
 {
-  "name": "@ferment-ui/ferment-ui",
+  "name": "ferment-ui",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "exports": {
+    "./index.css": {
+      "import": "./packages/core/dist/fui.css"
+    }
   },
   "workspaces": [
     "packages/devtools",

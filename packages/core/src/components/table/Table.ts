@@ -1,6 +1,6 @@
 import { html, nothing } from 'lit';
 import type { CSSResultGroup, TemplateResult } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { FUIBaseElement } from '../BaseElement.js';

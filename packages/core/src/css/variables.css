@@ -1,4 +1,5 @@
 :root {
+  /* @section  */
   --fui-animation-speed-slow: 0.5s;
   --fui-animation-speed-medium: 0.3s;
   --fui-animation-speed-fast: 0.1s;
@@ -10,7 +11,6 @@
   --fui-border-radius: 0.25rem;
   --fui-border-radius-pill: 9999px;
   --fui-border: var(--fui-border-width) solid var(--fui-color-grey-500);
-
 
   /* These do not change between light/dark */
   --fui-color-primary: #697164;
@@ -72,7 +72,6 @@
   --fui-spacing-page: var(--fui-spacing-page-y) var(--fui-spacing-page-x);
   --fui-spacing-text: clamp(var(--fui-spacing-y-min), calc(100vw * 0.04), 2rem);
 
-
   --fui-box-shadow-1: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   --fui-box-shadow-2: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
   --fui-box-shadow-3: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
@@ -80,8 +79,6 @@
   --fui-box-shadow-5: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
   --fui-box-shadow-6: 0 16px 64px 0 rgba(0, 0, 0, 0.2);
 
-
-  
   --fui-body-font-family: 'Open Sans', sans-serif;
   --fui-body-font-size: max(1rem, 18px);
   --fui-body-line-height: 1.8;

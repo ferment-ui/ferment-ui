@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import * as csstree from 'css-tree';
+import css from '@ferment-ui/core/dist/fui.css';
+
+export async function getStaticPaths() {
+  const ast = csstree.parse(css);
+  console.log(ast);
+  return [{ params: { tagName: 'nothing', members: 'blah' } }];
+}
+
+const { tagName } = Astro.params;
+const { members } = Astro.props;
+---
+
+<Layout title={tagName}>
+  <h2>nothing</h2>
+</Layout>
