@@ -8,11 +8,14 @@ function shadow(index) {
 }`);
 }
 
-export default unsafeCSS(`.bs-0 {
+export default unsafeCSS(`
+/* @section Shadow */
+.bs-0 {
   box-shadow: none;
 }
 ${Array.from(range(1, 7)).map((index) => unsafeCSS(`
 ${shadow(index)}
 
 ${states(`bs-${index}`, `  box-shadow: var(--fui-box-shadow-${index});`)}`)).join('')}
+/* @endsection */
 `);

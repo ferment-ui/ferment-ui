@@ -1,6 +1,7 @@
 import { css } from 'lit';
 
 export default css`
+/* @section Visibility */
 .v-hidden {
   visibility: hidden;
 }
@@ -8,4 +9,5 @@ export default css`
 .v-visible {
   visibility: visible;
 }
+/* @endsection */
 `;

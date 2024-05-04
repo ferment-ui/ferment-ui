@@ -1,6 +1,7 @@
 import { css } from 'lit';
 
 export default css`
+/* @section Z-Index */
 .zi-0 {
   z-index: 0;
 }
@@ -24,4 +25,5 @@ export default css`
 .zi-tooltip {
   z-index: var(--fui-z-index-tooltip);
 }
+/* @endsection */
 `;

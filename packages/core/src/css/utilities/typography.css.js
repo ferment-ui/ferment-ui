@@ -1,6 +1,7 @@
 import { css } from 'lit';
 
 export default css`
+/* @section Typography */
 body, p {
   font-family: var(--fui-body-font-family);
   font-size: var(--fui-body-font-size);
@@ -60,4 +61,5 @@ h6, .h6 {
 .fs-larger {
   font-size: calc(1em * var(--fui-font-size-scale));
 }
+/* @endsection */
 `;

@@ -1,6 +1,7 @@
 import { css } from 'lit';
 
 export default css`
+/* @section Border */
 .border-transparent {
   border-color: transparent;
 }
@@ -29,4 +30,5 @@ export default css`
 .bl {
   border-left: var(--fui-border-width) solid var(--fui-color-border);
 }
+/* @endsection */
 `;

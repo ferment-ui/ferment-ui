@@ -1,6 +1,7 @@
 import { css } from 'lit';
 
 export default css`
+/* @section Layout */
 .body {
   overflow-x: hidden;
   display: grid;
@@ -336,4 +337,5 @@ export default css`
 .gap-text {
   gap: var(--fui-spacing-text);
 }
+/* @endsection */
 `;

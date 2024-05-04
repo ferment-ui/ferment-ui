@@ -51,9 +51,7 @@ ${states(`bg-${t}-background-color`, `  background-color: var(--fui-theme-${t}-b
 }
 
 export default unsafeCSS(`
-/**
- * @section Color
- */
+/* @section Color */
 ${theme('primary')}
 ${theme('accent')}
 ${theme('complement')}
@@ -61,4 +59,5 @@ ${theme('neutral')}
 ${theme('success')}
 ${theme('info')}
 ${theme('warn')}
-${theme('danger')}`);
+${theme('danger')}
+/* @endsection */`);

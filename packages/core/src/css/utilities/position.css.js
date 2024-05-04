@@ -1,6 +1,7 @@
 import { css } from 'lit';
 
 export default css`
+/* @section Position */
 .static {
   position: static;
 }
@@ -20,4 +21,5 @@ export default css`
 .fixed {
   position: fixed;
 }
+/* @endsection */
 `;

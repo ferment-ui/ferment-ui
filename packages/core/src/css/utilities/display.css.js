@@ -1,6 +1,7 @@
 import { css } from 'lit';
 
 export default css`
+/* @section Display */
 .block {
   display: block;
 }
@@ -25,4 +26,5 @@ export default css`
 .contents {
   display: contents;
 }
+/* @endsection */
 `;
