@@ -6,17 +6,22 @@
   "module": "dist/index.js",
   "customElements": "dist/custom-elements.json",
   "type": "module",
-  "files": [
-    "dist"
-  ],
   "exports": {
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.js"
     },
+    "./index.js": {
+      "import": "./src/index.js",
+      "require": "./src/index.js"
+    },
     "./fui.css": {
       "import": "./dist/fui.css",
       "require": "./dist/fui.css"
+    },
+    "./custom-elements.json": {
+      "import": "./dist/custom-elements.json",
+      "require": "./dist/custom-elements.json"
     }
   },
   "scripts": {

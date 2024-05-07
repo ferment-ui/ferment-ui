@@ -1,4 +1,4 @@
-import css from '@ferment-ui/core/dist/fui.css';
+import css from 'ferment-ui/fui.css';
 
 // Extract sections from the CSS file based on the comments @section and @endsection
 export function getCss() {

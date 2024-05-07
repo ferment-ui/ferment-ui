@@ -1,4 +1,4 @@
-import elements from '@ferment-ui/core/dist/custom-elements.json';
+import elements from 'ferment-ui/custom-elements.json';
 
 
 export function getCustomElements() {

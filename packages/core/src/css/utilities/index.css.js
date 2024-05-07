@@ -3,7 +3,7 @@ import borderStyles from './border.css.js';
 import colorStyles from './color.css.js';
 import displayStyles from './display.css.js';
 import focusStyles from './focus.css.js';
-import globalStyles from './global.css.js';
+import globalStyles from './reset.css.js';
 import layoutStyles from './layout.css.js';
 import opacityStyles from './opacity.css.js';
 import otherStyles from './other.css.js';
