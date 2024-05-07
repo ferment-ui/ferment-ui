@@ -1,5 +1,5 @@
 :root {
-  /* @section variables/animation */
+  /* @section Animation-variables */
   --fui-animation-speed-slow: 0.5s;
   --fui-animation-speed-medium: 0.3s;
   --fui-animation-speed-fast: 0.1s;
@@ -7,14 +7,19 @@
   --fui-animation-default-timing-function: ease-in-out;
   /* @endsection */
 
-  /* @section variables/border */
+  /* @section Banner-variables */
+  --fui-banner-height: 3rem;
+  --fui-banner-padding: 0.5rem;
+  /* @endsection */
+
+  /* @section Border-variables */
   --fui-border-width: 1px;
   --fui-border-radius: 0.25rem;
   --fui-border-radius-pill: 9999px;
   --fui-border: var(--fui-border-width) solid var(--fui-color-grey-500);
   /* @endsection */
 
-  /* @section variables/color */
+  /* @section Color-variables */
   --fui-color-primary: #697164;
   --fui-color-accent: #c3B799;
   --fui-color-complement: #6D6F7F;
@@ -57,7 +62,7 @@
   --fui-color-light-text-visited: var(--fui-color-grey-100);
   /* @endsection */
 
-  /* @section variables/spacing */
+  /* @section Spacing-variables */
   --fui-spacing-base: 4px;
   --fui-spacing-y-min: calc(var(--fui-spacing-base) * 10);
   --fui-spacing-x-min: calc(var(--fui-spacing-base) * 10);
@@ -69,12 +74,12 @@
   --fui-spacing-responsive: var(--fui-spacing-responsive-y) var(--fui-spacing-responsive-x);
   --fui-spacing-page-width: 65rem;
   --fui-spacing-page-y: var(--fui-spacing-responsive-y);
-  --fui-spacing-page-x: max(var(--fui-spacing-x-min), calc((100vw - var(--fui-page-width)) / 2));
+  --fui-spacing-page-x: max(var(--fui-spacing-x-min), calc((100vw - var(--fui-spacing-page-width)) / 2));
   --fui-spacing-page: var(--fui-spacing-page-y) var(--fui-spacing-page-x);
   --fui-spacing-text: clamp(var(--fui-spacing-y-min), calc(100vw * 0.04), 2rem);
   /* @endsection */
 
-  /* @section variables/shadow */
+  /* @section Shadow-variables */
   --fui-box-shadow-1: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   --fui-box-shadow-2: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
   --fui-box-shadow-3: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
@@ -83,7 +88,7 @@
   --fui-box-shadow-6: 0 16px 64px 0 rgba(0, 0, 0, 0.2);
   /* @endsection */
 
-  /* @section variables/typography */
+  /* @section Typography-variables */
   --fui-body-font-family: 'Open Sans', sans-serif;
   --fui-body-font-size: max(1rem, 18px);
   --fui-body-line-height: 1.8;
@@ -105,7 +110,8 @@
   --fui-h1-font-size: calc(var(--fui-h2-font-size) * var(--fui-font-size-scale));
   /* @endsection */
 
-  /* @section variables/z-index */
+  /* @section Z-Index-variables */
+  --fui-z-index-banner: 500;
   --fui-z-index-drawer: 1000;
   --fui-z-index-dialog: 2000;
   --fui-z-index-dropdown: 3000;
@@ -114,6 +120,7 @@
   /* @endsection */
 }
 
+/* @section Theme-variables */
 :root, .light {
   color-scheme: light;
   --fui-theme-neutral-color: var(--fui-color-dark-text);
@@ -136,3 +143,4 @@
   --fui-theme-complement-color-visited: var(--fui-color-light-text-visited);
   --fui-theme-complement-background-color: var(--fui-color-complement);
 }
+/* @endsection */

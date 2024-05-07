@@ -1,16 +1,12 @@
 import { html, nothing } from 'lit';
 import type { CSSResultGroup, TemplateResult } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property  } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { FUIBaseElement } from '../BaseElement.js';
 import '../pagination/Pagination.js';
 import tableStyles from './table.css.js';
 import '../icon/Icon.js';
-import { maxDepth, maxWidth } from '../../utils.js';
 import { map } from 'lit/directives/map.js';
-import { TABLE_SORT_EVENT } from './table-events.js';
-
 
 // you can either have an array of headings and entities, or an object of headings and an array of entities with the same keys
 // ['Hello', {content: 'World'}, 'Foo', 'Bar'] -> [['1', '2', '3', {content: '4'}]]
@@ -43,12 +39,12 @@ export type TableHeading = TableHeadingDefaults & {
   subheadings?: TableHeading[]
 };
 
-type TableHeadingData = TableHeading & {
-  colspan: number
-  rowspan: number
-  hidden?: boolean
-  subheadings: number
-};
+// type TableHeadingData = TableHeading & {
+//   colspan: number
+//   rowspan: number
+//   hidden?: boolean
+//   subheadings: number
+// };
 
 @customElement('fui-table')
 export class FUITable extends FUIBaseElement {

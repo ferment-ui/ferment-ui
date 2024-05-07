@@ -2,7 +2,6 @@
   "name": "@ferment-ui/docs",
   "private": true,
   "type": "module",
-  "version": "0.0.1",
   "scripts": {
     "dev": "wireit",
     "build": "astro check && astro build",
@@ -26,17 +25,13 @@
     }
   },
   "dependencies": {
-    "@adobe/css-tools": "^4.3.3",
     "@astrojs/check": "^0.5.5",
     "@astrojs/lit": "^4.0.1",
-    "@ferment-ui/core": "file:../core",
+    "ferment-ui": "file:../core",
     "astro": "^4.7.0",
-    "css-tree": "^2.3.1",
-    "csstree": "^0.0.3",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@types/css-tree": "^2.3.7",
     "wireit": "^0.14.4"
   }
 }

@@ -1,6 +1,7 @@
 ---
-import '@ferment-ui/core/dist/fui.css';
-import { getCustomElements } from '../utils/custom-elements.ts';
+import 'ferment-ui/fui.css';
+import { getCustomElements } from '../utils/custom-elements.js';
+import { getCss } from '../utils/css.js';
 
 interface Props {
 	title: string;
@@ -24,7 +25,7 @@ const { title } = Astro.props.frontmatter || Astro.props;
 	</head>
 	<body class="row">
     <aside>
-      <h1>{title}</h1>
+      <h1>Ferment UI</h1>
       <nav class="column">
         <details open>
           <summary>Getting Started</summary>
@@ -43,9 +44,11 @@ const { title } = Astro.props.frontmatter || Astro.props;
             <li>
               <a href="/css/overview">Overview</a>
             </li>
-            <li>
-              <a href="/css/variables">Variables</a>
-            </li>
+            {Object.keys(getCss()).map((css) => (
+              <li>
+                <a href={`/css/${css}`}>{css}</a>
+              </li>
+            ))}
           </ul>
         </details>
         <details open>
@@ -60,7 +63,7 @@ const { title } = Astro.props.frontmatter || Astro.props;
         </details>
       </nav>
     </aside>
-    <main>
+    <main class="p">
       <slot />
     </main>
 	</body>

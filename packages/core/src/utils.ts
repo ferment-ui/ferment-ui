@@ -1,5 +1,6 @@
 import { ClassInfo } from "lit/directives/class-map.js";
 import { StyleInfo } from "lit/directives/style-map.js";
+import { kebabCase } from "lodash-es";
 
 export function mod(a: number, b: number) {
   return ((a % b) + b) % b;
@@ -198,6 +199,10 @@ export function getSlug(element: Element) {
   return element.textContent != null ? toKebabURI(element.textContent) : null;
 }
 
+type NestedItem = {
+  children?: NestedItem[]
+}
+
 /**
  * Converts a list of items with a 'level' property into a nested map. Useful for components like TOCs and Trees
  * @param list A flat list of nested items that have a 'level' property indicating their depth in the tree.
@@ -261,6 +266,7 @@ export function walkUp(node: Element, stopSelector: string, selector?: string) {
     }
     else node = ancestor;
   }
+  return null;
 }
 
 /**
@@ -270,7 +276,8 @@ export function walkUp(node: Element, stopSelector: string, selector?: string) {
  * @param key the property key to use to decend
  * @returns the parent node or null
  */
-export function findParentNode(root: Obj, node: Obj, key: string | number | symbol) {
+export function findParentNode(root: object, node: object, key: string | number | symbol) {
+  console.log(root, node, key);
   const parent = root;
   // while (node != null) {
   //   let children = parent[key];

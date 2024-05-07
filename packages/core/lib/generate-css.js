@@ -15,7 +15,7 @@ if (stat(distDir).catch(() => false)) {
 const variables = await readFile(join(cssDir, 'variables.css'), {encoding: 'utf-8'});
 const utilities = utilityStyles.map(style => style.cssText).join('\n');
 const components = (await Promise.all(
-  ['button', 'pagination'].map(async component => {
+  ['button', 'pagination', 'card'].map(async component => {
     const file = join(componentsDir, component, `${component}.css.js`);
     try {
       return (await import(file)).default.cssText;

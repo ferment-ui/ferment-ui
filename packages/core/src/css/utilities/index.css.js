@@ -3,8 +3,10 @@ import borderStyles from './border.css.js';
 import colorStyles from './color.css.js';
 import displayStyles from './display.css.js';
 import focusStyles from './focus.css.js';
+import globalStyles from './global.css.js';
 import layoutStyles from './layout.css.js';
 import opacityStyles from './opacity.css.js';
+import otherStyles from './other.css.js';
 import positionStyles from './position.css.js';
 import shadowStyles from './shadow.css.js';
 import typographyStyles from './typography.css.js';
@@ -17,6 +19,7 @@ export {
   colorStyles,
   displayStyles,
   focusStyles,
+  globalStyles,
   layoutStyles,
   opacityStyles,
   positionStyles,
@@ -24,16 +27,19 @@ export {
   typographyStyles,
   visibilityStyles,
   zIndexStyles,
+  otherStyles,
 };
 
 /**
  * @type {import('lit').CSSResultGroup}
  */
 export const utilityStyles = [
+  globalStyles,
   displayStyles,
   positionStyles,
   visibilityStyles,
   opacityStyles,
+  otherStyles,
   layoutStyles,
   typographyStyles,
   colorStyles,

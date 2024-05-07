@@ -1,9 +1,11 @@
 import { css } from 'lit';
 
-export const globalStyles = css`
+export default css`
+/* @section Global */
 *, :host {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 ul {
@@ -18,8 +20,9 @@ img,
 picture,
 video,
 iframe {
-  max-inline-size: 100%; /* logical property for "width", image cannot go larger than it's size */
-  max-block-size: 100%; /* logical property for "height" */;
+  max-inline-size: 100%;
+  max-block-size: 100%;
   object-fit: contain;
 }
+/* @endsection */
 `;

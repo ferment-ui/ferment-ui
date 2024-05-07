@@ -61,5 +61,9 @@ h6, .h6 {
 .fs-larger {
   font-size: calc(1em * var(--fui-font-size-scale));
 }
+
+p + p, p + blockquote, p + ul, p + ol, p + h1, p + .h1, p + h2, p + .h2, p + h3, p + .h3, p + h4, p + .h4, p + h5, p + .h5, p + h6, p + .h6, blockquote + p, ul + p, ol + p, ul + ul, ul + ol, ol + ul, ol + ol {
+  margin-top: calc(var(--fui-spacing-base) * 12px);
+}
 /* @endsection */
 `;

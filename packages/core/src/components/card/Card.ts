@@ -1,6 +1,7 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
 import { styleMap } from 'lit/directives/style-map.js';
+import cardStyles from './card.css.js';
 
 /**
  * Card component for displaying isolated content. 
@@ -10,40 +11,7 @@ import { styleMap } from 'lit/directives/style-map.js';
 @customElement('fui-card')
 export class FUICard extends LitElement {
   static styles = [
-    css`
-      :host {
-        display: flex;
-        flex-direction: row;
-        align-items: stretch;
-      }
-
-      .card {
-        flex: 1;
-        display: grid;
-        border: 1px solid currentColor;
-        border-radius: var(--br);
-        box-shadow: var(--bs-1);
-        overflow: hidden;
-        padding: var(--S-card);
-      }
-
-      slot[name='image'] {
-        grid-area: image;
-        display: grid;
-      }
-
-      slot[name='header'] {
-        grid-area: header;
-      }
-
-      slot:not([name]) {
-        grid-area: body;
-      }
-
-      slot[name='footer'] {
-        grid-area: footer;
-      }
-    `
+    cardStyles
   ];
 
   @property({ type: String }) layout: 'left' | 'right' | 'top' | 'bottom' = 'top';
