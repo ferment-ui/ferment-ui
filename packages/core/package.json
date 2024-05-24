@@ -3,9 +3,10 @@
   "private": false,
   "version": "0.0.1-alpha.5",
   "description": "Ferment UI Design System",
+  "type": "module",
+  "main": "lib/generate-css.js",
   "module": "dist/index.js",
   "customElements": "dist/custom-elements.json",
-  "type": "module",
   "exports": {
     ".": {
       "import": "./dist/index.js",

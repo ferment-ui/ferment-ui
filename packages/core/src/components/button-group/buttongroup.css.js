@@ -1,6 +1,6 @@
 import { css } from 'lit';
 
-export const buttongroupStyles = css`
+export default css`
   :host {
     display: flex;
     flex-direction: row;

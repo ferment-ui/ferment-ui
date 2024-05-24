@@ -13,11 +13,7 @@
       "command": "astro dev",
       "dependencies": [
         {
-          "script": "../core:css",
-          "cascade": false
-        },
-        {
-          "script": "../core:manifest",
+          "script": "../core:build",
           "cascade": false
         }
       ],

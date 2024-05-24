@@ -16,6 +16,7 @@ ${states(t, `  color: var(--fui-theme-${t}-color);
 
 .${t}-inverse {
   color: var(--fui-theme-${t}-background-color);
+  background-color: var(--fui-theme-${t}-color);
 }
 
 .${t}-inverse :visited {

@@ -20,9 +20,34 @@ export async function getStaticPaths() {
 
 const { tagName } = Astro.params;
 const { members } = Astro.props;
+const fields = members.filter((member: any) => member.kind === 'field');
+const methods = members.filter((member: any) => member.kind === 'method');
+const events = members.filter((member: any) => member.kind === 'event');
+const slots = members.filter((member: any) => member.kind === 'slot');
+const cssVariables = members.filter((member: any) => member.kind === 'cssvar');
+const cssProps = members.filter((member: any) => member.kind === 'cssprop');
+const cssParts = members.filter((member: any) => member.kind === 'csspart');
 ---
 
 <Layout title={tagName}>
   <h2>{tagName}</h2>
-  <pre>{JSON.stringify(members, null, 2)}</pre>
+  <h3>Fields</h3>
+  <ul>
+    {fields.map((field: any) => (
+       <li>
+        <h4>{field.name}</h4>
+        <p>{field.type}</p>
+        <p>{field.description}</p>
+        <p>{JSON.stringify(field)}</p>
+      </li>
+    ))}
+  </ul>
+  <h3>Methods</h3>
+  <ul>
+    {methods.map((method: any) => (
+      <li>
+        <h4>{method.name}</h4>
+        <p>{method.description}</p>
+      </li>
+    ))}
 </Layout>

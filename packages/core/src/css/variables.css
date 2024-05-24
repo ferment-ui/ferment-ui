@@ -5,6 +5,7 @@
   --fui-animation-speed-fast: 0.1s;
   --fui-animation-default-speed: var(--fui-animation-speed-medium);
   --fui-animation-default-timing-function: ease-in-out;
+  --fui-animation-default: var(--fui-animation-default-speed) var(--fui-animation-default-timing-function);
   /* @endsection */
 
   /* @section Banner-variables */
@@ -21,7 +22,7 @@
 
   /* @section Color-variables */
   --fui-color-primary: #372d2d;
-  --fui-color-accent: #c3B799;
+  --fui-color-accent: #003566;
   --fui-color-complement: #6D6F7F;
 
   --fui-color-grey-0: #ffffff;
@@ -77,9 +78,11 @@
   --fui-spacing-page-x: max(var(--fui-spacing-x-min), calc((100vw - var(--fui-spacing-page-width)) / 2));
   --fui-spacing-page: var(--fui-spacing-page-y) var(--fui-spacing-page-x);
   --fui-spacing-text: clamp(var(--fui-spacing-y-min), calc(100vw * 0.04), 2rem);
+  --fui-spacing-min-touch-size: 44px;
   /* @endsection */
 
   /* @section Shadow-variables */
+  --fui-box-shadow-0: 0;
   --fui-box-shadow-1: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   --fui-box-shadow-2: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
   --fui-box-shadow-3: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
@@ -126,7 +129,7 @@
   --fui-theme-neutral-color: var(--fui-color-dark-text);
   --fui-theme-neutral-color-disabled: var(--fui-color-dark-text);
   --fui-theme-neutral-color-visited: var(--fui-color-dark-text);
-  --fui-theme-neutral-background-color: var(--fui-color-neutral-50);
+  --fui-theme-neutral-background-color: var(--fui-color-grey-50);
 
   --fui-theme-primary-color: var(--fui-color-light-text);
   --fui-theme-primary-color-disabled: var(--fui-color-light-text-disabled);

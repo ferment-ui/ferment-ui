@@ -1,7 +1,7 @@
 import { html, CSSResultGroup } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { FUIBaseElement } from '../BaseElement.js';
-import { buttongroupStyles } from './buttongroup.css.js';
+import buttongroupStyles from './buttongroup.css.js';
 
 @customElement('fui-button-group')
 export class FUIButtonGroup extends FUIBaseElement {

@@ -1,15 +1,11 @@
 import { css } from 'lit';
 
 export default css`
-/* @section Global */
+/* @section Reset */
 *, :host {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-ul {
-  list-style: none inside;
 }
 
 a[disabled] {

@@ -13,21 +13,21 @@ import typographyStyles from './typography.css.js';
 import visibilityStyles from './visibility.css.js';
 import zIndexStyles from './z-index.css.js';
 
-export {
-  animationStyles,
-  borderStyles,
-  colorStyles,
-  displayStyles,
-  focusStyles,
+export default {
   globalStyles,
-  layoutStyles,
-  opacityStyles,
+  displayStyles,
   positionStyles,
-  shadowStyles,
-  typographyStyles,
   visibilityStyles,
-  zIndexStyles,
+  opacityStyles,
   otherStyles,
+  layoutStyles,
+  typographyStyles,
+  colorStyles,
+  borderStyles,
+  zIndexStyles,
+  shadowStyles,
+  animationStyles,
+  focusStyles,
 };
 
 /**

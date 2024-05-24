@@ -22,7 +22,7 @@ export class FUIBaseElement extends LitElement {
   }}) styles: StyleInfo = {};
 
   emit(name: string, detail: any) {
-    console.log('emitting', name, detail);
+    console.debug('emitting', name, detail);
     this.dispatchEvent(new CustomEvent(name, { detail, bubbles: true, composed: true }));
   }
 }

@@ -2,6 +2,7 @@ export { FUIBreadcrumbs } from './components/breadcrumbs/Breadcrumbs.js';
 export { FUICard } from './components/card/Card.js';
 export { FUIEmailAddress } from './components/email-address/EmailAddress.js';
 export { FUIIcon } from './components/icon/Icon.js';
+export { FUIList } from './components/list/List.js';
 export { FUIPagination } from './components/pagination/Pagination.js';
 export { FUIPhoneNumber } from './components/phone-number/PhoneNumber.js';
 export { FUIPricing } from './components/pricing/Pricing.js';

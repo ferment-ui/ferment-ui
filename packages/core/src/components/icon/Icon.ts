@@ -1,15 +1,16 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js'
+import { choose } from 'lit/directives/choose.js';
 
 @customElement('fui-icon')
 export class FUIIcon extends LitElement {
   static styles = [
     css`
       :host {
-        display: flex;
+        display: inline-flex;
         pointer-events: none;
-        width: var(--S-icon, 1rem);
-        height: var(--S-icon, 1rem);
+        width: 1em;
+        height: 1em;
         stroke: currentColor;
         stroke-width: 2;
         stroke-linecap: round;
@@ -24,9 +25,18 @@ export class FUIIcon extends LitElement {
 
   // TODO: app props for icon for font based, use for svg, and src for img
   @property({ type: String }) data: string = '';
+  @property({ type: String}) use: string = '';
+  @property({ type: String}) src: string = '';
+  @property({ type: String }) name: string = '';
 
   render() {
-    return html`<object tabindex='${this.tabIndex}' type='image/svg+xml' data='${this.data}' aria-label='${this.label}'></object>`;
+    const method = this.use ? 'use' : this.src ? 'img' : this.name ? 'i' : 'object';
+    return html`${choose(method, [
+      ['object', () => html`<object tabindex='${this.tabIndex}' type='image/svg+xml' data='${this.data}' aria-label='${this.label}'></object>`],
+      ['use', () => html`<svg tabindex='${this.tabIndex}' aria-label='${this.label}'><use href='${this.use}'></use></svg>`],
+      ['img', () => html`<img tabindex='${this.tabIndex}' src='${this.src}' alt='${this.label}' />`],
+      ['i', () => html`<i tabindex='${this.tabIndex}' class='${this.name}' aria-label='${this.label}'></i>`]
+    ])}`;
   }
 }
 

@@ -11,7 +11,7 @@ export class FUIEmailAddress extends LitElement {
   static styles = [
     css`
       :host {
-        display: inline-block;
+        display: flex;
       }
 
       a {

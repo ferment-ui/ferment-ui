@@ -242,6 +242,14 @@ export default css`
   padding-bottom: var(--fui-spacing-responsive-y);
 }
 
+.pt-text {
+  padding-top: var(--fui-spacing-text);
+}
+
+.pb-text {
+  padding-bottom: var(--fui-spacing-text);
+}
+
 .m {
   margin: var(--fui-spacing-y-min) var(--fui-spacing-x-min);
 }
@@ -330,11 +338,19 @@ export default css`
   margin-right: auto;
 }
 
-.gap-base {
+.mt-text {
+  margin-top: var(--fui-spacing-text);
+}
+
+.mb-text {
+  margin-bottom: var(--fui-spacing-text);
+}
+
+.g-base {
   gap: var(--fui-spacing-base);
 }
 
-.gap-text {
+.g-text {
   gap: var(--fui-spacing-text);
 }
 /* @endsection */
