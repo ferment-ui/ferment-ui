@@ -30,6 +30,7 @@ export class FUIPhoneNumber extends LitElement {
         `
     ];
 
+    @property({ type: String }) country: string = '';
     @property({ type: String }) area: string = '';
     @property({ type: String }) number: string = '';
     @property({ type: Boolean }) tel: boolean = true;
@@ -45,7 +46,7 @@ export class FUIPhoneNumber extends LitElement {
         const a = this.shadowRoot?.querySelector('a');
         const prefix = 'tel';
         if (a) {
-            a.href = `${prefix}:${reverse(this.area)}-${reverse(this.number)}`;
+            a.href = `${prefix}:${this.country ? `${this.country}-` : ''}${reverse(this.area)}-${reverse(this.number)}`;
         }
     }
 

@@ -1,0 +1,73 @@
+schema: 1.0
+variables:
+  animation:
+    speed:
+      slow: 0.5s
+      medium: 0.3s
+      fast: 0.1s
+    default-speed: var(--fui-animation-speed-medium)
+    default-timing-function: ease-in-out
+    default: var(--fui-default-speed) var(--fui-default-timing-function)
+  banner:
+    height: 3rem
+    padding: 0.5rem
+  border:
+    width: 1px
+    radius: 0.25rem
+  color:
+    neutral: 
+    primary: red
+    accent: green
+    complement: blue
+    grey:
+      0: '#ffffff'
+      50: '#fafafa'
+      100: '#f5f5f5'
+      400: '#bdbdbd'
+      500: '#9e9e9e'
+      900: '#212121'
+      950: '#121212'
+      1000: '#1e1c1c'
+    success:
+      100: '#c8e6c9'
+      400: '#66bb6a'
+      500: '#4caf50'
+      900: '#1b5e20'
+    info:
+      100: '#bbdefb'
+      400: '#42a5f5'
+      500: '#2196f3'
+      900: '#0d47a1'
+    warn:
+      100: '#ffe0b2'
+      400: '#ffb74d'
+      500: '#ff9800'
+      900: '#e65100'
+    danger:
+      100: '#ffcdd2'
+      400: '#ef5350'
+      500: '#f44336'
+      900: '#b71c1c'
+    dark:
+      text: var(--fui-color-grey-950)
+      text-disabled: var(--fui-color-grey-500)
+      text-visited: var(--fui-color-grey-900)
+    light:
+      text: var(--fui-color-grey-50)
+      text-disabled: var(--fui-color-grey-400)
+      text-visited: var(--fui-color-grey-100)
+  spacing:
+    base: 4px
+    y-min: calc(var(--fui-spacing-base) * 10)
+    x-min: calc(var(--fui-spacing-base) * 10)
+    y-max: calc(var(--fui-spacing-base) * 20)
+    x-max: calc(var(--fui-spacing-base) * 24)
+    static: var(--fui-spacing-y-min) var(--fui-spacing-x-min)
+    responsive-y: clamp(var(--fui-spacing-y-min), calc(100vw * 0.08), var(--fui-spacing-y-max))
+    responsive-x: clamp(var(--fui-spacing-x-min), 5%, var(--fui-spacing-x-max))
+    responsive: var(--fui-spacing-responsive-y) var(--fui-spacing-responsive-x)
+    page-width: 65rem
+    page-y: var(--fui-spacing-responsive-y)
+    page-x: max(var(--fui-spacing-x-min), calc((100vw - var(--fui-spacing-page-width)) / 2))
+    page: var(--fui-spacing-page-y) var(--fui-spacing-page-x)
+    text: clamp()

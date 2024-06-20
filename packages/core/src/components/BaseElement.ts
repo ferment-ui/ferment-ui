@@ -3,12 +3,11 @@ import { property } from 'lit/decorators.js';
 import { ClassInfo } from 'lit/directives/class-map.js';
 import { StyleInfo } from 'lit/directives/style-map.js';
 import { convertClassStringToObject, convertObjectToClassString, convertObjectToStyleString, convertStyleStringToObject } from '../utils.js';
-import { globalStyles, utilityStyles } from '../css/utilities/index.css.js';
+import { utilityStyles } from '../css/utilities/index.css.js';
 
 export class FUIBaseElement extends LitElement {
   static styles: CSSResultGroup = [
-    globalStyles,
-    utilityStyles
+    utilityStyles,
   ];
 
   @property({ type: String, attribute: 'class', converter: {

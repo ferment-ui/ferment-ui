@@ -834,8 +834,7 @@ p + p, p + blockquote, p + ul, p + ol, p + h1, p + .h1, p + h2, p + .h2, p + h3,
        }
    }
    FUIBaseElement.styles = [
-       globalStyles,
-       utilityStyles
+       utilityStyles,
    ];
    __decorate$a([
        n$1({ type: String, attribute: 'class', converter: {
@@ -1403,6 +1402,7 @@ a[disabled] {
    exports.FUIPhoneNumber = class FUIPhoneNumber extends s {
        constructor() {
            super(...arguments);
+           this.country = '';
            this.area = '';
            this.number = '';
            this.tel = true;
@@ -1417,7 +1417,7 @@ a[disabled] {
            const a = (_a = this.shadowRoot) === null || _a === void 0 ? void 0 : _a.querySelector('a');
            const prefix = 'tel';
            if (a) {
-               a.href = `${prefix}:${reverse(this.area)}-${reverse(this.number)}`;
+               a.href = `${prefix}:${this.country ? `${this.country}-` : ''}${reverse(this.area)}-${reverse(this.number)}`;
            }
        }
        render() {
@@ -1445,6 +1445,9 @@ a[disabled] {
             }
         `
    ];
+   __decorate$3([
+       n$1({ type: String })
+   ], exports.FUIPhoneNumber.prototype, "country", void 0);
    __decorate$3([
        n$1({ type: String })
    ], exports.FUIPhoneNumber.prototype, "area", void 0);

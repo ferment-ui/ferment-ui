@@ -18,7 +18,6 @@ const baseTabbableElements = 'a[href], area[href], input:not([disabled]):not([ty
 export const tabbableElements = `${baseTabbableElements}, [tabindex]:not([tabindex="-1"]):not([disabled])`;
 export const focusableElements = `${baseTabbableElements}, [tabindex]:not([disabled])`;
 
-
 export const NavigationKeys = {
   ArrowDown: "ArrowDown",
   ArrowUp: "ArrowUp",
