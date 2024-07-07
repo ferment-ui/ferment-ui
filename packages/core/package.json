@@ -51,14 +51,13 @@
       ]
     },
     "css": {
-      "command": "node ./lib/generate-css.js",
+      "command": "node ./lib/generate-css.js --destination=dist",
       "files": [
         "src/**/*.{css,css.js}",
         "lib/generated-css.js"
       ],
       "output": [
-        "dist/*.{css,css.map}",
-        "fui.css"
+        "dist/fui.{css,css.map}"
       ]
     },
     "manifest": {

@@ -1,5 +1,5 @@
 import { readFile, writeFile, stat, mkdir, readdir } from 'node:fs/promises';
-import { isAbsolute, join, resolve } from 'node:path';
+import { isAbsolute, join } from 'node:path';
 import { parseArgs } from 'node:util';
 import { transform } from 'lightningcss';
 import utilityStyles from '../src/css/utilities/index.css.js';

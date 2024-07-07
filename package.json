@@ -10,8 +10,8 @@
     }
   },
   "workspaces": [
+    "packages/core",
     "packages/devtools",
-    "packages/docs",
-    "packages/core"
+    "packages/docs"
   ]
 }
