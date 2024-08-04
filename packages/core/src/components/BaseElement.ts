@@ -1,9 +1,10 @@
 import { CSSResultGroup, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
-import { ClassInfo } from 'lit/directives/class-map.js';
-import { StyleInfo } from 'lit/directives/style-map.js';
+import type { ClassInfo } from 'lit/directives/class-map.js';
+import type { StyleInfo } from 'lit/directives/style-map.js';
 import { convertClassStringToObject, convertObjectToClassString, convertObjectToStyleString, convertStyleStringToObject } from '../utils.js';
 import { utilityStyles } from '../css/utilities/index.css.js';
+import { debug } from '../scripts/debug.js';
 
 export class FUIBaseElement extends LitElement {
   static styles: CSSResultGroup = [
@@ -21,7 +22,8 @@ export class FUIBaseElement extends LitElement {
   }}) styles: StyleInfo = {};
 
   emit(name: string, detail: any) {
-    console.debug('emitting', name, detail);
     this.dispatchEvent(new CustomEvent(name, { detail, bubbles: true, composed: true }));
   }
+
+  debug = debug;
 }

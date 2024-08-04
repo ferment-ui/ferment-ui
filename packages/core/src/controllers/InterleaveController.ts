@@ -1,15 +1,12 @@
 import { html, ReactiveController, TemplateResult, nothing, ReactiveElement } from 'lit';
 import { ref, Ref, createRef } from 'lit/directives/ref.js';
-import { Logger } from './LoggerController';
+import { debug } from '../scripts/debug.js';
 
 export class InterleaveController implements ReactiveController {
-  #logger: Logger;
   #node: Node | TemplateResult;
   #slotRefs: Ref<HTMLSlotElement>[] = [];
 
   constructor(public host: ReactiveElement, node: Node | TemplateResult) {
-    this.#logger = new Logger(host);
-    Logger.debugLog();
     this.#node = node;
     host.addController(this);
   }
@@ -21,7 +18,7 @@ export class InterleaveController implements ReactiveController {
   }
 
   hostUpdated() {
-    this.#logger.log(this.host.children, this.#slotRefs);
+    debug(this.host.children, this.#slotRefs);
     Array.from(this.host.children).forEach((child, index) => this.#slotRefs[index]?.value?.append(child));
   }
 }

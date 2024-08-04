@@ -8,3 +8,4 @@ export { FUIPhoneNumber } from './components/phone-number/PhoneNumber.js';
 export { FUIPricing } from './components/pricing/Pricing.js';
 export { FUITabs } from './components/tabs/Tabs.js';
 export { FUITable } from './components/table/Table.js';
+export { FUITooltip } from './components/tooltip/Tooltip.js';

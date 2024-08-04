@@ -11,19 +11,13 @@
   "wireit": {
     "dev": {
       "command": "astro dev",
-      "dependencies": [
-        {
-          "script": "../core:build",
-          "cascade": false
-        }
-      ],
       "service": true
     }
   },
   "dependencies": {
-    "@astrojs/check": "^0.7.0",
+    "@astrojs/check": "^0.9.1",
     "@astrojs/lit": "^4.3.0",
-    "astro": "^4.11.5",
+    "astro": "^4.13.1",
     "ferment-ui": "file:../core",
     "typescript": "^5.3.3"
   },

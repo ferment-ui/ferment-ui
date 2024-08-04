@@ -7,8 +7,7 @@
 
 import { html, nothing } from 'lit';
 import type { ReactiveController, ReactiveElement } from 'lit';
-import { Logger } from './LoggerController.js';
-
+import { debug } from '../scripts/debug.js';
 
 interface AnonymousSlot {
   hasContent: boolean;
@@ -40,13 +39,11 @@ const isSlot =
 export class SlotController implements ReactiveController {
   public static anonymous = Symbol('anonymous slot');
   #nodes = new Map<string | typeof SlotController.anonymous, Slot>();
-  #logger: Logger;
   #firstUpdated = false;
   #mo = new MutationObserver(records => this.#onMutation(records));
   #slotNames: (string | null)[];
 
   constructor(public host: ReactiveElement, config: SlotsConfig) {
-    this.#logger = new Logger(this.host);
     if (config.slots.length >= 1) {
       this.#slotNames = config.slots;
     }
@@ -90,7 +87,7 @@ export class SlotController implements ReactiveController {
    */
   hasSlotted(...names: string[]): boolean {
     if (!names.length) {
-      this.#logger.warn(`Please provide at least one slot name for which to search.`);
+      console.error(`Please provide at least one slot name for which to search.`);
       return false;
     } else {
       return names.some(x =>
@@ -157,7 +154,7 @@ export class SlotController implements ReactiveController {
     const slot = this.host.shadowRoot?.querySelector?.<HTMLSlotElement>(selector) ?? null;
     const hasContent = !!elements.length;
     this.#nodes.set(name, { elements, name: slotName ?? '', hasContent, slot });
-    this.#logger.log(slotName, hasContent);
+    debug(slotName, hasContent);
   };
 
   forward(name: string, slot = name) {

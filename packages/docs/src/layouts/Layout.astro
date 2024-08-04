@@ -15,14 +15,17 @@ const { title } = Astro.props.frontmatter || Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class='no-js'>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>Ferment UI | {title}</title>
 		<meta name="description" content="Astro description" />
-    <script type="module" src="ferment-ui/head.js"></script>
+    <script type="module">document.documentElement.classList.toggle('no-js')</script>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      import '../../../core/src/index.ts';
+    </script>
 	</head>
 	<body class="row">
     <aside>
@@ -69,19 +72,15 @@ const { title } = Astro.props.frontmatter || Astro.props;
     </main>
     <script>
       const entries = document.querySelectorAll('.intro');
-const introObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    console.log(entry);
-    if (entry.isIntersecting) {
-      entry.target.style.transform = 'none';
-      entry.target.style.opacity = 1;
-      introObserver.unobserve(entry.target);
-    }
-  });
-});
-entries.forEach((entry) => {
-  introObserver.observe(entry);
-});
+      const introObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle('introed');
+          entry.target.classList.remove('intro');
+        });
+      });
+      entries.forEach((entry) => {
+        introObserver.observe(entry);
+      });
     </script>
 	</body>
 </html>

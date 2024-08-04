@@ -14,14 +14,12 @@ A collection of bare-bones, accessibility-focused web components. They are highl
 - [ ] Button Group
 - [ ] Card
 - [ ] Carousel
-- [ ] Chat
 - [ ] Combobox
-- [ ] Combobox Item
 - [ ] Comment
 - [ ] Copy
+- [ ] Diagram
 - [ ] Dialog
 - [ ] Disclosure
-- [ ] Divider
 - [ ] Drawer
 - [ ] Dropdown
 - [ ] Email Address
@@ -40,12 +38,9 @@ A collection of bare-bones, accessibility-focused web components. They are highl
 	- [ ] Switch
   - [ ] Tel
 	- [ ] Textarea
-- [ ] Icon
-- [ ] Icon Button
+- [ ] Icon?? Might be better just to be a class and recommend an external svg sprite map?
 - [ ] Listbox
-- [ ] Listbox Item
 - [ ] Menu
-- [ ] Menu Item
 - [ ] Notification
 - [ ] Pagination
 - [ ] Phone Number
@@ -54,10 +49,15 @@ A collection of bare-bones, accessibility-focused web components. They are highl
 - [ ] QR Code
 - [ ] Rating
 - [ ] Skeleton
-- [ ] Split Panes
+- [ ] Split Pane
 - [ ] Tabs
 - [ ] Table
 - [ ] Toolbar
 - [ ] Tooltip
 - [ ] Tree
-- [ ] Tree Item
+
+## TODO
+
+- PopupController for tooltip and dropdowns
+- RovingTabController for elements that trap focus
+- dynamic import of components when first used
