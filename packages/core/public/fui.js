@@ -777,10 +777,6 @@ h6, .h6 {
 .fs-larger {
   font-size: calc(1em * var(--fui-font-size-scale));
 }
-
-p + p, p + blockquote, p + ul, p + ol, p + h1, p + .h1, p + h2, p + .h2, p + h3, p + .h3, p + h4, p + .h4, p + h5, p + .h5, p + h6, p + .h6, blockquote + p, ul + p, ol + p, ul + ul, ul + ol, ol + ul, ol + ol {
-  margin-top: calc(var(--fui-spacing-base) * 2);
-}
 /* @endsection */
 `;
 
@@ -844,6 +840,12 @@ p + p, p + blockquote, p + ul, p + ol, p + h1, p + .h1, p + h2, p + .h2, p + h3,
        focusStyles,
    ];
 
+   function debug(...msgs) {
+       if (localStorage.getItem('fui-debug') != null) {
+           console.debug(...msgs);
+       }
+   }
+
    var __decorate$b = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
        if (typeof Reflect === "object" && typeof undefined === "function") r = undefined(decorators, target, key, desc);
@@ -855,6 +857,7 @@ p + p, p + blockquote, p + ul, p + ol, p + h1, p + .h1, p + h2, p + .h2, p + h3,
            super(...arguments);
            this.classes = {};
            this.styles = {};
+           this.debug = debug;
        }
        emit(name, detail) {
            this.dispatchEvent(new CustomEvent(name, { detail, bubbles: true, composed: true }));
@@ -945,7 +948,7 @@ p + p, p + blockquote, p + ul, p + ol, p + h1, p + .h1, p + h2, p + .h2, p + h3,
   --fui-card-padding: calc(var(--fui-spacing-base) * 10) calc(var(--fui-spacing-base) * 10);
 }
 
-.card {
+.card, fui-card {
   display: grid;
   border-radius: var(--fui-card-border-radius);
   border: var(--fui-card-border);
@@ -1008,7 +1011,7 @@ p + p, p + blockquote, p + ul, p + ol, p + h1, p + .h1, p + h2, p + .h2, p + h3,
            return gridTemplate;
        }
        render() {
-           return x `<div class='card' part='card' style=${o$2(this._getGridTemplateRules())}>
+           return x `<article class='card' part='card' style=${o$2(this._getGridTemplateRules())}>
       <slot name='image'></slot>
       <slot name='header'></slot>
       <slot></slot>
@@ -1039,7 +1042,9 @@ p + p, p + blockquote, p + ul, p + ol, p + h1, p + .h1, p + h2, p + .h2, p + h3,
        return c > 3 && r && Object.defineProperty(target, key, r), r;
    };
    /**
-    *   Renders an email address while obfuscating it from bots
+    * Renders an email address while obfuscating it from bots
+    *
+    * @prop {string} user - The user part of the email address
     */
    exports.FUIEmailAddress = class FUIEmailAddress extends s {
        constructor() {
@@ -1062,7 +1067,7 @@ p + p, p + blockquote, p + ul, p + ol, p + h1, p + .h1, p + h2, p + .h2, p + h3,
            }
        }
        render() {
-           return x `<a part="link" aria-label='${o$1(this.label)}'><slot></slot><span part='default' data-user="${this.user}" data-domain="${this.domain}"></span></a>`;
+           return x `<a part="link" aria-label='${o$1(this.label)}'><slot name='prefix'></slot><span part='default' data-user="${this.user}" data-domain="${this.domain}"><slot name='suffix'></slot></span></a>`;
        }
    };
    exports.FUIEmailAddress.styles = [
@@ -1076,6 +1081,8 @@ p + p, p + blockquote, p + ul, p + ol, p + h1, p + .h1, p + h2, p + .h2, p + h3,
         display: flex;
         justify-content: center;
         align-items: center;
+        color: inherit;
+        text-decoration: none;
       }
 
       span::before {
@@ -2359,7 +2366,6 @@ td {
    const min = Math.min;
    const max = Math.max;
    const round = Math.round;
-   const floor = Math.floor;
    const createCoords = v => ({
      x: v,
      y: v
@@ -2930,160 +2936,6 @@ td {
      isRTL
    };
 
-   // https://samthor.au/2021/observing-dom/
-   function observeMove(element, onMove) {
-     let io = null;
-     let timeoutId;
-     const root = getDocumentElement(element);
-     function cleanup() {
-       var _io;
-       clearTimeout(timeoutId);
-       (_io = io) == null || _io.disconnect();
-       io = null;
-     }
-     function refresh(skip, threshold) {
-       if (skip === void 0) {
-         skip = false;
-       }
-       if (threshold === void 0) {
-         threshold = 1;
-       }
-       cleanup();
-       const {
-         left,
-         top,
-         width,
-         height
-       } = element.getBoundingClientRect();
-       if (!skip) {
-         onMove();
-       }
-       if (!width || !height) {
-         return;
-       }
-       const insetTop = floor(top);
-       const insetRight = floor(root.clientWidth - (left + width));
-       const insetBottom = floor(root.clientHeight - (top + height));
-       const insetLeft = floor(left);
-       const rootMargin = -insetTop + "px " + -insetRight + "px " + -insetBottom + "px " + -insetLeft + "px";
-       const options = {
-         rootMargin,
-         threshold: max(0, min(1, threshold)) || 1
-       };
-       let isFirstUpdate = true;
-       function handleObserve(entries) {
-         const ratio = entries[0].intersectionRatio;
-         if (ratio !== threshold) {
-           if (!isFirstUpdate) {
-             return refresh();
-           }
-           if (!ratio) {
-             timeoutId = setTimeout(() => {
-               refresh(false, 1e-7);
-             }, 100);
-           } else {
-             refresh(false, ratio);
-           }
-         }
-         isFirstUpdate = false;
-       }
-
-       // Older browsers don't support a `document` as the root and will throw an
-       // error.
-       try {
-         io = new IntersectionObserver(handleObserve, {
-           ...options,
-           // Handle <iframe>s
-           root: root.ownerDocument
-         });
-       } catch (e) {
-         io = new IntersectionObserver(handleObserve, options);
-       }
-       io.observe(element);
-     }
-     refresh(true);
-     return cleanup;
-   }
-
-   /**
-    * Automatically updates the position of the floating element when necessary.
-    * Should only be called when the floating element is mounted on the DOM or
-    * visible on the screen.
-    * @returns cleanup function that should be invoked when the floating element is
-    * removed from the DOM or hidden from the screen.
-    * @see https://floating-ui.com/docs/autoUpdate
-    */
-   function autoUpdate(reference, floating, update, options) {
-     if (options === void 0) {
-       options = {};
-     }
-     const {
-       ancestorScroll = true,
-       ancestorResize = true,
-       elementResize = typeof ResizeObserver === 'function',
-       layoutShift = typeof IntersectionObserver === 'function',
-       animationFrame = false
-     } = options;
-     const referenceEl = unwrapElement(reference);
-     const ancestors = ancestorScroll || ancestorResize ? [...(referenceEl ? getOverflowAncestors(referenceEl) : []), ...getOverflowAncestors(floating)] : [];
-     ancestors.forEach(ancestor => {
-       ancestorScroll && ancestor.addEventListener('scroll', update, {
-         passive: true
-       });
-       ancestorResize && ancestor.addEventListener('resize', update);
-     });
-     const cleanupIo = referenceEl && layoutShift ? observeMove(referenceEl, update) : null;
-     let reobserveFrame = -1;
-     let resizeObserver = null;
-     if (elementResize) {
-       resizeObserver = new ResizeObserver(_ref => {
-         let [firstEntry] = _ref;
-         if (firstEntry && firstEntry.target === referenceEl && resizeObserver) {
-           // Prevent update loops when using the `size` middleware.
-           // https://github.com/floating-ui/floating-ui/issues/1740
-           resizeObserver.unobserve(floating);
-           cancelAnimationFrame(reobserveFrame);
-           reobserveFrame = requestAnimationFrame(() => {
-             var _resizeObserver;
-             (_resizeObserver = resizeObserver) == null || _resizeObserver.observe(floating);
-           });
-         }
-         update();
-       });
-       if (referenceEl && !animationFrame) {
-         resizeObserver.observe(referenceEl);
-       }
-       resizeObserver.observe(floating);
-     }
-     let frameId;
-     let prevRefRect = animationFrame ? getBoundingClientRect(reference) : null;
-     if (animationFrame) {
-       frameLoop();
-     }
-     function frameLoop() {
-       const nextRefRect = getBoundingClientRect(reference);
-       if (prevRefRect && (nextRefRect.x !== prevRefRect.x || nextRefRect.y !== prevRefRect.y || nextRefRect.width !== prevRefRect.width || nextRefRect.height !== prevRefRect.height)) {
-         update();
-       }
-       prevRefRect = nextRefRect;
-       frameId = requestAnimationFrame(frameLoop);
-     }
-     update();
-     return () => {
-       var _resizeObserver2;
-       ancestors.forEach(ancestor => {
-         ancestorScroll && ancestor.removeEventListener('scroll', update);
-         ancestorResize && ancestor.removeEventListener('resize', update);
-       });
-       cleanupIo == null || cleanupIo();
-       (_resizeObserver2 = resizeObserver) == null || _resizeObserver2.disconnect();
-       resizeObserver = null;
-       if (animationFrame) {
-         cancelAnimationFrame(frameId);
-       }
-     };
-   }
-
    /**
     * Optimizes the visibility of the floating element by choosing the placement
     * that has the most space available automatically, without needing to specify a
@@ -3115,54 +2967,86 @@ td {
      });
    };
 
+   var __classPrivateFieldSet$1 = (undefined && undefined.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
+       if (kind === "m") throw new TypeError("Private method is not writable");
+       if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+       if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+       return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+   };
+   var __classPrivateFieldGet$1 = (undefined && undefined.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+       if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+       if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+       return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+   };
+   var _PopupController_host;
    const enterEvents = ['pointerenter', 'focus'];
    const leaveEvents = ['pointerleave', 'blur', 'keydown', 'click'];
    class PopupController {
-       constructor(host, popup, computePositionConfig, autoUpdateOptions) {
-           this.cleanup = () => { };
+       constructor(host, target, computePositionConfig, autoUpdateOptions) {
+           _PopupController_host.set(this, void 0);
            this.show = () => {
-               this.popup.style.display = 'block';
-           };
-           this.hide = () => {
-               this.popup.style.display = '';
-           };
-           this.host = host;
-           this.popup = popup;
-           this.computePositionConfig = computePositionConfig !== null && computePositionConfig !== void 0 ? computePositionConfig : {
-               placement: 'top-start',
-               middleware: [offset(4), autoPlacement()],
-           };
-           this.autoUpdateOptions = autoUpdateOptions !== null && autoUpdateOptions !== void 0 ? autoUpdateOptions : {};
-           host.addController(this);
-       }
-       hostConnected() {
-           const host = this.host;
-           this.cleanup = autoUpdate(host, this.popup, () => {
-               computePosition(host, this.popup, this.computePositionConfig).then(({ x, y }) => {
-                   Object.assign(this.popup.style, {
+               debug('PopupController#show');
+               const host = __classPrivateFieldGet$1(this, _PopupController_host, "f");
+               host.style.display = 'inline-block';
+               computePosition(this.target, host, this.computePositionConfig).then(({ x, y, placement, middlewareData }) => {
+                   debug('PopupController#show', { x, y, placement, middlewareData });
+                   Object.assign(host.style, {
                        left: `${x}px`,
                        top: `${y}px`,
                    });
+                   if (this.arrow) ;
                });
-           }, this.autoUpdateOptions);
+           };
+           this.hide = () => {
+               debug('PopupController#hide');
+               __classPrivateFieldGet$1(this, _PopupController_host, "f").style.display = 'none';
+           };
+           debug('PopupController', arguments);
+           __classPrivateFieldSet$1(this, _PopupController_host, host, "f");
+           this.target = target;
+           this.arrow = null;
+           this.computePositionConfig = computePositionConfig !== null && computePositionConfig !== void 0 ? computePositionConfig : {
+               placement: 'top-start',
+               middleware: [offset(40), autoPlacement()],
+           };
+           this.autoUpdateOptions = autoUpdateOptions;
+           host.addController(this);
+       }
+       hostConnected() {
+           debug('PopupController#hostConnected');
+           this.hide();
            enterEvents.forEach((event) => {
-               host.addEventListener(event, this.show);
+               this.target.addEventListener(event, this.show);
            });
            leaveEvents.forEach((event) => {
-               host.addEventListener(event, this.hide);
+               this.target.addEventListener(event, this.hide);
            });
        }
        hostDisconnected() {
-           const host = this.host;
+           debug('PopupController#hostDisconnected');
            enterEvents.forEach((event) => {
-               host.removeEventListener(event, this.show);
+               this.target.removeEventListener(event, this.show);
            });
            leaveEvents.forEach((event) => {
-               host.removeEventListener(event, this.hide);
+               this.target.removeEventListener(event, this.hide);
            });
-           this.cleanup();
        }
    }
+   _PopupController_host = new WeakMap();
+
+   var tooltipStyles = i$4 `
+.tooltip {
+  width: max-content;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4px;
+  border: 1px solid darkgray;
+  border-radius: 4px;
+  background: #ccc;
+  pointer-events: none;
+}
+`;
 
    var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3182,22 +3066,47 @@ td {
        return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
    };
    var _FUITooltip_popupController;
-   exports.FUITooltip = class FUITooltip extends s {
+   exports.FUITooltip = class FUITooltip extends FUIBaseElement {
        constructor() {
            super(...arguments);
-           _FUITooltip_popupController.set(this, void 0);
-           this.target = '';
+           _FUITooltip_popupController.set(this, null);
+           this.target = null;
        }
-       firstUpdated(_changedProperties) {
-           const target = document.getElementById(this.target);
-           __classPrivateFieldSet(this, _FUITooltip_popupController, new PopupController(target, this), "f");
+       connectedCallback() {
+           var _a;
+           super.connectedCallback();
+           __classPrivateFieldSet(this, _FUITooltip_popupController, new PopupController(this, (_a = this.target) !== null && _a !== void 0 ? _a : this.previousElementSibling), "f");
+           __classPrivateFieldGet(this, _FUITooltip_popupController, "f").hide();
+       }
+       willUpdate(_changedProperties) {
+           var _a;
+           super.willUpdate(_changedProperties);
+           if (_changedProperties.has('target') && __classPrivateFieldGet(this, _FUITooltip_popupController, "f")) {
+               __classPrivateFieldGet(this, _FUITooltip_popupController, "f").target = (_a = this.target) !== null && _a !== void 0 ? _a : this.previousElementSibling;
+           }
        }
        render() {
-           console.log(__classPrivateFieldGet(this, _FUITooltip_popupController, "f"));
            return x `<slot></slot>`;
        }
    };
    _FUITooltip_popupController = new WeakMap();
+   exports.FUITooltip.styles = [
+       tooltipStyles,
+       i$4 `
+      :host {
+        display: none;
+        width: max-content;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 4px;
+        border: 1px solid darkgray;
+        border-radius: 4px;
+        background: #ccc;
+        pointer-events: none;
+      }
+    `
+   ];
    __decorate([
        n$1({ type: String })
    ], exports.FUITooltip.prototype, "target", void 0);

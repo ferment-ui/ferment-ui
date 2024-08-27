@@ -21,38 +21,34 @@
   /* @endsection */
 
   /* @section Color-variables */
-  --fui-color-primary: #372d2d;
-  --fui-color-accent: #003566;
-  --fui-color-complement: #6D6F7F;
+  --fui-swatch-grey-0: #ffffff;
+  --fui-swatch-grey-1: #fafafa;
+  --fui-swatch-grey-2: #f5f5f5;
+  --fui-swatch-grey-3: #bdbdbd;
+  --fui-swatch-grey-4: #9e9e9e;
+  --fui-swatch-grey-5: #212121;
+  --fui-swatch-grey-6: #121212;
+  --fui-swatch-grey-7: #1e1c1c;
 
-  --fui-color-grey-0: #ffffff;
-  --fui-color-grey-50: #fafafa;
-  --fui-color-grey-100: #f5f5f5;
-  --fui-color-grey-400: #bdbdbd;
-  --fui-color-grey-500: #9e9e9e;
-  --fui-color-grey-900: #212121;
-  --fui-color-grey-950: #121212;
-  --fui-color-grey-1000: #1e1c1c;
+  --fui-swatch-success-1: #c8e6c9;
+  --fui-swatch-success-2: #66bb6a;
+  --fui-swatch-success-3: #4caf50;
+  --fui-swatch-success-4: #1b5e20;
 
-  --fui-color-success-100: #c8e6c9;
-  --fui-color-success-400: #66bb6a;
-  --fui-color-success-500: #4caf50;
-  --fui-color-success-900: #1b5e20;
+  --fui-swatch-info-1: #bbdefb;
+  --fui-swatch-info-2: #42a5f5;
+  --fui-swatch-info-3: #2196f3;
+  --fui-swatch-info-4: #0d47a1;
 
-  --fui-color-info-100: #bbdefb;
-  --fui-color-info-400: #42a5f5;
-  --fui-color-info-500: #2196f3;
-  --fui-color-info-900: #0d47a1;
+  --fui-swatch-warn-1: #ffe0b2;
+  --fui-swatch-warn-2: #ffb74d;
+  --fui-swatch-warn-3: #ff9800;
+  --fui-swatch-warn-4: #e65100;
 
-  --fui-color-warn-100: #ffe0b2;
-  --fui-color-warn-400: #ffb74d;
-  --fui-color-warn-500: #ff9800;
-  --fui-color-warn-900: #e65100;
-
-  --fui-color-danger-100: #ffcdd2;
-  --fui-color-danger-400: #ef5350;
-  --fui-color-danger-500: #f44336;
-  --fui-color-danger-900: #b71c1c;
+  --fui-swatch-danger-100: #ffcdd2;
+  --fui-swatch-danger-400: #ef5350;
+  --fui-swatch-danger-500: #f44336;
+  --fui-swatch-danger-900: #b71c1c;
 
   --fui-color-dark-text: var(--fui-color-grey-950);
   --fui-color-dark-text-disabled: var(--fui-color-grey-500);
@@ -92,7 +88,9 @@
   /* @endsection */
 
   /* @section Typography-variables */
-  --fui-body-font-family: 'Open Sans', sans-serif;
+  --fui-typographic-scale: 1.25;
+
+  --fui-body-font-family: system-ui, sans-serif;
   --fui-body-font-size: max(1rem, 18px);
   --fui-body-line-height: 1.8;
   --fui-body-font-weight: 400;
@@ -100,17 +98,21 @@
   --fui-body-font-variant: normal;
   --fui-body-font-kerning: normal;
 
-  --fui-heading-line-height: 1.5;
   --fui-heading-font-family: 'Josefin Sans', sans-serif;
-  --fui-font-size-scale-min: 1.1;
-  --fui-font-size-scale-max: 1.33;
-  --fui-font-size-scale: 1.1;
+  --fui-heading-font-weight: 700;
+  --fui-heading-font-style: normal;
+  --fui-heading-font-variant: normal;
+  --fui-heading-font-kerning: normal;
+  --fui-heading-text-decoration: none;
+  --fui-heading-line-height: 1.5;
+
   --fui-h6-font-size: var(--fui-body-font-size);
   --fui-h5-font-size: calc(var(--fui-h6-font-size) * var(--fui-font-size-scale));
   --fui-h4-font-size: calc(var(--fui-h5-font-size) * var(--fui-font-size-scale));
   --fui-h3-font-size: calc(var(--fui-h4-font-size) * var(--fui-font-size-scale));
   --fui-h2-font-size: calc(var(--fui-h3-font-size) * var(--fui-font-size-scale));
   --fui-h1-font-size: calc(var(--fui-h2-font-size) * var(--fui-font-size-scale));
+
   /* @endsection */
 
   /* @section Z-Index-variables */
@@ -119,7 +121,6 @@
   --fui-z-index-dialog: 2000;
   --fui-z-index-dropdown: 3000;
   --fui-z-index-alert-group: 4000;
-  --fui-z-index-tooltip: 5000;
   /* @endsection */
 }
 

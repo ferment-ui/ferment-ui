@@ -1,10 +1,11 @@
-import css from 'ferment-ui/fui.css';
+import * as css from 'ferment-ui/fui.css';
 
 // Extract sections from the CSS file based on the comments @section and @endsection
 export function getCss() {
   const startRegex = /.*\/\*\s+@section\s+(.*)\s+\*\//;
   const endRegex = /.*\/\*\s+@endsection\s+\*\//;
   const sections: Record<string, string> = {};
+  console.log(css);
   const lines = css.split('\n');
 
   for (let i = 0; i < lines.length; i += 1) {

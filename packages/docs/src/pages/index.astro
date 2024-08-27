@@ -3,7 +3,150 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Home">
-  <div class='intro'>hello</div>
-  <span tabindex='0'>world</span><fui-tooltip>I'm a tooltip!</fui-tooltip></div>
-  <fui-pagination></fui-pagination>
+  <h2>Usage</h2>
+  <p>The basic premise of this framework is to do as much as possible with a small amount of CSS (variables and utility and semantic classes), and provide Web Components for patterns that require interactivity and/or progressive enhancement.</p>
+  <h3>CSS</h3>
+  <p>Much of a websites design can be done with a minimal set of CSS features and properties.</p>
+  <ul>
+    <li>CSS Variables (97%)</li>
+    <li>Container and Media queries (92%, 98%)</li>
+    <li>Grid and Subgrid or display: contents (97%, 89%, 97%)</li>
+    <li>Flexbox (98%)</li>
+    <li>Opacity, Transform, Filter, and Clip Path (98%, 98%, 97%, 97%)</li>
+    <li>Display, Position, Text Align, and Visiblity (100%)</li>
+    <li>Aspect Ratio (94%)</li>
+    <li>Env (97%)</li>
+  </ul>
+  <p>Bespoke Grid layouts with grid-template-areas with values set by overriding CSS variables in container queries will do most of the heavy lifting.</p>
+  <p>Because of this, we only provide a small set of design tokens as CSS variables, utility classes, and semantic classes following BEM for common CSS-only components and variants, but leaving layouts to you.</p>
+  <p>This lets us ship less bloat and not fight with frameworks, since the styles are available globally and CSS variables even penetrate the Shadow DOM, if you're using it.</p>
+
+  <h2>Tips</h2>
+  <ul>
+    <li>Paint Layout, etc..., <a href='https://cabulous.medium.com/how-does-browser-work-in-2019-part-iii-rendering-phase-i-850c8935958f'>steps</a></li>
+    <li>Prefer logical properties like inline-size, block-size, margin-inline, margin-inline-start, etc., as they work better if translated to other languages</li>
+    <li>For layouts, only use Flexbox for basic alignment and for it's non-columnar wrapping, otherwise use Grid</li>
+    <li>
+      Other handy pseudo-selectors:
+      <ul>
+        <li>:target (96%)</li>
+        <li>:has (92%)</li>
+        <li>:focus-within (97%) (can be used instead of `:has(:focus)`)</li>
+        <li>:is (97%)</li>
+        <li>:where (94%) (`:is` with 0 specificity)</li>
+      </ul>
+    </li>
+    <li>
+      Prefer customization by setting and overridding CSS variables
+      <ul>
+        <li>Use @property if you need to make it animatable</li>
+      </ul>
+    </li>
+    <li>
+      Theming
+      <ul>
+
+      </ul>
+    <li>
+      Animations
+      <ul>
+        <li>
+          For smoothness, prefer the animatable properties that happen during the paint phase: opacity and transform
+          <ul>
+            <li>Note though that the space of it's original location is still used for flow positioning, so if you do need to do a translation that impacts flow, you can use things like negative margins or the position property</li>
+          </ul>
+        </li>
+        <li>
+          Animating to/from `display: none`
+          <ul>
+            <li>Add event listeners for `animationstart`/`animationend` (96%) or `transitionstart`/`transitionend` (95%)</li>
+            <li>Use `display` directly in `@keyframes` (71%)</li>
+            <li>Use `transition-behaviour: allow-discrete` (71%) - can simply do `* &lcub; transition-behaviour: allow-discrete &rcub;` at the end of CSS cascade to enable it everywhere.</li>
+            <li>NOTE: to animation 'in', you need to use `@starting-style` to define what they should initially be</li>
+        <li>requestAnimationFrame</li>
+      </ul>
+    </li>
+    <li>
+      Optimizations
+      <ul>
+        <li>
+          Vector images
+          <ul>
+            <li>Prefer vector images for all shape/stroke/fill based designs, like icons</li>
+            <li>Minify using a tool like SVGO to strip unnecessary code</li>
+            <li>Use tools like `svg-sprite` to create sprite maps and use external references to them for caching: <code>&lt;svg viewBox="..."&gt;&lt;use href="file.svg#[id]" /&gt;&lt;/svg&gt;</code></li>
+          </ul>
+        </li>
+        <li>
+          Raster images
+          <ul>
+            <li>Use a tool like `sharp` to use the highest compressed format the client can handle: jxl, avif, webp (13%, 93%, 96%), and to resize the image to multiple resolutions to match various viewport/container sizes</li>
+            <li>
+              Use `img` with `srcset` to provide multiple variants for formats, sizes, and pixel densities
+              <ul>
+                <li>Use the `loading` attribute to control when the image is fetched</li>
+                <li>Use the `fetchpriority` attribute to control if an image is required immediately at the expense of other assets (i.e. hero image required for first paint)</li>
+                <li>Use the `decoding` attribute to control if the browser will wait for it to be decoded before rendering other assets (i.e. hero image)</li>
+              </ul>
+            </li>
+            <li>When using `picture` for art direction, provide `source` elements with multiple variants as in `img` above</li>
+            <li>When used as background images, use `image-set()` to support multiple variants as in `img` above</li>
+            <li>
+              Make them responsive using the following block of code: <code>img &lcub; min-inline-size: 100%, block-size: auto; object-fit: cover; &rcub;</code>
+              <ul>
+                <li>This can also be applied to other elements like `picture` and `video`</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Fonts
+          <ul>
+            <li>Favour variable fonts, since then you don't need multiple font files for various weights and styles</li>
+            <li>Use a tool like `glyphhanger` to subset the font files to include only the glyphs you need and convert to WOFF2 format, as it is the smallest format for web fonts. NOTE you need to check the licence to make sure you're allowed to do this!</li>
+          </ul>
+        </li>
+        <li>
+          Server Configuration
+          <ul>
+            <li>Use the highest compression the client can handle: zstandard, brotli, gzip, deflate</li>
+            <li>Reduce latency by having your server(s) close to your clients (e.g. a CDN or edge server)</li>
+            <li>Enable HTTP2, which is not limited by HTTP1.1's 6 TCP connection per domain limit, is full-duplex, has smaller headers, and supports server-pushing</li>
+            <li>
+              Cache as aggressively as possible
+              <ul>
+                <li>
+                  Know the common `Cache-Control` header values:
+                  <dl>
+                    <dt>no-store</dt><dd>do not cache</dd>
+                    <dt>no-cache</dt><dd>always check for staleness</dd>
+                    <dt>max-age</dt><dd>sets the fresh time</dd>
+                    <dt>must-revalidate</dt><dd>cache while fresh, check when stale</dd>
+                    <dt>private</dt><dd>only store cache in the client</dd>
+                    <dt>public</dt><dd>store in shared caches along the request route</dd>
+                    <dt>s-maxage</dt><dd>sets the fresh time for public caches</dd>
+                    <dt>immutable</dt><dd>avoids all conditional checks</dd>
+                  </dl>
+                </li>
+                <li>
+                  Apply the following order of strategies:
+                  <ol>
+                    <li>If you know a file will never change, use `Cache-Control: max-age=n, immutable` with `n` being a long number of seconds in the future (e.g. 31536000 is 1 year).</li>
+                    <li>Use the cache-busting pattern for providing a unique name for an asset when it changes (for example with the hash of the files contents like `styles.32hfd2.css` or `/0.0.0.1/style.css`) with `Cache-Control: max-age=n, immutable`, but this can be difficult to automate without a build tool like Vite/Rollup/Webpack/Parcel/ESBuild/Gulp/Grunt</li>
+                    <li>
+                      Otherwise use a host that can serve assets with a `Last-Modified` or (automatically generated) `ETag` header (or both), and use `Cache-Control: max-age=n, must-revalidate`, where `n` is the tolerable freshness value and must-revalidate forces a conditional request once stale
+                      <ul>
+                        <li>`n` depends on how frequently you deploy new versions of the asset, but can typically be set to several minutes at the bare minimum</li>
+                      </ul>
+                    </li>
+                    <li>If you can't afford to serve stale content ever, set `Cache-Control: no-cache`</li>
+                  </ol>
+                </li>
+              </ul>
+            </li>
+            <li>Have enough hardware (CPU, memory) to support your expected load</li>
+            <li>Depending on budget and hosting platform, enable DDoS protection for unexpected load</li>
+          </ul>
+        </li>
+  </ul>
 </Layout>

@@ -57,7 +57,7 @@ export class FUICard extends LitElement {
   }
 
   render() {
-    return html`<div class='card' part='card' style=${styleMap(this._getGridTemplateRules())}>
+    return html`<article class='card' part='card' style=${styleMap(this._getGridTemplateRules())}>
       <slot name='image'></slot>
       <slot name='header'></slot>
       <slot></slot>

@@ -290,3 +290,8 @@ export function findParentNode(root: object, node: object, key: string | number 
   // }
   return parent;
 }
+
+export function roundByDPR(value: number) {
+  const dpr = window.devicePixelRatio || 1;
+  return Math.round(value * dpr) / dpr;
+}

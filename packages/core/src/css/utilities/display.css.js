@@ -16,7 +16,6 @@ export default css`
 
 .flex, [class^="fd-"], [class*=" fd-"] {
   display: flex;
-  flex-direction: column;
 }
 
 .grid {

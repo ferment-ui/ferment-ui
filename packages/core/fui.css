@@ -120,7 +120,6 @@
   --fui-z-index-dialog: 2000;
   --fui-z-index-dropdown: 3000;
   --fui-z-index-alert-group: 4000;
-  --fui-z-index-tooltip: 5000;
   /* @endsection */
 }
 
@@ -728,10 +727,6 @@ h6, .h6 {
 
 .fs-larger {
   font-size: calc(1em * var(--fui-font-size-scale));
-}
-
-p + p, p + blockquote, p + ul, p + ol, p + h1, p + .h1, p + h2, p + .h2, p + h3, p + .h3, p + h4, p + .h4, p + h5, p + .h5, p + h6, p + .h6, blockquote + p, ul + p, ol + p, ul + ul, ul + ol, ol + ul, ol + ol {
-  margin-top: calc(var(--fui-spacing-base) * 2);
 }
 /* @endsection */
 
@@ -1634,6 +1629,19 @@ html:not(.no-js) .introed {
 /* @endsection */
 
 
+.tooltip {
+  width: max-content;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4px;
+  border: 1px solid darkgray;
+  border-radius: 4px;
+  background: #ccc;
+  pointer-events: none;
+}
+
+
 table {
   border-collapse: collapse;
 }
@@ -1745,7 +1753,7 @@ ol, ul, ::part(list) {
   --fui-card-padding: calc(var(--fui-spacing-base) * 10) calc(var(--fui-spacing-base) * 10);
 }
 
-.card {
+.card, fui-card {
   display: grid;
   border-radius: var(--fui-card-border-radius);
   border: var(--fui-card-border);

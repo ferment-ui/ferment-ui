@@ -35,10 +35,3 @@ html:not(.no-js) .introed {
 
 /* @endsection */
 `;
-
-export function stagger(elements, step = 1, min = 0, max = 0) {
-  elements.forEach((element, index) => {
-    const delay = Math.min(max, Math.max(min, index * step));
-    element.style.setProperty('--delay', `${delay}ms`);
-  });
-}

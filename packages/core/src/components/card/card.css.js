@@ -8,7 +8,7 @@ export default css`
   --fui-card-padding: calc(var(--fui-spacing-base) * 10) calc(var(--fui-spacing-base) * 10);
 }
 
-.card {
+.card, fui-card {
   display: grid;
   border-radius: var(--fui-card-border-radius);
   border: var(--fui-card-border);

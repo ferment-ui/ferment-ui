@@ -4,11 +4,13 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { reverse } from '../../utils.js';
 
 /**
- *   Renders an email address while obfuscating it from bots
+ * Renders an email address while obfuscating it from bots
+ * 
+ * @prop {string} user - The user part of the email address
  */
 @customElement('fui-email-address')
 export class FUIEmailAddress extends LitElement {
-  static styles = [
+  static readonly styles = [
     css`
       :host {
         display: flex;
@@ -19,6 +21,8 @@ export class FUIEmailAddress extends LitElement {
         display: flex;
         justify-content: center;
         align-items: center;
+        color: inherit;
+        text-decoration: none;
       }
 
       span::before {
@@ -49,7 +53,7 @@ export class FUIEmailAddress extends LitElement {
   }
 
   render() {
-    return html`<a part="link" aria-label='${ifDefined(this.label)}'><slot></slot><span part='default' data-user="${this.user}" data-domain="${this.domain}"></span></a>`;
+    return html`<a part="link" aria-label='${ifDefined(this.label)}'><slot name='prefix'></slot><span part='default' data-user="${this.user}" data-domain="${this.domain}"><slot name='suffix'></slot></span></a>`;
   }
 }
 

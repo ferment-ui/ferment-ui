@@ -1,7 +1,6 @@
 ---
+// import { getCustomElements } from '../utils/custom-elements.js';
 import 'ferment-ui/fui.css';
-import { getCustomElements } from '../utils/custom-elements.js';
-import { getCss } from '../utils/css.js';
 
 interface Props {
 	title: string;
@@ -21,10 +20,10 @@ const { title } = Astro.props.frontmatter || Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<title>Ferment UI | {title}</title>
 		<meta name="description" content="Astro description" />
-    <script type="module">document.documentElement.classList.toggle('no-js')</script>
+    <!-- <script type="module">document.documentElement.classList.toggle('no-js')</script> -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script>
-      import '../../../core/src/index.ts';
+      import '../../../core/src/index.js';
     </script>
 	</head>
 	<body class="row">
@@ -48,21 +47,21 @@ const { title } = Astro.props.frontmatter || Astro.props;
             <li>
               <a href="/css/overview">Overview</a>
             </li>
-            {Object.keys(getCss()).map((css) => (
+            <!-- {Object.keys(getCss()).map((css) => (
               <li>
                 <a href={`/css/${css}`}>{css}</a>
               </li>
-            ))}
+            ))} -->
           </ul>
         </details>
         <details open>
           <summary>Components</summary>
           <ul>
-            {getCustomElements().map((element) => (
+            <!-- {getCustomElements().map((element) => (
               <li>
                 <a href={`/components/${element.name?.toLowerCase()}`}>{element.name}</a>
               </li>
-            ))}
+            ))} -->
           </ul>
         </details>
       </nav>
@@ -70,7 +69,7 @@ const { title } = Astro.props.frontmatter || Astro.props;
     <main class="p">
       <slot />
     </main>
-    <script>
+    <!-- <script>
       const entries = document.querySelectorAll('.intro');
       const introObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -81,6 +80,6 @@ const { title } = Astro.props.frontmatter || Astro.props;
       entries.forEach((entry) => {
         introObserver.observe(entry);
       });
-    </script>
+    </script> -->
 	</body>
 </html>

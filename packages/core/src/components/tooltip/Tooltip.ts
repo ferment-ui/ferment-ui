@@ -10,8 +10,11 @@ export class FUITooltip extends FUIBaseElement {
     tooltipStyles,
     css`
       :host {
-        display: inline-block;
+        display: none;
+        width: max-content;
         position: absolute;
+        top: 0;
+        left: 0;
         padding: 4px;
         border: 1px solid darkgray;
         border-radius: 4px;
@@ -21,7 +24,7 @@ export class FUITooltip extends FUIBaseElement {
     `
   ];
 
-  #popupController!: PopupController;
+  #popupController: PopupController | null = null;
 
   @property({ type: String }) target: HTMLElement | null = null;
 
