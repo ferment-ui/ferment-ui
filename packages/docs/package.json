@@ -15,10 +15,9 @@
     }
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.1",
+    "@astrojs/check": "^0.9.3",
     "@astrojs/lit": "^4.3.0",
-    "astro": "^4.13.1",
-    "ferment-ui": "file:../core",
+    "astro": "^4.15.1",
     "typescript": "^5.3.3"
   },
   "devDependencies": {

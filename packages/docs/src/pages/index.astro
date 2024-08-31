@@ -1,5 +1,138 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const sampleDocument = `
+  <head>
+    <meta charset='utf-8' /><!-- tells the browser the encoding of the document -->
+
+    <!-- async (specifically via attribute or though type='module') that you want to fetch immediately but not block parsing, and execute once they've loaded, e.g. RUM like Google Analytics -->
+    <script async src='https://www.googletagmanager.com/gtag/js?id=ID'></script>
+
+    <!-- this is parser blocking since it needs to be parsed and executed, but we'll allow it because GA collects start up metrics so is worth it -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'ID');
+    </script>
+
+    <title>Example Document</title><!-- allows the tab title to update, good for perceived loading speed -->
+    <meta name='viewport' content='width=device-width, initial-scale=1' /><!-- helps computing the layout of the viewport -->
+    
+    <!-- preload, highest priority: fonts, CSS @imports and background-images -->
+    <!-- remember you can use 'media' attribute to further refine loading priority -->
+    <!-- this example uses an ASCII subset of the Open Sans variable font downloaded from Google Fonts -->
+    <link rel='preload' as='font' type='font/woff2' href='OpenSans-VariableFont_wdth,wght-subset.woff2' crossorigin />
+    
+    <!-- immediately download the images used in the banner and hero sections (prefer responsive images and use imagesrcset and imagesizes) -->
+    <!-- but you do need to offer a fallback in case the mime type isn't supported -->
+    <link rel='preload' as='image' type='image/avif' imagesrcset='image-thumbnail.avif 300w, image-small.avif 700w, image-3.avif 1500w' imagesizes='100vw' />
+
+    <!-- inline the critical CSS: important variables and banner/hero styles, search bar, etc. -->
+    <!-- NOTE: you must actually reference a font face in a style that is applied in the initial viewport for it to be downloaded, however in this case we used 'preload' above to force it -->
+    <style>
+      @font-face {
+        font-family: 'Open Sans';
+        src: url('OpenSans-VariableFont_wdth,wght-subset.woff2');
+        font-display: optimal; /* if it doesn't load in 100ms, don't swap */
+
+      }
+
+      /* we override a commonly available fallback font to look more like the web font */
+      /* NOTE: you can also use other f-mods like ascent-override and descent-override */
+      @font-face {
+          font-family: 'Open Sans-fallback';
+          size-adjust: 105.42%;
+          src: local('Arial');
+          unicode-range: U+0-7F
+      }
+
+      /* Do the same for the headings ... */
+
+      /* Optionally, do it for a few special characters like & and ' */
+      @font-face {
+          font-family: 'Ampersand';
+          src: url('OpenSans-VariableFont_wdth,wght-subset.woff2');
+          unicode-range: U+26;
+      }
+      
+      :root {
+        --body-font-size: 16px;
+        --body-font-family: 'Open Sans', 'Open Sans-fallback';
+        --header-font-family: 'Open Sans', 'Open Sans-fallback';
+        --ampersand-font-family: 'Ampersand', 'Open Sans', 'Open Sans-fallback';
+        /* other important css variables... */
+
+        /* important global styles */
+        box-content: border-box;
+        scroll-behaviour: smooth;
+        font-size: var(--body-font-size);
+      }
+
+      *,*::before,*::after {
+        box-content: inherit;
+        padding: 0;
+        margin: 0;
+
+        @media (prefers-reduced-motion: reduce) {
+          animation: none;
+          transition: none;
+        }
+      }
+      
+      h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5, h6,.h6 {
+        font-family: var(--heading-font-family);
+      }
+
+      body {
+        line-height: 1.8; /* need a value for the f-mods in the fallback to work */
+        overflow-x: hidden;
+        min-height: 100svh;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeSpeed;
+      }
+
+      .ampersand {
+        font-family: var(--ampersand-font-family);
+      }
+
+      [role='banner'] {
+      
+      }
+
+      /* more as needed ... */
+    </style>
+
+    <!-- preconnect w/ dns-prefetch, lower priority -->
+    <!-- preconnect (with dns-prefetch as fallback) of important but not critical third-party resources -->
+    <link rel='preconnect' href='https://cdnjs.cloudflare.com' />
+    <link rel='dns-prefetch href='https://cdnjs.cloudflare.com' />
+
+    <!-- dns-prefect any other medium importance third-party resources, like for preconnecting for iframes or other embeddings -->
+    <!-- optionally use 'dnstradamus' -->
+    <link rel='dns-prefetch' href='https://www.youtube.com' />
+
+    <!-- async (specifically via attribute or though type='module') and/or deferred script that you want loaded early-ish, i.e. polyfills, jquery, ... -->
+    <!-- scripts with defer will run in their DOM order immediately after DOMContentLoaded
+    <!-- NOTE: we already started the connection using 'preconnect' above -->
+    <script defer scr='https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0&features=es2021'></script>
+
+    <!-- prefetch any low priority resource -->
+    <!-- optionally use 'quicklink' -->
+    <link rel='prefetch' as='document' type='text/html' href='contact.html' />
+    
+    <!-- use media queries to reduce the priority of any resource that isn't needed, for example css outside the current viewport or difference devices like printing -->
+    <link rel='stylesheet' href='dark.css' media='(prefers-color-scheme: dark)' />
+    <link rel='stylesheet' href='print.css' media='print' />
+  </head>
+  <body>
+    <header role='banner'>
+      <h1>Hello!</h1>
+    </header>
+    <p>This is some stuff</p>
+  </body>
+`;
 ---
 
 <Layout title="Home">
@@ -14,6 +147,7 @@ import Layout from '../layouts/Layout.astro';
     <li>Flexbox (98%)</li>
     <li>Opacity, Transform, Filter, and Clip Path (98%, 98%, 97%, 97%)</li>
     <li>Display, Position, Text Align, and Visiblity (100%)</li>
+    <li>Filter (97%)</li>
     <li>Aspect Ratio (94%)</li>
     <li>Env (97%)</li>
   </ul>
@@ -45,13 +179,13 @@ import Layout from '../layouts/Layout.astro';
     <li>
       Theming
       <ul>
-
+        <li>Prefer HSL colors, as it makes it easy to lighten/darken them</li>
       </ul>
     <li>
       Animations
       <ul>
         <li>
-          For smoothness, prefer the animatable properties that happen during the paint phase: opacity and transform
+          For smoothness, prefer the animatable properties that happen during the paint phase: opacity, transform, and filter
           <ul>
             <li>Note though that the space of it's original location is still used for flow positioning, so if you do need to do a translation that impacts flow, you can use things like negative margins or the position property</li>
           </ul>
@@ -104,26 +238,31 @@ import Layout from '../layouts/Layout.astro';
           <ul>
             <li>Favour variable fonts, since then you don't need multiple font files for various weights and styles</li>
             <li>Use a tool like `glyphhanger` to subset the font files to include only the glyphs you need and convert to WOFF2 format, as it is the smallest format for web fonts. NOTE you need to check the licence to make sure you're allowed to do this!</li>
+            <li>
+              NOTE: the browser will only start to download fonts it needs for the current viewport, i.e. elements in the viewports' `font-family` property
+              <ul>
+                <li></li>
+              </ul>
+            <li>Use additional font description properties in `@font-face` blocks, such as `unicode-range`
           </ul>
         </li>
         <li>
           Server Configuration
           <ul>
             <li>Use the highest compression the client can handle: zstandard, brotli, gzip, deflate</li>
-            <li>Reduce latency by having your server(s) close to your clients (e.g. a CDN or edge server)</li>
-            <li>Enable HTTP2, which is not limited by HTTP1.1's 6 TCP connection per domain limit, is full-duplex, has smaller headers, and supports server-pushing</li>
+            <li>Enable HTTP2 (or even better HTTP3), which is not limited by HTTP1.1's 6 TCP connection per domain limit, is full-duplex, has smaller headers, and supports server-pushing</li>
             <li>
-              Cache as aggressively as possible
+              Cache as aggressively as possible, you want a very high Cache Hit Ratio (&gt;90%)
               <ul>
                 <li>
                   Know the common `Cache-Control` header values:
                   <dl>
                     <dt>no-store</dt><dd>do not cache</dd>
                     <dt>no-cache</dt><dd>always check for staleness</dd>
-                    <dt>max-age</dt><dd>sets the fresh time</dd>
-                    <dt>must-revalidate</dt><dd>cache while fresh, check when stale</dd>
                     <dt>private</dt><dd>only store cache in the client</dd>
                     <dt>public</dt><dd>store in shared caches along the request route</dd>
+                    <dt>max-age</dt><dd>sets the fresh time</dd>
+                    <dt>must-revalidate</dt><dd>cache while fresh, check when stale</dd>
                     <dt>s-maxage</dt><dd>sets the fresh time for public caches</dd>
                     <dt>immutable</dt><dd>avoids all conditional checks</dd>
                   </dl>
@@ -131,6 +270,7 @@ import Layout from '../layouts/Layout.astro';
                 <li>
                   Apply the following order of strategies:
                   <ol>
+                    <li>NEVER cache sensitive content in shared caches, and be very careful what you store in the private cache `Cache-Control: no-store` or `Cache-Control: private, ...`</li>
                     <li>If you know a file will never change, use `Cache-Control: max-age=n, immutable` with `n` being a long number of seconds in the future (e.g. 31536000 is 1 year).</li>
                     <li>Use the cache-busting pattern for providing a unique name for an asset when it changes (for example with the hash of the files contents like `styles.32hfd2.css` or `/0.0.0.1/style.css`) with `Cache-Control: max-age=n, immutable`, but this can be difficult to automate without a build tool like Vite/Rollup/Webpack/Parcel/ESBuild/Gulp/Grunt</li>
                     <li>
@@ -142,11 +282,25 @@ import Layout from '../layouts/Layout.astro';
                     <li>If you can't afford to serve stale content ever, set `Cache-Control: no-cache`</li>
                   </ol>
                 </li>
+                <li>
+                  Query parameters can cause cache missed
+                </li>
               </ul>
             </li>
             <li>Have enough hardware (CPU, memory) to support your expected load</li>
             <li>Depending on budget and hosting platform, enable DDoS protection for unexpected load</li>
+            <li>
+              Use a CDN, as they will have edge servers closer to your users (reduced latency) and they are typically optimized for caching
+            </li>
           </ul>
         </li>
+      </ul>
+    </li>
+    <section>
+      <code><pre>
+        {sampleDocument}
+      </pre></code>
+      <iframe srcdoc={sampleDocument}></iframe>
+    </section>
   </ul>
 </Layout>

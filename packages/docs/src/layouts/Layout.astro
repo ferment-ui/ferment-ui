@@ -1,6 +1,6 @@
 ---
 // import { getCustomElements } from '../utils/custom-elements.js';
-import 'ferment-ui/fui.css';
+// import 'ferment-ui/fui.css';
 
 interface Props {
 	title: string;
@@ -17,13 +17,13 @@ const { title } = Astro.props.frontmatter || Astro.props;
 <html lang="en" class='no-js'>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Ferment UI | {title}</title>
 		<meta name="description" content="Astro description" />
     <!-- <script type="module">document.documentElement.classList.toggle('no-js')</script> -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script>
-      import '../../../core/src/index.js';
+      // import '../../../core/src/index.js';
     </script>
 	</head>
 	<body class="row">
