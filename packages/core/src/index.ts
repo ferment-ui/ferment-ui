@@ -4,6 +4,7 @@ export { FUIEmailAddress } from './components/email-address/EmailAddress.js';
 export { FUIIcon } from './components/icon/Icon.js';
 export { FUIList } from './components/list/List.js';
 export { FUIPagination } from './components/pagination/Pagination.js';
+export { FUIPanel } from './components/panel/Panel.js';
 export { FUIPhoneNumber } from './components/phone-number/PhoneNumber.js';
 export { FUIPricing } from './components/pricing/Pricing.js';
 export { FUITabs } from './components/tabs/Tabs.js';

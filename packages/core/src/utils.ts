@@ -295,3 +295,8 @@ export function roundByDPR(value: number) {
   const dpr = window.devicePixelRatio || 1;
   return Math.round(value * dpr) / dpr;
 }
+
+// TODO: reconcile this list of focusable elements with the one above
+export function getFocusableElements(root: Element) {
+  return [...root.querySelectorAll('button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled]), details:not([disabled]), summary:not(:disabled)')];
+}
