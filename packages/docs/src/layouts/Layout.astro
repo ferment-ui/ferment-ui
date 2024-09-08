@@ -1,100 +1,14 @@
 ---
-// import { getCustomElements } from '../utils/custom-elements.js';
-// import 'ferment-ui/fui.css';
-import Banner from '../components/Banner.astro';
-
-interface Props {
-	title: string;
-  frontmatter?: {
-    title: string;
-  };
-}
-
-const { title } = Astro.props.frontmatter || Astro.props;
-
+import Site  from '@ferment-ui/astro/layouts/Site.astro';
+import Banner from '@ferment-ui/astro/components/Banner.astro';
 ---
 
-<!doctype html>
-<html lang="en" class='no-js'>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Ferment UI | {title}</title>
-		<meta name="description" content="Astro description" />
-    <script is:inline>document.documentElement.classList.replace('no-js', 'js')</script>
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <script>
-      import '../../../core/src/index.js';
-    </script>
-
-    <style is:inline>
-      .js fui-panel:not(:defined) {
-        & * {
-          display: none;
-        }
-      }
-    </style>
-	</head>
-	<body class="row">
-    <Banner>
+<Site>
+  <Banner slot='banner'>
+    <nav>
       <ul>
-        <li><a href='/animations'>Animation</a></li>
+        <li><a href='/animations'>Animations</a></li>
       </ul>
-    </Banner>
-    <aside>
-      <h1>Ferment UI</h1>
-      <nav class="column">
-        <details open>
-          <summary>Getting Started</summary>
-          <ul>
-            <li>
-              <a href="/getting-started/installation">Installation</a>
-            </li>
-            <li>
-              <a href="/getting-started/usage">Usage</a>
-            </li>
-          </ul>
-        </details>
-        <details open>
-          <summary>CSS</summary>
-          <ul>
-            <li>
-              <a href="/css/overview">Overview</a>
-            </li>
-            <!-- {Object.keys(getCss()).map((css) => (
-              <li>
-                <a href={`/css/${css}`}>{css}</a>
-              </li>
-            ))} -->
-          </ul>
-        </details>
-        <details open>
-          <summary>Components</summary>
-          <ul>
-            <!-- {getCustomElements().map((element) => (
-              <li>
-                <a href={`/components/${element.name?.toLowerCase()}`}>{element.name}</a>
-              </li>
-            ))} -->
-          </ul>
-        </details>
-      </nav>
-    </aside>
-    <main class="p">
-      <slot />
-    </main>
-    <!-- <script>
-      const entries = document.querySelectorAll('.intro');
-      const introObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          entry.target.classList.toggle('introed');
-          entry.target.classList.remove('intro');
-        });
-      });
-      entries.forEach((entry) => {
-        introObserver.observe(entry);
-      });
-    </script> -->
-	</body>
-</html>
+    </nav>
+  </Banner>
+</Site>
