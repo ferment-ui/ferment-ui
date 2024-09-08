@@ -1,0 +1,8 @@
+{
+  "name": "@ferment-ui/astro",
+  "version": "0.0.1",
+  "exports": "./src/index.js",
+  "dependencies": {
+    "ferment-ui": "file:../core"
+  }
+}

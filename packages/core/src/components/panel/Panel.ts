@@ -6,13 +6,18 @@
  * @csspart panel__panel - The panel that slides in and out.
  */
 
-import {html, css, LitElement} from 'lit';
-import {customElement, property, queryAssignedElements, state} from 'lit/decorators.js';
+import { html, css } from 'lit';
+import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
 import { getFocusableElements } from '../../utils';
+import { FUIBaseElement } from '../BaseElement.js';
 
 @customElement('fui-panel')
-export class FUIPanel extends LitElement {
+export class FUIPanel extends FUIBaseElement {
   static readonly styles = css`
+  :not(:defined) {
+    display: none;
+  }
+
   .panel__bar,
   .panel__bar::before,
   .panel__bar::after {
@@ -85,10 +90,10 @@ export class FUIPanel extends LitElement {
   enabled = false;
 
   @property({type: Number})
-  maxWidth = 768;
+  maxWidth = 760;
 
   @queryAssignedElements({flatten: true})
-  _focusablePanelElements!: NodeListOf<HTMLElement>;
+  _slottedElements!: Array<HTMLElement>;
 
   firstUpdated() {
     // enable the burger menu if the parent is smaller than the max width
@@ -120,13 +125,15 @@ export class FUIPanel extends LitElement {
 
       // close the panel when pressing the tab key on the last focusable element
       // NOTE: the last focusable element needs to updated on slot change
-      const lastFocusableElement = [...this._focusablePanelElements].map(getFocusableElements).flat(Infinity).at(-1);
+      const lastFocusableElement = [...this._slottedElements].map(getFocusableElements).flat(Infinity).at(-1);
       lastFocusableElement?.addEventListener('keydown', (event: KeyboardEvent) => {
         if (event.key === 'Tab' && !event.shiftKey) {
           this.open = false;
         }
       });
     }
+
+    this.emit('fui-panel', {open: this.open});
   }
 
   render() {

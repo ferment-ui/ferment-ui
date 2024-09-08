@@ -151,6 +151,7 @@
   "author": "alexgagnon",
   "license": "ISC",
   "dependencies": {
+    "@ferment-ui/astro": "file:../astro",
     "@floating-ui/dom": "^1.2.1",
     "@lit-labs/virtualizer": "^2.0.0",
     "@lit/task": "^1.0.0",
