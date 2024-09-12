@@ -8,5 +8,11 @@
   },
   "files": [
     "src/"
-  ]
+  ],
+  "dependencies": {
+    "ferment-ui": "file:../core"
+  },
+  "devDependencies": {
+    "astro": "^4.15.4"
+  }
 }

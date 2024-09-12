@@ -98,7 +98,7 @@
   --fui-body-font-variant: normal;
   --fui-body-font-kerning: normal;
 
-  --fui-heading-font-family: 'Josefin Sans', sans-serif;
+  --fui-heading-font-family: system-ui, serif;
   --fui-heading-font-weight: 700;
   --fui-heading-font-style: normal;
   --fui-heading-font-variant: normal;
@@ -107,11 +107,11 @@
   --fui-heading-line-height: 1.5;
 
   --fui-h6-font-size: var(--fui-body-font-size);
-  --fui-h5-font-size: calc(var(--fui-h6-font-size) * var(--fui-font-size-scale));
-  --fui-h4-font-size: calc(var(--fui-h5-font-size) * var(--fui-font-size-scale));
-  --fui-h3-font-size: calc(var(--fui-h4-font-size) * var(--fui-font-size-scale));
-  --fui-h2-font-size: calc(var(--fui-h3-font-size) * var(--fui-font-size-scale));
-  --fui-h1-font-size: calc(var(--fui-h2-font-size) * var(--fui-font-size-scale));
+  --fui-h5-font-size: calc(var(--fui-h6-font-size) * var(--fui-typographic-scale));
+  --fui-h4-font-size: calc(var(--fui-h5-font-size) * var(--fui-typographic-scale));
+  --fui-h3-font-size: calc(var(--fui-h4-font-size) * var(--fui-typographic-scale));
+  --fui-h2-font-size: calc(var(--fui-h3-font-size) * var(--fui-typographic-scale));
+  --fui-h1-font-size: calc(var(--fui-h2-font-size) * var(--fui-typographic-scale));
 
   /* @endsection */
 

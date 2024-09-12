@@ -1,0 +1,22 @@
+---
+import type { HTMLTag, ImageMetadata, Polymorphic, UnresolvedImageTransform } from 'astro/types';
+import { Image } from 'astro:assets';
+import Picture from './Picture.astro'
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+  as: Tag,
+  class: string;
+  sources: UnresolvedImageTransform[];
+  fallback: ImageMetadata;
+  alt: string;
+}>;
+
+const { as: Tag, class: classes, sources, fallback, alt } = Astro.props;
+---
+
+<Tag class:list={['hero', classes]}>
+  <Picture sources={sources} class='hero__image'>
+    <Image src={fallback} alt={alt} />
+  </Picture>
+  <span class='hero__text'><slot></slot></span>
+</Tag>

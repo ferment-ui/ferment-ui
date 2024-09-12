@@ -14,7 +14,7 @@ export default css`
   display: inline-block;
 }
 
-.flex, [class^="fd-"], [class*=" fd-"] {
+.flex {
   display: flex;
 }
 
@@ -24,6 +24,10 @@ export default css`
 
 .contents {
   display: contents;
+}
+
+.none {
+  display: none;
 }
 /* @endsection */
 `;

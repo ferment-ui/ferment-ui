@@ -110,14 +110,14 @@ export class FUIPanel extends FUIBaseElement {
     // TODO: should these event listeners be removed when the panel is closed?
     if (this.open) {
       // close the panel when clicking outside of it
-      this.shadowRoot?.addEventListener('click', (event: MouseEvent) => {
+      this.addEventListener('click', (event: MouseEvent) => {
         if (event.target instanceof HTMLElement && event.target.closest('[part=panel]')) {
           this.open = false;
         }
       });
 
       // close the panel when pressing the escape key
-      this.shadowRoot?.addEventListener('keydown', (event: KeyboardEvent) => {
+      this.addEventListener('keydown', (event: KeyboardEvent) => {
         if (event.key === 'Escape') {
           this.open = false;
         }
@@ -125,7 +125,7 @@ export class FUIPanel extends FUIBaseElement {
 
       // close the panel when pressing the tab key on the last focusable element
       // NOTE: the last focusable element needs to updated on slot change
-      const lastFocusableElement = [...this._slottedElements].map(getFocusableElements).flat(Infinity).at(-1);
+      const lastFocusableElement = [...this._slottedElements].map(getFocusableElements).flat(Infinity).at(-1) as HTMLElement;
       lastFocusableElement?.addEventListener('keydown', (event: KeyboardEvent) => {
         if (event.key === 'Tab' && !event.shiftKey) {
           this.open = false;

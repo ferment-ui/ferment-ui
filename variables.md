@@ -77,7 +77,7 @@ layout: ../../layouts/Layout.astro
   - --fui-box-shadow-6: 0 16px 64px 0 rgba(0, 0, 0, 0.2);
 
 - Typography
-  - --fui-body-font-family: 'Open Sans', sans-serif;
+  - --fui-body-font-family: system-ui, sans-serif;
   - --fui-body-font-size: max(1rem, 18px);
   - --fui-body-line-height: 1.8;
   - --fui-body-font-weight: 400;
@@ -85,10 +85,10 @@ layout: ../../layouts/Layout.astro
   - --fui-body-font-variant: normal;
   - --fui-body-font-kerning: normal;
   - --fui-heading-line-height: 1.5;
-  - --fui-heading-font-family: 'Josefin Sans', sans-serif;
+  - --fui-heading-font-family: system-ui, sans-serif;
   - --fui-font-size-scale-min: 1.1;
   - --fui-font-size-scale-max: 1.33;
-  - --fui-font-size-scale: 1.1;
+  - --fui-font-size-scale: 1.25;
   - --fui-h6-font-size: var(--fui-body-font-size);
   - --fui-h5-font-size: calc(var(--fui-h6-font-size) * var(--fui-font-size-scale));
   - --fui-h4-font-size: calc(var(--fui-h5-font-size) * var(--fui-font-size-scale));

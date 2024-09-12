@@ -1,0 +1,143 @@
+---
+type SiteProps = {
+	title: string,
+  description: string,
+  fonts: Font[],
+  heroImage?: HeroImage[],
+  nonCriticalCss?: string[],
+  frontmatter?: {
+    title: string,
+    description: string,
+    fonts: Font[],
+    heroImage?: HeroImage[],
+    nonCriticalCss?: string[],
+  };
+}
+
+export type Font = {
+  family: string,
+  descriptors: Record<any, any>;
+  href: string,
+  type: string 
+};
+
+export type HeroImage = {
+  imagesrcset: string,
+  imagesizes: string,
+  media: string,
+  type: string
+};
+
+
+const { 
+  title,
+  description,
+  fonts = [],
+  heroImage,
+  nonCriticalCss
+} = Astro.props.frontmatter || Astro.props as SiteProps;
+
+const siteTitle = 'Example';
+
+const fontFaces = fonts.map(({family, fallback, descriptors, href, type}) => `
+@font-face {
+  font-family: '${family}';
+  src: url('${href}') format(${type.split('/')[1]});
+  font-display: swap;
+}
+
+@font-face {
+  font-family: '${family} fallback';
+  src: local('Arial');
+  font-display: swap; /* don't actually need this but it's a false positive in WebPageTest */
+  size-adjust: 105.42%;
+  ascent-override: 0;
+  descent-override: 0;
+}
+`).flat();
+
+---
+
+<!DOCTYPE html>
+<html lang='en' class='no-js'>
+<head>
+  <meta charset='UTF-8'>
+
+  <!-- this is parser blocking but necessary for things like setting up RUM and global setup like indicating js availability -->
+  <script is:inline>
+    document.documentElement.classList.replace('no-js', 'js');
+  </script>
+
+  <!-- start downloading hidden critical resources immediately -->
+  <!-- don't overuse this as it can actually slow down rendering by reducing the browsers ability to prioritize -->
+  <!-- only fonts, icons, and hero images... if you have a carousel, manage priority of off-screen images using the `fetchpriority` attr -->
+  {fonts && fonts.map(({href, type}) => <link rel='preload' as='font' type={type} href={href} crossorigin />)}
+  <style set:html={fontFaces}></style>
+
+  <!-- should only load one format as the 'type' needs to match exactly -->
+  <!-- at this time, avif has 93.2% support, compared to webp at 96.5% -->
+  <!-- prefer using responsive images with srcset and images, and enable this when preloading using imagesrcset and imagesizes -->
+  <!-- if using art direction, provide multiple versions with `media` attr restrictions -->
+  <!-- <link rel='preload' as='image' type='image/avif' media='(min-wdith: 640px)' imagesrcset='/assets/images/hero-landscape-1024.avif 1024w, /assets/images/hero-landscape-1600.avif 1600w' /> -->
+  <!-- <link rel='preload' as='image' type='image/avif' media='(max-width: 640px)' imagesrcset='/assets/images/hero-portrait-320.avif 320w, /assets/images/hero-portrait-640.avif 640w' /> -->
+  {heroImage && heroImage.map(({type, media, imagesrcset, imagesizes}) => <link rel='preload' as='image' type={type} media={media} imagesrcset={imagesrcset} imagesizes={imagesizes} />)}
+
+  <!-- icons are best served as a spritemap with external references, as it caches well and has small markup -->
+  <!-- HOWEVER, at this time you can't preload an svg and use an external reference, as it causes a double fetch... -->
+  <!-- <link rel='preload' as='image' type='image/svg+xml' href='/svg/sprite.css.svg' fetchpriority='high' crossorigin /> -->
+
+  <!-- preconnect to domains that you know are high importance, like CDNs -->
+  <link rel='preconnect' href='https://cdnjs.cloudflare.com' />
+  <slot name='preconnects' />
+
+  <!-- allow the browser to start computing layout by setting the viewport and inlining critical CSS -->
+  <!-- all other CSS should be non-block using `media` attrs -->
+  <!-- e.g. fonts used in viewport, banner (icons, search), hero image... -->
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+  <slot name='critical' />
+
+  <!-- set the title in the tab, good for perceived performance -->
+  <title>{siteTitle} | {title}</title>
+
+  <!-- use 'defer' to queue execution of non-critical resources after DOMContentLoaded, to not compete with rendering -->
+  <!-- NOTE: that we're using the CDN we preconnected to above -->
+  <!-- polyfill any required features, e.g. IntersectionObserver as it's used by quicklinks and dnstradamus -->
+  <!-- <script defer src='https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0&features=IntersectionObserver'></script> -->
+
+  <!-- scripts with type='module' are automatically async, but in this case we want defer so it's queued AFTER IntersectionObserver polyfill above -->
+  <script is:inline defer src='https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js'></script>
+
+  <!-- load non-critical css after initial render by having non-matching 'media' attrs -->
+  <!-- ALL "early" CSS is deemed render-blocking, so this is required, ESPECIALLY if you have a 'script' tag after a link element -->
+  <!-- @ts-ignore -->
+  <!-- {nonCriticalCss && nonCriticalCss.map((href: string) => (<>
+    <link rel="preload" href={href} as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href={href}></noscript>
+  </>))} -->
+  
+  <slot name='additional-css' />
+
+  <!-- remaining items like description, favicon, open-graph, etc. -->
+  <meta name='description' content={description} />
+
+  <slot name='favicons' />
+  <slot name='manifest' />
+
+  <script>import 'ferment-ui/index.js';</script>
+
+  <slot name='og' />
+
+  <meta property='og:title' content='Example' />
+  <meta property='og:description' content='A description of the page' />
+  <meta property='og:image' content='https://example.com/image.jpg' />
+  <meta property='og:url' content='https://example.com' />
+</head>
+<body>
+  <slot name='banner' />
+  <main id='main'>
+    <slot />
+  </main>
+  <slot name='footer' />
+</body>
+</html>

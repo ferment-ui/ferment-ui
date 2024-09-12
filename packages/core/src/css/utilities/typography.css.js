@@ -19,7 +19,6 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 h1, .h1 {
   font-size: var(--fui-h1-font-size);
-  font-weight: 100;
 }
 
 h2, .h2 {
@@ -60,6 +59,34 @@ h6, .h6 {
 
 .fs-larger {
   font-size: calc(1em * var(--fui-font-size-scale));
+}
+
+.ta-start {
+  text-align: start;
+}
+
+.ta-center {
+  text-align: center;
+}
+
+.ta-end {
+  text-align: end;
+}
+
+.td-uppercase {
+  text-transform: uppercase;
+}
+
+.td-lowercase {
+  text-transform: lowercase;
+}
+
+.td-capitalize {
+  text-transform: capitalize;
+}
+
+.td-none {
+  text-decoration: none;
 }
 /* @endsection */
 `;

@@ -1,14 +1,30 @@
 ---
-import Site  from '@ferment-ui/astro/layouts/Site.astro';
+import type { ComponentProps } from 'astro/types';
+import Site from '@ferment-ui/astro/layouts/Site.astro';
 import Banner from '@ferment-ui/astro/components/Banner.astro';
+
+type Props = ComponentProps<typeof Site> & {}
+
+const { title, description } = Astro.props;
 ---
 
-<Site>
-  <Banner slot='banner'>
+<Site 
+  title={title} 
+  description={description} 
+>
+  <style slot='critical' is:inline>
+    .js {
+      & fui-panel:not(:defined)::part(panel) {
+        visibility: hidden;
+      }
+    }
+  </style>
+  <Banner slot='banner' role='banner'>
     <nav>
       <ul>
         <li><a href='/animations'>Animations</a></li>
       </ul>
     </nav>
   </Banner>
+  <slot />
 </Site>

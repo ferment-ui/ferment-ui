@@ -1,0 +1,20 @@
+---
+import type { HTMLTag, ImageMetadata, Polymorphic } from 'astro/types';
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+  as: Tag;
+  image?: string | ImageMetadata;
+  header: string;
+  content: string;
+  footer: string;
+}>;
+
+const { as: Tag, image, header, content, footer } = Astro.props;
+---
+
+<Tag class='card'>
+  <slot name='image'>{image && (<Image {...image} />)}</slot>
+  <slot name='header'>{header}</slot>
+  <slot name='content'>{content}</slot>
+  <slot name='footer'>{footer}</slot>
+</Tag>

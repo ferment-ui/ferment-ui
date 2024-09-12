@@ -13,7 +13,7 @@ export class FUIEmailAddress extends LitElement {
   static readonly styles = [
     css`
       :host {
-        display: flex;
+        display: inline-block;
       }
 
       a {

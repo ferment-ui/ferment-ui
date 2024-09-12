@@ -5,10 +5,6 @@ export default css`
   --fui-banner-height: auto;
 }
 
-[role="banner"] {
-  display: flex;
-}
-
 .viewport-no-banner {
   width: 100vw;
   height: calc(100vh - var(--fui-banner-height));

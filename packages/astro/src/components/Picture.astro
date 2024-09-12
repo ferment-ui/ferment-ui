@@ -1,0 +1,28 @@
+---
+import type { UnresolvedImageTransform } from 'astro';
+import type { HTMLAttributes } from 'astro/types';
+import { getImage } from "astro:assets";
+
+export interface Props {
+  class: string;
+  sources: (HTMLAttributes<'source'> & UnresolvedImageTransform)[];
+}
+
+const { class: className, sources } = Astro.props;
+
+const srcs = await Promise.allSettled(sources.map(async (source) => ({
+  ...source,
+  src: await getImage({
+    src: source.src,
+    format: source.format,
+    inferSize: true
+  })
+})));
+---
+
+<picture class={className}>
+  {srcs.filter((source) => source.status === 'fulfilled').map(({value}) => (
+    <source srcset={value.src.src} type={value.type} media={value.media} />
+  ))}
+  <slot />
+</picture>
