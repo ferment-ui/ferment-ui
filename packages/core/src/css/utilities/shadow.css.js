@@ -10,6 +10,14 @@ function shadow(index) {
 
 export default unsafeCSS(`
 /* @section Shadow */
+:root {
+  --fui-box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0);
+}
+  
+.bs {
+  box-shadow: var(--fui-box-shadow);
+}
+
 .bs-0 {
   box-shadow: none;
 }

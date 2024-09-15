@@ -1,6 +1,7 @@
-import { css } from 'lit';
+import { unsafeCSS } from 'lit';
 
-export default css`
+const properties = [['m', 'margin'], ['mi', 'margin-inline'], ['mis', 'margin-inline-start'], ['mie', 'margin-inline-end'], ['mb', 'margin-block'], ['mbs', 'margin-block-start'], ['mbe', 'margin-block-end']];
+export default unsafeCSS`
 .m {
   margin: var(--fui-spacing-y-min) var(--fui-spacing-x-min);
 }
@@ -80,6 +81,49 @@ export default css`
   margin-top: var(--fui-spacing-responsive-y);
   margin-bottom: var(--fui-spacing-responsive-y);
 }
+
+:root {
+  --margin-responsive-clamp: clamp(var(--margin-min, 1rem), var(--margin-med, 2vw + 1rem), var(--margin-max, 2rem));
+}
+
+${properties.map(([prefix, property]) => `
+.${prefix} {
+  ${property}: var(--margin, 1ch);
+}`).join('')}
+
+${properties.map(([prefix, property]) => `
+.${prefix}-responsive {
+  ${property}: var(--margin-responsive-clamp);
+}`).join('')}
+
+${[0, 'auto', '1ch'].map((value) => `
+.m-${value} {
+  margin: ${value};
+}
+
+.mi-${value} {
+  margin-inline: ${value};
+}
+  
+.mis-${value} {
+  maring-inline-start: ${value};
+}
+
+.mie-${value} {
+  margin-inline-end: ${value};
+}
+
+.mb-${value} {
+  margin-block: ${value};
+}
+
+.mbs-${value} {
+  margin-block-start: ${value};
+}
+
+.mbe-${value} {
+  margin-block-end: ${value};
+}`).join('')}
 
 .ml-auto {
   margin-left: auto;

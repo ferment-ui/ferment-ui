@@ -73,20 +73,48 @@ h6, .h6 {
   text-align: end;
 }
 
-.td-uppercase {
+.tt-uppercase {
   text-transform: uppercase;
 }
 
-.td-lowercase {
+.tt-lowercase {
   text-transform: lowercase;
 }
 
-.td-capitalize {
+.tt-capitalize {
   text-transform: capitalize;
+}
+
+.tt-none {
+  text-transform: none;
+}
+
+.td-underline {
+  text-decoration: underline;
 }
 
 .td-none {
   text-decoration: none;
+}
+
+.tw-normal {
+  text-wrap: normal;
+}
+
+.tw-nowrap {
+  text-wrap: nowrap;
+}
+
+.tw-balanced {
+  text-wrap: balanced;
+}
+
+.tw-pretty {
+  text-wrap: pretty;
+}
+  
+.ws-nowrap {
+  white-space: nowrap;
 }
 /* @endsection */
 `;

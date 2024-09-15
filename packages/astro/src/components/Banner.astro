@@ -4,9 +4,9 @@ import { FUIPanel } from 'ferment-ui';
 
 <header role='banner'>
   <a id='skip-link' href='#main'>Skip to main content</a>
-  <FUIPanel client:load>
+  <fui-panel>
     <slot />
-  </FUIPanel>
+  </fui-panel>
 </header>
 <style>
   #skip-link {
@@ -27,4 +27,15 @@ import { FUIPanel } from 'ferment-ui';
     width: 1px;
     white-space: nowrap;
   }
+
+  /* @media (min-width: 760px) {
+    fui-panel::part(panel__trigger) {
+      position: relative;
+    }
+  }
+
+  fui-panel::part(panel__trigger) {
+    position: absolute;
+    right: 0;
+  } */
 </style>

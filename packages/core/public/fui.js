@@ -251,7 +251,7 @@ ${theme('danger')}
   display: inline-block;
 }
 
-.flex, [class^="fd-"], [class*=" fd-"] {
+.flex {
   display: flex;
 }
 
@@ -261,6 +261,10 @@ ${theme('danger')}
 
 .contents {
   display: contents;
+}
+
+.none {
+  display: none;
 }
 /* @endsection */
 `;
@@ -277,14 +281,16 @@ ${theme('danger')}
 
    var globalStyles = i$4 `
 /* @section Reset */
-*, :host {
+*, *:before, *:after, :host {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-a[disabled] {
-  pointer-events: none;
+:root {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 
 img,
@@ -296,95 +302,73 @@ iframe {
   object-fit: contain;
 }
 
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-  color: currentColor;
-  display: inline-block;
+a {
+  text-decoration: inherit;
+
+  &[disabled] {
+    pointer-events: none;
+  }
+
+  &:not([class]) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+    display: inline-block;
+  }
 }
 
 :visited {
   color: currentColor;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100svh;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  text-wrap: balance;
+}
+
+input, button,
+textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+:target {
+  scroll-margin-block: 5ex;
 }
 /* @endsection */
 `;
 
    var layoutStyles = i$4 `
 /* @section Layout */
-.body {
-  overflow-x: hidden;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas: "header" "main" "footer";
-  min-height: 100vh;
-}
-
 .flow > * + * {
   margin-block-start: var(--flow, 1em);
 }
 
-.container {
-  container-type: inline-size;
-}
-
-.viewport {
-  width: 100vw;
-  height: 100vh;
-}
-
-.h-viewport {
-  height: 100vh;
-}
-
-.h-100 {
-  height: 100%;
-}
-
-.minh-viewport {
-  min-height: 100vh;
-}
-
-.minh-100 {
-  min-height: 100%;
-}
-
-.maxh-viewport {
-  max-height: 100vh;
-}
-
-.maxh-100 {
-  max-height: 100%;
-}
-
-.w-viewport {
-  width: 100vw;
-}
-
-.w-100 {
-  width: 100%;
-}
-
-.w-fit-content {
-  width: fit-content;
-}
-
-.w-page {
-  width: var(--fui-page-width);
-}
-
 .page {
-  padding: var(--fui-spacing-page);
-  display: flex;
-  flex-direction: column;
-  gap: var(--fui-spacing-text);
+  padding: var(--fui-spacing-page) var(--spacing-page-y, var(--fui-spacing-page-y));
 }
 
-.page-x {
-  padding: 0 var(--fui-spacing-page-x);
+.page-inline {
+  padding-inline: var(--fui-spacing-page-x);
 }
 
-.page-y {
-  padding: var(--fui-spacing-page-y) 0;
+.page-block {
+  padding-block var(--spacing-page-y, var(--fui-spacing-page-y));
+}
+
+.container {
+  --container-name: ;
+  container-name: var(--container-name);
+  container-type: inline-size;
 }
 
 .row {
@@ -466,16 +450,20 @@ a:not([class]) {
   flex-wrap: wrap;
 }
 
-.ta-start {
-  text-align: start;
+.g-text {
+  gap: var(--gap, --fui-spacing-text);
 }
 
-.ta-center {
-  text-align: center;
+.f-0 {
+  flex: 0;
 }
 
-.ta-end {
-  text-align: end;
+.f-10a {
+  flex: 1 0 auto;
+}
+
+.f-1 {
+  flex: 1;
 }
 
 .jc-start {
@@ -561,95 +549,10 @@ a:not([class]) {
 .ac-stretch {
   align-content: stretch;
 }
+/* @endsection */
+`;
 
-.p {
-  padding: var(--fui-spacing-y-min) var(--fui-spacing-x-min);
-}
-
-.pt {
-  padding-top: var(--fui-spacing-y-min);
-}
-
-.pr {
-  padding-right: var(--fui-spacing-x-min);
-}
-
-.pb {
-  padding-bottom: var(--fui-spacing-y-min);
-}
-
-.pl {
-  padding-left: var(--fui-spacing-x-min);
-}
-
-.px {
-  padding-left: var(--fui-spacing-x-min);
-  padding-right: var(--fui-spacing-x-min);
-}
-
-.py {
-  padding-top: var(--fui-spacing-y-min);
-  padding-bottom: var(--fui-spacing-y-min);
-}
-
-.p-0 {
-  padding: 0;
-}
-
-.pt-0 {
-  padding-top: 0;
-}
-
-.pr-0 {
-  padding-right: 0;
-}
-
-.pb-0 {
-  padding-bottom: 0;
-}
-
-.pl-0 {
-  padding-left: 0;
-}
-
-.p-responsive {
-  padding: var(--fui-spacing-responsive-y) var(--fui-spacing-responsive-x);
-}
-
-.pt-responsive {
-  padding-top: var(--fui-spacing-responsive-y);
-}
-
-.pr-responsive {
-  padding-right: var(--fui-spacing-responsive-x);
-}
-
-.pb-responsive {
-  padding-bottom: var(--fui-spacing-responsive-y);
-}
-
-.pl-responsive {
-  padding-left: var(--fui-spacing-responsive-x);
-}
-
-.px-responsive {
-  padding-left: var(--fui-spacing-responsive-x);
-  padding-right: var(--fui-spacing-responsive-x);
-}
-
-.py-responsive {
-  padding-top: var(--fui-spacing-responsive-y);
-  padding-bottom: var(--fui-spacing-responsive-y);
-}
-
-.pt-text {
-  padding-top: var(--fui-spacing-text);
-}
-
-.pb-text {
-  padding-bottom: var(--fui-spacing-text);
-}
-
+   var marginStyles = i$4 `
 .m {
   margin: var(--fui-spacing-y-min) var(--fui-spacing-x-min);
 }
@@ -745,15 +648,6 @@ a:not([class]) {
 .mb-text {
   margin-bottom: var(--fui-spacing-text);
 }
-
-.g-base {
-  gap: var(--fui-spacing-base);
-}
-
-.g-text {
-  gap: var(--fui-spacing-text);
-}
-/* @endsection */
 `;
 
    const rules = [0, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 100].map(value => `.o-${value} {
@@ -766,30 +660,94 @@ ${rules.join('\n')}
 /* @endsection */
 `);
 
-   var otherStyles = i$4 `
-/* @section Other */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+   var paddingStyles = i$4 `
+.p {
+  padding: var(--fui-spacing-y-min) var(--fui-spacing-x-min);
 }
 
-.sr-only-focusable:active,
-.sr-only-focusable:focus {
-  position: static;
-  width: auto;
-  height: auto;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
+.pt {
+  padding-top: var(--fui-spacing-y-min);
 }
-/* @endsection */
+
+.pr {
+  padding-right: var(--fui-spacing-x-min);
+}
+
+.pb {
+  padding-bottom: var(--fui-spacing-y-min);
+}
+
+.pl {
+  padding-left: var(--fui-spacing-x-min);
+}
+
+.px {
+  padding-left: var(--fui-spacing-x-min);
+  padding-right: var(--fui-spacing-x-min);
+}
+
+.py {
+  padding-top: var(--fui-spacing-y-min);
+  padding-bottom: var(--fui-spacing-y-min);
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.pt-0 {
+  padding-top: 0;
+}
+
+.pr-0 {
+  padding-right: 0;
+}
+
+.pb-0 {
+  padding-bottom: 0;
+}
+
+.pl-0 {
+  padding-left: 0;
+}
+
+.p-responsive {
+  padding: var(--fui-spacing-responsive-y) var(--fui-spacing-responsive-x);
+}
+
+.pt-responsive {
+  padding-top: var(--fui-spacing-responsive-y);
+}
+
+.pr-responsive {
+  padding-right: var(--fui-spacing-responsive-x);
+}
+
+.pb-responsive {
+  padding-bottom: var(--fui-spacing-responsive-y);
+}
+
+.pl-responsive {
+  padding-left: var(--fui-spacing-responsive-x);
+}
+
+.px-responsive {
+  padding-left: var(--fui-spacing-responsive-x);
+  padding-right: var(--fui-spacing-responsive-x);
+}
+
+.py-responsive {
+  padding-top: var(--fui-spacing-responsive-y);
+  padding-bottom: var(--fui-spacing-responsive-y);
+}
+
+.pt-text {
+  padding-top: var(--fui-spacing-text);
+}
+
+.pb-text {
+  padding-bottom: var(--fui-spacing-text);
+}
 `;
 
    var positionStyles = i$4 `
@@ -812,6 +770,32 @@ ${rules.join('\n')}
 
 .fixed {
   position: fixed;
+}
+/* @endsection */
+`;
+
+   var screenReaderStyles = i$4 `
+/* @section Other */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }
 /* @endsection */
 `;
@@ -840,6 +824,52 @@ ${states(`bs-${index}`, `  box-shadow: var(--fui-box-shadow-${index});`)}`)).joi
 /* @endsection */
 `);
 
+   var sizeStyles = i$4 `
+.viewport {
+  width: 100vw;
+  height: 100vh;
+}
+
+.h-viewport {
+  height: 100vh;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.minh-viewport {
+  min-height: 100vh;
+}
+
+.minh-100 {
+  min-height: 100%;
+}
+
+.maxh-viewport {
+  max-height: 100vh;
+}
+
+.maxh-100 {
+  max-height: 100%;
+}
+
+.w-viewport {
+  width: 100vw;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-fit-content {
+  width: fit-content;
+}
+
+.w-page {
+  width: var(--fui-page-width);
+}`;
+
    var typographyStyles = i$4 `
 /* @section Typography */
 body, p {
@@ -859,7 +889,6 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 h1, .h1 {
   font-size: var(--fui-h1-font-size);
-  font-weight: 100;
 }
 
 h2, .h2 {
@@ -900,6 +929,34 @@ h6, .h6 {
 
 .fs-larger {
   font-size: calc(1em * var(--fui-font-size-scale));
+}
+
+.ta-start {
+  text-align: start;
+}
+
+.ta-center {
+  text-align: center;
+}
+
+.ta-end {
+  text-align: end;
+}
+
+.td-uppercase {
+  text-transform: uppercase;
+}
+
+.td-lowercase {
+  text-transform: lowercase;
+}
+
+.td-capitalize {
+  text-transform: capitalize;
+}
+
+.td-none {
+  text-decoration: none;
 }
 /* @endsection */
 `;
@@ -951,9 +1008,12 @@ h6, .h6 {
        globalStyles,
        displayStyles,
        positionStyles,
+       sizeStyles,
+       marginStyles,
+       paddingStyles,
        visibilityStyles,
        opacityStyles,
-       otherStyles,
+       screenReaderStyles,
        layoutStyles,
        typographyStyles,
        colorStyles,
@@ -1567,6 +1627,7 @@ a[disabled] {
            this.open = false;
            this.enabled = false;
            this.maxWidth = 760;
+           this.panelId = `panel-${Math.random().toString(36).slice(2, 9)}`;
        }
        firstUpdated() {
            var _a;
@@ -1579,16 +1640,18 @@ a[disabled] {
        }
        toggleOpen() {
            this.open = !this.open;
+           console.log('here');
            // TODO: should these event listeners be removed when the panel is closed?
            if (this.open) {
                // close the panel when clicking outside of it
-               this.addEventListener('click', (event) => {
+               document.addEventListener('click', (event) => {
+                   console.log(event.target);
                    if (event.target instanceof HTMLElement && event.target.closest('[part=panel]')) {
                        this.open = false;
                    }
                });
                // close the panel when pressing the escape key
-               this.addEventListener('keydown', (event) => {
+               document.addEventListener('keydown', (event) => {
                    if (event.key === 'Escape') {
                        this.open = false;
                    }
@@ -1606,11 +1669,11 @@ a[disabled] {
        }
        render() {
            return x `
-      <div class='panel_wrapper' enabled=${this.enabled}>
-        <button part='panel__trigger' type='button' aria-label=${`${this.open ? 'Close' : 'Open'} menu`} @click=${this.toggleOpen}>
+      <div class='panel_wrapper' enabled=${this.enabled} open=${this.open} @click=${this.toggleOpen}>
+        <button part='panel__trigger' type='button' aria-label=${`${this.open ? 'Close' : 'Open'} menu`} aria-controls=${this.panelId} aria-expanded=${this.open}>
           <slot name='toggle' aria-hidden='true'><span class='panel__bar'></span></slot>
         </button>
-        <div part='panel' aria-expanded=${this.open}>
+        <div id=${this.panelId} part='panel'>
           <slot />
         </div>
       </div>
@@ -1618,10 +1681,6 @@ a[disabled] {
        }
    };
    exports.FUIPanel.styles = i$4 `
-  :not(:defined) {
-    display: none;
-  }
-
   .panel__bar,
   .panel__bar::before,
   .panel__bar::after {
@@ -1668,6 +1727,7 @@ a[disabled] {
 
   [enabled='true'] {
     & [part='panel'] {
+      display: none;
       position: absolute;
       top: 0;
       left: 0;
@@ -1676,13 +1736,11 @@ a[disabled] {
       background: black;
       color: white;
       overscroll-behavior: contain;
+    }
 
-      &[aria-expanded='true'] {
+    &[open='true'] {
+      & [part='panel'] {
         display: block;
-      }
-
-      &[aria-expanded='false'] {
-        display: none;
       }
     }
   }`;
@@ -1695,6 +1753,9 @@ a[disabled] {
    __decorate$5([
        n$1({ type: Number })
    ], exports.FUIPanel.prototype, "maxWidth", void 0);
+   __decorate$5([
+       n$1({ type: String })
+   ], exports.FUIPanel.prototype, "panelId", void 0);
    __decorate$5([
        o$5({ flatten: true })
    ], exports.FUIPanel.prototype, "_slottedElements", void 0);

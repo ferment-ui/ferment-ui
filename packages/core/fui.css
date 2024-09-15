@@ -17,8 +17,9 @@
   /* @section Border-variables */
   --fui-border-width: 1px;
   --fui-border-radius: 0.25rem;
+  --fui-border-color: currentColor;
   --fui-border-radius-pill: 9999px;
-  --fui-border: var(--fui-border-width) solid var(--fui-color-grey-500);
+  --fui-border: var(--fui-border-width) solid var(--fui-border-color);
   /* @endsection */
 
   /* @section Color-variables */
@@ -151,10 +152,22 @@
 /* @endsection */
 
 /* @section Reset */
+:root {
+  box-sizing: border-box;
+}
+
 *, *:before, *:after, :host {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  box-sizing: inherit;
+
+  
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *:before, *:after, :host {
+    transition-duration: 0s !important;
+  }
 }
 
 :root {
@@ -168,11 +181,12 @@ picture,
 video,
 iframe {
   max-inline-size: 100%;
-  max-block-size: 100%;
-  object-fit: contain;
+  block-size: auto;
+  object-fit: cover;
 }
 
 a {
+  color: inherit;
   text-decoration: inherit;
 
   &[disabled] {
@@ -205,10 +219,6 @@ input, button,
 textarea, select {
   font-family: inherit;
   font-size: inherit;
-}
-
-textarea:not([rows]) {
-  min-height: 10em;
 }
 
 :target {
@@ -395,6 +405,16 @@ textarea:not([rows]) {
   margin-top: var(--fui-spacing-responsive-y);
   margin-bottom: var(--fui-spacing-responsive-y);
 }
+
+:root {
+  --margin-responsive-clamp: clamp(var(--margin-min, 1rem), var(--margin-med, 2vw + 1rem), var(--margin-max, 2rem));
+}
+
+,
+
+,
+
+,
 
 .ml-auto {
   margin-left: auto;
@@ -608,7 +628,7 @@ textarea:not([rows]) {
 }
 
 .page-block {
-  padding-block var(--spacing-page-y, var(--fui-spacing-page-y));
+  padding-block: var(--spacing-page-y, var(--fui-spacing-page-y));
 }
 
 .container {
@@ -697,7 +717,7 @@ textarea:not([rows]) {
 }
 
 .g-text {
-  gap: var(--gap, --fui-spacing-text);
+  gap: var(--gap, var(--fui-spacing-text));
 }
 
 .f-0 {
@@ -870,20 +890,48 @@ h6, .h6 {
   text-align: end;
 }
 
-.td-uppercase {
+.tt-uppercase {
   text-transform: uppercase;
 }
 
-.td-lowercase {
+.tt-lowercase {
   text-transform: lowercase;
 }
 
-.td-capitalize {
+.tt-capitalize {
   text-transform: capitalize;
+}
+
+.tt-none {
+  text-transform: none;
+}
+
+.td-underline {
+  text-decoration: underline;
 }
 
 .td-none {
   text-decoration: none;
+}
+
+.tw-normal {
+  text-wrap: normal;
+}
+
+.tw-nowrap {
+  text-wrap: nowrap;
+}
+
+.tw-balanced {
+  text-wrap: balanced;
+}
+
+.tw-pretty {
+  text-wrap: pretty;
+}
+  
+.ws-nowrap {
+  white-space: nowrap;
 }
 /* @endsection */
 
@@ -1609,28 +1657,28 @@ h6, .h6 {
 }
 
 .border {
-  border: var(--fui-border-width) solid var(--fui-color-border);
+  border: var(--fui-border);
   border-radius: var(--fui-border-radius);
 }
 
 .b {
-  border: var(--fui-border-width) solid var(--fui-color-border);
+  border: var(--fui-border);
 }
 
 .bt {
-  border-top: var(--fui-border-width) solid var(--fui-color-border);
+  border-top: var(--fui-border);
 }
 
 .br {
-  border-right: var(--fui-border-width) solid var(--fui-color-border);
+  border-right: var(--fui-border);
 }
 
 .bb {
-  border-bottom: var(--fui-border-width) solid var(--fui-color-border);
+  border-bottom: var(--fui-border);
 }
 
 .bl {
-  border-left: var(--fui-border-width) solid var(--fui-color-border);
+  border-left: var(--fui-border);
 }
 /* @endsection */
 
@@ -1640,29 +1688,19 @@ h6, .h6 {
   z-index: 0;
 }
 
-.zi-drawer {
-  z-index: var(--fui-z-index-drawer);
-}
-
-.zi-dialog {
-  z-index: var(--fui-z-index-dialog);
-}
-
-.zi-dropdown {
-  z-index: var(--fui-z-index-dropdown);
-}
-
-.zi-alert-group {
-  z-index: var(--fui-z-index-alert-group);
-}
-
-.zi-tooltip {
-  z-index: var(--fui-z-index-tooltip);
-}
+,
 /* @endsection */
 
 
 /* @section Shadow */
+:root {
+  --fui-box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0);
+}
+  
+.bs {
+  box-shadow: var(--fui-box-shadow);
+}
+
 .bs-0 {
   box-shadow: none;
 }
@@ -1911,25 +1949,23 @@ a[disabled] {
 
 /* @section List */
 ol, ul, ::part(list) {
+  list-style-position: outside !important; 
+  margin-inline-start: var(--list-margin, 8ch);
+}
+
+ul {
   list-style-type: disc;
-  margin-left: 1.5em;
 }
 
 .ls-none {
   list-style-type: none;
-  margin-left: unset;
+  margin-inline-start: unset;
 }
 
-.lst-none {
-  list-style-type: none;
-}
-
-.lsp-inside {
-  list-style-position: inside;
-}
-
-.lsp-outside {
-  list-style-position: outside;
+.ls-none:not([role='list'])::before {
+  content: 'MISSING role="list"';
+  color: red;
+  border: 1px solid red;
 }
 /* @endsection */
 

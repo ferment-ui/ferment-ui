@@ -6,7 +6,7 @@
       "import": "./packages/core/dist/fui.css"
     },
     ".": {
-      "import": "./packages/core/src/index.js"
+      "import": "./packages/core/dist/index.js"
     }
   },
   "workspaces": [

@@ -1,27 +1,27 @@
 import { css } from 'lit';
 
+// TODO: remove important once you fix Zoho's global CSS
+
 export default css`
 /* @section List */
 ol, ul, ::part(list) {
+  list-style-position: outside !important; 
+  margin-inline-start: var(--list-margin, 8ch);
+}
+
+ul {
   list-style-type: disc;
-  margin-left: 1.5em;
 }
 
 .ls-none {
   list-style-type: none;
-  margin-left: unset;
+  margin-inline-start: unset;
 }
 
-.lst-none {
-  list-style-type: none;
-}
-
-.lsp-inside {
-  list-style-position: inside;
-}
-
-.lsp-outside {
-  list-style-position: outside;
+.ls-none:not([role='list'])::before {
+  content: 'MISSING role="list"';
+  color: red;
+  border: 1px solid red;
 }
 /* @endsection */
 `;

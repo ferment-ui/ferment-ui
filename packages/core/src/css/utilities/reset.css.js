@@ -2,10 +2,22 @@ import { css } from 'lit';
 
 export default css`
 /* @section Reset */
+:root {
+  box-sizing: border-box;
+}
+
 *, *:before, *:after, :host {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  box-sizing: inherit;
+
+  
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *:before, *:after, :host {
+    transition-duration: 0s !important;
+  }
 }
 
 :root {
@@ -19,11 +31,12 @@ picture,
 video,
 iframe {
   max-inline-size: 100%;
-  max-block-size: 100%;
-  object-fit: contain;
+  block-size: auto;
+  object-fit: cover;
 }
 
 a {
+  color: inherit;
   text-decoration: inherit;
 
   &[disabled] {
@@ -56,10 +69,6 @@ input, button,
 textarea, select {
   font-family: inherit;
   font-size: inherit;
-}
-
-textarea:not([rows]) {
-  min-height: 10em;
 }
 
 :target {

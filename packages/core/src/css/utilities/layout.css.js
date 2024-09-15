@@ -15,7 +15,7 @@ export default css`
 }
 
 .page-block {
-  padding-block var(--spacing-page-y, var(--fui-spacing-page-y));
+  padding-block: var(--spacing-page-y, var(--fui-spacing-page-y));
 }
 
 .container {
@@ -104,7 +104,7 @@ export default css`
 }
 
 .g-text {
-  gap: var(--gap, --fui-spacing-text);
+  gap: var(--gap, var(--fui-spacing-text));
 }
 
 .f-0 {

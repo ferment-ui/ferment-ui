@@ -14,10 +14,6 @@ import { FUIBaseElement } from '../BaseElement.js';
 @customElement('fui-panel')
 export class FUIPanel extends FUIBaseElement {
   static readonly styles = css`
-  :not(:defined) {
-    display: none;
-  }
-
   .panel__bar,
   .panel__bar::before,
   .panel__bar::after {
@@ -64,6 +60,7 @@ export class FUIPanel extends FUIBaseElement {
 
   [enabled='true'] {
     & [part='panel'] {
+      display: none;
       position: absolute;
       top: 0;
       left: 0;
@@ -72,13 +69,11 @@ export class FUIPanel extends FUIBaseElement {
       background: black;
       color: white;
       overscroll-behavior: contain;
+    }
 
-      &[aria-expanded='true'] {
+    &[open='true'] {
+      & [part='panel'] {
         display: block;
-      }
-
-      &[aria-expanded='false'] {
-        display: none;
       }
     }
   }`;
@@ -91,6 +86,9 @@ export class FUIPanel extends FUIBaseElement {
 
   @property({type: Number})
   maxWidth = 760;
+
+  @property({type: String})
+  panelId = `panel-${Math.random().toString(36).slice(2, 9)}`;
 
   @queryAssignedElements({flatten: true})
   _slottedElements!: Array<HTMLElement>;
@@ -107,17 +105,20 @@ export class FUIPanel extends FUIBaseElement {
   toggleOpen() {
     this.open = !this.open;
 
+    console.log('here');
+
     // TODO: should these event listeners be removed when the panel is closed?
     if (this.open) {
       // close the panel when clicking outside of it
-      this.addEventListener('click', (event: MouseEvent) => {
+      document.addEventListener('click', (event: MouseEvent) => {
+        console.log(event.target);
         if (event.target instanceof HTMLElement && event.target.closest('[part=panel]')) {
           this.open = false;
         }
       });
 
       // close the panel when pressing the escape key
-      this.addEventListener('keydown', (event: KeyboardEvent) => {
+      document.addEventListener('keydown', (event: KeyboardEvent) => {
         if (event.key === 'Escape') {
           this.open = false;
         }
@@ -138,11 +139,11 @@ export class FUIPanel extends FUIBaseElement {
 
   render() {
     return html`
-      <div class='panel_wrapper' enabled=${this.enabled}>
-        <button part='panel__trigger' type='button' aria-label=${`${this.open ? 'Close' : 'Open'} menu`} @click=${this.toggleOpen}>
+      <div class='panel_wrapper' enabled=${this.enabled} open=${this.open} @click=${this.toggleOpen}>
+        <button part='panel__trigger' type='button' aria-label=${`${this.open ? 'Close' : 'Open'} menu`} aria-controls=${this.panelId} aria-expanded=${this.open}>
           <slot name='toggle' aria-hidden='true'><span class='panel__bar'></span></slot>
         </button>
-        <div part='panel' aria-expanded=${this.open}>
+        <div id=${this.panelId} part='panel'>
           <slot />
         </div>
       </div>

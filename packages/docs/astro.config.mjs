@@ -8,6 +8,11 @@ export default defineConfig({
   vite: {
     css: {
       transformer: 'lightningcss'
+    },
+    server: {
+      fs: {
+        strict: false
+      }
     }
   },
   integrations: [lit()]

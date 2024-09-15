@@ -16,8 +16,9 @@
   /* @section Border-variables */
   --fui-border-width: 1px;
   --fui-border-radius: 0.25rem;
+  --fui-border-color: currentColor;
   --fui-border-radius-pill: 9999px;
-  --fui-border: var(--fui-border-width) solid var(--fui-color-grey-500);
+  --fui-border: var(--fui-border-width) solid var(--fui-border-color);
   /* @endsection */
 
   /* @section Color-variables */
