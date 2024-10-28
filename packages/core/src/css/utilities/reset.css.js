@@ -4,6 +4,7 @@ export default css`
 /* @section Reset */
 :root {
   box-sizing: border-box;
+  text-size-adjust: none;
 }
 
 *, *:before, *:after, :host {
@@ -20,18 +21,12 @@ export default css`
   }
 }
 
-:root {
-  -moz-text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-}
-
 img,
 picture,
 video,
 iframe {
   max-inline-size: 100%;
-  block-size: auto;
+  block-size: 100%;
   object-fit: cover;
 }
 
@@ -59,6 +54,7 @@ body {
   min-height: 100svh;
   line-height: 1.5;
   text-wrap: pretty;
+  text-rendering: optimizeSpeed;
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {

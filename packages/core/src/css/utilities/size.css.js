@@ -6,15 +6,15 @@ export default css`
   height: 100vh;
 }
 
-.h-viewport {
-  height: 100vh;
+.h-svh {
+  height: 100svh;
 }
 
 .h-100 {
   height: 100%;
 }
 
-.minh-viewport {
+.minh-vh {
   min-height: 100vh;
 }
 
@@ -22,8 +22,8 @@ export default css`
   min-height: 100%;
 }
 
-.maxh-viewport {
-  max-height: 100vh;
+.maxh-svh {
+  max-height: 100svh;
 }
 
 .maxh-100 {

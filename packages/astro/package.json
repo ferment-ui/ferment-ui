@@ -2,17 +2,21 @@
   "name": "@ferment-ui/astro",
   "type": "module",
   "version": "0.0.1",
+  "types": "index.d.ts",
   "exports": {
     "./components/*": "./src/components/*",
-    "./layouts/*": "./src/layouts/*"
+    "./layouts/*": "./src/layouts/*",
+    "./utils/*": "./src/utils/*"
   },
   "files": [
-    "src/"
+    "src/",
+    "index.d.ts"
   ],
   "dependencies": {
-    "ferment-ui": "file:../core"
+    "ferment-ui": "file:../core",
+    "@astrolib/seo": "^1.0.0-beta.8"
   },
-  "devDependencies": {
-    "astro": "^4.15.4"
+  "peerDependencies": {
+    "astro": "^4.15.9"
   }
 }

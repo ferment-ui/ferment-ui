@@ -5,20 +5,16 @@ import Banner from '@ferment-ui/astro/components/Banner.astro';
 
 type Props = ComponentProps<typeof Site> & {}
 
-const { title, description } = Astro.props;
+const { title, description, bodyClasses, mainClasses, seo } = Astro.props;
 ---
 
 <Site 
   title={title} 
-  description={description} 
+  description={description}
+  bodyAttributes={bodyClasses}
+  mainClasses={mainClasses}
+  seo={seo}
 >
-  <style slot='critical' is:inline>
-    .js {
-      & fui-panel:not(:defined)::part(panel) {
-        visibility: hidden;
-      }
-    }
-  </style>
   <Banner slot='banner' role='banner'>
     <nav>
       <ul>

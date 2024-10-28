@@ -1,12 +1,12 @@
 import animationStyles from './animation.css.js';
 import borderStyles from './border.css.js';
+import breakPointsStyles from './breakpoints.css.js';
 import colorStyles from './color.css.js';
 import displayStyles from './display.css.js';
 import focusStyles from './focus.css.js';
 import globalStyles from './reset.css.js';
 import layoutStyles from './layout.css.js';
 import marginStyles from './margin.css.js';
-import opacityStyles from './opacity.css.js';
 import paddingStyles from './padding.css.js';
 import positionStyles from './position.css.js';
 import screenReaderStyles from './screen-reader.css.js';
@@ -18,13 +18,13 @@ import zIndexStyles from './z-index.css.js';
 
 export default {
   globalStyles,
+  breakPointsStyles,
   displayStyles,
   positionStyles,
   sizeStyles,
   marginStyles,
   paddingStyles,
   visibilityStyles,
-  opacityStyles,
   screenReaderStyles,
   layoutStyles,
   typographyStyles,
@@ -41,13 +41,13 @@ export default {
  */
 export const utilityStyles = [
   globalStyles,
+  breakPointsStyles,
   displayStyles,
   positionStyles,
   sizeStyles,
   marginStyles,
   paddingStyles,
   visibilityStyles,
-  opacityStyles,
   screenReaderStyles,
   layoutStyles,
   typographyStyles,

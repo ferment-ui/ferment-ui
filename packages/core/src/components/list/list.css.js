@@ -5,6 +5,7 @@ import { css } from 'lit';
 export default css`
 /* @section List */
 ol, ul, ::part(list) {
+  --list-margin: clamp(1.5ch, 5vw, 4ch);
   list-style-position: outside !important; 
   margin-inline-start: var(--list-margin, 8ch);
 }

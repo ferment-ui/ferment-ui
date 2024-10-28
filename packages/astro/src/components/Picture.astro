@@ -1,28 +1,38 @@
 ---
+/**
+ * Allows art direction (different images based on media queries), whereas the default Astro Picture component only supports a single image.
+ * 
+ * @prop {Object} pictureAttributes - map of attributes that will be applied to the root `picture` element
+ * @prop {Object[]} sources - an array of sources of type `UnresolvedImageTransform & { sourceAttributes: HTMLAttributes<'source'> }`. NOTE: the order matters as the first type the browser understands that matches the media attribute will be used!
+ * @slot - the fallback image, must have an 'alt' attribute (recommended to use Astro's Image component) 
+ */
 import type { UnresolvedImageTransform } from 'astro';
 import type { HTMLAttributes } from 'astro/types';
 import { getImage } from "astro:assets";
 
-export interface Props {
-  class: string;
-  sources: (HTMLAttributes<'source'> & UnresolvedImageTransform)[];
+export interface Source extends UnresolvedImageTransform {
+    sourceAttributes?: HTMLAttributes<'source'>,
 }
 
-const { class: className, sources } = Astro.props;
+interface Props {
+  pictureAttributes?: HTMLAttributes<'picture'>,
+  sources: Source[]
+}
 
-const srcs = await Promise.allSettled(sources.map(async (source) => ({
-  ...source,
-  src: await getImage({
-    src: source.src,
-    format: source.format,
-    inferSize: true
-  })
+if (!Astro.slots.has('default')) throw new Error('You must provide an `img` or <Image /> to the default slot');
+
+const { pictureAttributes, sources: srcs } = Astro.props;
+
+// use all instead of allSettled for fast failure?
+const sources = await Promise.all(srcs.map(async ({sourceAttributes, ...options}) => ({
+  sourceAttributes,
+  srcset: (await getImage(options)).srcSet.attribute
 })));
 ---
 
-<picture class={className}>
-  {srcs.filter((source) => source.status === 'fulfilled').map(({value}) => (
-    <source srcset={value.src.src} type={value.type} media={value.media} />
+<picture {...pictureAttributes}>
+  {sources.length && sources.map(({sourceAttributes, srcset}) => (
+    <source srcset={srcset} {...sourceAttributes} />
   ))}
   <slot />
 </picture>

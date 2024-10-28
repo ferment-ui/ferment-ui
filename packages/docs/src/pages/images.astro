@@ -1,0 +1,30 @@
+---
+import { Image, Picture } from 'astro:assets';
+import P from '@ferment-ui/astro/components/Picture.astro';
+import { getSizesFromWidths } from '@ferment-ui/astro/utils/sizes.js';
+import img from '../occability.jpg';
+
+const widths = [240, 560];
+const sources = [
+  {
+    src: img,
+    widths,
+    sourceAttributes: {
+      sizes: getSizesFromWidths(widths)
+    }
+  },
+  {
+    src: img,
+    format: 'avif',
+    widths,
+    sourceAttributes: {
+      sizes: getSizesFromWidths(widths, 50),
+      type: 'image/avif'
+    }
+  }
+]
+---
+
+<P sources={sources} pictureAttributes={{ 'class:list': ["one", "two"] }}>
+  <Image src={img} alt='Hello' />
+</P>

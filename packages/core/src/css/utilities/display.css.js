@@ -1,33 +1,11 @@
-import { css } from 'lit';
+import { unsafeCSS } from 'lit';
 
-export default css`
+const properties = ['block', 'inline', 'inline-block', 'flex', 'grid', 'contents', 'none'];
+export default unsafeCSS(`
 /* @section Display */
-.block {
-  display: block;
-}
-
-.inline {
-  display: inline;
-}
-
-.inline-block {
-  display: inline-block;
-}
-
-.flex {
-  display: flex;
-}
-
-.grid {
-  display: grid;
-}
-
-.contents {
-  display: contents;
-}
-
-.none {
-  display: none;
-}
+${properties.map(property => `
+.${property} {
+  display: ${property};
+}`).join('\n')}
 /* @endsection */
-`;
+`);

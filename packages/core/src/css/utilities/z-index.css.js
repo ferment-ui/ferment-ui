@@ -10,19 +10,18 @@ const properties = {
   tooltip: 1000000
 };
 
-export const variables = unsafeCSS`:root {
+export const variables = unsafeCSS(`:root {
 ${Object.entries(properties).map(([key, value]) => `  --fui-z-index-${key}: ${value};`).join('\n')}
-}`;
+}`);
 
-export default unsafeCSS`
+export default unsafeCSS(`
 /* @section Z-Index */
 .zi-0 {
   z-index: 0;
 }
-
 ${Object.entries(properties).map(([key, value]) => `
 .zi-${key} {
   z-index: var(--fui-z-index-${key}, ${value});
 }`).join('\n')}
 /* @endsection */
-`;
+`);

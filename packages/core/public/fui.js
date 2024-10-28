@@ -139,28 +139,28 @@ html:not(.no-js) .introed {
 }
 
 .border {
-  border: var(--fui-border-width) solid var(--fui-color-border);
+  border: var(--fui-border);
   border-radius: var(--fui-border-radius);
 }
 
 .b {
-  border: var(--fui-border-width) solid var(--fui-color-border);
+  border: var(--fui-border);
 }
 
 .bt {
-  border-top: var(--fui-border-width) solid var(--fui-color-border);
+  border-top: var(--fui-border);
 }
 
 .br {
-  border-right: var(--fui-border-width) solid var(--fui-color-border);
+  border-right: var(--fui-border);
 }
 
 .bb {
-  border-bottom: var(--fui-border-width) solid var(--fui-color-border);
+  border-bottom: var(--fui-border);
 }
 
 .bl {
-  border-left: var(--fui-border-width) solid var(--fui-color-border);
+  border-left: var(--fui-border);
 }
 /* @endsection */
 `;
@@ -281,10 +281,22 @@ ${theme('danger')}
 
    var globalStyles = i$4 `
 /* @section Reset */
+:root {
+  box-sizing: border-box;
+}
+
 *, *:before, *:after, :host {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  box-sizing: inherit;
+
+  
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *:before, *:after, :host {
+    transition-duration: 0s !important;
+  }
 }
 
 :root {
@@ -298,11 +310,12 @@ picture,
 video,
 iframe {
   max-inline-size: 100%;
-  max-block-size: 100%;
-  object-fit: contain;
+  block-size: auto;
+  object-fit: cover;
 }
 
 a {
+  color: inherit;
   text-decoration: inherit;
 
   &[disabled] {
@@ -337,10 +350,6 @@ textarea, select {
   font-size: inherit;
 }
 
-textarea:not([rows]) {
-  min-height: 10em;
-}
-
 :target {
   scroll-margin-block: 5ex;
 }
@@ -362,7 +371,7 @@ textarea:not([rows]) {
 }
 
 .page-block {
-  padding-block var(--spacing-page-y, var(--fui-spacing-page-y));
+  padding-block: var(--spacing-page-y, var(--fui-spacing-page-y));
 }
 
 .container {
@@ -451,18 +460,23 @@ textarea:not([rows]) {
 }
 
 .g-text {
-  gap: var(--gap, --fui-spacing-text);
+  gap: var(--gap, var(--fui-spacing-text));
 }
 
-.f-0 {
+.g-responsive {
+  gap: var(--gap, var(--fui-spacing-responsive));
+}
+
+.f-0 > * {
   flex: 0;
+  flex-item: 0;
 }
 
-.f-10a {
+.f-10a > * {
   flex: 1 0 auto;
 }
 
-.f-1 {
+.f-1 > * {
   flex: 1;
 }
 
@@ -552,7 +566,8 @@ textarea:not([rows]) {
 /* @endsection */
 `;
 
-   var marginStyles = i$4 `
+   const properties$1 = [['m', 'margin'], ['mi', 'margin-inline'], ['mis', 'margin-inline-start'], ['mie', 'margin-inline-end'], ['mb', 'margin-block'], ['mbs', 'margin-block-start'], ['mbe', 'margin-block-end']];
+   var marginStyles = r$6(`
 .m {
   margin: var(--fui-spacing-y-min) var(--fui-spacing-x-min);
 }
@@ -633,6 +648,19 @@ textarea:not([rows]) {
   margin-bottom: var(--fui-spacing-responsive-y);
 }
 
+:root {
+  --margin-responsive-clamp: clamp(var(--margin-min, 1rem), var(--margin-med, 2vw + 1rem), var(--margin-max, 2rem));
+}
+
+${[0, 'auto', '1ch'].map(value => properties$1.map(([prop, name]) => `
+.${prop}-${value} {
+  ${name}: ${value};
+}`).join('\n')).join('\n')}
+${properties$1.map(([prop, name]) => `
+.${prop}-responsive {
+  ${name}: var(--margin-responsive-clamp);
+}`).join('\n')}
+
 .ml-auto {
   margin-left: auto;
 }
@@ -648,9 +676,9 @@ textarea:not([rows]) {
 .mb-text {
   margin-bottom: var(--fui-spacing-text);
 }
-`;
+`);
 
-   const rules = [0, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 100].map(value => `.o-${value} {
+   const rules = [0, 100].map(value => `.o-${value} {
   opacity: ${value / 100};
 }
 `);
@@ -814,6 +842,14 @@ ${rules.join('\n')}
    }
    var shadowStyles = r$6(`
 /* @section Shadow */
+:root {
+  --fui-box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0);
+}
+  
+.bs {
+  box-shadow: var(--fui-box-shadow);
+}
+
 .bs-0 {
   box-shadow: none;
 }
@@ -943,20 +979,48 @@ h6, .h6 {
   text-align: end;
 }
 
-.td-uppercase {
+.tt-uppercase {
   text-transform: uppercase;
 }
 
-.td-lowercase {
+.tt-lowercase {
   text-transform: lowercase;
 }
 
-.td-capitalize {
+.tt-capitalize {
   text-transform: capitalize;
+}
+
+.tt-none {
+  text-transform: none;
+}
+
+.td-underline {
+  text-decoration: underline;
 }
 
 .td-none {
   text-decoration: none;
+}
+
+.tw-normal {
+  text-wrap: normal;
+}
+
+.tw-nowrap {
+  text-wrap: nowrap;
+}
+
+.tw-balanced {
+  text-wrap: balanced;
+}
+
+.tw-pretty {
+  text-wrap: pretty;
+}
+  
+.ws-nowrap {
+  white-space: nowrap;
 }
 /* @endsection */
 `;
@@ -973,33 +1037,29 @@ h6, .h6 {
 /* @endsection */
 `;
 
-   var zIndexStyles = i$4 `
+   const properties = {
+       dropdown: 1,
+       sticky: 10,
+       fixed: 100,
+       modalBackdrop: 1000,
+       modal: 10000,
+       popover: 100000,
+       tooltip: 1000000
+   };
+   r$6(`:root {
+${Object.entries(properties).map(([key, value]) => `  --fui-z-index-${key}: ${value};`).join('\n')}
+}`);
+   var zIndexStyles = r$6(`
 /* @section Z-Index */
 .zi-0 {
   z-index: 0;
 }
-
-.zi-drawer {
-  z-index: var(--fui-z-index-drawer);
-}
-
-.zi-dialog {
-  z-index: var(--fui-z-index-dialog);
-}
-
-.zi-dropdown {
-  z-index: var(--fui-z-index-dropdown);
-}
-
-.zi-alert-group {
-  z-index: var(--fui-z-index-alert-group);
-}
-
-.zi-tooltip {
-  z-index: var(--fui-z-index-tooltip);
-}
+${Object.entries(properties).map(([key, value]) => `
+.zi-${key} {
+  z-index: var(--fui-z-index-${key}, ${value});
+}`).join('\n')}
 /* @endsection */
-`;
+`);
 
    /**
     * @type {import('lit').CSSResultGroup}
@@ -1363,28 +1423,27 @@ h6, .h6 {
        t$1('fui-icon')
    ], exports.FUIIcon);
 
+   // TODO: remove important once you fix Zoho's global CSS
    var listStyle = i$4 `
 /* @section List */
 ol, ul, ::part(list) {
+  list-style-position: outside !important; 
+  margin-inline-start: var(--list-margin, 8ch);
+}
+
+ul {
   list-style-type: disc;
-  margin-left: 1.5em;
 }
 
 .ls-none {
   list-style-type: none;
-  margin-left: unset;
+  margin-inline-start: unset;
 }
 
-.lst-none {
-  list-style-type: none;
-}
-
-.lsp-inside {
-  list-style-position: inside;
-}
-
-.lsp-outside {
-  list-style-position: outside;
+.ls-none:not([role='list'])::before {
+  content: 'MISSING role="list"';
+  color: red;
+  border: 1px solid red;
 }
 /* @endsection */
 `;
@@ -1626,17 +1685,20 @@ a[disabled] {
            super(...arguments);
            this.open = false;
            this.enabled = false;
-           this.maxWidth = 760;
+           this.maxWidth = 768;
            this.panelId = `panel-${Math.random().toString(36).slice(2, 9)}`;
        }
        firstUpdated() {
            var _a;
+           console.log('firstUpdated');
+           const element = (_a = this.shadowRoot) === null || _a === void 0 ? void 0 : _a.host.parentElement;
+           console.log(element);
            // enable the burger menu if the parent is smaller than the max width
            const observer = new ResizeObserver(observedItems => {
                const { contentRect } = observedItems[0];
                this.enabled = contentRect.width <= this.maxWidth;
            });
-           observer.observe((_a = this.shadowRoot) === null || _a === void 0 ? void 0 : _a.host.parentElement);
+           observer.observe(element);
        }
        toggleOpen() {
            this.open = !this.open;

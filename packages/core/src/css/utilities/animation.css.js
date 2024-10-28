@@ -1,5 +1,23 @@
 import { css } from 'lit';
 
+export const variables = css`:root {
+  --fui-animation-opacity: 0;
+  --fui-animation-perspective: 0;
+  --fui-animation-rotate-x: 0;
+  --fui-animation-rotate-y: 0;
+  --fui-animation-rotate-z: 0;
+  --fui-animation-scale-x: 1;
+  --fui-animation-scale-y: 1;
+  --fui-animation-scale-z: 1;
+  --fui-animation-skew-x: 0;
+  --fui-animation-skew-y: 0;
+  --fui-animation-translate-x: 0;
+  --fui-animation-translate-y: 0;
+  --fui-animation-translate-z: 0;
+  --fui-animation-speed: 0.3s;
+  --fui-animation-timing-function: ease;
+}`;
+
 export default css`
 /* @section Animation */
 .t-default {

@@ -1,25 +1,11 @@
-import { css } from 'lit';
+import { unsafeCSS } from 'lit';
 
-export default css`
+const properties = ['static', 'relative', 'absolute', 'sticky', 'fixed'];
+export default unsafeCSS(`
 /* @section Position */
-.static {
-  position: static;
-}
-
-.relative {
-  position: relative;
-}
-
-.absolute {
-  position: absolute;
-}
-
-.sticky {
-  position: sticky;
-}
-
-.fixed {
-  position: fixed;
-}
+${properties.map(property => `
+.${property} {
+  position: ${property};
+}`).join('\n')}
 /* @endsection */
-`;
+`);

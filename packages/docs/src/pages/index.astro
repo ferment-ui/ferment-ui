@@ -2,21 +2,75 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Home">
+<Layout title="Home" seo={{description: 'test'}}>
+  <h2>2.0</h2>
+  <pre>
+  {`
+  --swatch-grey-1: ;
+  ...
+
+  --spacing-base: 4; /* use to calculate font-size, line-height, and spacing, @property
+
+  /* padding should never be less that 16px */
+  /* typically inline is 2-3 times larger than block */
+
+  --spacing-inline-min: ; 
+  --spacing-inline-preferred: ; /* 'inline-preferred' sizes will typically be cqi or vw */
+  --spacing-inline-max: ;
+  --spacing-inline-responsive: clamp(var(--spacing-inline-min), var(--spacing-inline-preferred), var(--spacing-inline-max));
+  --spacing-inline-static: ;
+  --spacing-block-min: ;
+  --spacing-block-preferred: ;
+  --spacing-block-max: ;
+  --spacing-block-responsive: clamp(var(--spacing-block-min), var(--spacing-block-preferred), var(--spacing-block-max));
+  --spacing-block-static: ;
+
+  --spacing-page: 65ch;
+
+  --body-font-size: calc(var(--spacing-base) * 4px)
+  --body-line-height: 1.5 /* this multiplied by --body-font-size should be a multiple of --spacing-base)
+  --body-font-weight: 
+  ...
+  
+  --heading-scale: 
+  --heading-font-size: /* use typographic scale */
+  --heading-line-height: /* try to make multiple of --spacing-base */
+  --heading-color: 
+  ...
+
+  @custom-media ...
+
+  --breakpoint-...
+
+  @media --custom-media {
+    :root {
+      --spacing-inline-min: ;
+      --spacing-inline-preferred: ;
+      --spacing-inline-max: ;
+      --spacing-inline-static: ;
+      --spacing-block-min: ;
+      --spacing-block-preferred: ;
+      --spacing-block-max: ;
+      --spacing-block-static: ;
+
+      --body-line-height:
+
+      --heading-scale: 
+      --heading-line-height:
+    }
+  }`}
+  </pre>
   <h2>Usage</h2>
   <p>The basic premise of this framework is to do as much as possible with a small amount of CSS (variables and utility and semantic classes), and provide Web Components for patterns that require interactivity and/or progressive enhancement.</p>
   <h3>CSS</h3>
   <p>Much of a websites design can be done with a minimal set of CSS features and properties.</p>
   <ul>
-    <li>CSS Variables (97%)</li>
+    <li>CSS Variables with @property (97%, 90%)</li>
     <li>Container and Media queries (92%, 98%)</li>
     <li>Grid and Subgrid or display: contents (97%, 89%, 97%)</li>
     <li>Flexbox (98%)</li>
     <li>Opacity, Transform, Filter, and Clip Path (98%, 98%, 97%, 97%)</li>
     <li>Display, Position, Text Align, and Visiblity (100%)</li>
-    <li>Filter (97%)</li>
-    <li>Aspect Ratio (94%)</li>
-    <li>Env (97%)</li>
   </ul>
   <p>Bespoke Grid layouts with grid-template-areas with values set by overriding CSS variables in container queries will do most of the heavy lifting.</p>
   <p>Because of this, we only provide a small set of design tokens as CSS variables, utility classes, and semantic classes following BEM for common CSS-only components and variants, but leaving layouts to you.</p>
@@ -26,7 +80,7 @@ import Layout from '../layouts/Layout.astro';
   <ul>
     <li>Paint Layout, etc..., <a href='https://cabulous.medium.com/how-does-browser-work-in-2019-part-iii-rendering-phase-i-850c8935958f'>steps</a></li>
     <li>Prefer logical properties like inline-size, block-size, margin-inline, margin-inline-start, etc., as they work better if translated to other languages</li>
-    <li>For layouts, only use Flexbox for basic alignment and for it's non-columnar wrapping, otherwise use Grid</li>
+    <li>For layouts, only use Flexbox for basic alignment and for it's non-columnar wrapping, otherwise use Grid. You can do wild things with Grid and :nth-child!</li>
     <li>
       Other handy pseudo-selectors:
       <ul>
@@ -46,7 +100,7 @@ import Layout from '../layouts/Layout.astro';
     <li>
       Theming
       <ul>
-        <li>Prefer HSL colors, as it makes it easy to lighten/darken them</li>
+        <li>Prefer using OKLCH colors, as it makes it easy to lighten/darken them</li>
       </ul>
     <li>
       Animations
@@ -75,13 +129,20 @@ import Layout from '../layouts/Layout.astro';
           <ul>
             <li>Prefer vector images for all shape/stroke/fill based designs, like icons</li>
             <li>Minify using a tool like SVGO to strip unnecessary code</li>
-            <li>Use tools like `svg-sprite` to create sprite maps and use external references to them for caching: <code>&lt;svg viewBox="..."&gt;&lt;use href="file.svg#[id]" /&gt;&lt;/svg&gt;</code></li>
+            <li>Use tools like `svg-sprite` to create sprite maps and use external references to them for caching: <code>&lt;svg viewBox="..."&gt;&lt;use href="file.svg#[id]" /&gt;&lt;/svg&gt;</code> (see <a href='https://medium.com/@hayavuk/complete-guide-to-svg-sprites-7e202e215d34'>this article for additional info on SVG sprite maps</a>)</li>
           </ul>
         </li>
         <li>
           Raster images
           <ul>
-            <li>Use a tool like `sharp` to use the highest compressed format the client can handle: jxl, avif, webp (13%, 93%, 96%), and to resize the image to multiple resolutions to match various viewport/container sizes</li>
+            <li>
+              Use a tool like `sharp` to use the highest compressed format the client can handle: jxl, avif, webp (13%, 93%, 96%), and to resize the image to multiple resolutions to match various viewport/container sizes
+              <ul>
+                <li>The highest commonly used consumer monitors currently in use are 4K (3840x2160), however you will find some 5K (5120x2880), 6K (6016x3384, i.e. Apple Pro Display XDR), and 8K (7680x4320)</li>
+                <li>Be aware of how an image is used, for example it may take up 100% of the viewport on smaller screens, but take up less of the viewport on larger screens with media/container queries</li>
+              </ul>
+            </li>
+
             <li>
               Use `img` with `srcset` to provide multiple variants for formats, sizes, and pixel densities
               <ul>
@@ -163,5 +224,6 @@ import Layout from '../layouts/Layout.astro';
         </li>
       </ul>
     </li>
+    Lightening and Darkening colors is easiest with color functions that have a lightness channel (e.g. HSL, LCH)
   </ul>
 </Layout>

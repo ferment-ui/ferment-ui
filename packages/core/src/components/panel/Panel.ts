@@ -85,7 +85,7 @@ export class FUIPanel extends FUIBaseElement {
   enabled = false;
 
   @property({type: Number})
-  maxWidth = 760;
+  maxWidth = 768;
 
   @property({type: String})
   panelId = `panel-${Math.random().toString(36).slice(2, 9)}`;
@@ -94,12 +94,15 @@ export class FUIPanel extends FUIBaseElement {
   _slottedElements!: Array<HTMLElement>;
 
   firstUpdated() {
+    console.log('firstUpdated');
+    const element = this.shadowRoot?.host.parentElement as Element;
+    console.log(element);
     // enable the burger menu if the parent is smaller than the max width
     const observer = new ResizeObserver(observedItems => {
       const {contentRect} = observedItems[0];
       this.enabled = contentRect.width <= this.maxWidth;
     });
-    observer.observe(this.shadowRoot?.host.parentElement as Element);
+    observer.observe(element);
   }
 
   toggleOpen() {
@@ -125,7 +128,7 @@ export class FUIPanel extends FUIBaseElement {
       });
 
       // close the panel when pressing the tab key on the last focusable element
-      // NOTE: the last focusable element needs to updated on slot change
+      // NOTE: the last focusable element needs to update on slot change
       const lastFocusableElement = [...this._slottedElements].map(getFocusableElements).flat(Infinity).at(-1) as HTMLElement;
       lastFocusableElement?.addEventListener('keydown', (event: KeyboardEvent) => {
         if (event.key === 'Tab' && !event.shiftKey) {
