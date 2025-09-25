@@ -1,0 +1,2 @@
+npm test --if-present
+npx lint-staged

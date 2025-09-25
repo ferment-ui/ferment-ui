@@ -2,27 +2,36 @@
   "name": "@ferment-ui/docs",
   "private": true,
   "type": "module",
+  "version": "0.0.1",
   "scripts": {
     "dev": "wireit",
-    "build": "astro build",
+    "build": "wireit",
     "preview": "astro preview",
     "astro": "astro"
   },
   "wireit": {
     "dev": {
       "command": "astro dev",
-      "service": true
+      "service": true,
+      "dependencies": [
+        "../core:build"
+      ]
+    },
+    "build": {
+      "command": "astro build",
+      "output": [
+        "build"
+      ]
     }
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.3",
-    "@astrojs/lit": "^4.3.0",
-    "@ferment-ui/astro": "file:../astro",
-    "astro": "^4.15.1",
-    "typescript": "^5.3.3"
+    "@astrojs/svelte": "^7.1.1",
+    "astro": "^5.6.1",
+    "sharp": "^0.34.2",
+    "svelte": "^5.39.4",
+    "typescript": "^5.9.2"
   },
   "devDependencies": {
-    "lightningcss": "^1.26.0",
-    "wireit": "^0.14.4"
+    "wireit": "^0.14.12"
   }
 }

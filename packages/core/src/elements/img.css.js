@@ -1,0 +1,6 @@
+export default /*css*/`
+:where(img) {
+  max-inline-size: 100%;
+  block-size: auto;
+  object-fit: contain;
+}`;

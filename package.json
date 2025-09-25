@@ -1,15 +1,32 @@
 {
   "name": "ferment-ui",
+  "version": "1.0.0",
   "private": true,
-  "exports": {
-    "./index.css": {
-      "import": "./packages/core/dist/fui.css"
-    },
-    ".": {
-      "import": "./packages/core/dist/index.js"
-    }
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky"
   },
-  "workspaces": [
-    "packages/*"
-  ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ferment-ui/ferment-ui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ferment-ui/ferment-ui/issues"
+  },
+  "homepage": "https://github.com/ferment-ui/ferment-ui#readme",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.0",
+    "oxlint": "^1.16.0",
+    "oxlint-tsgolint": "^0.2.0",
+    "typescript": "^5.9.2"
+  },
+  "lint-staged": {
+    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": "oxlint"
+  }
 }

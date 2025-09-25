@@ -1,16 +1,12 @@
-import type { Font } from '../vite-env.d';
-import { debug } from './debug';
+document.documentElement.classList.replace('no-js', 'js');
 
-// toggle js
-document.documentElement.classList.toggle('no-js', true);
-
-// load fonts
-const fonts = JSON.parse(document.documentElement.dataset.fonts ?? '[]').map((font: Font) =>
-  new FontFace(font.family, font.source, font.descriptors)
-);
-Promise.allSettled(fonts.map((font: FontFace) => font.load()
-  .then(() => debug(`Loaded ${font.family}`))
-  .catch(err => debug(`Failed to load ${font.family}\n${err}`))
-)).then(() => {
-  document.documentElement.classList.toggle('no-fonts', true);
+const introObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.replace('intro', 'introed');
+      observer.unobserve(entry.target);
+    }
+  });
 });
+
+document.addEventListener('DOMContentLoaded', () => document.querySelectorAll('.intro').forEach(entry => introObserver.observe(entry)));

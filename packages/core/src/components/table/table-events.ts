@@ -1,1 +1,0 @@
-export const TABLE_SORT_EVENT = 'fui-table-sort';
