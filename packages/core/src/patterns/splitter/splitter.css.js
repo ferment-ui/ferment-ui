@@ -1,14 +1,14 @@
-import { patternVars, patternDeclarations } from "../../utils.js";
+import { groupVars, groupDeclarations } from "../../utils.js";
 
 // TODO: https://github.com/w3c/aria-practices/issues/130
 
 export default /*css*/`
 :where(html) {
-  ${patternVars('splitter')}
+  ${groupVars('splitter')}
 }
 
 .splitter {
-  ${patternDeclarations('splitter')}
+  ${groupDeclarations('splitter')}
   display: flex;
 
   [role="slider"] {

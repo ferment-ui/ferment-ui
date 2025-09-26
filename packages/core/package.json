@@ -7,7 +7,7 @@
   "scripts": {
     "build": "wireit",
     "build:css": "wireit",
-    "bundle": "wireit"
+    "bundle:css": "wireit"
   },
   "wireit": {
     "build": {
@@ -26,8 +26,19 @@
         "dist"
       ]
     },
-    "bundle": {
+    "bundle:css": {
       "command": "node ./lib/bundle-css.ts",
+      "dependencies": [
+        "build:css"
+      ],
+      "files": [
+        "dist",
+        "lib/bundle-css.ts",
+        "package.json"
+      ],
+      "output": [
+        "cdn/*.css*"
+      ],
       "env": {
         "NODE_ENV": "production"
       }
@@ -39,7 +50,8 @@
   "dependencies": {
     "debug": "^4.4.3",
     "lodash-es": "^4.17.21",
-    "ttls-helpers": "^1.1.6"
+    "ttls-helpers": "^1.1.6",
+    "vitest": "^3.2.4"
   },
   "devDependencies": {
     "@types/debug": "^4.1.12",

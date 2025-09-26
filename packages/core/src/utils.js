@@ -1,10 +1,22 @@
 import { blockRule } from "ttls-helpers";
 
+/** Groups of elements/patterns */
+// TODO: this should be in the config file
 export const groupMappings = {
   tag: ['badge'],
   control: ['button'],
   panel: ['card', 'modal', 'sheet', 'toast'],
   area: ['alert', 'dialog', 'form', 'list', 'menu', 'navbar', 'pagination', 'table', 'tabs'],
+}
+
+/** The default set of properties that each element/pattern in a group can have */
+// TODO: this should be in the config file
+export const groupProperties = {
+  'padding-block': 'pb',
+  'padding-inline': 'pi',
+  'margin-block': 'mb',
+  'margin-inline': 'mi',
+  border: 'bb',
 }
 
 /**
@@ -27,8 +39,9 @@ export function getGroupName(component) {
  * @param {string} [prefix] - An optional prefix for the variable.
  * @returns {string} The generated CSS variable name.
  */
-export function _var(name, customPrefix = '') {
-  return `${customPrefix ? `--${customPrefix}-` : '--'}${name}`;
+export function _var(name, spacePrefix = '') {
+  name = Array.isArray(name) ? name.join('-') : name;
+  return `${spacePrefix ? `--${spacePrefix}-` : '--'}${kebabCase(name)}`;
 }
 
 /**
@@ -37,8 +50,8 @@ export function _var(name, customPrefix = '') {
  * @param {string} [prefix]
  * @returns {string}
  */
-export function _ref(name, fallbacks, customPrefix = '') {
-  return `var(${_var(name, customPrefix)}${fallbacks ? `, ${fallbacks}` : ''})`;
+export function _ref(name, fallbacks, spacePrefix = '') {
+  return `var(${_var(name, spacePrefix)}${fallbacks ? `, ${fallbacks}` : ''})`;
 }
 
 /**
@@ -47,18 +60,15 @@ export function _ref(name, fallbacks, customPrefix = '') {
  * @returns {string}
  */
 export function kebabCase(str) {
-  return str
-    .replace(/([a-z])([A-Z])/g, '$1-$2')
-    .replace(/[\s_]+/g, '-')
-    .toLowerCase();
-}
-
-export const patternProperties = {
-  paddingBlock: 'pb',
-  paddingInline: 'pi',
-  marginBlock: 'mb',
-  marginInline: 'mi',
-  border: 'bb',
+  try {str
+    return str
+      .replace(/([a-z])([A-Z])/g, '$1-$2')
+      .replace(/([A-Z])([A-Z][a-z])/g, '$1-$2')
+      .replace(/[\s_.]+/g, '-')
+      .toLowerCase();
+  } catch {
+    throw new Error('Error converting to kebab-case:', str);
+  }
 }
 
 /**
@@ -68,9 +78,9 @@ export const patternProperties = {
  * @param {object} declarations 
  * @returns {string}
  */
-export function patternVars(component, prefix = '', declarations = patternProperties) {
-  return Object.entries(declarations)
-    .map(([key, value]) => `${prefix}${_var(key, prefix)}-${value}: ${_ref(value)};`)
+export function groupVars(component, spacePrefix = '', declarations = groupProperties) {
+  return Object.values(declarations)
+    .map((value) => `${spacePrefix}${_var([component, value])}: ${_ref(value)};`)
     .join('\n');
 }
 
@@ -79,10 +89,10 @@ export function patternVars(component, prefix = '', declarations = patternProper
  * @param {string} component - The component name.
  * @returns {string} The CSS declarations.
  */
-export function patternDeclarations(component, prefix = '  ', declarations = patternProperties) {
+export function groupDeclarations(component, prefix = '  ', declarations = groupProperties) {
   const group = getGroupName(component);
-  return Object.keys(declarations)
-    .map((prop) => `${prefix}${prop}: ${_ref(component, group ? _ref(group) : '')};`)
+  return Object.entries(declarations)
+    .map(([prop, value]) => `${prefix}${prop}: ${_ref([component, value], group ? _ref([group, value]) : '')};`)
     .join('\n');
 }
 

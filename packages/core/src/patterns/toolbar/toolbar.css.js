@@ -1,10 +1,10 @@
-import { patternVars, patternDeclarations } from "../../utils.js";
+import { groupVars, groupDeclarations } from "../../utils.js";
 
 export default /*css*/`
 :where(html) {
-  ${patternVars('toolbar')}
+  ${groupVars('toolbar')}
 }
 
 .toolbar, :where([role="toolbar"]) {
-  ${patternDeclarations('toolbar')}
+  ${groupDeclarations('toolbar')}
 }`;

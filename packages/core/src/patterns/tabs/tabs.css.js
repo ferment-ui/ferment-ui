@@ -1,23 +1,23 @@
-import { patternVars, patternDeclarations } from "../../utils.js";
+import { groupVars, groupDeclarations } from "../../utils.js";
 
 export default /*css*/`
 :where(html) {
-  ${patternVars('tab')}
-  ${patternVars('tablist')}
-  ${patternVars('tabpanel')}
+  ${groupVars('tab')}
+  ${groupVars('tablist')}
+  ${groupVars('tabpanel')}
 }
 
 .tabs {
-  ${patternDeclarations('tab')}
+  ${groupDeclarations('tab')}
 }
 
 .tablist, :where([role="tablist"]) {
-  ${patternDeclarations('tablist')}
+  ${groupDeclarations('tablist')}
   .tab, :where([role="tab"]) {
-    ${patternDeclarations('tab')}
+    ${groupDeclarations('tab')}
   }
 }
 
 .tabpanel, :where([role="tabpanel"]) {
-  ${patternDeclarations('tabpanel')}
+  ${groupDeclarations('tabpanel')}
 }`;

@@ -5,7 +5,8 @@ export default /*css*/`
     opacity: 0;
     block-size: 0;
     overflow-y: clip;
-    transition: content-visibility .5s allow-discrete, opacity .5s, block-size .5s;
+    transition: content-visibility .5s allow-discrete, opacity .5s, block-size .5s allow-discrete;
+    will-change: content-visibility, opacity, block-size;
   }
 
   &[open]::details-content {

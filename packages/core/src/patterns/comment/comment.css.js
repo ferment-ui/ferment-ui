@@ -1,10 +1,10 @@
-import { patternVars, patternDeclarations } from "../../utils.js";
+import { groupVars, groupDeclarations } from "../../utils.js";
 
 export default /*css*/`
 :where(html) {
-  ${patternVars('comment')}
+  ${groupVars('comment')}
 }
 
 .comment, :where([role="comment"]) {
-  ${patternDeclarations('comment')}
+  ${groupDeclarations('comment')}
 }`

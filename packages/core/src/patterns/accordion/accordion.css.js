@@ -1,7 +1,7 @@
 // NOTE: An accordion is just a wrapper around a list of `details` elements that
 // have the same value in their `name` attribute.
 
-import { patternVars, patternDeclarations } from "../../utils.js";
+import { groupVars, groupDeclarations } from "../../utils.js";
 
 /**
  * @example
@@ -18,9 +18,9 @@ import { patternVars, patternDeclarations } from "../../utils.js";
  */
 export default /*css*/`
 :where(html) {
-  ${patternVars('accordion')}
+  ${groupVars('accordion')}
 }
 
 .accordion {
-  ${patternDeclarations('accordion')}
+  ${groupDeclarations('accordion')}
 }`;

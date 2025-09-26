@@ -1,10 +1,10 @@
-import { patternVars, patternDeclarations } from "../../utils.js";
+import { groupVars, groupDeclarations } from "../../utils.js";
 
 export default /*css*/`
 :where(html) {
-  ${patternVars('alert')}
+  ${groupVars('alert')}
 }
 
 .alert, :where([role="alert"]) {
-  ${patternDeclarations('alert')}
+  ${groupDeclarations('alert')}
 }`;

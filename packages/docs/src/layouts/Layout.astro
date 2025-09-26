@@ -1,4 +1,5 @@
 ---
+import '../../../core/cdn/styles.min.css';
 const { title, children } = Astro.props;
 ---
 
@@ -10,6 +11,17 @@ const { title, children } = Astro.props;
   <title>{title}</title>
 </head>
 <body>
+  <nav>
+    <ul>
+      <li><a href="/getting-started">Getting Started</a></li>
+      <li><a href="/variables">Variables</a></li>
+      <li><a href="/elements">Elements</a></li>
+      <li><a href="/patterns">Patterns</a></li>
+      <li><a href="/groups">Groups</a></li>
+      <li><a href="/utilities">Utilities</a></li>
+      <li><a href="/properties">Properties</a></li>
+    </ul>
+  </nav>
   <slot />
 </body>
 </html>

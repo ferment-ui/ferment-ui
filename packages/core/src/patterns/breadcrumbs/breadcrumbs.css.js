@@ -1,15 +1,15 @@
-import { patternVars, patternDeclarations } from "../../utils.js";
+import { groupVars, groupDeclarations } from "../../utils.js";
 
 export default /*css*/`
 :root {
   --breadcrumbs-sep: '/';
-  ${patternVars('breadcrumbs')}
+  ${groupVars('breadcrumbs')}
   --pb-breadcrumbs: var(--spacing-2xs);
   --pi-breadcrumbs: var(--spacing-inline-s);
 }
 
 .breadcrumbs {
-  ${patternDeclarations('breadcrumbs')}
+  ${groupDeclarations('breadcrumbs')}
 
   ul {
     display: inline-flex;

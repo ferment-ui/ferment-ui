@@ -7,15 +7,15 @@
  * surface with the figcaption styled separately.
  */
 
-import { patternVars, patternDeclarations } from "../../utils.js";
+import { groupVars, groupDeclarations } from "../../utils.js";
 
 export default /*css*/`
 :where(html) {
-  ${patternVars('blockquote')}
+  ${groupVars('blockquote')}
 }
 
 :where(figure > blockquote) {
-  ${patternDeclarations('blockquote')}
+  ${groupDeclarations('blockquote')}
   font-style: italic;
   position: relative;
   margin-inline: var(--spacing-inline-m);

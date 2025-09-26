@@ -1,12 +1,12 @@
-import { patternVars, patternDeclarations } from "../../utils.js";
+import { groupVars, groupDeclarations } from "../../utils.js";
 
 export default /*css*/`
 :where(html) {
-  ${patternVars('card')}
+  ${groupVars('card')}
 }
 
 :where(.card) {
-  ${patternDeclarations('card')}
+  ${groupDeclarations('card')}
   display: flex;
   flex-direction: column;
   gap: 1em;

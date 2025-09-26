@@ -1,0 +1,4 @@
+- Use vitest for testing:
+  - Use `it.for` for parameterizing tests
+    - it.for([['input', 'output']])('should be $1 given $2', ([input, output], { expect }) => {})
+  - Use `expect` provided in the callback, do not import it

@@ -1,10 +1,10 @@
-import { patternVars, patternDeclarations } from "../../utils.js";
+import { groupVars, groupDeclarations } from "../../utils.js";
 
 export default /*css*/`
 :where(html) {
-  ${patternVars('chip')}
+  ${groupVars('chip')}
 }
 
 .feed, :where([role="feed"]) {
-  ${patternDeclarations('chip')}
+  ${groupDeclarations('chip')}
 }`;

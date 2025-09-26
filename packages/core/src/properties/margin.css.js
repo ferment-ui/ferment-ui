@@ -1,7 +1,9 @@
 import { breakpointQueries } from '../breakpoints.js';
-import { spacing } from '../names.js';
+import { config } from '../../config.ts';
 import { generateBreakpointSpacing } from '../utils.js';
 
-const keys = Object.keys(spacing);
+const { spacing: { _sizes } } = config;
+
+const keys = Object.keys(_sizes);
 
 export default generateBreakpointSpacing(keys, 'm', 'margin', breakpointQueries);

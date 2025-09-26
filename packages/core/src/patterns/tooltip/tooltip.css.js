@@ -1,10 +1,10 @@
-import { patternVars, patternDeclarations } from "../../utils.js";
+import { groupVars, groupDeclarations } from "../../utils.js";
 
 export default /*css*/`
 :where(html) {
-  ${patternVars('tooltip')}
+  ${groupVars('tooltip')}
 }
 
 .tooltip {
-  ${patternDeclarations('tooltip')}
+  ${groupDeclarations('tooltip')}
 }`;
