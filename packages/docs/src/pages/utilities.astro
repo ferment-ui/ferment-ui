@@ -5,26 +5,87 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Utilities - Ferment UI">
   <main>
     <h1>Utilities</h1>
-    <p>Utility classes for quick styling and layout adjustments.</p>
-    
-    <section>
-      <h2>Layout Utilities</h2>
-      <p>Margin, padding, display, and positioning utility classes will be documented here.</p>
-    </section>
-    
-    <section>
-      <h2>Typography Utilities</h2>
-      <p>Text alignment, font weight, and typography utility classes will be shown here.</p>
-    </section>
-    
-    <section>
-      <h2>Color Utilities</h2>
-      <p>Background color, text color, and color utility classes will be documented here.</p>
-    </section>
-    
-    <section>
-      <h2>Responsive Utilities</h2>
-      <p>Responsive modifier classes and breakpoint utilities will be listed here.</p>
-    </section>
+    <div class='prose'>
+      Common utilities for things like layout, themes, hidden, etc.
+
+      <details>
+        <summary><h3>Show/Hide</h3></summary>
+        <p class='show hide-xs show-s hide-m show-l hide-xl show-2xl'>This text is hidden.</p>
+      </details>
+      <details>
+        <summary><h3>Intro</h3></summary>
+        <style>
+          [class^="intro"], [class*=" intro"], {
+            width: 100px;
+            height: 100px;
+            background: red;
+          }
+        </style>
+        <p class='intro-left'>.intro-left</p>
+        <p class='intro-right'>.intro-right</p>
+        <p class='intro-top'>.intro-top</p>
+        <p class='intro-bottom'>.intro-bottom</p>
+        <p class='intro-fade-in'>.intro-fade-in</p>
+        <p class='intro-rotate'>.intro-rotate</p>
+        <p class='intro-scale-up'>.intro-scale-up</p>
+        <p class='intro-scale-right'>.intro-scale-right</p>
+        <p class='intro' style='--intro-perspective: 1000px; --intro-rotate-x: .5turn; --intro-rotate-y: .5turn;'>.intro</p>
+      </details>
+      <details>
+        <summary><h3>Themes</h3></summary>
+        <ul class='prose'>
+          ${variantValues.map(variant => /*html*/`<li class="${variant}">${variant}</li>`).join('')}
+        </ul>
+      </details>
+
+      <details>
+        <summary><h3>Layouts</h3></summary>
+        <details>
+          <summary>Page Layout</summary>
+          <div class='page'>
+            <p class='b'>This is a page layout with a maximum width and centered content.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Prose Layout</summary>
+          <div class='b prose'>
+            <p>Stacks content along the block axis with consistent gap</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat libero beatae optio esse eius neque distinctio, odit quis? Sint officia sit cum quam architecto deleniti est necessitatibus aut quaerat iusto?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam facere iste voluptates, tempora perspiciatis explicabo repellendus, eius consectetur labore dolorum optio praesentium dignissimos excepturi velit corporis similique non aliquid veniam.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </details>
+      </details>
+
+      <details>
+        <summary><h3>Spacing Density</h3></summary>
+        <div class='prose'>
+          <ul class='b row' style='background: var(--color-neutral-100);'>
+            <li class='p'>1</li>
+            <li class='p'>2</li>
+            <li class='p'>3</li>
+            <li class='p'>4</li>
+            <li class='p'>5</li>
+          </ul>
+          <ul class='b row' style='background: var(--color-neutral-100);'>
+            <li class='p s-dense'>1</li>
+            <li class='p s-dense'>2</li>
+            <li class='p s-dense'>3</li>
+            <li class='p s-dense'>4</li>
+            <li class='p s-dense'>5</li>
+          </ul>
+          <ul class='b row' style='background: var(--color-neutral-100);'>
+            <li class='p s-sparse'>1</li>
+            <li class='p s-sparse'>2</li>
+            <li class='p s-sparse'>3</li>
+            <li class='p s-sparse'>4</li>
+            <li class='p s-sparse'>5</li>
+          </ul>
+        </div>
+      </details>
+    </div>
   </main>
 </Layout>

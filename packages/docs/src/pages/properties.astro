@@ -4,27 +4,60 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Properties - Ferment UI">
   <main>
-    <h1>Properties</h1>
-    <p>CSS property-based styling system and property-specific utility classes.</p>
-    
-    <section>
-      <h2>Layout Properties</h2>
-      <p>Flexbox, grid, and layout-related property classes will be documented here.</p>
-    </section>
-    
-    <section>
-      <h2>Spacing Properties</h2>
-      <p>Margin, padding, and spacing property classes will be shown here.</p>
-    </section>
-    
-    <section>
-      <h2>Visual Properties</h2>
-      <p>Border, background, shadow, and visual property classes will be documented here.</p>
-    </section>
-    
-    <section>
-      <h2>Typography Properties</h2>
-      <p>Font, text, and typography property classes will be listed here.</p>
-    </section>
+      <h1>Properties</h1>
+      <div class='prose'>
+        There's a lot of CSS properties available, but here are some examples:
+        <details>
+          <summary><h3>Text Align</h3></summary>
+          <ul class='prose'>
+            ${['start', 'end', 'center', 'justify', 'initial'].map(value => /*html*/`<li class="ta-${value}">Text aligned to ${value}</li>`).join('')}
+          </ul>
+        </details>
+        <details>
+          <summary><h3>Border Radius</h3></summary>
+          <ul class='prose'>
+            <li class="b br w-50">Default</li>
+            <li class="b br-pill w-50">Pill</li>
+            <li class="b br-circle" style="width: 50px; height: 50px;">Circle</li>
+          </ul>
+        </details>
+        <details>
+          <summary><h3>Color</h3></summary>
+          <ul class='prose'>
+            ${variantValues.map(variant => /*html*/`<li class="c-${variant}">${variant}</li>`).join('')}
+          </ul>
+        </details>
+        <details>
+          <summary><h3>Box Shadow</h3></summary>
+          <ul class='prose'>
+            ${['none', '1', '2', '3', '4', '5', '6'].map(value => /*html*/`<li class="b bs-${value}">.bs-${value}</li>`).join('')}
+          </ul>
+        </details>
+        <details>
+          <summary><h3>Inline Size</h3></summary>
+          <ul class='prose'>
+            ${Object.keys(inlineSizes).map(value => /*html*/`<li class="b isize-${value}">.isize-${value}</li>`).join('')}
+          </ul>
+        </details>
+        <details>
+          <summary><h3>Padding</h3></summary>
+          <ul class='prose'>
+            <li class="b p-fluid">.p-fluid</li>
+            <li class="b p-1 p-2-sm p-4-md p-6-lg p-8-xl w-fit-content">p-1 p-2-sm p-4-md p-6-lg p-8-xl</li>
+            ${spacingValues.map(spacing => /*html*/`<li class="b p-${spacing} w-fit-content">${spacing}</li>`).join('')}
+          </ul>
+        </details>
+      </div>
+    </details>
+    <details>
+      <summary><h3>List of all properties</h3></summary>
+      <ul role='list'>
+        ${['align-content', 'align-items', 'align-self', 'background-color', 
+        'block size', 'border-radius', 'border', 'box-shadow', 'color', 
+        'display', 'flex-wrap', 'flex', 'font-size', 'font-style', 
+        'font-weight', 'inline-size', 'justify-content', 'justify-items', 
+        'line-height', 'margin', 'padding', 'pointer-events', 'text-align', 
+        'text-decoration', 'text-transformation', 'transform', 'visibility', 
+        'z-index'].map(prop => /*html*/`<li>${prop}</li>`).join('')}
   </main>
 </Layout>

@@ -4,27 +4,16 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Groups - Ferment UI">
   <main>
-    <h1>Groups</h1>
-    <p>Grouped pattern collections and pattern combinations for complex UI components.</p>
-    
-    <section>
-      <h2>Form Groups</h2>
-      <p>Grouped form patterns and form-related component combinations will be documented here.</p>
-    </section>
-    
-    <section>
-      <h2>Navigation Groups</h2>
-      <p>Complex navigation patterns and grouped navigation components will be shown here.</p>
-    </section>
-    
-    <section>
-      <h2>Content Groups</h2>
-      <p>Content-focused pattern groups and layout combinations will be documented here.</p>
-    </section>
-    
-    <section>
-      <h2>Interactive Groups</h2>
-      <p>Complex interactive pattern combinations will be listed here.</p>
-    </section>
+<h1>Forms</h1>
+    <form class='prose'>
+      ${checkbox(null, 'Checkbox', { inputAttrs: { id: 'checkbox1', checked: true } })}
+      ${text(null, 'Text Input', { inputAttrs: { placeholder: 'Type here...', pattern: '[a-z]', required: true } })}
+      ${password(null, 'Password Input', { inputAttrs: { id: 'password1' } })}
+      ${radiogroup(null, 'Radio Group', { name: 'group1', radios: [
+        { id: 'radio1', children: 'Option 1' },
+        { id: 'radio2', children: 'Option 2' },
+        { id: 'radio3', children: 'Option 3' }
+      ]})}
+    </form>
   </main>
 </Layout>
