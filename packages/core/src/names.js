@@ -1,7 +1,16 @@
 import { breakpoints } from './breakpoints.js';
-import { config } from '../config.ts';
+import { config } from '../templates/fui.config.js';
 import { cartesian } from './utils.js';
 
+// Factory function to create names with custom config
+export function createNames(customConfig = config) {
+  console.log(Object.keys(breakpoints), customConfig.sizes);
+  const bpToSizesMap = cartesian(Object.keys(breakpoints), Object.keys(customConfig.spacing._sizes));
+  console.log('bpToSizesMap', bpToSizesMap);
+  return { bpToSizesMap };
+}
+
+// Default exports for backward compatibility
 console.log(Object.keys(breakpoints), config.sizes);
 export const bpToSizesMap = cartesian(Object.keys(breakpoints), Object.keys(config.spacing._sizes));
 console.log('bpToSizesMap', bpToSizesMap);

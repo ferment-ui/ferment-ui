@@ -17,14 +17,47 @@ import inlineSize from './inline-size.css.js';
 import justifyContent from "./justify-content.css.js";
 import justifyItems from "./justify-items.css.js";
 import lineHeight from "./line-height.css.js";
-import margin from "./margin.css.js";
-import padding from "./padding.css.js";
+import margin, { createMarginCSS } from "./margin.css.js";
+import padding, { createPaddingCSS } from "./padding.css.js";
 import textAlign from "./text-align.css.js";
 import textDecoration from "./text-decoration.css.js";
 import textTransform from "./text-transform.css.js";
 import visibility from "./visibility.css.js";
 import zIndex from "./z-index.css.js";
 
+// Factory function to create properties CSS with custom config
+export function createPropertiesCSS(config) {
+  return {
+    "align-content.css": alignContent,
+    "align-items.css": alignItems,
+    "align-self.css": alignSelf,
+    "background-color.css": backgroundColor,
+    "block-size.css": blockSize,
+    "border.css": border,
+    "border-radius.css": borderRadius,
+    "box-shadow.css": boxShadow,
+    "color.css": color,
+    "display.css": display,
+    "flex-wrap.css": flexWrap,
+    "flex.css": flex,
+    "font-size.css": fontSize,
+    "font-style.css": fontStyle,
+    "font-weight.css": fontWeight,
+    "inline-size.css": inlineSize,
+    "justify-content.css": justifyContent,
+    "justify-items.css": justifyItems,
+    "line-height.css": lineHeight,
+    "margin.css": createMarginCSS(config),
+    "padding.css": createPaddingCSS(config),
+    "text-align.css": textAlign,
+    "text-decoration.css": textDecoration,
+    "text-transform.css": textTransform,
+    "visibility.css": visibility,
+    "z-index.css": zIndex
+  };
+}
+
+// Default export for backward compatibility
 export default {
   "align-content.css": alignContent,
   "align-items.css": alignItems,

@@ -1,9 +1,12 @@
 {
-  "name": "core",
+  "name": "ferment-ui",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
+  "description": "A modern CSS framework",
   "main": "index.js",
+  "bin": {
+    "fui": "./lib/cli.ts"
+  },
   "scripts": {
     "build": "wireit",
     "build:css": "wireit",
@@ -51,7 +54,8 @@
     "debug": "^4.4.3",
     "lodash-es": "^4.17.21",
     "ttls-helpers": "^1.1.6",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "zod": "^4.1.11"
   },
   "devDependencies": {
     "@types/debug": "^4.1.12",
