@@ -1,8 +1,18 @@
 #!/usr/bin/env node
 
 import { parseArgs } from "node:util";
+import { join } from "node:path";
 import { z } from 'zod/mini';
+import pick from 'lodash-es/pick.js';
+import Debug from 'debug';
 import pkgJson from '../package.json' with { type: 'json' };
+
+const debug = Debug('fui');
+
+const LAYERS = ['variables', 'elements', 'forms', 'patterns', 'properties', 'utilities'];
+const TEMPLATES = ['fui', 'bootstrap', 'material'];
+const DEFAULT_OUTPUT = 'dist/fui';
+const DEFAULT_TEMPLATE = 'fui';
 
 const options = {
   config: {
@@ -13,17 +23,19 @@ const options = {
   template: {
     type: 'string',
     short: 't',
-    description: 'Use a template configuration (fui, bootstrap, material).'
+    description: `Use a template configuration (${TEMPLATES.join(', ')}).`,
+    default: DEFAULT_TEMPLATE
   },
   output: {
     type: 'string',
     short: 'o', 
-    description: 'Output directory for generated CSS files.'
+    description: 'Output directory for generated CSS files.',
+    default: DEFAULT_OUTPUT
   },
   layers: {
     type: 'string',
     short: 'l',
-    description: 'Comma-separated list of layers to generate (variables,elements,forms,patterns,properties,utilities).'
+    description: `Comma-separated list of layers to generate (${LAYERS.join(', ')}).`
   },
   help: {
     type: 'boolean',
@@ -39,9 +51,19 @@ const options = {
 
 const argsSchema = z.object({
   config: z.optional(z.string()),
-  template: z.optional(z.string()),
-  output: z.optional(z.string()),
-  layers: z.optional(z.string()),
+  template: z._default(z.enum(TEMPLATES), DEFAULT_TEMPLATE),
+  output: z._default(z.string(), DEFAULT_OUTPUT),
+  layers: z._default(z.pipe(z.string(), z.transform((str, ctx) => str.split(',').map(layer => {
+    layer.trim();
+    if (!LAYERS.includes(layer)) {
+      ctx.issues.push({
+        code: "custom",
+        message: `Invalid layer: ${layer}. Valid layers are ${LAYERS.join(', ')}.`,
+        input: layer
+      });
+    }
+    return layer;
+  }))), []),
   help: z.optional(z.boolean()),
   version: z.optional(z.boolean()),
 });
@@ -70,7 +92,6 @@ if (args.version) {
   process.exit(0);
 }
 
-// Main build functionality
 main().catch(console.error);
 
 async function main() {
@@ -84,29 +105,14 @@ async function main() {
 }
 
 async function buildCommand(options: typeof args) {
-  const { generateCss } = await import('./build-css.js');
+  const { generateCss } = await import(join(import.meta.dirname, 'build-css.js'));
   
-  const buildOptions: { configPath?: string; template?: string; outputDir?: string; layers?: string[] } = {};
+  const buildOptions = pick(options, ['template', 'layers', 'config', 'output']);
   
-  if (options.template) {
-    buildOptions.template = options.template;
-    console.log(`Using template: ${buildOptions.template}`);
-  }
-  
-  if (options.config) {
-    buildOptions.configPath = options.config;
-    console.log(`Using config override: ${buildOptions.configPath}`);
-  }
-  
-  if (options.output) {
-    buildOptions.outputDir = options.output;
-    console.log(`Output directory: ${buildOptions.outputDir}`);
-  }
-  
-  if (options.layers) {
-    buildOptions.layers = options.layers.split(',').map(layer => layer.trim());
-    console.log(`Generating layers: ${buildOptions.layers.join(', ')}`);
-  }
+  debug(`Using template: ${buildOptions.template}`);
+  debug(`Using config override: ${buildOptions.config}`);
+  debug(`Output directory: ${buildOptions.output}`);
+  debug(`Generating layers: ${buildOptions.layers}`);
   
   console.log('Generating CSS...');
   await generateCss(buildOptions);

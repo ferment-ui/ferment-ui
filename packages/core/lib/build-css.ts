@@ -13,21 +13,23 @@ const buildDir = join(import.meta.dirname, '..', 'dist');
 const layers = ['variables', 'elements', 'forms', 'patterns', 'properties', 'utilities'];
 
 export interface GenerateCssOptions {
-  configPath?: string;
+  config?: string;
   template?: string;
   layers?: string[];
-  outputDir?: string;
+  output?: string;
 }
 
 export async function generateCss(options: GenerateCssOptions = {}) {
-  const { configPath, template, layers: customLayers, outputDir } = options;
+  const { config, template, layers: customLayers, output } = options;
   const targetLayers = customLayers || layers;
-  const targetBuildDir = outputDir || buildDir;
+  const targetBuildDir = output || buildDir;
+
+  await mkdir(targetBuildDir, { recursive: true });
   
-  if (configPath || template) {
+  if (config || template) {
     // Use factory functions with custom/template config
-    const configOptions: { configPath?: string; template?: string } = {};
-    if (configPath) configOptions.configPath = configPath;
+    const configOptions: { config?: string; template?: string } = {};
+    if (config) configOptions.config = config;
     if (template) configOptions.template = template;
     await generateCssWithConfig(configOptions, targetLayers, targetBuildDir);
   } else {
@@ -36,7 +38,7 @@ export async function generateCss(options: GenerateCssOptions = {}) {
   }
 }
 
-async function generateCssWithConfig(configOptions: { configPath?: string; template?: string }, layers: string[], buildDir: string) {
+async function generateCssWithConfig(configOptions: { config?: string; template?: string }, layers: string[], buildDir: string) {
   const { loadConfig } = await import('../src/config-loader.js');
   const { createCSS } = await import('../src/css-factory.js');
   
