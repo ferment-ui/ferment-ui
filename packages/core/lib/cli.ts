@@ -63,7 +63,7 @@ const argsSchema = z.object({
       });
     }
     return layer;
-  }))), []),
+  }))), LAYERS),
   help: z.optional(z.boolean()),
   version: z.optional(z.boolean()),
 });
